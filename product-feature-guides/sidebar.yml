@@ -1,0 +1,12 @@
+---
+section: product-feature-guides
+title: 产品功能指南
+entries:
+- title: 为AWS或Google Cloud创建云存储池
+  url: "/product-feature-guides/create-cloud-storage-pool-aws-google-cloud.html"
+- title: 为Azure Blob存储创建云存储池
+  url: "/product-feature-guides/create-cloud-storage-pool-azure-blob-storage.html"
+- title: 使用云存储池进行备份
+  url: product-feature-guides/use-a-cloud-storage-pool-for-backup.html
+- title: 配置搜索集成服务
+  url: "/product-feature-guides/storagegrid-search-integration-service.html"

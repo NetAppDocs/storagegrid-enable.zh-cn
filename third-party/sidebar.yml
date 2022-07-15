@@ -1,0 +1,17 @@
+---
+section: third-party
+title: 经验证的第三方解决方案
+entries:
+- title: 概述
+  pdf-filename: 经验证的第三方解决方案—概述
+  url: "/third-party/index.html"
+- title: StorageGRID 11.6.
+  url: "/third-party/116-3rd-party-list.html"
+- title: StorageGRID 11.5
+  url: "/third-party/115-3rd-party-list.html"
+- title: StorageGRID 11.4.
+  url: "/third-party/114-3rd-party-list.html"
+- title: StorageGRID 11.3
+  url: "/third-party/113-3rd-party-list.html"
+- title: StorageGRID 11.2
+  url: "/third-party/112-3rd-party-list.html"

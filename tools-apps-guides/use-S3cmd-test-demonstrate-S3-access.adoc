@@ -1,0 +1,88 @@
+---
+permalink: tools-apps-guides/use-S3cmd-test-demonstrate-S3-access.html 
+sidebar: sidebar 
+keywords: cli, aws, S3, s3cmd, api 
+summary: S3cmd是一个用于S3操作的免费命令行工具和客户端。您可以使用S3cmd在StorageGRID 上测试和演示S3访问。 
+---
+= 使用S3cmd测试和演示StorageGRID 上的S3访问
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+S3cmd是一个用于S3操作的免费命令行工具和客户端。您可以使用s3cmd在StorageGRID 上测试和演示S3访问。
+
+
+
+== 安装和配置S3cmd
+
+要在工作站或服务器上安装S3cmd、请从下载它 https://s3tools.org/s3cmd["命令行S3客户端"^]。s3cmd会作为一种工具预先安装在每个StorageGRID 节点上、以协助进行故障排除。
+
+
+
+== 初始配置步骤
+
+. s3cmd -configure
+. 请仅提供access_key和secret_key、其余请保留默认值。
+. 是否使用提供的凭据测试访问？[Y/n]：n (跳过测试、因为测试将失败)
+. 是否保存设置？[Y/N] y
++
+.. 配置已保存到"/root/.s3cfg"
+
+
+. 在.s3cfg中、使"="符号后面的字段host_base和host_bucket为空：
++
+.. host_base =
+.. host_bucket =
+
+
+
+
+====
+
+NOTE: 如果在步骤4中指定host_base和host_bucket、则无需在命令行界面中使用-host指定端点。示例
+
+....
+            host_base = 192.168.1.91:8082
+            host_bucket = bucketX.192.168.1.91:8082
+            s3cmd ls s3://bucketX --no-check-certificate
+....
+====
+
+
+== 基本命令示例
+
+* *创建存储分段：*
++
+`s3cmd MB S3：//s3cmdbucket -host=<endpoint>：<port>-no-check-certificate`
+
+* *列出所有分段：*
++
+`s3ls命令-host=<endpoint>：<port>-no-check-certificate`
+
+* *列出所有分段及其内容：*
++
+`s3cmd la -host=<endpoint>：<port>-no-check-certificate`
+
+* *列出特定分段中的对象：*
++
+`s3cmd ls s3：//<bucket>-host=<endpoint>：<port>-no-check-certificate`
+
+* *删除分段：*
++
+`s3RB cmd S3：//s3cmdbucket -host=<endpoint>：<port>-no-check-certificate`
+
+* *放置对象：*
++
+`s3cmd PUT <file> s3：//<bucket>-host=<endpoint>：<port>-no-check-certificate`
+
+* *获取对象：*
++
+`s3cmd get S3：//<bucket>/<object><file>-host=<endpoint>：<port>-no-check-certificate`
+
+* *删除对象：*
++
+`s3cmd del S3：//<bucket>/<object>-host=<endpoint>：<port>-no-check-certificate`
+
+

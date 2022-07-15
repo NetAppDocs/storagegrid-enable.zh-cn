@@ -1,0 +1,26 @@
+---
+permalink: whats-new.html 
+sidebar: sidebar 
+keywords: whats new, third-party applications, storagegrid, Guides, cookbooks 
+summary: 以下是此站点的最新更改。 
+---
+= 新增功能
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+使用此文档集可了解如何在您的环境中启用应用程序和工具以及如何使用StorageGRID 测试功能。您可以在此处找到一些示例和指南、这些示例和指南在产品文档基础上进行了扩展、并提供了评估和集成StorageGRID 的后续步骤。
+
+[cols="1a,4a"]
+|===
+| 版本。 | 发生了哪些变化 
+
+
+ a| 
+11.6.
+ a| 
+初始版本。包括StorageGRID 11.2-11.6版的指南和经验证的第三方解决方案列表。
+
+|===

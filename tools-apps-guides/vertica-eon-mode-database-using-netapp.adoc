@@ -1,0 +1,716 @@
+---
+permalink: tools-apps-guides/vertica-eon-mode-database-using-netapp-storageGRID.html 
+sidebar: sidebar 
+keywords: Vertica Eon Mode database 
+summary: 本指南介绍在NetApp StorageGRID 上使用公共存储创建Vertica Eon模式数据库的操作步骤。 
+---
+= 使用NetApp StorageGRID 作为公共存储的Vertica Eon模式数据库
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+本指南介绍在NetApp StorageGRID 上使用公共存储创建Vertica Eon模式数据库的操作步骤。
+
+
+
+== 简介
+
+Vertica是一款分析数据库管理软件。它是一个柱形存储平台、专为处理大量数据而设计、可在传统密集型情形下实现非常快速的查询性能。Vertica数据库以两种模式之一运行：Eon或Enterprise。您可以在内部或云中部署这两种模式。
+
+Eon和企业模式在数据存储位置方面主要不同：
+
+* Eon模式数据库使用公共存储来存储其数据。这是Vertica的建议。
+* 企业模式数据库将数据本地存储在构成数据库的节点的文件系统中。
+
+
+
+
+=== Eon模式架构
+
+Eon模式可将计算资源与数据库的公用存储层分离、从而使计算和存储可以单独进行扩展。Eon模式下的Vertica经过优化、可处理各种工作负载、并通过使用单独的计算和存储资源彼此隔离。
+
+Eon模式将数据存储在名为公共存储的共享对象存储中、即S3存储分段、托管在内部或Amazon S3上。
+
+image::../media/vertica-eon/sg-vertica-eon-mode-cluster-with-communal-storage.png[使用公用存储的Vertica Eon模式集群]
+
+
+
+=== 公用存储
+
+Eon模式不会在本地存储数据、而是对所有数据和目录(元数据)使用一个公共存储位置。公共存储是数据库的集中存储位置、在数据库节点之间共享。
+
+公共存储具有以下属性：
+
+* 与单个计算机上的磁盘存储相比、云或内部对象存储中的公共存储更具弹性、并且由于存储故障而不易受到数据丢失的影响。
+* 任何使用相同路径的节点都可以读取任何数据。
+* 容量不受节点上磁盘空间的限制。
+* 由于数据是以社区方式存储的、因此您可以灵活地扩展集群以满足不断变化的需求。如果数据存储在节点本地、则添加或删除节点需要在节点之间移动大量数据、以便将其从要删除的节点或新创建的节点上移出。
+
+
+
+
+=== 仓库
+
+公共存储的一个缺点是速度。从共享云位置访问数据比从本地磁盘读取数据要慢。此外、如果许多节点同时从公共存储读取数据、则与该存储的连接可能会成为瓶颈。为了提高数据访问速度、Eon模式数据库中的节点会维护一个名为存储库的本地数据磁盘缓存。执行查询时、节点会首先检查所需数据是否位于仓库中。如果是、则它将使用数据的本地副本完成查询。如果数据不在存储库中、则节点将从公共存储中提取数据、并在存储库中保存一份副本。
+
+
+
+== NetApp StorageGRID 建议
+
+Vertica将数据库数据存储在对象存储中、即数千(或数百万)个压缩对象(观察到的大小为每个对象200到500 MB)。当用户运行数据库查询时、Vertica会使用byte-range get调用并行从这些压缩对象检索选定的数据范围。每个字节范围GET大约为8 KB。
+
+在10 TB数据库仓库用户查询测试期间、每秒向网格发送4、000到10、000个GET (字节范围GET)请求。在使用SG6060设备运行此测试时、尽管每个设备节点的CPU利用率百分比较低(约为20%到30%)、但2/3的CPU时间正在等待I/O在SGF6024上观察到I/O等待的百分比非常小(0%到0.5%)。
+
+由于对小型IOPS的需求较高且延迟要求非常低(平均值应小于0.01秒)、NetApp建议对对象存储服务使用SFG6024。如果非常大的数据库需要使用SG6060、则客户应与Vertica客户团队合作进行仓库规模估算、以支持主动查询的数据集。
+
+对于管理节点和API网关节点、客户可以使用SG100或SG1000。选择此选项取决于并行用户查询请求的数量和数据库大小。如果客户希望使用第三方负载平衡器、NetApp建议为高性能需求工作负载配置一个专用的负载平衡器。有关StorageGRID 规模估算、请咨询NetApp客户团队。
+
+其他StorageGRID 配置建议包括：
+
+* *网格拓扑*。请勿在同一网格站点上将SGF6024与其他存储设备型号混合使用。如果您希望使用SG6060进行长期归档保护、请在其自己的网格站点(物理或逻辑站点)中为活动数据库保留具有专用网格负载平衡器的SGF6024、以提高性能。在同一站点混用不同型号的设备会降低站点的整体性能。
+* *数据保护*。使用复制副本进行保护。请勿对活动数据库使用纠删编码。客户可以使用纠删编码对非活动数据库进行长期保护。
+* *请勿启用网格压缩*。Vertica会先压缩对象、然后再存储到对象存储。启用网格压缩不会进一步节省存储使用量、并且会显著降低字节范围GET性能。
+* * HTTP与HTTPS S3端点连接*。在基准测试期间、我们观察到从Vertica集群到StorageGRID 负载平衡器端点使用HTTP S3连接时、性能提高了大约5%。此选项应根据客户的安全要求来选择。
+
+
+Vertica配置的建议包括：
+
+* 读取和写入操作已启用* Vertica数据库默认存储库设置(值= 1)*。NetApp强烈建议保持启用这些仓库设置以提高性能。
+* *禁用流式传输限制*。有关配置详细信息、请参见一节 <<Streamlimitations,禁用流限制>>。
+
+
+
+
+== 在StorageGRID 上使用公用存储在内部安装Eon模式
+
+以下各节介绍了在StorageGRID 上使用公共存储在内部安装Eon模式的顺序操作步骤。用于配置内部简单存储服务(S3)兼容对象存储的操作步骤 类似于Vertica指南中的操作步骤。 link:https://www.vertica.com/docs/10.1.x/HTML/Content/Authoring/InstallationGuide/EonOnPrem/InstallingEonOnPremiseWithMinio.htm?tocpath=Installing%20Vertica%7CInstalling%20Vertica%20For%20Eon%20Mode%20on-Premises%7C_____2["在内部安装Eon模式数据库"^]。
+
+以下设置用于功能测试：
+
+* StorageGRID 11.4.0.4
+* Vertica 10.1.0
+* 使用三个虚拟机(VM)和CentOS 7.x操作系统为Vertica节点构建集群。此设置仅用于功能测试、不适用于Vertica生产数据库集群。
+
+
+这三个节点都设置了安全Shell (SSH)密钥、以允许在集群中的节点之间使用SSH而不使用密码。
+
+
+
+=== NetApp StorageGRID 需要提供的信息
+
+要在StorageGRID 上使用公共存储在内部安装Eon模式、您必须具备以下前提条件信息。
+
+* StorageGRID S3端点的IP地址或完全限定域名(FQDN)和端口号。如果您使用的是HTTPS、请使用在StorageGRID S3端点上实施的自定义证书颁发机构(CA)或自签名SSL证书。
+* 存储分段名称。它必须已预先存在且为空。
+* 访问密钥ID和密钥访问密钥、对存储分段具有读写访问权限。
+
+
+
+
+=== 创建授权文件以访问S3端点
+
+在创建授权文件以访问S3端点时、需要满足以下前提条件：
+
+* 已安装Vertica。
+* 集群已设置、配置完毕、可用于创建数据库。
+
+
+要创建授权文件以访问S3端点、请执行以下步骤：
+
+. 登录到要运行`admintools`的Vertica节点以创建Eon模式数据库。
++
+默认用户为`dbadmin`、在Vertica集群安装期间创建。
+
+. 使用文本编辑器在`/home/DBadmin`目录下创建文件。文件名可以是所需的任何内容、例如、`sg_auth.conf`。
+. 如果S3端点使用的是标准HTTP端口80或HTTPS端口443、请跳过端口号。要使用HTTPS、请设置以下值：
++
+** `awsenablehttps = 1`、否则将值设置为`0`。
+** `awsauth =<S3 access key ID>：<机密访问密钥>`
+** `awsendpoint =< StorageGRID S3 Endpoint>：<端口>`
++
+要对StorageGRID S3端点HTTPS连接使用自定义CA或自签名SSL证书、请指定证书的完整文件路径和文件名。此文件必须位于每个Vertica节点上的同一位置、并对所有用户具有读取权限。如果StorageGRID S3端点SSL证书由公共已知CA签名、请跳过此步骤。
+
++
+`−awscfilm =<文件路径/文件名>`
+
++
+例如、请参见以下示例文件：
+
++
+[listing]
+----
+awsauth = MNVU4OYFAY2xyz123:03vuO4M4KmdfwffT8nqnBmnMVTr78Gu9wANabcxyz
+awsendpoint = s3.england.connectlab.io:10443
+awsenablehttps = 1
+awscafile = /etc/custom-cert/grid.pem
+----
++
+
+NOTE: 在生产环境中、客户应在StorageGRID S3负载平衡器端点上实施一个由公共已知CA签名的服务器证书。
+
+
+
+
+
+
+
+=== 在所有Vertica节点上选择存储库路径
+
+在每个节点上为存储库存储路径选择或创建一个目录。为depot storage path参数提供的目录必须具有以下内容：
+
+* 集群中所有节点上的相同路径(例如、`/home/DBadmin/depot`)
+* 可由DBadmin用户读取和写入
+* 存储充足
++
+默认情况下、Vertica会将包含目录的文件系统空间的60%用于存储库存储。您可以在`create_db`命令中使用`-storage-size`参数来限制存储库的大小。请参见 link:https://www.vertica.com/blog/sizing-vertica-cluster-eon-mode-database/["估算Eon模式数据库的Vertica集群规模"^] 有关Vertica规模估算一般准则的文章、或者咨询您的Vertica客户经理。
+
++
+如果不存在存储库路径、`admintools create_db`工具会尝试为您创建一个路径。
+
+
+
+
+
+=== 创建Eon内部数据库
+
+要创建Eon内部数据库、请执行以下步骤：
+
+. 要创建数据库、请使用`admintools create_db`工具。
++
+以下列表简要说明了本示例中使用的参数。有关所有必需参数和可选参数的详细说明、请参见Vertica文档。
+
++
+** -x <在中创建的授权文件的路径/文件名 <<createauthorization,"创建授权文件以访问S3端点">> >。
++
+成功创建后、授权详细信息将存储在数据库中。您可以删除此文件、以避免公开S3密钥。
+
+** -communal-storage-location <S3：//storagegrid bucketname>
+** -s <用于此数据库的Vertica节点的逗号分隔列表>
+** -d <要创建的数据库名称>
+** -p <要为此新数据库设置的密码>。例如、请参见以下命令示例：
++
+[listing]
+----
+admintools -t create_db -x sg_auth.conf --communal-storage-location=s3://vertica --depot-path=/home/dbadmin/depot --shard-count=6 -s vertica-vm1,vertica-vm2,vertica-vm3 -d vmart -p '<password>'
+----
++
+根据数据库的节点数、创建新数据库需要几分钟的持续时间。首次创建数据库时、系统将提示您接受许可协议。
+
+
+
+
+
+例如、请参见以下授权文件示例和`create db`命令：
+
+[listing]
+----
+[dbadmin@vertica-vm1 ~]$ cat sg_auth.conf
+awsauth = MNVU4OYFAY2CPKVXVxxxx:03vuO4M4KmdfwffT8nqnBmnMVTr78Gu9wAN+xxxx
+awsendpoint = s3.england.connectlab.io:10445
+awsenablehttps = 1
+
+[dbadmin@vertica-vm1 ~]$ admintools -t create_db -x sg_auth.conf --communal-storage-location=s3://vertica --depot-path=/home/dbadmin/depot --shard-count=6 -s vertica-vm1,vertica-vm2,vertica-vm3 -d vmart -p 'xxxxxxxx'
+Default depot size in use
+Distributing changes to cluster.
+    Creating database vmart
+    Starting bootstrap node v_vmart_node0007 (10.45.74.19)
+    Starting nodes:
+        v_vmart_node0007 (10.45.74.19)
+    Starting Vertica on all nodes. Please wait, databases with a large catalog may take a while to initialize.
+    Node Status: v_vmart_node0007: (DOWN)
+    Node Status: v_vmart_node0007: (DOWN)
+    Node Status: v_vmart_node0007: (DOWN)
+    Node Status: v_vmart_node0007: (UP)
+    Creating database nodes
+    Creating node v_vmart_node0008 (host 10.45.74.29)
+    Creating node v_vmart_node0009 (host 10.45.74.39)
+    Generating new configuration information
+    Stopping single node db before adding additional nodes.
+    Database shutdown complete
+    Starting all nodes
+Start hosts = ['10.45.74.19', '10.45.74.29', '10.45.74.39']
+    Starting nodes:
+        v_vmart_node0007 (10.45.74.19)
+        v_vmart_node0008 (10.45.74.29)
+        v_vmart_node0009 (10.45.74.39)
+    Starting Vertica on all nodes. Please wait, databases with a large catalog may take a while to initialize.
+    Node Status: v_vmart_node0007: (DOWN) v_vmart_node0008: (DOWN) v_vmart_node0009: (DOWN)
+    Node Status: v_vmart_node0007: (DOWN) v_vmart_node0008: (DOWN) v_vmart_node0009: (DOWN)
+    Node Status: v_vmart_node0007: (DOWN) v_vmart_node0008: (DOWN) v_vmart_node0009: (DOWN)
+    Node Status: v_vmart_node0007: (DOWN) v_vmart_node0008: (DOWN) v_vmart_node0009: (DOWN)
+    Node Status: v_vmart_node0007: (UP) v_vmart_node0008: (UP) v_vmart_node0009: (UP)
+Creating depot locations for 3 nodes
+Communal storage detected: rebalancing shards
+
+Waiting for rebalance shards. We will wait for at most 36000 seconds.
+Installing AWS package
+    Success: package AWS installed
+Installing ComplexTypes package
+    Success: package ComplexTypes installed
+Installing MachineLearning package
+    Success: package MachineLearning installed
+Installing ParquetExport package
+    Success: package ParquetExport installed
+Installing VFunctions package
+    Success: package VFunctions installed
+Installing approximate package
+    Success: package approximate installed
+Installing flextable package
+    Success: package flextable installed
+Installing kafka package
+    Success: package kafka installed
+Installing logsearch package
+    Success: package logsearch installed
+Installing place package
+    Success: package place installed
+Installing txtindex package
+    Success: package txtindex installed
+Installing voltagesecure package
+    Success: package voltagesecure installed
+Syncing catalog on vmart with 2000 attempts.
+Database creation SQL tasks completed successfully. Database vmart created successfully.
+----
+[cols="1a,1a"]
+|===
+| 对象大小(字节) | 存储分段/对象密钥完整路径 
+
+
+ a| 
+`61`
+ a| 
+`s 3：//Vertica/051/026d63ae9d4a33237bf0e2c2cf2a794a00a000021a07/026d63ae9d4a33237bf0e2c2cf2a794a00a000021a07_0_0_0.dfs`
+
+
+
+ a| 
+`145`
+ a| 
+`s 3：//Vertica/2c4/026d63ae9d4a33237bf0e2c2cf2a794a00a000021a3d/026d63ae9d4a33237bf0e2c2cf2a794a00a000021a3d_0dfdfd0.dfdf`
+
+
+
+ a| 
+`146`
+ a| 
+`s 3：//Vertica/33c/026d63ae9d4a33237bf0e2c2cf2a794a00a000021a1d/026d63ae9d4a33237bf0e2c2cf2a794a00a000021a1d_0_dfdfd.df`
+
+
+
+ a| 
+`40`
+ a| 
+`s 3：//Vertica/382/026d63ae9d4a33237bf0e2c2cf2a794a00a0000000021a31/026d63ae9d4a33237bf0e2c2cf2a794a00a000021a31_0_0.dfs`
+
+
+
+ a| 
+`145`
+ a| 
+`s 3：//Vertica/42f/026d63ae9d4a33237bf0e2c2cf2a794a00a000021a21/026d63ae9d4a33237bf0e2c2cf2a794a00a000021a21a21a21_0_0.dfs`
+
+
+
+ a| 
+`34`
+ a| 
+`s 3：//Vertica/472/026d63ae9d4a33237bf0e2c2cf2a794a00a0000000021a25/026d63ae9d4a33237bf0e2c2cf2a794a00a000021a25_0_0.dfs`
+
+
+
+ a| 
+`41`
+ a| 
+`s 3：//Vertica/476/026d63ae9d4a33237bf0e2c2cf2a794a00a0000000021a2d/026d63ae9d4a33237bf0e2c2cf2a794a00a000021a2d_0_0.dfs`
+
+
+
+ a| 
+`61`
+ a| 
+`s 3：//Vertica/52a/026d63ae9d4a33237bf0e2c2cf2a794a00a000021a5d/026d63ae9d4a33237bf0e2c2cf2a794a00a000021a5d_0_dfdfd.df`
+
+
+
+ a| 
+`131`
+ a| 
+`s 3：//Vertica/5d2/026d63ae9d4a33237bf0e2c2cf2a794a00a000021a19/026d63ae9d4a33237bf0e2c2cf2a794a00a000021a19_0_0.dfs`
+
+
+
+ a| 
+`91`
+ a| 
+`s 3：//Vertica/5F7/026d63ae9d4a33237bf0e2c2cf2a794a00a000021a11/026d63ae9d4a33237bf0e2c2cf2a794a00a000021a11_0_0.dfs`
+
+
+
+ a| 
+`118`
+ a| 
+`s 3：//Vertica/82d/026d63ae9d4a33237bf0e2c2cf2a794a00a000021a15/026d63ae9d4a33237bf0e2c2cf2a794a00a000021a15_0_0.dfs`
+
+
+
+ a| 
+`115`
+ a| 
+`s 3：//Vertica/9a2/026d63ae9d4a33237bf0e2c2cf2a794a00a000021a61/026d63ae9d4a33237bf0e2c2cf2a794a00a000021a61_0_0.dfs`
+
+
+
+ a| 
+`33`
+ a| 
+`s 3：//Vertica/ACD/026d63ae9d4a33237bf0e2c2cf2a794a00a0000000021a29-026d63ae9d4a33237bf0e2c2cf2a794a00a000021a29_0_0.dfs`
+
+
+
+ a| 
+`133`
+ a| 
+`s 3：//Vertica/b98/026d63ae9d4a33237bf0e2c2cf2a794a00a000021a4d/026d63ae9d4a33237bf0e2c2cf2a794a00a000021a4d_0_dfdfd.df`
+
+
+
+ a| 
+`38`
+ a| 
+`s 3：//Vertica/db3/026d63ae9d4a33237bf0e2c2cf2a794a00a000021a49-026d63ae9d4a33237bf0e2c2cf2a794a00a000021a49_0_0.dfs`
+
+
+
+ a| 
+`38`
+ a| 
+`s 3：//Vertica/EBA/026d63ae9d4a33237bf0e2c2cf2a794a00a000021a599/026d63ae9d4a33237bf0e2c2cf2a794a00a000021a59_0_0.dfs`
+
+
+
+ a| 
+`21521920`
+ a| 
+`s 3：//Vertica/metadata/VMart/Libraries/026d63ae9d4a33237bf0e2c2cf2a794a00a000000002152/026d63ae9d4a33237bf0e2c2cf2a794a00a00002152.tar`
+
+
+
+ a| 
+`6865408`
+ a| 
+`s 3：//Vertica/metadata/VMart/Libraries/026d63ae9d4a33237bf0e2c2cf2a794a00a0000000021602/026d63ae9d4a33237bf0e2c2cf2a794a00a00002162.tar`
+
+
+
+ a| 
+`204217344`
+ a| 
+`s 3：//Vertica/metadata/VMart/Libraries/026d63ae9d4a33237bf0e2c2cf2a794a00a0000000021610/026d63ae9d4a33237bf0e2c2cf2a794a00a000021610.tar`
+
+
+
+ a| 
+`16109056`
+ a| 
+`s 3：//Vertica/metadata/VMart/Libraries/026d63ae9d4a33237bf0e2c2cf2a794a00a0000217e0/026d63ae9d4a33237bf0e2c2cf2a794a00a0000217e0.tar`
+
+
+
+ a| 
+`12853248`
+ a| 
+`s 3：//Vertica/metadata/VMart/Libraries/026d63ae9d4a33237bf0e2c2cf2a794a00a0000000021800/026d63ae9d4a33237bf0e2c2cf2a794a00a00002180.tar`
+
+
+
+ a| 
+`8937984`
+ a| 
+`s 3：//Vertica/metadata/VMart/Libraries/026d63ae9d4a33237bf0e2c2cf2a794a00a000000002187a/026d63ae9d4a33237bf0e2c2cf2a794a00a00002187a.tar`
+
+
+
+ a| 
+`56260608`
+ a| 
+`s 3：//Vertica/metadata/VMart/Libraries/026d63ae9d4a33237bf0e2c2cf2a794a00a00000000218b2/026d63ae9d4a33237bf0e2c2cf2a794a00a0000218b2.tar`
+
+
+
+ a| 
+`53947904`
+ a| 
+`s 3：//Vertica/metadata/VMart/Libraries/026d63ae9d4a33237bf0e2c2cf2a794a00a00000000219ba/026d63ae9d4a33237bf0e2c2cf2a794a00a0000219ba.tar`
+
+
+
+ a| 
+`44932608`
+ a| 
+`s 3：//Vertica/metadata/VMart/Libraries/026d63ae9d4a33237bf0e2c2cf2a794a00a00000000219de/026d63ae9d4a33237bf0e2c2cf2a794a00a0000219de.tar`
+
+
+
+ a| 
+`256306688`
+ a| 
+`s 3：//Vertica/metadata/VMart/Libraries/026d63ae9d4a33237bf0e2c2cf2a794a00a0000000021a6e/026d63ae9d4a33237bf0e2c2cf2a794a00a000021a6e.tar`
+
+
+
+ a| 
+`8062464`
+ a| 
+`s 3：//Vertica/metadata/VMart/Libraries/026d63ae9d4a33237bf0e2c2cf2a794a00a0000000021e34-026d63ae9d4a33237bf0e2c2cf2a794a00a000021e34.tar`
+
+
+
+ a| 
+`20024832`
+ a| 
+`s 3：//Vertica/metadata/VMart/Libraries/026d63ae9d4a33237bf0e2c2cf2a794a00a0000000021e70/026d63ae9d4a33237bf0e2c2cf2a794a00a000021e70.tar`
+
+
+
+ a| 
+`10444`
+ a| 
+`s 3：//Vertica/metadata/VMart/cluster_config.json`
+
+
+
+ a| 
+`823266`
+ a| 
+`s 3：//Vertica/metadata/VMart/nodes/v_vmart node0016/Catalog/859703b06a3456d95d0be28575a673/checkpoints/c13_chkpt_1.cat.gz`
+
+
+
+ a| 
+`254`
+ a| 
+`s 3：//Vertica/metadata/VMart/nodes/v_vmart node0016/Catalog/859703b06a3456d95d0be28575a673/checkpoints/c13/已完成`
+
+
+
+ a| 
+`2958`
+ a| 
+`s 3：//Vertica/metadata/VMart/nodes/v_vmart node0016/Catalog/859703b06a3456d95d0be28575a673/checkpoints/c2_chkpt_1.cat.gz`
+
+
+
+ a| 
+`231`
+ a| 
+`s 3：//Vertica/metadata/VMart/nodes/v_vmart node0016/Catalog/859703b06a3456d95d0be28575a673/checkpoints/c2_completed`
+
+
+
+ a| 
+`822521`
+ a| 
+`s 3：//Vertica/metadata/VMart/nodes/v_vmart node0016/Catalog/859703b06a3456d95d0be28575a673/checkpoints/c4_chkpt_1.cat.gz`
+
+
+
+ a| 
+`231`
+ a| 
+`s 3：//Vertica/metadata/VMart/nodes/v_vmart node0016/Catalog/859703b06a3456d95d0be28575a673/checkpoints/c4_4/completed`
+
+
+
+ a| 
+`746513`
+ a| 
+`s 3：//Vertica/metadata/VMart/nodes/v_vmart node0016/Catalog/859703b06a3456d95d0be28575a673/Txnlogs/txn_14_g14.cat`
+
+
+
+ a| 
+`2596`
+ a| 
+`s 3：//Vertica/metadata/VMart/nodes/v_vmart node0016/Catalog/859703b06a3456d95d0be28575a673/Txnlogs/txn_3_g3.cat.gz`
+
+
+
+ a| 
+`821065`
+ a| 
+`s 3：//Vertica/metadata/VMart/nodes/v_vmart node0016/Catalog/859703b06a3456d95d0be28575a673/Txnlogs/txn_4_g4.cat.gz`
+
+
+
+ a| 
+`6440`
+ a| 
+`s 3：//Vertica/metadata/VMart/nodes/v_vmart node0016/Catalog/859703b06a3456d95d0be28575a673/Txnlogs/txn_5_g5.cat`
+
+
+
+ a| 
+`8518`
+ a| 
+`s 3：//Vertica/metadata/VMart/nodes/v_vmart node0016/Catalog/859703b06a3456d95d0be28575a673/Txnlogs/txn_8_g8.cat`
+
+
+
+ a| 
+`0`
+ a| 
+`s 3：//Vertica/metadata/VMart/nodes/v_vmart node0016/Catalog/859703b06a3456d95d0be28575a673/tiered_catalog.cat`
+
+
+
+ a| 
+`822922`
+ a| 
+`s 3：//Vertica/metadata/VMart/nodes/v_vmart node0017/Catalog/859703b06a3456d95d0be28575a673/checkpoint/C14_7/chkpt_1.cat.gz`
+
+
+
+ a| 
+`232`
+ a| 
+`s 3：//Vertica/metadata/VMart/nodes/v_vmart node0017/Catalog/859703b06a3456d95d0be28575a673/checkpoint/C14_7/completed`
+
+
+
+ a| 
+`822930`
+ a| 
+`s 3：//Vertica/metadata/VMart/nodes/v_vmart node0017/Catalog/859703b06a3456d95d0be28575a673/Txnlogs/txn_14_g7.cat.gz`
+
+
+
+ a| 
+`755033`
+ a| 
+`s 3：//Vertica/metadata/VMart/nodes/v_vmart node0017/Catalog/859703b06a3456d95d0be28575a673/Txnlogs/txn_15_g8.cat`
+
+
+
+ a| 
+`0`
+ a| 
+`s 3：//Vertica/metadata/VMart/nodes/v_vmart node0017/Catalog/859703b06a3456d95d0be28575a673/tiered_catalog.cat`
+
+
+
+ a| 
+`822922`
+ a| 
+`s 3：//Vertica/metadata/VMart/nodes/v_vmart node0018/Catalog/859703b06a3456d95d0be28575a673/checkpoint/C14_7/chkpt_1.cat.gz`
+
+
+
+ a| 
+`232`
+ a| 
+`s 3：//Vertica/metadata/VMart/nodes/v_vmart node0018/Catalog/859703b06a3456d95d0be28575a673/checkpoint/C14_7/completed`
+
+
+
+ a| 
+`822930`
+ a| 
+`s 3：//Vertica/metadata/VMart/nodes/v_vmart node0018/Catalog/859703b06a3456d95d0be28575a673/Txnlogs/txn_14_g7.cat.gz`
+
+
+
+ a| 
+`755033`
+ a| 
+`s 3：//Vertica/metadata/VMart/nodes/v_vmart node0018/Catalog/859703b06a3456d95d0be28575a673/Txnlogs/txn_15_g8.cat`
+
+
+
+ a| 
+`0`
+ a| 
+`s 3：//Vertica/metadata/VMart/nodes/v_vmart node0018/Catalog/859703b06a3456d95d0be28575a673/tiered_catalog.cat`
+
+|===
+
+
+=== 禁用流限制
+
+此操作步骤 基于适用于其他内部对象存储的Vertica指南、应适用于StorageGRID。
+
+. 创建数据库后、通过将`AWSStreamingConnectionPercentage`配置参数设置为`0`来禁用该参数。对于使用公共存储的Eon模式内部安装、不需要此设置。此配置参数用于控制Vertica用于流式读取的对象存储连接数。在云环境中、此设置有助于避免对象存储中的流式数据占用所有可用的文件句柄。它会使某些文件句柄可用于其他对象存储操作。由于内部对象存储的延迟较低、因此没有必要使用此选项。
+. 使用`vsql`语句更新参数值。此密码是您在"创建Eon内部数据库"中设置的数据库密码。例如、请参见以下示例输出：
+
+
+[listing]
+----
+[dbadmin@vertica-vm1 ~]$ vsql
+Password:
+Welcome to vsql, the Vertica Analytic Database interactive terminal.
+Type:   \h or \? for help with vsql commands
+        \g or terminate with semicolon to execute query
+        \q to quit
+dbadmin=> ALTER DATABASE DEFAULT SET PARAMETER AWSStreamingConnectionPercentage = 0; ALTER DATABASE
+dbadmin=> \q
+----
+
+
+=== 验证返厂设置
+
+已为读写操作启用Vertica数据库默认存储库设置(值= 1)。NetApp强烈建议保持启用这些仓库设置以提高性能。
+
+[listing]
+----
+vsql -c 'show current all;' | grep -i UseDepot
+DATABASE | UseDepotForReads | 1
+DATABASE | UseDepotForWrites | 1
+----
+
+
+=== 加载示例数据(可选)
+
+如果此数据库用于测试并将被删除、您可以将样本数据加载到此数据库以进行测试。Vertica随附了示例数据集VMart、位于每个Vertica/node/opt/Vertica/Examples/VMart_Schema/``下。有关此示例数据集的详细信息、请参见 link:https://www.vertica.com/docs/10.1.x/HTML/Content/Authoring/GettingStartedGuide/IntroducingVMart/IntroducingVMart.htm?zoom_highlight=VMart["此处"^]。
+
+按照以下步骤加载示例数据：
+
+. 以DBadmin身份登录到Vertica节点之一：cd /opt/vertica/examples/VMart_Schemas/
+. 将示例数据加载到数据库中、并在子步骤c和d中出现提示时输入数据库密码：
++
+.. `cd /opt/vertica/examples/VMart_Schema`
+.. `。/vmart根`
+.. `vsql< vmart定义架构.sql`
+.. `vsql < vmart load_data.sql`
+
+
+. 有多个预定义的SQL查询、您可以运行其中一些查询、以确认测试数据已成功加载到数据库中。例如：`vsql < vmart queries1.sql`
+
+
+
+
+== 从何处查找追加信息
+
+要了解有关本文档中所述信息的更多信息，请查看以下文档和 / 或网站：
+
+* link:https://docs.netapp.com/sgws-114/index.jsp["NetApp StorageGRID 11.4产品文档"^]
+* link:https://www.netapp.com/pdf.html?item=/media/7931-ds-3613.pdf["StorageGRID 数据表"^]
+* link:https://www.vertica.com/documentation/vertica/10-1-x-documentation/["Vertica 10.1产品文档"^]
+
+
+
+
+== 版本历史记录
+
+[cols="1a,1a,2a"]
+|===
+| version | Date | 文档版本历史记录 
+
+
+ a| 
+版本 1.0
+ a| 
+2021年9月
+ a| 
+初始版本。
+
+|===

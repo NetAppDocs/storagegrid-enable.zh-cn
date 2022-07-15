@@ -1,0 +1,15 @@
+---
+permalink: third-party/index.html 
+sidebar: sidebar 
+keywords: third-party applications, storagegrid 
+summary: NetApp与我们的合作伙伴合作、已对这些解决方案进行了验证、以供StorageGRID 使用。查看本节中的信息、了解哪些解决方案已通过验证、并在适用时获取其他说明。 
+---
+= 经验证的第三方解决方案：概述
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+NetApp与我们的合作伙伴合作、已对这些解决方案进行了验证、以供StorageGRID 使用。查看本节中的信息、了解哪些解决方案已通过验证、并在适用时获取其他说明。
+
+与NetApp携手合作、在您创建经过测试的同类最佳NetApp解决方案时、加快产品组合创新、提高市场知名度并提高销量。 https://www.netapp.com/partners/#become["立即成为联盟合作伙伴"^]。

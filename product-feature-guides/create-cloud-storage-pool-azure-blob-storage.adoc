@@ -1,0 +1,48 @@
+---
+permalink: product-feature-guides/create-cloud-storage-pool-azure-blob-storage.html 
+sidebar: sidebar 
+keywords: cloud storage pool, azure, microsoft azure, azure blob storage 
+summary: 如果要将StorageGRID 对象移动到外部Azure容器、则可以使用云存储池。 
+---
+= 为Azure Blob Storage创建云存储池
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+如果要将StorageGRID 对象移动到外部Azure容器、则可以使用云存储池。
+
+.您需要什么？ #8217 ；将需要什么
+* 已配置StorageGRID 11.6。
+* 您已设置外部Azure容器。
+
+
+.步骤
+. 在网格管理器中、导航到* ILM *>*存储池*。
+. 在页面的 Cloud Storage Pools 部分中，选择 * 创建 * 。
++
+此时将显示创建云存储池弹出窗口。
+
+. 输入显示名称。
+. 从提供程序类型下拉列表中选择* Azure Blob Storage*。
+. 输入要用于云存储池的S3存储分段的URI。
++
+允许使用两种格式：
+
++
+`https://host:port`
+
++
+`http://host:port`
+
+. 输入Azure容器名称。
++
+您指定的名称必须与Azure容器名称完全匹配；否则、创建云存储池将失败。保存云存储池后，您无法更改此值。
+
+. 或者、输入Azure容器的关联帐户名称和帐户密钥进行身份验证。
+. 从下拉列表中选择*不验证证书*。
+. 单击 * 保存 * 。
+
+
+确认已为Azure Blob Storage创建云存储池。

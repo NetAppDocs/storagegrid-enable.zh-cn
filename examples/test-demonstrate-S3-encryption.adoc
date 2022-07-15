@@ -1,0 +1,187 @@
+---
+permalink: examples/test-demonstrate-S3-encryption.html 
+sidebar: sidebar 
+keywords: cli, aws, S3, encryption, SSE, SSE-C, SSE-S3, api 
+summary: StorageGRID 和S3 API提供了多种不同的方法来加密空闲数据。 
+---
+= 在StorageGRID 上测试和演示S3加密选项
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+StorageGRID 和S3 API提供了多种不同的方法来加密空闲数据。要了解更多信息，请参见 https://docs.netapp.com/us-en/storagegrid-116/admin/reviewing-storagegrid-encryption-methods.html["查看 StorageGRID 加密方法"^]。
+
+本指南将演示S3 API加密方法。
+
+
+
+== 服务器端加密(SSR)
+
+使用SSE、客户端可以存储对象、并使用由StorageGRID 管理的唯一密钥对其进行加密。请求对象时、该对象将通过存储在StorageGRID 中的密钥进行解密。
+
+
+
+=== SS一 示例
+
+* 使用SSR放置对象
++
+[source, console]
+----
+aws s3api put-object --bucket <bucket>  --key <file> --body "<file>" --server-side-encryption AES256 --endpoint-url https://s3.example.com
+----
+* 对对象执行HEAD以验证加密
++
+[source, console]
+----
+aws s3api head-object --bucket <bucket>  --key <file>   --endpoint-url https://s3.example.com
+----
++
+[listing]
+----
+{
+    "AcceptRanges": "bytes",
+    "LastModified": "2022-05-02T19:03:03+00:00",
+    "ContentLength": 47,
+    "ETag": "\"82e8bfb872e778a4687a26e6c0b36bc1\"",
+    "ContentType": "text/plain",
+    "ServerSideEncryption": "AES256",
+    "Metadata": {}
+}
+----
+* 获取对象
++
+[source, console]
+----
+aws s3api get-object --bucket <bucket>  --key <file> <file> --endpoint-url https://s3.example.com
+----
+
+
+
+
+== 使用客户提供的密钥(SSI-C)进行服务器端加密
+
+通过"SSE "、客户端可以存储对象、并使用客户端随对象提供的唯一密钥对其进行加密。请求对象时、必须提供相同的密钥才能解密并返回对象。
+
+
+
+=== SSI-C示例
+
+* 出于测试或演示目的、您可以创建加密密钥
++
+** 创建加密密钥
++
+[source, console]
+----
+openssl enc -aes-128-cbc -pass pass:secret -P`
+----
++
+[listing]
+----
+salt=E9DBB6603C7B3D2A
+key=23832BAC16516152E560F933F261BF03
+iv =71E87C0F6EC3C45921C2754BA131A315
+----
+
+
+* 放置具有生成密钥的对象
++
+[source, console]
+----
+aws s3api put-object --bucket <bucket> --key <file> --body "file" --sse-customer-algorithm AES256 --sse-customer-key 23832BAC16516152E560F933F261BF03 --endpoint-url https://s3.example.com
+----
+* 为对象设置头
++
+[source, console]
+----
+aws s3api head-object --bucket <bucket> --key <file> --sse-customer-algorithm AES256 --sse-customer-key 23832BAC16516152E560F933F261BF03 --endpoint-url https://s3.example.com
+----
++
+[listing]
+----
+            {
+                "AcceptRanges": "bytes",
+                "LastModified": "2022-05-02T19:20:02+00:00",
+                "ContentLength": 47,
+                "ETag": "\"f92ef20ab87e0e13951d9bee862e9f9a\"",
+                "ContentType": "binary/octet-stream",
+                "Metadata": {},
+                "SSECustomerAlgorithm": "AES256",
+                "SSECustomerKeyMD5": "rjGuMdjLpPV1eRuotNaPMQ=="
+            }
+----
+
+
+
+NOTE: 如果不提供加密密钥、则会收到错误"An error occurred (404) when calling the HeadObject operation：not found"(调用HeadObject操作时出错(404)：未找到)
+
+* 获取对象
++
+[source, console]
+----
+aws s3api get-object --bucket <bucket> --key <file> <file> --sse-customer-algorithm AES256 --sse-customer-key 23832BAC16516152E560F933F261BF03 --endpoint-url https://s3.example.com
+----
+
+
+
+NOTE: 如果不提供加密密钥、则在调用GetObject操作时将收到错误"An error occurred (InvalidRequest)：The object was stored using a form of Server side Encryption"。要检索对象、必须提供正确的参数。"
+
+
+
+== 存储分段服务器端加密(SSI-S3)
+
+SSI-S3允许客户端为存储在存储在存储分段中的所有对象定义默认加密行为。这些对象使用由StorageGRID 管理的唯一密钥进行加密。请求对象时、该对象将通过存储在StorageGRID 中的密钥进行解密。
+
+
+
+=== 存储分段SSI-S3示例
+
+* 创建新存储分段并设置默认加密策略
++
+** 创建新存储分段
++
+[source, console]
+----
+aws s3api create-bucket --bucket <bucket> --region us-east-1 --endpoint-url https://s3.example.com
+----
+** 放入存储分段加密
++
+[source, console]
+----
+aws s3api put-bucket-encryption --bucket <bucket> --server-side-encryption-configuration '{"Rules": [{"ApplyServerSideEncryptionByDefault": {"SSEAlgorithm": "AES256"}}]}' --endpoint-url https://s3.example.com
+----
+
+
+* 将对象放入存储分段中
++
+[source, console]
+----
+aws s3api put-object --bucket <bucket> --key <file> --body "file" --endpoint-url https://s3.example.com
+----
+* 为对象设置头
++
+[source, console]
+----
+aws s3api head-object --bucket <bucket> --key <file> --endpoint-url https://s3.example.com
+----
++
+[listing]
+----
+{
+"AcceptRanges": "bytes",
+"LastModified": "2022-05-02T20:16:23+00:00",
+"ContentLength": 47,
+"ETag": "\"82e8bfb872e778a4687a26e6c0b36bc1\"",
+"ContentType": "binary/octet-stream",
+"ServerSideEncryption": "AES256",
+"Metadata": {}
+}
+----
+* 获取对象
++
+[source, console]
+----
+aws s3api get-object --bucket <bucket>  --key <file> <file> --endpoint-url https://s3.example.com
+----
+

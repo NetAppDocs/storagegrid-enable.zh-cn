@@ -1,0 +1,96 @@
+---
+settings:
+  name: How to enable StorageGRID in your environment
+  internal:
+    pdf_enabled: true
+  prod:
+    pdf_enabled: false
+    harmony_enabled: false
+  search: storagegrid-116
+  langs: zh-cn,us-en,ja-jp,zh-tw,ko-kr
+sidebar:
+  entries:
+  - title: 如何启用StorageGRID
+    url: "/index.html"
+  - title: 新增功能
+    url: "/whats-new.html"
+  - section: third-party
+  - section: product-feature-guides
+  - section: tools-apps-guides
+  - section: examples
+  - title: StorageGRID 文档
+    url: "/storagegrid-documentation.html"
+homepage:
+  tiles:
+  - title: 入门
+    links:
+    - title: 新增功能
+      url: "/whats-new.html"
+  - title: 经验证的第三方解决方案
+    links:
+    - title: 概述
+      url: "/third-party/index.html"
+    - title: StorageGRID 11.6.
+      url: "/third-party/116-3rd-party-list.html"
+    - title: StorageGRID 11.5
+      url: "/third-party/115-3rd-party-list.html"
+    - title: StorageGRID 11.4.
+      url: "/third-party/114-3rd-party-list.html"
+    - title: StorageGRID 11.3
+      url: "/third-party/113-3rd-party-list.html"
+    - title: StorageGRID 11.2
+      url: "/third-party/112-3rd-party-list.html"
+  - title: 产品功能指南
+    links:
+    - title: 为AWS或Google创建云存储池
+      url: "/product-feature-guides/create-cloud-storage-pool-aws-google-cloud.html"
+    - title: 为Azure Blob存储创建云存储池
+      url: "/product-feature-guides/create-cloud-storage-pool-azure-blob-storage.html"
+    - title: 使用云存储池进行备份
+      url: product-feature-guides/use-a-cloud-storage-pool-for-backup.html
+    - title: 配置搜索集成服务
+      url: "/product_feature_guides/storagegrid-search-integration-service.html"
+  - title: 工具和应用程序指南
+    links:
+    - title: 使用Cloudera Hadoop S3A连接器
+      url: "/tools-apps-guides/use-cloudera-hadoop-s3a-connector.html"
+    - title: 使用公共存储创建Vertica Eon模式数据库
+      url: "/tools-apps-guides/vertica-eon-mode-database-using-netapp-storageGRID.html"
+    - title: 使用S3cmd测试和演示S3访问
+      url: "/tools-apps-guides/use-S3cmd-test-demonstrate-S3-access.html"
+  - title: 过程和API示例
+    links:
+    - title: 测试和演示S3加密
+      url: "/examples/test-demonstrate-S3-encryption.html"
+    - title: 测试和演示S3对象锁定
+      url: "/examples/test-demonstrate-S3-object-lock.html"
+  - title: 演示教程
+    links:
+    - title: StorageGRID 视频库
+      url: https://www.youtube.com/playlist?list=PLdXI3bZJEw7nh2wGRA65iulXhtXwLiqrY
+    - title: NetApp 学习服务
+      url: https://www.netapp.com/support-and-training/netapp-university/
+  - title: 更多资源
+    links:
+    - title: StorageGRID 支持页面
+      url: https://mysupport.netapp.com/site/products/all/details/5d9f1107e01d9c0001ee50f6/downloads-tab
+    - title: NetApp 互操作性表工具（ IMT ）
+      url: https://mysupport.netapp.com/matrix
+    - title: StorageGRID 知识库
+      url: https://kb.netapp.com/Advice_and_Troubleshooting/Hybrid_Cloud_Infrastructure/StorageGRID
+    - title: NetApp 博客
+      url: https://netapp.com/blog/
+    - title: NetApp 社区
+      url: https://community.netapp.com/t5/Object-Storage/bd-p/object-storage
+  - title: StorageGRID 文档
+    links:
+    - title: StorageGRID 11.6.
+      url: https://docs.netapp.com/us-en/storagegrid-116/index.html
+    - title: StorageGRID 11.5
+      url: https://docs.netapp.com/sgws-115/index.jsp
+    - title: StorageGRID 11.4.
+      url: https://docs.netapp.com/sgws-114/index.jsp
+    - title: StorageGRID 11.3
+      url: https://docs.netapp.com/sgws-113/index.jsp
+    - title: StorageGRID 11.2
+      url: https://docs.netapp.com/sgws-112/index.jsp
