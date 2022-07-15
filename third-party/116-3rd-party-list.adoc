@@ -69,4 +69,5 @@ summary: 已针对StorageGRID 11.6进行验证的第三方解决方案
 * Commvault 11功能版本26
 * OpenText文档21.4
 * Veeam 11.
+* Veritas Enterprise Vault 14.2.2
 

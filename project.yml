@@ -49,7 +49,7 @@ homepage:
     - title: 使用云存储池进行备份
       url: product-feature-guides/use-a-cloud-storage-pool-for-backup.html
     - title: 配置搜索集成服务
-      url: "/product_feature_guides/storagegrid-search-integration-service.html"
+      url: "/product-feature-guides/storagegrid-search-integration-service.html"
   - title: 工具和应用程序指南
     links:
     - title: 使用Cloudera Hadoop S3A连接器
