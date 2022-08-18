@@ -49,6 +49,7 @@ summary: 已针对StorageGRID 11.5进行验证的第三方解决方案
 * Veritas NetBackup 8.0
 * Vertica 10.x
 * Viispine
+* Virtalica StorageFabric
 
 
 

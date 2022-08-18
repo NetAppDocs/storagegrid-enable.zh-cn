@@ -626,4 +626,62 @@
   <block id="024f3a8ba5709643c2f09c8eabccae87" category="sidebar">经验证的第三方解决方案—概述</block>
   <block id="f4bf6c62a8784f065cebbacf57a1c62c" category="sidebar">测试和演示S3对象锁定</block>
   <block id="401b6d44d3c927f0424adce982cc6506" category="list-text">Veritas Enterprise Vault 14.2.2</block>
+  <block id="51e1f53c9c33ce7f260e99f66853181d" category="summary">通过StorageGRID 11.6系统日志转发功能、您可以配置外部系统日志服务器来收集和分析StorageGRID 日志消息。ELK (Elasticsearch、Logstash、Kibana)已成为最受欢迎的日志分析解决方案之一。本文包括用于筛选和定义日志消息模式的Logstash配置示例、Kibana查询、图表和信息板示例、可帮助您快速开始StorageGRID 日志管理和分析。</block>
+  <block id="ba8b98c81be3d04d10309b1945f41b3c" category="doc">使用ELK堆栈进行StorageGRID 日志分析</block>
+  <block id="febdad8f949c4133d32f6ec0e8b0ca1c" category="inline-link">使用ELK视频进行StorageGRID 日志分析</block>
+  <block id="b165bee40a44e630afb8a902059ed458" category="paragraph">通过StorageGRID 11.6系统日志转发功能、您可以配置外部系统日志服务器来收集和分析StorageGRID 日志消息。ELK (Elasticsearch、Logstash、Kibana)已成为最受欢迎的日志分析解决方案之一。请观看<block ref="1c3903c549bd0599ac0ebb1c424871aa" category="inline-link-rx"></block> 查看ELK配置示例以及如何使用它来识别失败的S3请求并对其进行故障排除。本文提供了Logstash配置、Kibana查询、图表和信息板的示例文件、可帮助您快速开始StorageGRID 日志管理和分析。</block>
+  <block id="5a2ebfb8baa378cfcfcba58bbb1380c2" category="section-title">要求</block>
+  <block id="b30496f397e70350f3c0324082c41741" category="list-text">StorageGRID 11.6.0.2或更高版本</block>
+  <block id="b8dc02d4e6fb27304a65c0d58fbdf121" category="list-text">ELK (Elasticsearch、Logstash和Kibana)已安装并运行7.1x或更高版本</block>
+  <block id="9db4c047fbc2df77e904876ca407a10a" category="section-title">示例文件</block>
+  <block id="7d62fedde871da77290cb136048ab8ae" category="inline-link-macro">下载Logstash 7.x示例文件包</block>
+  <block id="7f736656dd8100c22291010843e5658f" category="list-text"><block ref="f317985ee56adafb12c2258472a6183e" category="inline-link-macro-rx"></block> +* MD5 checksum* 148c23d0021d9a4bb4a6c0287464deab +* SHA256 checksum* f5ec9e2e3f842d5a7861566b167a561b4373038b4e7bb3b3d522adf2d6</block>
+  <block id="69cc1f5bcff32557cde6f7f5b4b365ed" category="inline-link-macro">下载Logstash 8.x示例文件包</block>
+  <block id="a87365d5d3e0619dfacb72153399871c" category="list-text"><block ref="61afb638ef1cfaa2ac62beb76c59b80b" category="inline-link-macro-rx"></block> +* MD5 checksum* e11ba3a662f87c3ef363d0fe06835 +* SHA256 checksum* 5c670755742cfdf5aa723a596b087e0153a65bcaef3934afdb682f61cd278d</block>
+  <block id="cdcccab01175eb4e232499c66bfa50af" category="section-title">假设</block>
+  <block id="430bacfb127efaca8a86b36b918f14b8" category="paragraph">读者熟悉StorageGRID 和ELK的术语和操作。</block>
+  <block id="c742c5a36b6307267bb709355feb2c41" category="section-title">说明</block>
+  <block id="eac3387862d4c7d3f970561bfc3f7c02" category="paragraph">由于Grok模式定义的名称不同、因此提供了两个示例版本。+例如、Logstash配置文件中的SYSLOGBASE格式根据安装的Logstash版本定义不同的字段名称。</block>
+  <block id="4f709f3097a2dcda180a37ee47844c13" category="paragraph">* Logstash 7.17示例*</block>
+  <block id="4f81ab746526b7ac4b040718ec7acade" category="image-alt">Logstash 7.17示例</block>
+  <block id="91106d0591f097e8bbf222df7706bd2d" category="paragraph">* Logstash 8.23示例*</block>
+  <block id="c59ad685927ef7bba94abe95eaa87376" category="image-alt">Logstash 8.23示例</block>
+  <block id="bb8122fb7f8c30744fed84c9462b305d" category="list-text">根据您安装的ELK版本解压缩提供的示例。+此示例文件夹包含两个Logstash配置示例：+* sglog-2-file.conf：*此配置文件会将StorageGRID 日志消息输出到Logstash上的文件中、而不会进行数据转换。您可以使用此命令来确认Logstash正在接收StorageGRID 消息、或者帮助了解StorageGRID 日志模式。+* sglog-2-es.conf：*此配置文件使用各种模式和筛选器转换StorageGRID 日志消息。其中包括示例drop语句、这些语句根据模式或筛选器丢弃消息。输出将发送到Elasticsearch以编制索引。+根据文件中的说明自定义选定的配置文件。</block>
+  <block id="3ed4288764d66f2a65f7b85b652b32d3" category="list-text">测试自定义的配置文件：</block>
+  <block id="4c6585842bcd6ea99d8f33b205b2620e" category="paragraph">如果返回的最后一行与以下行类似、则此配置文件没有语法错误：</block>
+  <block id="49e1ff176740ef27a71315d47a28cec0" category="list-text">将自定义的conf文件复制到Logstash服务器的配置：/etc/logstash/conf.d+如果尚未在/etc/logstash/logstash.yml中启用config.reload.automatic、请重新启动Logstash服务。否则、请等待配置重新加载间隔过。</block>
+  <block id="1e2849b34515b73b14e350b3cfc6a222" category="list-text">检查/var/log/logstash/logstash-plain.log并确认在使用新配置文件启动Logstash时没有错误。</block>
+  <block id="25b182c5b3173c341b5471a371174d7d" category="list-text">确认TCP端口已启动并正在侦听。+在此示例中、使用TCP端口5000。</block>
+  <block id="225e60e541052bd49fdac4b77ffecbc9" category="inline-link">演示视频</block>
+  <block id="fa1074da41258119adddd6a31eb40641" category="list-text">在StorageGRID 管理器图形用户界面中、配置外部系统日志服务器以向Logstash发送日志消息。请参见<block ref="144d48037e96a9804672c6dc7123d436" category="inline-link-rx"></block> 了解详细信息。</block>
+  <block id="defe6f8b45f596c620301bef8fdfbee9" category="list-text">您需要在Logstash服务器上配置或禁用防火墙、以允许StorageGRID 节点连接到定义的TCP端口。</block>
+  <block id="9391523be65dad63e7fad8e0d28ee818" category="list-text">在Kibana GUI中、选择Management -&gt; Dev Tools。在控制台页面上、运行此get命令以确认已在Elasticsearch上创建新索引。</block>
+  <block id="30d46e8002bdd5c520a62523d772ebca" category="list-text">在Kibana GUI中、创建索引模式(ELK 7.x)或数据视图(ELK 8.x)。</block>
+  <block id="291020c626f44ee2ce32684bc3a13980" category="list-text">在Kibana GUI的顶部中间的搜索框中输入"saved objects"。+在已保存对象页面上、选择导入。在导入选项下、选择"请求冲突操作"</block>
+  <block id="d5a554fb68642d807aee43887546b43a" category="image-alt">Kibana导入选项</block>
+  <block id="42451b291f11e82724f65b3c852cca1d" category="paragraph">导入ELK &lt;version&gt;-query-chart -sample.ndjson。+当系统提示您解决冲突时、请选择您在第8步中创建的索引模式或数据视图。</block>
+  <block id="bc1a8499a0350f03b4ca75964eaad9cb" category="image-alt">Kibana冲突</block>
+  <block id="d304b6866d45389dd644b1c1788bfd5a" category="paragraph">导入以下Kibana对象： +*查询*+* audit-msg-s3rq-orlm +* byncast log S3相关消息+*日志级别警告或更高+*失败的安全事件+*图表*+* S3请求计数基于bycast.log +* HTTP状态代码+*审核消息类型细分+*平均S3响应 时间+*信息板*+* S3请求信息板使用上述图表。</block>
+  <block id="367c071ddbe8d1248ceb63f940e9b3cc" category="paragraph">现在、您可以使用Kibana执行StorageGRID 日志分析了。</block>
+  <block id="8cd58c89ff3d51a256ecfe3fe8bab20f" category="section-title">其他资源</block>
+  <block id="925a38c6c8bc1c84ae702d840efa1ef4" category="inline-link">系统日志101</block>
+  <block id="43b4ce193ce75a7c51a41a392da0e953" category="list-text"><block ref="43b4ce193ce75a7c51a41a392da0e953" category="inline-link-rx"></block></block>
+  <block id="36df17c33644048e4c07c17be01b2524" category="inline-link">什么是ELK堆栈</block>
+  <block id="2403480f61f37fce13a75f67d092ed18" category="list-text"><block ref="2403480f61f37fce13a75f67d092ed18" category="inline-link-rx"></block></block>
+  <block id="19d3c10a857b63064e06411baf1285b1" category="inline-link">Grok模式列表</block>
+  <block id="7c6102b1302815b75a46740d436c93fc" category="list-text"><block ref="7c6102b1302815b75a46740d436c93fc" category="inline-link-rx"></block></block>
+  <block id="13fc1087c795f112d8979eb5e2780e5c" category="inline-link">Logstash入门指南：Grok</block>
+  <block id="a39eed6135a0acdcad49fe799eb1bd27" category="list-text"><block ref="a39eed6135a0acdcad49fe799eb1bd27" category="inline-link-rx"></block></block>
+  <block id="1482da3b9a25b116ee5827795ac8fbbd" category="inline-link">Logstash实用指南：系统日志深度剖析</block>
+  <block id="9a51320cc75988e79a130ea7dc86875c" category="list-text"><block ref="9a51320cc75988e79a130ea7dc86875c" category="inline-link-rx"></block></block>
+  <block id="3a280b4922aa9eb7ce4c328f7f7dbbb3" category="inline-link">Kibana指南—浏览文档</block>
+  <block id="ffe5d2718c9048b9edb4a4a97d96e90f" category="list-text"><block ref="ffe5d2718c9048b9edb4a4a97d96e90f" category="inline-link-rx"></block></block>
+  <block id="98d2f29265a464a9765db0d88f294336" category="inline-link">StorageGRID 审核日志消息参考</block>
+  <block id="baba0109751acb7c22b021c76b6d7b51" category="list-text"><block ref="baba0109751acb7c22b021c76b6d7b51" category="inline-link-rx"></block></block>
+  <block id="288e0e9ab8b8ac8737afefecf16f61fd" category="list-text">Dremio</block>
+  <block id="e07088b3eedf498bf832f9346b0e3c02" category="list-text">Reveille v10内部版本220706或更高版本</block>
+  <block id="edf1439075a83a447fb8b630ddc9c8de" category="list-text">白雪片</block>
+  <block id="e6a211de1fc20ed87589cd9c30f29ac3" category="list-text">Virtalica StorageFabric</block>
+  <block id="e2b1887bff53094ff4de31a5b6be8203" category="sidebar">使用Elasticsearch、Logstash和Kibana进行日志分析</block>
+  <block id="958e51c613c42a5edd4e8f06fad6128b" category="sidebar">使用ELK堆栈进行StorageGRID 日志分析| NetApp TV</block>
 </blocks>
