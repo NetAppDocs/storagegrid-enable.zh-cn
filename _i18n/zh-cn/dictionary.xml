@@ -684,4 +684,93 @@
   <block id="e6a211de1fc20ed87589cd9c30f29ac3" category="list-text">Virtalica StorageFabric</block>
   <block id="e2b1887bff53094ff4de31a5b6be8203" category="sidebar">使用Elasticsearch、Logstash和Kibana进行日志分析</block>
   <block id="958e51c613c42a5edd4e8f06fad6128b" category="sidebar">使用ELK堆栈进行StorageGRID 日志分析| NetApp TV</block>
+  <block id="a55559222587bd5f2986759b8e95387a" category="summary">本技术报告详细说明了如何为NetApp StorageGRID 11.6配置外部Prometheus和Grafana服务。</block>
+  <block id="ec88743b2ce92a6f481315232bded2cc" category="doc">使用Prometheus和Grafana延长指标保留期限</block>
+  <block id="19e3e1c7497754486f9fce5eaded999d" category="paragraph">StorageGRID 使用Prometheus存储指标、并通过内置的Grafana信息板对这些指标进行可视化。通过配置客户端访问证书并为指定客户端启用Prometheus访问、可以从StorageGRID 安全地访问Prometheus指标。目前、此指标数据的保留受管理节点存储容量的限制。为了获得更长的持续时间并能够创建这些指标的自定义可视化效果、我们将部署一个新的Prometheus和Grafana服务器、配置我们的新服务器以从StorageGRID实例中擦除这些指标、并使用对我们重要的指标构建一个信息板。您可以获取有关在中收集的Prometheus指标的详细信息<block ref="b4322fd604ba4ce3b6c052facca6761f" category="inline-link-rx"></block>。</block>
+  <block id="4ea04e03e09a38c155d3e71e1fb7de4c" category="section-title">联合Prometheus</block>
+  <block id="4d27d8d41585fe5291670dc3d60f75a7" category="section-title">实验室详细信息</block>
+  <block id="85bef63997bbb31cf4fa40eff8acef2b" category="paragraph">在本示例中、我将使用StorageGRID 11.6节点的所有虚拟机以及Debian 11服务器。StorageGRID 管理界面配置了一个公共信任的CA证书。本示例将不会介绍StorageGRID 系统或Debian Linux安装的安装和配置过程。您可以使用Prometheus和Grafana支持的任何Linux模式。Prometheus和Grafana都可以安装为Docker容器、从源代码构建或预编译的二进制文件。在此示例中、我将直接在同一Debian服务器上安装Prometheus和Grafana二进制文件。从下载并按照基本安装说明进行操作<block ref="89724ccad5c62d1626a6c4f814f7ad92" category="inline-link-rx"></block> 和<block ref="14b4aeaebc6939fe5db011cfca13bded" category="inline-link-rx"></block> 。</block>
+  <block id="e6c56f2ad47108b72210c45d114ab981" category="section-title">为Prometheus客户端访问配置StorageGRID</block>
+  <block id="a5b8a4af4e814e777e9666e98c1489b1" category="paragraph">要访问StorageGRID Stored Prometheus指标、您必须生成或上传具有专用密钥的客户端证书、并为客户端启用权限。StorageGRID 管理接口必须具有SSL证书。此证书必须由Prometheus服务器信任、或者由可信CA信任、如果是自签名证书、则此证书必须手动受信任。要了解更多信息、请访问<block ref="10adb8f93432a6d42dbae4551371be78" category="inline-link-rx"></block>。</block>
+  <block id="76f344ac7fba487473f1b7a1890e9f8e" category="list-text">在StorageGRID 管理界面中、选择左下方的"configuration"、然后在第二列的"Security"下单击Certificates。</block>
+  <block id="6672f37bb0822d570acc565c15cb698f" category="list-text">在"证书"页面上、选择"客户端"选项卡、然后单击"添加"按钮。</block>
+  <block id="2f33cc1441b10d118155c459b7c0ec4f" category="list-text">提供要授予访问权限的客户端的名称并使用此证书。单击"允许用户"前面的"权限"下的框、然后单击"继续"按钮。</block>
+  <block id="e59f14e1cf84d2b0c36bfe68a98c16ed" category="image-alt">证书名称</block>
+  <block id="b47c072e73067166591337127c6332cf" category="list-text">如果您拥有CA签名的证书、则可以选择"上传证书"单选按钮、但在我们的情况下、我们将通过选择"生成证书"单选按钮让StorageGRID 生成客户端证书。此时将显示要填写的必填字段。输入客户端服务器的FQDN、服务器的IP、主题和有效天数。然后单击"生成"按钮。</block>
+  <block id="efdc2e922559f9410d73ad5e9763cfe1" category="image-alt">证书详细信息</block>
+  <block id="512a2185a4d8f29cd92f5eeca5299428" category="list-text">下载证书对等文件和专用密钥对等文件。</block>
+  <block id="950d1a08b94affeab69ad5298853bcab" category="image-alt">证书下载</block>
+  <block id="c7d534d2e8c571fc60886fffffaed71d" category="section-title">准备Linux服务器以安装Prometheus</block>
+  <block id="1a1198e75df118c29ed3f2cfe6f42314" category="paragraph">在安装Prometheus之前、我希望为我的环境做好准备、让Prometheus用户、目录结构做好准备、并为指标存储位置配置容量。</block>
+  <block id="53012110a3b12b6dbece7a2d3329563c" category="list-text">创建Prometheus用户。</block>
+  <block id="75ad7bfc7b05da8e590553a1ba59d00e" category="list-text">为Prometheus、客户端证书和指标数据创建目录。</block>
+  <block id="cf93e27e07f84a6f34c0baad77d73502" category="list-text">我使用ext4文件系统格式化了用于指标保留的磁盘。</block>
+  <block id="dba914a2be67f5826db730febd483dbb" category="list-text">然后、我将文件系统挂载到Prometheus指标目录。</block>
+  <block id="1db6657920c882fe516dc56a8fc42ae0" category="list-text">获取用于指标数据的磁盘的UUID。</block>
+  <block id="de5a7b5d75aef0f9aa929a3ffdd7bf91" category="list-text">在/etc/fstab/中添加一个条目、使挂载在重新启动后仍会使用/dev/sdb的uuid。</block>
+  <block id="e7184db422126b9a8ae98daa3ef08b00" category="section-title">安装和配置Prometheus</block>
+  <block id="51006cba71ff2e50795b3bf3c2b2e223" category="paragraph">现在、服务器已准备就绪、我可以开始安装Prometheus并配置此服务。</block>
+  <block id="c99b7eb31cdbd3d09abc27ebdcb5325d" category="list-text">提取Prometheus安装包</block>
+  <block id="6d1af4201bd8173d4f87201195065c96" category="list-text">将二进制文件复制到/usr/local/bin、并将所有权更改为先前创建的Prometheus用户</block>
+  <block id="22971a12624067801ed27bf22a1a43d4" category="list-text">将控制台和库复制到/etc/Prometheus</block>
+  <block id="c0b8e90b4197c0bc1a63ab18dad551cb" category="list-text">将先前从StorageGRID 下载的客户端证书和专用密钥对等文件复制到/etc/Prometheus/Certs</block>
+  <block id="6fd6fe03d0bae048f49350a7b29d2b20" category="list-text">创建Prometheus配置YAML文件</block>
+  <block id="650d2cc27d4f8021f93af373465ebb1d" category="list-text">插入以下配置。作业名称可以是您所需的任何名称。将"-targets"更改为管理节点的FQDN、如果更改了证书名称和专用密钥文件名、请更新tls_config部分以使其匹配。然后保存文件。如果您的网格管理界面正在使用自签名证书、请下载此证书并将其与具有唯一名称的客户端证书一起放置、然后在tls_config部分中添加ca_file：/etc/Prometheus/Cert/UIcert.pem</block>
+  <block id="adbbb69e4573c242198e942a4c984a56" category="list-text">在此示例中、我将收集以alertmanager、Cassandra、node和StorageGRID 开头的所有指标。您可以在中查看有关Prometheus指标的详细信息<block ref="b4322fd604ba4ce3b6c052facca6761f" category="inline-link-rx"></block>。</block>
+  <block id="2a83272e8be3a9939618ae5d54c15280" category="paragraph">如果网格管理界面使用的是自签名证书、请下载此证书并将其与具有唯一名称的客户端证书一起放置。在tls_config部分中、将证书添加到客户端证书和专用密钥行上方</block>
+  <block id="9d5f73c80f9dcd64a2b4f51ed7df1c74" category="list-text">将/etc/Prometheus和/var/lib/Prometheus中所有文件和目录的所有权更改为Prometheus用户</block>
+  <block id="94394bcffb3c751d1a1c75adf1dd3339" category="list-text">在/etc/systemd/system中创建一个Prometheus服务文件</block>
+  <block id="1c83729b0147981bd53a386123e950b2" category="list-text">插入以下行、请注意#-storage.tsdb.retention.time=1y#、它会将指标数据的保留期限设置为1年。或者、您也可以使用#-storage.tsdb.retention.size=300GiB#根据存储限制确定保留期限。这是设置指标保留的唯一位置。</block>
+  <block id="c44e8fe3436b496aa03fa98464a357bb" category="list-text">重新加载systemd服务以注册新的Prometheus服务。然后启动并启用Prometheus服务。</block>
+  <block id="a95dc294578d84798aa85e589b1d7169" category="list-text">检查服务是否运行正常</block>
+  <block id="efb4923d4171f8bbe31a74fc17e7a4ea" category="list-text">现在、您应该能够浏览到Prometheus服务器的UI<block ref="9c036ae021e9b80558a889223ee0da28" category="inline-link-rx"></block> 并查看UI</block>
+  <block id="6246893720a6bc3db5f56c322fc01d95" category="image-alt">Prometheus UI页面</block>
+  <block id="bc9d8c8501595ac689577e371305dd0c" category="list-text">在"Status" Targets下、您可以看到我们在Prometheus.yml中配置的StorageGRID 端点的状态</block>
+  <block id="ef446049ce3cd8c094f34cb3047e10d7" category="image-alt">Prometheus状态菜单</block>
+  <block id="b46ccb7031f632fe5680ae39d381aac5" category="image-alt">Prometheus目标页面</block>
+  <block id="d438cb3ada618e17e8da5458906319f6" category="list-text">在图形页面上、您可以执行测试查询并验证数据是否已成功擦除了。例如、在查询栏中输入"storagegRid_node_cpu_utilization_percentage "、然后单击执行按钮。</block>
+  <block id="a4b484847ff4cdaf28ddb0fbdebf7234" category="image-alt">执行Prometheus查询</block>
+  <block id="4b9bf479d75eb40b84a86c9d4d9829c6" category="section-title">安装和配置Grafana</block>
+  <block id="d6c4e0d91ac95c90048b7b552f962b83" category="paragraph">在Prometheus安装完毕并正常工作之后、我们可以继续安装Grafana并配置信息板</block>
+  <block id="28946a57c620a6d61330c3ec2b855ea1" category="section-title">Grafana安装</block>
+  <block id="886d386fd41ddae5268cb47bd2c0f6f7" category="list-text">安装最新的企业版Grafana</block>
+  <block id="2b486298e7630814372aec36baee859f" category="list-text">为稳定版本添加此存储库：</block>
+  <block id="166a21daf7286fbeb21167b5802de660" category="list-text">添加存储库后。</block>
+  <block id="2557b3cde7450f332315bc10e61bdba8" category="list-text">重新加载systemd服务以注册新的grafana服务。然后启动并启用Grafana服务。</block>
+  <block id="c96bdac515037faefe395a7292cce691" category="list-text">现在、Grafana已安装并正在运行。打开浏览器访问HTTP：//Prometheus-server：3000时、您将看到Grafana登录页面。</block>
+  <block id="b5ed0857233fefc7884d300cb79511cc" category="list-text">默认登录凭据为admin/admin、您应根据提示设置新密码。</block>
+  <block id="a201e49270e34f12f6f8e8e17b7f63b4" category="section-title">为StorageGRID 创建Grafana信息板</block>
+  <block id="8fa4555fc2e45c8e0b51029500b0ed27" category="paragraph">在Grafana和Prometheus安装并运行的情况下、现在是时候通过创建数据源和构建信息板来连接这两者了</block>
+  <block id="4824e95e765437e0267119c28a2ebf58" category="list-text">在左侧窗格中、展开"配置"并选择"数据源"、然后单击"添加数据源"按钮</block>
+  <block id="5ab8c2d2b825ee44ae77e39f44377ef6" category="list-text">Prometheus将是可供选择的顶级数据源之一。如果不是、请使用搜索栏找到"Prometheus"</block>
+  <block id="bef2ae359538161990ca7f4f33bcbb9b" category="list-text">通过输入Prometheus实例的URL以及与Prometheus间隔匹配的擦除间隔来配置Prometheus源。我还禁用了警报部分、因为我未在Prometheus上配置警报管理器。</block>
+  <block id="a40cb233948efde79195641883d0e611" category="image-alt">Grafana Prometheus配置</block>
+  <block id="b84470c739701819ce6f044fb322a73b" category="list-text">输入所需设置后、向下滚动到底部、然后单击"Save &amp; test"(保存并测试)</block>
+  <block id="a4d1cacdf98710f66261bf842712805f" category="list-text">配置测试成功后、单击Explore按钮。</block>
+  <block id="0dbc8986f05d1af0419dde8bc4a17614" category="list-text">在"浏览"窗口中、您可以使用我们使用"storagegrid node_cpu_utilization_percentage "测试的相同指标、然后单击"运行查询"按钮</block>
+  <block id="65408cc1057e1983691b2ab33f411afc" category="image-alt">Grafana Prometheus指标探索</block>
+  <block id="59c74787b5c8d94700e0808eb7f7080d" category="list-text">现在、我们已配置数据源、可以创建一个信息板。</block>
+  <block id="2dbede5ad9fd60cdbd41384214e737a8" category="list-text">在左侧窗格中、展开Dashboards、然后选择"+" new Dashboard"</block>
+  <block id="9b8670951f7b4684c224ee7c839d456e" category="list-text">选择"添加新面板"</block>
+  <block id="0679a10db91cc04805eaf260fa1cf908" category="list-text">通过选择指标来配置新面板、我将再次使用"storagegrid node_cpu_utilization_percentage "、输入面板标题、展开底部的"选项"、并将图例更改为自定义、然后输入"｛｛instance｝｝"来定义节点名称、并在右侧窗格的"标准选项"下将"单元"设置为"Misc 100/percent (0%)"。然后单击"应用"将面板保存到信息板。</block>
+  <block id="5a2f263537e34f8a641847b07c2dbb3a" category="image-alt">配置grafana面板</block>
+  <block id="171b2836c7ab4655438b8b81bc7d0d7f" category="list-text">我们可以继续为所需的每个指标构建这样的信息板、但幸运的是、StorageGRID 已经拥有包含面板的信息板、我们可以复制到自定义信息板中。</block>
+  <block id="0045460d4b8ee6e2ccf21ba85bb61aa2" category="list-text">从StorageGRID 管理界面的左侧窗格中、选择"Support"、然后在"Tools"列的底部单击"Metrics "。</block>
+  <block id="dacb92a5479161b14f63fe1bc9ae9551" category="list-text">在指标中、我将选择中间列顶部的"网格"链接。</block>
+  <block id="d41d9476c523c25b4f286c1fb9f71af1" category="image-alt">StorageGRID 指标</block>
+  <block id="bcb5b82ee118287323cbbcf5705d51fd" category="list-text">在网格信息板中、我们选择"已用存储-对象元数据"面板。单击小下箭头和面板标题的末尾以下拉菜单。从此菜单中选择"检查"和"面板JSON"。</block>
+  <block id="3283a20d4b70f7f18e4ffa4329564dec" category="image-alt">StorageGRID 信息板</block>
+  <block id="bdfde960a4b9f7a6f52bc1bbcfb809ea" category="list-text">复制JSON代码并关闭窗口。</block>
+  <block id="0ae78f538d8850bb1adf673ad3d9b9de" category="image-alt">StorageGRID JSON</block>
+  <block id="dd5507576d8e651777535414a2a4d89c" category="list-text">在新信息板中、单击图标以添加新面板。</block>
+  <block id="b87847301cad106c92101bdca1149176" category="image-alt">Grafana添加面板</block>
+  <block id="e7db75cfcf6183907b6f092041507fab" category="list-text">应用新面板而不进行任何更改</block>
+  <block id="28117e550ca797c69346cfabb47d4275" category="list-text">就像使用StorageGRID 面板一样、检查JSON。从StorageGRID 面板中删除所有JSON代码并将其替换为复制的代码。</block>
+  <block id="243663c8bbd4a1adc19a8656ea49f52a" category="image-alt">Grafana检查面板</block>
+  <block id="045121a7dd658eca0fb920eae2865bc5" category="list-text">编辑新面板、在右侧、您将看到一条带有"迁移"按钮的迁移消息。单击按钮、然后单击"应用"按钮。</block>
+  <block id="57a8b8008e71c9674e7cceda50fba182" category="image-alt">Grafana编辑面板菜单</block>
+  <block id="f810aaf1536bfcba66e5b92d051c04df" category="image-alt">Grafana编辑面板</block>
+  <block id="4d3250551177a4d9cd85c16745cc024a" category="list-text">将所有面板安装到位并根据需要进行配置后。单击右上角的磁盘图标以保存信息板、并为您的信息板指定一个名称。</block>
+  <block id="6f8b794f3246b0c1e1780bb4d4d5dc53" category="section-title">结论</block>
+  <block id="3c381cb8a7d35d21cb305dce81f773fb" category="paragraph">现在、我们推出了一款具有可自定义数据保留和存储容量的Prometheus服务器。这样、我们就可以继续构建自己的信息板、其中包含与我们的运营最相关的指标。您可以获取有关在中收集的Prometheus指标的详细信息<block ref="b4322fd604ba4ce3b6c052facca6761f" category="inline-link-rx"></block>。</block>
 </blocks>

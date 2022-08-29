@@ -60,6 +60,8 @@ homepage:
       url: "/tools-apps-guides/use-S3cmd-test-demonstrate-S3-access.html"
     - title: 使用Elasticsearch、Logstash和Kibana进行日志分析
       url: "/tools-apps-guides/elk-instructions.html"
+    - title: 使用Prometheus和Grafana延长指标保留期限
+      url: "/tools-apps-guides/federate-prometheus.html"
   - title: 过程和API示例
     links:
     - title: 测试和演示S3加密

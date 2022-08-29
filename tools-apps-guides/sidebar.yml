@@ -10,3 +10,5 @@ entries:
   url: "/tools-apps-guides/vertica-eon-mode-database-using-netapp-storageGRID.html"
 - title: 使用Elasticsearch、Logstash和Kibana进行日志分析
   url: "/tools-apps-guides/elk-instructions.html"
+- title: 使用Prometheus和Grafana延长指标保留期限
+  url: "/tools-apps-guides/federate-prometheus.html"
