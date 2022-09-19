@@ -773,4 +773,5 @@
   <block id="4d3250551177a4d9cd85c16745cc024a" category="list-text">将所有面板安装到位并根据需要进行配置后。单击右上角的磁盘图标以保存信息板、并为您的信息板指定一个名称。</block>
   <block id="6f8b794f3246b0c1e1780bb4d4d5dc53" category="section-title">结论</block>
   <block id="3c381cb8a7d35d21cb305dce81f773fb" category="paragraph">现在、我们推出了一款具有可自定义数据保留和存储容量的Prometheus服务器。这样、我们就可以继续构建自己的信息板、其中包含与我们的运营最相关的指标。您可以获取有关在中收集的Prometheus指标的详细信息<block ref="b4322fd604ba4ce3b6c052facca6761f" category="inline-link-rx"></block>。</block>
+  <block id="7045f46ad76322e4dc3af49b0bb57c27" category="list-text">模式9</block>
 </blocks>
