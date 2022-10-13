@@ -36,6 +36,7 @@ summary: 已针对StorageGRID 11.6进行验证的第三方解决方案
 * Komprise
 * Microsoft SQL Server大数据集群
 * 模式9
+* Modzy
 * Moonwalk Universal
 * 很好
 * Nasuni
