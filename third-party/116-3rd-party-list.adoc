@@ -26,6 +26,7 @@ summary: 已针对StorageGRID 11.6进行验证的第三方解决方案
 * 达莱特
 * Data Dynamics StorageX
 * 默认X
+* 磁盘转换数据
 * Dremio
 * 员工
 * 富士尼尔姆对象归档
