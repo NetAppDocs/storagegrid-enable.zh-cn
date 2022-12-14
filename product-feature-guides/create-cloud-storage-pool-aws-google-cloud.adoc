@@ -13,7 +13,7 @@ summary: '如果要将StorageGRID 对象移动到外部S3存储分段、则可�
 [role="lead"]
 如果要将StorageGRID 对象移动到外部S3存储分段、则可以使用云存储池。外部存储分段可以属于Amazon S3 (AWS)或Google Cloud。
 
-.您需要什么？ #8217 ；将需要什么
+.您需要的内容
 * 已配置StorageGRID 11.6。
 * 您已在AWS或Google Cloud上设置外部S3存储分段。
 
@@ -48,4 +48,5 @@ summary: '如果要将StorageGRID 对象移动到外部S3存储分段、则可�
 . 单击 * 保存 * 。
 
 
+.预期结果
 确认已为Amazon S3或Google Cloud创建云存储池。

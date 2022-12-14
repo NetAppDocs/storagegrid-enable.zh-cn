@@ -198,7 +198,7 @@ Found 1 items
 22/02/15 19:04:51 WARN fs.FileSystem: Failed to initialize fileystem s3a://hdfs-test/: org.apache.hadoop.fs.s3a.AWSClientIOException: doesBucketExistV2 on hdfs: com.amazonaws.SdkClientException: Unable to execute HTTP request: Received fatal alert: handshake_failure: Unable to execute HTTP request: Received fatal alert: handshake_failure
 ls: doesBucketExistV2 on hdfs: com.amazonaws.SdkClientException: Unable to execute HTTP request: Received fatal alert: handshake_failure: Unable to execute HTTP request: Received fatal alert: handshake_failure
 ----
-*解析：*确保已安装JDK 11.x或更高版本并将其设置为默认Java库。请参见  Java package 部分、了解更多信息。
+*解析：*确保已安装JDK 11.x或更高版本并将其设置为默认Java库。请参见 <<安装Java软件包>> 部分、了解更多信息。
 
 
 

@@ -556,7 +556,6 @@
   <block id="e33f6ccf77d0d8efe2a762267b6fd088" category="list-text"><block ref="e33f6ccf77d0d8efe2a762267b6fd088" category="inline-link-rx"></block></block>
   <block id="12934b080defe99c475857cf35fc736b" category="summary">如果要将StorageGRID 对象移动到外部S3存储分段、则可以使用云存储池。外部存储分段可以属于Amazon S3 (AWS)或Google Cloud。</block>
   <block id="5726c3e825fdb258e1525c22d51442ea" category="doc">为AWS或Google Cloud创建云存储池</block>
-  <block id="a711863513c11f3a6d86294acc7be0ba" category="list-title">您需要什么？ #8217 ；将需要什么</block>
   <block id="3ed256c1f351a8fcb6f88836f9344657" category="list-text">已配置StorageGRID 11.6。</block>
   <block id="d3c15aac7a26c8e69f0d3a923ebea0d3" category="list-text">您已在AWS或Google Cloud上设置外部S3存储分段。</block>
   <block id="f3a29486bed19a90f2da6d007818b427" category="list-title">步骤</block>
@@ -776,4 +775,6 @@
   <block id="7045f46ad76322e4dc3af49b0bb57c27" category="list-text">模式9</block>
   <block id="d5b38301ef87d6a23fb50fbf5a064be8" category="list-text">Modzy</block>
   <block id="d48885bf40ed8b15489c6b02ba7daa08" category="list-text">磁盘转换数据</block>
+  <block id="d59db7846bd10b6d60d21543df9faa9e" category="list-title">您需要的内容</block>
+  <block id="9db3241b54bebb9425e6b4d63d712bb2" category="paragraph-title">预期结果</block>
 </blocks>

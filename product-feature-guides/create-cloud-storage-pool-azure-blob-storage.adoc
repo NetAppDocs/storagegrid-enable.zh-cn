@@ -13,7 +13,7 @@ summary: 如果要将StorageGRID 对象移动到外部Azure容器、则可以使
 [role="lead"]
 如果要将StorageGRID 对象移动到外部Azure容器、则可以使用云存储池。
 
-.您需要什么？ #8217 ；将需要什么
+.您需要的内容
 * 已配置StorageGRID 11.6。
 * 您已设置外部Azure容器。
 
@@ -45,4 +45,5 @@ summary: 如果要将StorageGRID 对象移动到外部Azure容器、则可以使
 . 单击 * 保存 * 。
 
 
+.预期结果
 确认已为Azure Blob Storage创建云存储池。
