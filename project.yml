@@ -50,6 +50,10 @@ homepage:
       url: "/product-feature-guides/use-a-cloud-storage-pool-for-backup.html"
     - title: 配置搜索集成服务
       url: "/product-feature-guides/storagegrid-search-integration-service.html"
+    - title: 节点克隆注意事项和性能
+      url: "/product-feature-guides/node-clone.html"
+    - title: 如何使用端口重新映射
+      url: "/product-feature-guides/port-remap.html"
   - title: 工具和应用程序指南
     links:
     - title: 使用Cloudera Hadoop S3A连接器
@@ -62,12 +66,16 @@ homepage:
       url: "/tools-apps-guides/elk-instructions.html"
     - title: 使用Prometheus和Grafana延长指标保留期限
       url: "/tools-apps-guides/federate-prometheus.html"
+    - title: 配置Datadog以收集StorageGRID SNMP指标和陷阱
+      url: "/tools-apps-guides/use-datadog-snmp.html"
   - title: 过程和API示例
     links:
     - title: 测试和演示S3加密
       url: "/examples/test-demonstrate-S3-encryption.html"
     - title: 测试和演示S3对象锁定
       url: "/examples/test-demonstrate-S3-object-lock.html"
+    - title: 存储分段和组策略示例
+      url: "/examples/bucket-policy-examples.html"
   - title: 演示教程
     links:
     - title: StorageGRID 视频库

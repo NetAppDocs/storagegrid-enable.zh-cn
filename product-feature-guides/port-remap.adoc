@@ -1,0 +1,384 @@
+---
+permalink: product-feature-guides/port-remap.html 
+sidebar: sidebar 
+keywords: port remap, port redirect, port, remap, redirect 
+summary: 如何使用端口重新映射。 
+---
+= 如何使用端口重新映射
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+由于多种原因、您可能需要重新映射传入或出站端口。您可以从原有的CLB负载平衡器服务迁移到当前的nginx服务负载平衡器端点、并保持相同的端口以减少对客户端的影响、或者希望在管理节点客户端网络上为客户端S3使用端口443、或者设置防火墙限制。
+
+
+
+== 通过端口重新映射将S3客户端从CLB迁移到NGINX
+
+在StorageGRID 11.3之前的版本中、网关节点上包含的负载平衡器服务是连接负载平衡器(CLB)。在StorageGRID 11.3中、NetApp引入了NGINX服务、作为功能丰富的集成解决方案 、用于平衡HTTP流量的负载。由于CLB服务在当前版本的StorageGRID 中仍然可用、因此您不能在新的负载平衡器端点配置中重复使用端口8082。要解决此问题、8082入站端口将重新映射到10443。这样、传入网关端口8082的所有HTTPS请求都会重定向到端口10443、从而绕过CLB服务、而是连接到NGINX服务。尽管以下说明适用于VMware、但所有安装方法都具有port_remap功能、您可以对裸机部署和设备使用类似的过程。
+
+
+
+=== VMware虚拟机网关节点部署
+
+以下步骤适用于使用StorageGRID 开放式虚拟化格式(OVF)在VMware vSphere 7中将网关节点部署为VM的StorageGRID 部署。此过程需要删除虚拟机并使用相同名称和配置重新部署虚拟机。在启动VM之前、请更改vApp属性以重新映射端口、然后启动VM并按照节点恢复过程进行操作。
+
+
+
+==== 前提条件
+
+* 您正在运行StorageGRID 11.3或更高版本
+* 您已下载并有权访问已安装的StorageGRID 版本VMware安装文件。
+* 您拥有一个vCenter帐户、该帐户有权打开/关闭VM、更改VM和vApp的设置、从vCenter中删除VM以及通过OVF部署VM。
+* 您已创建负载平衡器端点
++
+** 此端口已配置为所需的重定向端口
+** 端点SSL证书与在配置/服务器证书/对象存储API服务端点服务器证书中为CLB服务安装的证书相同、或者客户端可以接受证书更改。
+
+
+
+
+[NOTE]
+====
+ If your existing certificate is self-signed, you cannot reuse it in the new endpoint. You must generate a new self-signed certificate when creating the endpoint and configure the clients to accept the new certificate.
+====
+
+
+==== 销毁第一个网关节点
+
+要销毁第一个网关节点、请执行以下步骤：
+
+. 如果网格包含多个、请选择要从其开始的网关节点。
+. 如果适用、从所有DNS轮循实体或负载平衡器池中删除节点IP。
+. 等待生存时间(TTL)并打开会话过期。
+. 关闭VM节点。
+. 从磁盘中删除VM节点。
+
+
+
+
+==== 部署替代网关节点
+
+要部署替代网关节点、请执行以下步骤：
+
+. 从OVF部署新虚拟机、从从从支持站点下载的安装包中选择.OVF、.MF和.vmdk文件：
++
+** vsphere-gateway.mf
+** vsphere-gateway.OVF
+** netapp-sg-11.4.0-20200721.1338.d3969b3.vmdk
+
+
+. 部署虚拟机后、从虚拟机列表中选择该虚拟机、然后选择配置选项卡vApp选项。
++
+image:port-remap/vapp_options.png["vApp选项选项卡"]
+
+. 向下滚动到属性部分、然后选择port_remap_inbound属性
++
+image:port-remap/remap_inbound.png["端口重新映射入站"]
+
+. 滚动到属性列表顶部、然后单击编辑
++
+image:port-remap/edit_button.png["编辑按钮"]
+
+. 选择类型选项卡、确认已选中用户可配置复选框、然后单击保存。
++
+image:port-remap/type_tab.png["键入Tab"]
+
+. 在"Properties"列表顶部、仍选择了"port_remap_inbound"属性、然后单击"Set value"。
++
+image:port-remap/edit_button.png["设置值按钮"]
+
+. 在属性值字段中、输入网络(网格、管理员或客户端)、TCP、原始端口(8082)和新端口(10443)、每个值之间均包含"/"、如下所示。
++
+image:port-remap/value.png["属性值"]
+
+. 如果使用多个网络、请使用逗号(、)分隔网络字符串、例如GRIDE/TCP/8082/10443、admin/TCP/8082/10443、client/TCP/8082/10443
+
+
+
+
+==== 恢复网关节点
+
+要恢复网关节点、请执行以下步骤：
+
+. 导航到网格管理UI的维护/恢复部分。
++
+image:port-remap/maint_menu.png["维护菜单"]
+
+. 打开VM节点的电源、并等待此节点显示在网格管理UI的维护/恢复待定节点部分中。
++
+image:port-remap/recover_pend.png["恢复待定"]
+
++
+[NOTE]
+====
+ For information and directions for node recovery, see the https://docs.netapp.com/sgws-114/topic/com.netapp.doc.sg-maint/GUID-7E22B1B9-4169-4800-8727-75F25FC0FFB1.html[Recovery and Maintenance guide]
+====
+. 恢复节点后、如果适用、可以将此IP包括在所有DNS轮循实体或负载平衡器池中。
++
+现在、端口8082上的任何HTTPS会话都会转到端口10443
+
+
+
+
+
+== 重新映射端口443、以便在管理节点上进行客户端S3访问
+
+StorageGRID 系统中管理节点或包含管理节点的HA组的默认配置是、为管理和租户管理器UI保留端口443和80、并且不能用于负载平衡器端点。要执行此操作、解决方案 将使用端口重新映射功能并将入站端口443重定向到将配置为负载平衡器端点的新端口。完成后的客户端S3流量将能够使用端口443后、网格管理UI将只能通过端口8443访问、租户管理UI将只能通过端口9443访问。重新映射端口功能只能在节点安装时进行配置。要对网格中的活动节点实施端口重新映射、必须将其重置为预安装状态。这是一个具有破坏性的操作步骤 、在进行配置更改后会进行节点恢复。
+
+
+
+=== 备份日志和数据库
+
+管理节点包含审核日志、Prometheus指标以及有关属性、警报和警报的历史信息。拥有多个管理节点意味着您拥有此数据的多个副本。如果您的网格中没有多个管理节点、则应确保保留此数据、以便在此过程结束时恢复此节点后进行还原。如果网格中还有其他管理节点、则可以在恢复过程中从该节点复制数据。如果网格中没有其他管理节点、则可以按照以下说明复制数据、然后再销毁此节点。
+
+
+
+==== 复制审核日志
+
+. 登录到管理节点：
++
+.. 输入以下命令： `ssh admin@_grid_node_IP_`
+.. 输入中列出的密码 `Passwords.txt` 文件
+.. 输入以下命令切换到root： `su -`
+.. 输入中列出的密码 `Passwords.txt` 文件
+.. 将 SSH 专用密钥添加到 SSH 代理。输入 ... `ssh-add`
+.. 输入中列出的SSH访问密码 `Passwords.txt` 文件
++
+ When you are logged in as root, the prompt changes from `$` to `#`.
+
+
+. 创建目录以将所有审核日志文件复制到单独网格节点上的临时位置。使用_storage_node_01_：
++
+.. `ssh admin@_storage_node_01_IP_`
+.. `mkdir -p /var/local/tmp/saved-audit-logs`
+
+
+. 返回管理节点、停止AMS服务以防止其创建新的日志文件： `service ams stop`
+. 重命名 audit.log 文件，使其在复制到已恢复的管理节点时不会覆盖现有文件。
++
+.. 将 audit.log 重命名为唯一编号的文件名，例如 yyyy-mm-dd.txt.1 。例如、您可以将审核日志文件重命名为2015-10-25.txt
++
+[source, console]
+----
+cd /var/local/audit/export
+ls -l
+mv audit.log 2015-10-25.txt.1
+----
+
+
+. 重新启动AMS服务： `service ams start`
+. 复制所有审核日志文件： `scp * admin@_storage_node_01_IP_:/var/local/tmp/saved-audit-logs`
+
+
+
+
+==== 复制Prometheus数据
+
+
+NOTE: 复制 Prometheus 数据库可能需要一个小时或更长时间。在管理节点上停止服务时、某些Grid Manager功能将不可用。
+
+. 创建目录以将Prometheus数据复制到单独网格节点上的临时位置、我们将再次使用_storage_node_01_：
++
+.. 登录到存储节点：
++
+... 输入以下命令： `ssh admin@_storage_node_01_IP_`
+... 输入中列出的密码 `Passwords.txt` 文件
+... mkdir -p /var/local/tmp/Prometheus`
+
+
+
+
+. 登录到管理节点：
++
+.. 输入以下命令： `ssh admin@_admin_node_IP_`
+.. 输入中列出的密码 `Passwords.txt` 文件
+.. 输入以下命令切换到root： `su -`
+.. 输入中列出的密码 `Passwords.txt` 文件
+.. 将 SSH 专用密钥添加到 SSH 代理。输入 ... `ssh-add`
+.. 输入中列出的SSH访问密码 `Passwords.txt` 文件
++
+ When you are logged in as root, the prompt changes from `$` to `#`.
+
+
+. 从管理节点中、停止Prometheus服务： `service prometheus stop`
++
+.. 将Prometheus数据库从源管理节点复制到存储节点备份位置节点： `/rsync -azh --stats "/var/local/mysql_ibdata/prometheus/data" "_storage_node_01_IP_:/var/local/tmp/prometheus/"`
+
+
+. 在源管理节点上重新启动Prometheus服务.`service prometheus start`
+
+
+
+
+==== 备份历史信息
+
+历史信息存储在mysql数据库中。要转储数据库的副本、您需要NetApp提供的用户和密码。如果网格中有另一个管理节点、则无需执行此步骤、在恢复过程中、可以从其余管理节点克隆数据库。
+
+. 登录到管理节点：
++
+.. 输入以下命令： `ssh admin@_admin_node_IP_`
+.. 输入中列出的密码 `Passwords.txt` 文件
+.. 输入以下命令切换到root： `su -`
+.. 输入中列出的密码 `Passwords.txt` 文件
+.. 将 SSH 专用密钥添加到 SSH 代理。输入 ... `ssh-add`
+.. 输入中列出的SSH访问密码 `Passwords.txt` 文件
++
+ When you are logged in as root, the prompt changes from `$` to `#`.
+
+
+. 停止管理节点上的StorageGRID 服务并启动NTP和mysql
++
+.. 停止所有服务： `service servermanager stop`
+.. 重新启动NTP服务： `service ntp start`..restart mysql服务： `service mysql start`
+
+
+. 将mi数据库转储到/var/local/tmp
++
+.. 输入以下命令： `mysqldump –u _username_ –p _password_ mi > /var/local/tmp/mysql-mi.sql`
+
+
+. 将mysql转储文件复制到备用节点、我们将使用_storage_node_01：
+`scp /var/local/tmp/mysql-mi.sql _storage_node_01_IP_:/var/local/tmp/mysql-mi.sql`
++
+.. 如果不再需要对其他服务器进行无密码访问，请从 SSH 代理中删除私钥。输入 ... `ssh-add -D`
+
+
+
+
+
+
+=== 重建管理节点
+
+现在、您已获得所有所需数据的备份副本、并将日志记录在网格中的另一个管理节点上或存储在临时位置、现在是时候重置设备了、以便可以配置端口重新映射了。
+
+. 重置设备会使其恢复到预安装状态、在此状态下、它仅保留主机名、IP和网络配置。所有数据都将丢失、因此我们确保备份任何重要信息。
++
+.. 输入以下命令： `sgareinstall`
++
+[source, console]
+----
+root@sg100-01:~ # sgareinstall
+WARNING: All StorageGRID Webscale services on this node will be shut down.
+WARNING: Data stored on this node may be lost.
+WARNING: You will have to reinstall StorageGRID Webscale to this node.
+
+After running this command and waiting a few minutes for the node to reboot,
+browse to one of the following URLs to reinstall StorageGRID Webscale on
+this node:
+
+    https://10.193.174.192:8443
+    https://10.193.204.192:8443
+    https://169.254.0.1:8443
+
+Are you sure you want to continue (y/n)? y
+Renaming SG installation flag file.
+Initiating a reboot to trigger the StorageGRID Webscale appliance installation wizard.
+
+----
+
+
+. 经过一段时间后、设备将重新启动、您将能够访问节点PGE UI。
+. 浏览到Configure Networking
++
+image:port-remap/remap_link.png["选择重新映射端口"]
+
+. 选择所需的网络、协议、方向和端口、然后单击添加规则按钮。
++
+
+NOTE: 重新映射网格网络上的入站端口443将中断安装和扩展过程。建议不要重新映射网格网络上的端口443。
+
++
+image:port-remap/app_remap.png["将端口重新映射到网络"]
+
+. 添加了所需的端口重新映射之一、您可以返回到主页选项卡并单击开始安装按钮。
+
+
+现在、您可以按照中的管理节点恢复过程进行操作 link:https://docs.netapp.com/us-en/storagegrid-116/maintain/recovering-from-admin-node-failures.html["产品文档"]
+
+
+
+== 还原数据库和日志
+
+现在、管理节点已恢复、您可以还原指标、日志和历史信息。如果网格中还有其他管理节点、请按照执行操作 link:https://docs.netapp.com/us-en/storagegrid-116/maintain/recovering-from-admin-node-failures.html["产品文档"] 使用_Prometheus-clone-db.sh_和_mi-clone-db.sh_脚本。如果这是您的唯一管理节点、而您选择备份此数据、则可以按照以下步骤还原此信息。
+
+
+
+=== 将审核日志复制回
+
+. 登录到管理节点：
++
+.. 输入以下命令： `ssh admin@_grid_node_IP_`
+.. 输入中列出的密码 `Passwords.txt` 文件
+.. 输入以下命令切换到root： `su -`
+.. 输入中列出的密码 `Passwords.txt` 文件
+.. 将 SSH 专用密钥添加到 SSH 代理。输入 ... `ssh-add`
+.. 输入中列出的SSH访问密码 `Passwords.txt` 文件
++
+ When you are logged in as root, the prompt changes from `$` to `#`.
+
+
+. 将保留的审核日志文件复制到已恢复的管理节点： `scp admin@_grid_node_IP_:/var/local/tmp/saved-audit-logs/YYYY* .`
+. 为了安全起见，请在验证审核日志是否已成功复制到已恢复的管理节点后，从出现故障的网格节点中删除这些审核日志。
+. 更新已恢复管理节点上审核日志文件的用户和组设置： `chown ams-user:bycast *`
+
+
+您还必须还原对审核共享的任何已有客户端访问。有关详细信息，请参见有关管理 StorageGRID 的说明。
+
+
+
+=== 还原Prometheus指标
+
+
+NOTE: 复制 Prometheus 数据库可能需要一个小时或更长时间。在管理节点上停止服务时、某些Grid Manager功能将不可用。
+
+. 登录到管理节点：
++
+.. 输入以下命令： `ssh admin@_grid_node_IP_`
+.. 输入中列出的密码 `Passwords.txt` 文件
+.. 输入以下命令切换到root： `su -`
+.. 输入中列出的密码 `Passwords.txt` 文件
+.. 将 SSH 专用密钥添加到 SSH 代理。输入 ... `ssh-add`
+.. 输入中列出的SSH访问密码 `Passwords.txt` 文件
++
+ When you are logged in as root, the prompt changes from `$` to `#`.
+
+
+. 从管理节点中、停止Prometheus服务： `service prometheus stop`
++
+.. 将Prometheus数据库从临时备份位置复制到管理节点： `/rsync -azh --stats "_backup_node_:/var/local/tmp/prometheus/" "/var/local/mysql_ibdata/prometheus/"`
+.. 验证数据是否位于正确路径中且完整 `ls /var/local/mysql_ibdata/prometheus/data/`
+
+
+. 在源管理节点上重新启动Prometheus服务.`service prometheus start`
+
+
+
+
+=== 还原历史信息
+
+. 登录到管理节点：
++
+.. 输入以下命令： `ssh admin@_grid_node_IP_`
+.. 输入中列出的密码 `Passwords.txt` 文件
+.. 输入以下命令切换到root： `su -`
+.. 输入中列出的密码 `Passwords.txt` 文件
+.. 将 SSH 专用密钥添加到 SSH 代理。输入 ... `ssh-add`
+.. 输入中列出的SSH访问密码 `Passwords.txt` 文件
++
+ When you are logged in as root, the prompt changes from `$` to `#`.
+
+
+. 从备用节点复制mysql转储文件： `scp grid_node_IP_:/var/local/tmp/mysql-mi.sql /var/local/tmp/mysql-mi.sql`
+. 停止管理节点上的StorageGRID 服务并启动NTP和mysql
++
+.. 停止所有服务： `service servermanager stop`
+.. 重新启动NTP服务： `service ntp start`..restart mysql服务： `service mysql start`
+
+
+. 丢弃mi数据库并创建新的空数据库： `mysql -u _username_ -p _password_ -A mi -e "drop database mi; create database mi;"`
+. 从数据库转储还原mysql数据库： `mysql -u _username_ -p _password_ -A mi < /var/local/tmp/mysql-mi.sql`
+. 重新启动所有其他服务 `service servermanager start`
+

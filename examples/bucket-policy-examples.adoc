@@ -1,0 +1,120 @@
+---
+permalink: examples/bucket-policy-examples.html 
+sidebar: sidebar 
+keywords: iam, bucket policy, group policy, policy 
+summary: '以下是存储分段策略和组策略(IAM策略)的示例。' 
+---
+= 分段和组(IAM)策略示例
+:allow-uri-read: 
+
+
+[role="lead"]
+以下是存储分段策略和组策略(IAM策略)的示例。
+
+
+
+== 组策略(IAM)
+
+
+
+=== 主目录模式的存储分段访问
+
+此策略仅允许用户访问名为users username的分段中的对象。
+
+[source, json]
+----
+"Statement": [
+    {
+      "Sid": "AllowListBucketOfASpecificUserPrefix",
+      "Effect": "Allow",
+      "Action": "s3:ListBucket",
+      "Resource": "arn:aws:s3:::home",
+      "Condition": {
+        "StringLike": {
+          "s3:prefix": "${aws:username}/*"
+        }
+      }
+    },
+    {
+      "Sid": "AllowUserSpecificActionsOnlyInTheSpecificUserPrefix",
+      "Effect": "Allow",
+      "Action": "s3:*Object",
+      "Resource": "arn:aws:s3:::home/?/?/${aws:username}/*"
+    }
+
+  ]
+}
+----
+
+
+=== 拒绝创建对象锁定分段
+
+此策略将限制用户在存储分段上创建启用了对象锁定的存储分段。
+
+[NOTE]
+====
+此策略不会在StorageGRID UI中强制实施、而是仅通过S3 API强制实施。
+
+====
+[source, json]
+----
+{
+    "Statement": [
+        {
+            "Action": "s3:*",
+            "Effect": "Allow",
+            "Resource": "arn:aws:s3:::*"
+        },
+        {
+            "Action": [
+                "s3:PutBucketObjectLockConfiguration",
+                "s3:PutBucketVersioning"
+            ],
+            "Effect": "Deny",
+            "Resource": "arn:aws:s3:::*"
+        }
+    ]
+}
+----
+
+
+=== 将存储分段限制为具有只读访问权限的单个用户
+
+此策略允许单个用户对某个存储分段拥有只读访问权限、并明确授予所有其他用户的访问权限。将deny语句分组在策略顶部是一种较好的做法、可以加快评估速度。
+
+[source, json]
+----
+{
+    "Statement": [
+        {
+            "Sid": "Deny non user1",
+            "Effect": "Deny",
+            "NotPrincipal": {
+                "AWS": "urn:sgws:identity::34921514133002833665:user/user1"
+            },
+            "Action": [
+                "s3:*"
+            ],
+            "Resource": [
+                "urn:sgws:s3:::bucket1",
+                "urn:sgws:s3:::bucket1/*"
+            ]
+        },
+        {
+            "Sid": "Allow user1 read access to bucket bucket1",
+            "Effect": "Allow",
+            "Principal": {
+                "AWS": "urn:sgws:identity::34921514133002833665:user/user1"
+            },
+            "Action": [
+                "s3:GetObject",
+                "s3:ListBucket"
+            ],
+            "Resource": [
+                "urn:sgws:s3:::bucket1",
+                "urn:sgws:s3:::bucket1/*"
+            ]
+        }
+    ]
+}
+----

@@ -6,3 +6,5 @@ entries:
   url: "/examples/test-demonstrate-S3-encryption.html"
 - title: 测试和演示S3对象锁定
   url: "/examples/test-demonstrate-S3-object-lock.html"
+- title: 存储分段和组策略示例
+  url: "/examples/bucket-policy-examples.html"
