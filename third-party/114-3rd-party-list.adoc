@@ -37,7 +37,7 @@ summary: 已针对StorageGRID 11.4进行验证的第三方解决方案
 * 指向Storage Manager 6.4
 * Primestream
 * Quantum StorNext 5.4.0.1
-* Rubrik CDM 5.0.1 P1-1342
+* Rubrik CDM
 * Signiant
 * Splunk智能存储
 * varnish Enterprise 6.0.4

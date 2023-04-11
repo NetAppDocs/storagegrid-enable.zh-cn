@@ -1006,4 +1006,5 @@
   <block id="a6bea44dd82287d3b479cc898439fad9" category="sidebar">节点克隆注意事项和性能</block>
   <block id="e5b8a0443d27d612e7426f6f3f8681c2" category="sidebar">配置Datadog以收集StorageGRID SNMP指标和陷阱</block>
   <block id="45c8288f990abd9a185e596536152688" category="sidebar">存储分段和组策略示例</block>
+  <block id="38d38399d4a7514463d665125ae50a4a" category="list-text">Rubrik CDM</block>
 </blocks>

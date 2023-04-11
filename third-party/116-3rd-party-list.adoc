@@ -52,7 +52,7 @@ summary: 已针对StorageGRID 11.6进行验证的第三方解决方案
 * Primestream
 * Quantum StorNext 5.4.0.1
 * Reveille v10内部版本220706或更高版本
-* Rubrik CDM 5.0.1 P1-1342
+* Rubrik CDM
 * Signiant
 * 白雪片
 * Splunk智能存储
