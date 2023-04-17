@@ -6,9 +6,9 @@ summary: 节点克隆性能和最佳实践。
 ---
 = 节点克隆
 :allow-uri-read: 
-:icons: font
-:imagesdir: ../media/
 
+
+_Aron Klein_
 
 [role="lead"]
 节点克隆注意事项和性能。

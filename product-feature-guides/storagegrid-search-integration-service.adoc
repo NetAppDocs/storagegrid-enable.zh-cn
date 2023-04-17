@@ -6,9 +6,9 @@ summary: 本指南详细说明了如何使用Amazon OpenSearch服务或内部Ela
 ---
 = 配置StorageGRID 搜索集成服务
 :allow-uri-read: 
-:icons: font
-:imagesdir: ../media/
 
+
+_Angela Cheng_
 
 [role="lead"]
 本指南详细说明了如何使用Amazon OpenSearch服务或内部Elasticsearch配置NetApp StorageGRID 11.6搜索集成服务。

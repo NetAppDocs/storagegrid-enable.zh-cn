@@ -8,6 +8,8 @@ summary: 配置Datadog HQ以收集StorageGRID SNMP指标和陷阱。
 :allow-uri-read: 
 
 
+_Aron Klein_
+
 [role="lead"]
 配置Datadog以收集StorageGRID SNMP指标和陷阱。
 

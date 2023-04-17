@@ -8,6 +8,8 @@ summary: 通过Hadoop、可以使用简单的编程框架在多个计算机集�
 :allow-uri-read: 
 
 
+_Angela Cheng_
+
 [role="lead"]
 Hadoop在一段时间内一直是数据科学家的青睐。通过Hadoop、可以使用简单的编程框架在多个计算机集群之间分布式处理大型数据集。Hadoop旨在从单个服务器扩展到数千台计算机、每台计算机都拥有本地计算和存储。
 

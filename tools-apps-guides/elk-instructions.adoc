@@ -8,6 +8,8 @@ summary: '通过StorageGRID 11.6系统日志转发功能、您可以配置外部
 :allow-uri-read: 
 
 
+_Angela Cheng_
+
 [role="lead"]
 通过StorageGRID 11.6系统日志转发功能、您可以配置外部系统日志服务器来收集和分析StorageGRID 日志消息。ELK (Elasticsearch、Logstash、Kibana)已成为最受欢迎的日志分析解决方案之一。请观看 https://www.netapp.tv/details/29396["使用ELK视频进行StorageGRID 日志分析"] 查看ELK配置示例以及如何使用它来识别失败的S3请求并对其进行故障排除。本文提供了Logstash配置、Kibana查询、图表和信息板的示例文件、可帮助您快速开始StorageGRID 日志管理和分析。
 

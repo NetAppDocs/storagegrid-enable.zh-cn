@@ -14,3 +14,5 @@ entries:
   url: "/tools-apps-guides/federate-prometheus.html"
 - title: 配置Datadog以收集StorageGRID SNMP指标和陷阱
   url: "/tools-apps-guides/use-datadog-snmp.html"
+- title: 使用rclone在StorageGRID 上迁移、放置和删除对象
+  url: "/tools-apps-guides/use-rclone-migrate-delete.html"

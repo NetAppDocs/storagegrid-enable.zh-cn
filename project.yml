@@ -68,6 +68,8 @@ homepage:
       url: "/tools-apps-guides/federate-prometheus.html"
     - title: 配置Datadog以收集StorageGRID SNMP指标和陷阱
       url: "/tools-apps-guides/use-datadog-snmp.html"
+    - title: 使用rclone在StorageGRID 上迁移、放置和删除对象
+      url: "/tools-apps-guides/use-rclone-migrate-delete.html"
   - title: 过程和API示例
     links:
     - title: 测试和演示S3加密

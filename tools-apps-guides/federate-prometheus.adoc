@@ -8,6 +8,8 @@ summary: 本技术报告详细说明了如何为NetApp StorageGRID 11.6配置外
 :allow-uri-read: 
 
 
+_Aron Klein_
+
 [role="lead"]
 本技术报告详细说明了如何为NetApp StorageGRID 11.6配置外部Prometheus和Grafana服务。
 

@@ -6,9 +6,9 @@ summary: S3cmd是一个用于S3操作的免费命令行工具和客户端。您�
 ---
 = 使用S3cmd测试和演示StorageGRID 上的S3访问
 :allow-uri-read: 
-:icons: font
-:imagesdir: ../media/
 
+
+_Aron Klein_
 
 [role="lead"]
 S3cmd是一个用于S3操作的免费命令行工具和客户端。您可以使用s3cmd在StorageGRID 上测试和演示S3访问。
