@@ -12,20 +12,16 @@ sidebar:
   entries:
   - title: 如何启用StorageGRID
     url: "/index.html"
-  - title: 新增功能
-    url: "/whats-new.html"
   - section: third-party
   - section: product-feature-guides
   - section: tools-apps-guides
   - section: examples
+  - title: 博客文章
+    url: "/blogs.html"
   - title: StorageGRID 文档
     url: "/storagegrid-documentation.html"
 homepage:
   tiles:
-  - title: 入门
-    links:
-    - title: 新增功能
-      url: "/whats-new.html"
   - title: 经验证的第三方解决方案
     links:
     - title: 概述
@@ -78,6 +74,10 @@ homepage:
       url: "/examples/test-demonstrate-S3-object-lock.html"
     - title: 存储分段和组策略示例
       url: "/examples/bucket-policy-examples.html"
+  - title: 博客文章
+    links:
+    - title: StorageGRID 博客
+      url: "/blogs.html"
   - title: 演示教程
     links:
     - title: StorageGRID 视频库

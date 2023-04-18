@@ -597,9 +597,7 @@
   <block id="d00aaeae3c5233d689ab6c1fa3391d6c" category="paragraph">确认保留示意图显示了存储在StorageGRID 本地和云存储池中用于备份的对象。</block>
   <block id="eccd0905bbb9877cfd0ba7f4cc26a3c6" category="paragraph">确认在触发ILM规则后、云存储池中存在副本、您可以在本地检索对象而无需执行对象还原。</block>
   <block id="c27ce751e131719af380702f6711a49d" category="sidebar">如何启用StorageGRID</block>
-  <block id="33871b6190a8d5adbe8b15282054766c" category="sidebar">新增功能</block>
   <block id="3778f3873debfe11e2ace6bb6af1e417" category="sidebar">StorageGRID 文档</block>
-  <block id="be11c74c1dd7f307bb80183a90dc2067" category="sidebar">入门</block>
   <block id="7b99b0e0bb2f7f24ff67fbcc39f899f1" category="sidebar">经验证的第三方解决方案</block>
   <block id="3b878279a04dc47d60932cb294d96259" category="sidebar">概述</block>
   <block id="bc7a074f94cb3e6b09ba943468b03bd0" category="sidebar">产品功能指南</block>
@@ -1044,4 +1042,55 @@
   <block id="962d558c72bf1abd2cc8b9e5afeb68a3" category="list-text">*删除分段和所有对象内容*</block>
   <block id="7e5b74d29f73a6689f5cd32f8ae54eb5" category="paragraph"><block ref="f86e9aa25395ad4bf2f0b9bc89f29ea1" prefix="" category="inline-code"></block></block>
   <block id="5773479209c86b5b3661ca194636b3ba" category="paragraph"># rclone purge sgdemo：test01 -progress</block>
+  <block id="2cb17b2342827cbd786d4c1f770e1500" category="summary">您可以在此处找到一些NetApp StorageGRID 博客。</block>
+  <block id="83ebfab760fb0afe2d53222522d9d7d0" category="doc">NetApp StorageGRID 博客</block>
+  <block id="cef804ce13ad4c50f8e67f920713d8e1" category="paragraph">您可以在此处找到一些很棒的NetApp StorageGRID 博客：</block>
+  <block id="47616b8bc2ca38cd93158370f35f1fb1" category="inline-link">StorageGRID 和ONTAP S3支持：差异、相似之处和集成</block>
+  <block id="78b9682420d9ab94f161ea542039e85c" category="list-text"><block ref="78b9682420d9ab94f161ea542039e85c" category="inline-link-rx"></block></block>
+  <block id="4624650819454e10f32e020046bb76ae" category="inline-link">如何在符合3：2：1的架构中使用一个命令备份Epic Systems EHR数据库</block>
+  <block id="224e9eec2fd87e16d2279d6b3af39ffd" category="list-text"><block ref="224e9eec2fd87e16d2279d6b3af39ffd" category="inline-link-rx"></block></block>
+  <block id="0640f8426a4e2b6fd26e5781a0d83423" category="inline-link">使用BlueXP通过符合3：2：1的备份策略保护Epic EHR</block>
+  <block id="877c5c5f7c8dea5977d0afa33b04ba27" category="list-text"><block ref="877c5c5f7c8dea5977d0afa33b04ba27" category="inline-link-rx"></block></block>
+  <block id="95a83699f1df2afc6db5cefab9b1faea" category="inline-link">请采用这些指标并绘制图表</block>
+  <block id="0d3070d9b3e203b82acc3648bc6640bc" category="list-text"><block ref="0d3070d9b3e203b82acc3648bc6640bc" category="inline-link-rx"></block></block>
+  <block id="c7ac4da048763b47bbcdece35b85888c" category="inline-link">重温《天国赛》：StorageGRID 和FabricPool 是否仍在度其度蜜月？</block>
+  <block id="55b8b087867c64daf35174d860d118f8" category="list-text"><block ref="55b8b087867c64daf35174d860d118f8" category="inline-link-rx"></block></block>
+  <block id="66a87c45817234dc192962234400d3be" category="inline-link">存储和管理内部备份和复制数据</block>
+  <block id="0c9ab203493ddea3f1fa7c7a3e7ea13e" category="list-text"><block ref="0c9ab203493ddea3f1fa7c7a3e7ea13e" category="inline-link-rx"></block></block>
+  <block id="e53ca4cf41c016e5c7bcc4ddd097afa4" category="inline-link">将StorageGRID 与开源ELK堆栈相集成以增强客户体验</block>
+  <block id="18221e85be3f55a15b54ea06c961322b" category="list-text"><block ref="18221e85be3f55a15b54ea06c961322b" category="inline-link-rx"></block></block>
+  <block id="553a4eedf96f515c58307c5a4de771f4" category="inline-link">启用StorageGRID AutoSupport 并与Active IQ 集成</block>
+  <block id="078ed0e8d4116a19a21863270ee53134" category="list-text"><block ref="078ed0e8d4116a19a21863270ee53134" category="inline-link-rx"></block></block>
+  <block id="4597c6456c903b0438172862b21e44a3" category="inline-link">适用于采用StorageGRID 的Amazon S3 alpha版本的挂载点</block>
+  <block id="0fc658012801f67f5e1fbf52dea93faa" category="list-text"><block ref="0fc658012801f67f5e1fbf52dea93faa" category="inline-link-rx"></block></block>
+  <block id="090d6d22cbcf3abf1c59e0bbfa33247e" category="inline-link">NetApp StorageGRID 获得通用标准安全认证</block>
+  <block id="7518fead03521bc046cf7f6aa25d27f5" category="list-text"><block ref="7518fead03521bc046cf7f6aa25d27f5" category="inline-link-rx"></block></block>
+  <block id="179a10301fc37bd566b117df96c0cf5a" category="inline-link">StorageGRID 获得KPMG合规认证</block>
+  <block id="ea5d153cad1f6ffbb88f8e766d3ba9ad" category="list-text"><block ref="ea5d153cad1f6ffbb88f8e766d3ba9ad" category="inline-link-rx"></block></block>
+  <block id="2ed8ae3807508906882c40f16d022099" category="inline-link">StorageGRID 续订了NF203和ISO/IEC 25051合规性认证</block>
+  <block id="22056b4073bdfc4a3a0d7e41b5c73905" category="list-text"><block ref="22056b4073bdfc4a3a0d7e41b5c73905" category="inline-link-rx"></block></block>
+  <block id="13a0bb19d4dba2a85f8ce89067551360" category="inline-link">StorageGRID 是否已经与COSI保持了舒适的关系？</block>
+  <block id="d3ae1cab85f1bc42cc244202309c2052" category="list-text"><block ref="d3ae1cab85f1bc42cc244202309c2052" category="inline-link-rx"></block></block>
+  <block id="2ed6d70b5e2da609ab0189205d91bfdf" category="inline-link">适用于服务提供商的NetApp StorageGRID</block>
+  <block id="b0683f88401e885e0b3666425fc2ece4" category="list-text"><block ref="b0683f88401e885e0b3666425fc2ece4" category="inline-link-rx"></block></block>
+  <block id="6cbbedbe1a7c21e39c47b4f1a82a163f" category="inline-link">NetApp Cloud Insights 增加了StorageGRID 库信息板</block>
+  <block id="2bcdd95f3cb8f3103d11364e112764a4" category="list-text"><block ref="2bcdd95f3cb8f3103d11364e112764a4" category="inline-link-rx"></block></block>
+  <block id="19c82d20138dc6c19a1867bb09242586" category="inline-link">借助NetApp和Alluio打造现代化的分析工作负载</block>
+  <block id="4cc268a01e6c9acfc87fa9d77f1ee5c7" category="list-text"><block ref="4cc268a01e6c9acfc87fa9d77f1ee5c7" category="inline-link-rx"></block></block>
+  <block id="a81323b2951f0fa374a55f20035b40fa" category="list-text"><block ref="a81323b2951f0fa374a55f20035b40fa" category="inline-link-rx"></block></block>
+  <block id="75b3da38185f43fa45f8c192cf70fee6" category="inline-link">所有操作都从对象锁定…开始 为关键备份应用程序构建S3存储生态系统</block>
+  <block id="d26d933f097b6d60c44039496ebd9870" category="list-text"><block ref="d26d933f097b6d60c44039496ebd9870" category="inline-link-rx"></block></block>
+  <block id="17691c35f7a924dab178837550e01894" category="inline-link">在StorageGRID 上构建数据湖</block>
+  <block id="3111459beb2b4cd09e2c8a19cea53dae" category="list-text"><block ref="3111459beb2b4cd09e2c8a19cea53dae" category="inline-link-rx"></block></block>
+  <block id="af9f1a77fa9bd1ac998aca9149105fc2" category="inline-link">适用于StorageGRID 的DataLock和勒索软件保护支持</block>
+  <block id="17158b84260059ff1aa18625167a5a6c" category="list-text"><block ref="17158b84260059ff1aa18625167a5a6c" category="inline-link-rx"></block></block>
+  <block id="b7eaf149486b5f672a67a1b9225ffdf1" category="inline-link">在StorageGRID for Snowfl您 的数据上除以数据</block>
+  <block id="43c09b3603cc727adf8a48b8bcb279fa" category="list-text"><block ref="43c09b3603cc727adf8a48b8bcb279fa" category="inline-link-rx"></block></block>
+  <block id="49cef513124e46e406c7202a3021a460" category="inline-link">利用由NetApp和Modzy提供支持的MLOps实现可解释的人工智能</block>
+  <block id="cbbde27bb1462ff9c4461c927cdea6f8" category="list-text"><block ref="cbbde27bb1462ff9c4461c927cdea6f8" category="inline-link-rx"></block></block>
+  <block id="d75270f11a8c4b0a352ba60a70b2e51e" category="inline-link">巧克力、滑板、表和大型机有哪些共同之处？</block>
+  <block id="3e19204799798377076bd778ab168941" category="list-text"><block ref="3e19204799798377076bd778ab168941" category="inline-link-rx"></block></block>
+  <block id="bda9db150ef3470445a403dda26b131c" category="admonition">如果需要忽略SSL证书、请使用-no-check-certificate。</block>
+  <block id="47edbb9e6d6e6e874eb40c274a0e2e0f" category="sidebar">博客文章</block>
+  <block id="3e786c26b331e7dd273f5cb3ee10f59e" category="sidebar">StorageGRID 博客</block>
 </blocks>

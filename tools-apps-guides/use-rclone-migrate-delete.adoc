@@ -324,6 +324,10 @@ e/n/d/r/c/s/q> q
 # rclone mkdir sgdemo：test01
 
 ====
++
+
+NOTE: 如果需要忽略SSL证书、请使用-no-check-certificate。
+
 * *列出所有分段：*
 +
 `rclone lsd remote:`
