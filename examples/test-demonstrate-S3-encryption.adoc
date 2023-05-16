@@ -11,7 +11,7 @@ summary: StorageGRID 和S3 API提供了多种不同的方法来加密空闲数�
 _Aron Klein_
 
 [role="lead"]
-StorageGRID 和S3 API提供了多种不同的方法来加密空闲数据。要了解更多信息，请参见 https://docs.netapp.com/us-en/storagegrid-116/admin/reviewing-storagegrid-encryption-methods.html["查看 StorageGRID 加密方法"^]。
+StorageGRID 和S3 API提供了多种不同的方法来加密空闲数据。要了解更多信息，请参见 https://["查看 StorageGRID 加密方法"^]。
 
 本指南将演示S3 API加密方法。
 

@@ -24,9 +24,9 @@ StorageGRID 支持三种类型的平台服务。
 * *搜索集成服务*。将简单存储服务(S3)对象元数据发送到指定的Elasticsearch索引、您可以在该索引中使用外部服务搜索或分析元数据。
 
 
-S3租户可通过租户管理器UI配置平台服务。有关详细信息，请参见 https://docs.netapp.com/us-en/storagegrid-116/tenant/considerations-for-using-platform-services.html["使用平台服务的注意事项"^]。
+S3租户可通过租户管理器UI配置平台服务。有关详细信息，请参见 https://["使用平台服务的注意事项"^]。
 
-本文档是对的补充 https://docs.netapp.com/us-en/storagegrid-116/tenant/index.html["《StorageGRID 11.6租户指南》"^] 和为搜索集成服务的端点和存储分段配置提供了分步说明和示例。此处提供的Amazon Web Services (AWS)或内部Elasticsearch设置说明仅用于基本测试或演示。
+本文档是对的补充 https://["《StorageGRID 11.6租户指南》"^] 和为搜索集成服务的端点和存储分段配置提供了分步说明和示例。此处提供的Amazon Web Services (AWS)或内部Elasticsearch设置说明仅用于基本测试或演示。
 
 受众应熟悉网格管理器和租户管理器、并可访问S3浏览器、以便为StorageGRID 搜索集成测试执行基本的上传(PUT)和下载(GET)操作。
 
@@ -68,7 +68,7 @@ NOTE: 要订阅OpenSearch服务、您必须拥有有效的AWS控制台登录名�
 +
 *** 将突出显示的文本替换为您自己的AWS身份和访问管理(IAM) ID和用户名。
 *** 将突出显示的文本(IP地址)替换为用于访问AWS控制台的本地计算机的公有 IP地址。
-*** 打开浏览器选项卡以 https://checkip.amazonaws.com/["https://checkip.amazonaws.com"^] 以查找公有 IP。
+*** 打开浏览器选项卡以 https://["https://checkip.amazonaws.com"^] 以查找公有 IP。
 +
 [source, json]
 ----
@@ -321,6 +321,6 @@ image::../media/storagegrid-search-integration-service/sg-sis-query-two-sample.p
 
 要了解有关本文档中所述信息的更多信息，请查看以下文档和 / 或网站：
 
-* https://docs.netapp.com/us-en/storagegrid-116/tenant/what-platform-services-are.html["什么是平台服务"^]
-* https://docs.netapp.com/us-en/storagegrid-116/index.html["StorageGRID 11.6 文档"^]
+* https://["什么是平台服务"^]
+* https://["StorageGRID 11.6 文档"^]
 

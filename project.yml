@@ -26,6 +26,8 @@ homepage:
     links:
     - title: 概述
       url: "/third-party/index.html"
+    - title: StorageGRID 11.7
+      url: "/third-party/117-3rd-party-list.html"
     - title: StorageGRID 11.6.
       url: "/third-party/116-3rd-party-list.html"
     - title: StorageGRID 11.5
@@ -100,6 +102,8 @@ homepage:
       url: https://community.netapp.com/t5/Object-Storage/bd-p/object-storage
   - title: StorageGRID 文档
     links:
+    - title: StorageGRID 11.7
+      url: https://docs.netapp.com/us-en/storagegrid-117/index.html
     - title: StorageGRID 11.6.
       url: https://docs.netapp.com/us-en/storagegrid-116/index.html
     - title: StorageGRID 11.5
