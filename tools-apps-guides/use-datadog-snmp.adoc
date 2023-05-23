@@ -25,7 +25,7 @@ Datadog是一种监控解决方案 、可提供指标、可视化和警报功能
 
 Datadog提供了一种将产品MIB文件转换为映射SNMP消息所需的数据日志参考文件的方法。
 
-按照找到的说明生成用于数据日志陷阱解析映射的StorageGRID YAML文件 https://["此处"^]。+将此文件放在/etc/datadog-agent/conf.d/snmp.d/traps_db/+中
+按照找到的说明生成用于数据日志陷阱解析映射的StorageGRID YAML文件 https://docs.datadoghq.com/network_monitoring/devices/snmp_traps/?tab=yaml["此处"^]。+将此文件放在/etc/datadog-agent/conf.d/snmp.d/traps_db/+中
 
 * link:../media/datadog/NETAPP-STORAGEGRID-MIB.yml["下载陷阱YAML文件"] +
 +
@@ -35,7 +35,7 @@ Datadog提供了一种将产品MIB文件转换为映射SNMP消息所需的数据
 
 
 
-此StorageGRID 配置文件YAML文件用于数据日志指标映射、此文件是按照找到的说明生成的 https://["此处"^]。+将此文件放置在/etc/datadog-agent/conf.d/snmp.d/profiles/+中
+此StorageGRID 配置文件YAML文件用于数据日志指标映射、此文件是按照找到的说明生成的 https://datadoghq.dev/integrations-core/tutorials/snmp/introduction/["此处"^]。+将此文件放置在/etc/datadog-agent/conf.d/snmp.d/profiles/+中
 
 * link:../media/datadog/netapp-storagegrid.yaml["下载配置文件YAML文件"] +
 +

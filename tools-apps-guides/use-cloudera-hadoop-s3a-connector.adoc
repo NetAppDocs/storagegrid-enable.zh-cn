@@ -39,8 +39,8 @@ Hadoop在一段时间内一直是数据科学家的青睐。通过Hadoop、可�
 
 === 安装Java软件包
 
-. 检查 https://["Cloudera支持表"^] 支持的JDK版本。
-. 下载 https://["Java 11.x软件包"^] 与Cloudera集群操作系统匹配。将此软件包复制到集群中的每个主机。在此示例中、rpm软件包用于CentOS。
+. 检查 https://docs.cloudera.com/cdp-private-cloud-upgrade/latest/release-guide/topics/cdpdc-java-requirements.html["Cloudera支持表"^] 支持的JDK版本。
+. 下载 https://www.oracle.com/java/technologies/downloads/["Java 11.x软件包"^] 与Cloudera集群操作系统匹配。将此软件包复制到集群中的每个主机。在此示例中、rpm软件包用于CentOS。
 . 以root身份或使用具有sudo权限的帐户登录到每个主机。在每个主机上执行以下步骤：
 +
 .. 安装软件包：

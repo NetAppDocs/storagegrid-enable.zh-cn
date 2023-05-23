@@ -7,7 +7,7 @@ settings:
     pdf_enabled: false
     harmony_enabled: false
   search: storagegrid-116
-  langs: zh-cn,us-en,ja-jp,ko-kr,zh-tw,de-de,es-es,fr-fr
+  langs: zh-cn,us-en,ja-jp,ko-kr,zh-tw,de-de,es-es,fr-fr,it-it
 sidebar:
   entries:
   - title: 如何启用StorageGRID

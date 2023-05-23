@@ -17,7 +17,7 @@ rclone是一种用于S3操作的免费命令行工具和客户端。您可以使
 
 == 安装和配置rclone
 
-要在工作站或服务器上安装rclone、请从下载它 https://["rclone.org"^]。
+要在工作站或服务器上安装rclone、请从下载它 https://rclone.org/downloads/["rclone.org"^]。
 
 
 
