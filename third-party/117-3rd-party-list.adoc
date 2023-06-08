@@ -25,6 +25,7 @@ summary: 第三方解决方案已通过StorageGRID 11.7的验证
 * Commvault 11
 * Ctera门户6.
 * 达莱特
+* Datadobi
 * Data Dynamics StorageX
 * 默认X
 * 磁盘转换数据
