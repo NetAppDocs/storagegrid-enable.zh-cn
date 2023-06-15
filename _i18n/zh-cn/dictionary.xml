@@ -995,9 +995,7 @@
   <block id="3f2327c90ede247dca9387ef500bf746" category="doc">分段和组(IAM)策略示例</block>
   <block id="640ca9533a2fd150e7d3ed390e2aae66" category="section-title">组策略(IAM)</block>
   <block id="06c73db3763c74cabb8ece8e96fe7c5d" category="section-title">主目录模式的存储分段访问</block>
-  <block id="0a86daa722ca043525363e55dce2f201" category="paragraph">此策略仅允许用户访问名为users username的分段中的对象。</block>
   <block id="8569c05df75ec9b148a67ed5998ad8b0" category="section-title">拒绝创建对象锁定分段</block>
-  <block id="9cea9229d238df9d490e17e9c09f43d4" category="paragraph">此策略将限制用户在存储分段上创建启用了对象锁定的存储分段。</block>
   <block id="01a232853896677ed5b2f61bbd35128f" category="paragraph">此策略不会在StorageGRID UI中强制实施、而是仅通过S3 API强制实施。</block>
   <block id="6d16e4029056ceaf0b44cac8903e3f2e" category="section-title">将存储分段限制为具有只读访问权限的单个用户</block>
   <block id="c49b1c74a2176733b070d19773700eb6" category="paragraph">此策略允许单个用户对某个存储分段拥有只读访问权限、并明确授予所有其他用户的访问权限。将deny语句分组在策略顶部是一种较好的做法、可以加快评估速度。</block>
@@ -1134,4 +1132,11 @@
   <block id="29007b92e2b6688072358d8f25529d24" category="paragraph"><block ref="29007b92e2b6688072358d8f25529d24" category="inline-link-rx"></block></block>
   <block id="d31ba7e4c6f469a6c88f05aac3e0e91c" category="list-text">Datadobi</block>
   <block id="8727881150b0ace8b598a648cdfcd4e1" category="sidebar">NetApp StorageGRID 是一款软件定义的对象存储套件、支持公共、私有和混合多云环境中的各种用例。StorageGRID 为Amazon S3 API提供本机支持、并提供行业领先的创新技术、例如自动化生命周期管理、以便长期经济高效地存储、保护和保留非结构化数据。</block>
+  <block id="a88f9b6efeacfebaca582083cb9bd819" category="paragraph">此组策略仅允许用户访问名为Users username的分段中的对象。</block>
+  <block id="a16b735f7d349dcc23b45a7a101460f3" category="paragraph">此组策略将限制用户创建在存储分段上启用了对象锁定的存储分段。</block>
+  <block id="5ccd1d9b602b536952729ea6084688f1" category="section-title">对象锁定保留限制</block>
+  <block id="e2fc2c3ef79779a5164b3961924241c1" category="paragraph">此存储分段策略会将对象锁定保留期限限制为10天或更短</block>
+  <block id="578c6a63b7f6efe56f08f3f9c3c5a690" category="section-title">按版本ID限制用户删除对象</block>
+  <block id="151d6c6a5174c6a3f739cdb8ec8d1ce5" category="paragraph">此组策略将限制用户按版本ID删除受版本控制的对象</block>
+  <block id="d5c59b735ec0b06ade2e2d7c842dfe9e" category="paragraph">此存储分段策略将限制用户(由用户ID "56622399308951294926"标识)按版本ID删除版本控制的对象</block>
 </blocks>

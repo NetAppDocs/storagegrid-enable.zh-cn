@@ -19,7 +19,7 @@ summary: '以下是存储分段策略和组策略(IAM策略)的示例。'
 
 === 主目录模式的存储分段访问
 
-此策略仅允许用户访问名为users username的分段中的对象。
+此组策略仅允许用户访问名为Users username的分段中的对象。
 
 [source, json]
 ----
@@ -49,7 +49,7 @@ summary: '以下是存储分段策略和组策略(IAM策略)的示例。'
 
 === 拒绝创建对象锁定分段
 
-此策略将限制用户在存储分段上创建启用了对象锁定的存储分段。
+此组策略将限制用户创建在存储分段上启用了对象锁定的存储分段。
 
 [NOTE]
 ====
@@ -74,6 +74,91 @@ summary: '以下是存储分段策略和组策略(IAM策略)的示例。'
             "Resource": "arn:aws:s3:::*"
         }
     ]
+}
+----
+
+
+=== 对象锁定保留限制
+
+此存储分段策略会将对象锁定保留期限限制为10天或更短
+
+[source, json]
+----
+{
+ "Version":"2012-10-17",
+ "Id":"CustSetRetentionLimits",
+ "Statement": [
+   {
+    "Sid":"CustSetRetentionPeriod",
+    "Effect":"Deny",
+    "Principal":"*",
+    "Action": [
+      "s3:PutObjectRetention"
+    ],
+    "Resource":"arn:aws:s3:::testlock-01/*",
+    "Condition": {
+      "NumericGreaterThan": {
+        "s3:object-lock-remaining-retention-days":"10"
+      }
+    }
+   }
+  ]
+}
+----
+
+
+=== 按版本ID限制用户删除对象
+
+此组策略将限制用户按版本ID删除受版本控制的对象
+
+[source, json]
+----
+{
+    "Statement": [
+        {
+            "Action": [
+                "s3:DeleteObjectVersion"
+            ],
+            "Effect": "Deny",
+            "Resource": "arn:aws:s3:::*"
+        },
+        {
+            "Action": "s3:*",
+            "Effect": "Allow",
+            "Resource": "arn:aws:s3:::*"
+        }
+    ]
+}
+----
+此存储分段策略将限制用户(由用户ID "56622399308951294926"标识)按版本ID删除版本控制的对象
+
+[source, json]
+----
+{
+  "Statement": [
+    {
+      "Action": [
+        "s3:DeleteObjectVersion"
+      ],
+      "Effect": "Deny",
+      "Resource": "arn:aws:s3:::verdeny/*",
+      "Principal": {
+        "AWS": [
+          "56622399308951294926"
+        ]
+      }
+    },
+    {
+      "Action": "s3:*",
+      "Effect": "Allow",
+      "Resource": "arn:aws:s3:::verdeny/*",
+      "Principal": {
+        "AWS": [
+          "56622399308951294926"
+        ]
+      }
+    }
+  ]
 }
 ----
 
