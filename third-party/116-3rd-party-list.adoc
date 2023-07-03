@@ -60,7 +60,7 @@ summary: 已针对StorageGRID 11.6进行验证的第三方解决方案
 * Splunk智能存储
 * 轻松实现存储
 * varnish Enterprise 6.0.4
-* Veeam 11.
+* Veeam 12.
 * Veritas Enterprise Vault 14
 * Veritas NetBackup 8.0
 * Vertica 10.x
@@ -78,7 +78,7 @@ summary: 已针对StorageGRID 11.6进行验证的第三方解决方案
 * Commvault 11功能版本26
 * IBM文件集
 * OpenText文档21.4
-* Veeam 11.
+* Veeam 12.
 * Veritas Enterprise Vault 14.2.2
 * Veritas NetBackup 10.1.1及更高版本
 

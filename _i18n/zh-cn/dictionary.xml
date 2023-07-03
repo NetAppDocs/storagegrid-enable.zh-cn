@@ -1139,4 +1139,5 @@
   <block id="578c6a63b7f6efe56f08f3f9c3c5a690" category="section-title">按版本ID限制用户删除对象</block>
   <block id="151d6c6a5174c6a3f739cdb8ec8d1ce5" category="paragraph">此组策略将限制用户按版本ID删除受版本控制的对象</block>
   <block id="d5c59b735ec0b06ade2e2d7c842dfe9e" category="paragraph">此存储分段策略将限制用户(由用户ID "56622399308951294926"标识)按版本ID删除版本控制的对象</block>
+  <block id="c5d41f2814e9eff276a87d54a833d212" category="list-text">Veeam 12.</block>
 </blocks>
