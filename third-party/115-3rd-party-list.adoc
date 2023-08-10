@@ -18,6 +18,7 @@ summary: 已针对StorageGRID 11.5进行验证的第三方解决方案
 这些解决方案已与相应的合作伙伴合作进行了测试。
 
 * Activio
+* Alluxio
 * Bridgestor
 * Cantemo
 * Citrix内容协作
@@ -42,8 +43,10 @@ summary: 已针对StorageGRID 11.5进行验证的第三方解决方案
 * Primestream
 * Quantum StorNext 5.4.0.1
 * Rubrik CDM
+* S3a
 * Signiant
 * Splunk智能存储
+* Trino
 * varnish Enterprise 6.0.4
 * Veeam 11.
 * Veritas Enterprise Vault 11
