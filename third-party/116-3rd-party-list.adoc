@@ -59,6 +59,7 @@ summary: 已针对StorageGRID 11.6进行验证的第三方解决方案
 * S3a
 * Signiant
 * 白雪片
+* 光谱逻辑在本机Glacier
 * Splunk智能存储
 * 轻松实现存储
 * Trino
