@@ -692,7 +692,7 @@ DATABASE | UseDepotForWrites | 1
 
 要了解有关本文档中所述信息的更多信息，请查看以下文档和 / 或网站：
 
-* link:https://docs.netapp.com/sgws-114/index.jsp["NetApp StorageGRID 11.4产品文档"^]
+* link:https://docs.netapp.com/us-en/storagegrid-117/["NetApp StorageGRID 11.7产品文档"^]
 * link:https://www.netapp.com/pdf.html?item=/media/7931-ds-3613.pdf["StorageGRID 数据表"^]
 * link:https://www.vertica.com/documentation/vertica/10-1-x-documentation/["Vertica 10.1产品文档"^]
 
