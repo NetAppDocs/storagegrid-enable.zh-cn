@@ -1042,50 +1042,22 @@
   <block id="83ebfab760fb0afe2d53222522d9d7d0" category="doc">NetApp StorageGRID 博客</block>
   <block id="cef804ce13ad4c50f8e67f920713d8e1" category="paragraph">您可以在此处找到一些很棒的NetApp StorageGRID 博客：</block>
   <block id="47616b8bc2ca38cd93158370f35f1fb1" category="inline-link">StorageGRID 和ONTAP S3支持：差异、相似之处和集成</block>
-  <block id="78b9682420d9ab94f161ea542039e85c" category="list-text"><block ref="78b9682420d9ab94f161ea542039e85c" category="inline-link-rx"></block></block>
   <block id="4624650819454e10f32e020046bb76ae" category="inline-link">如何在符合3：2：1的架构中使用一个命令备份Epic Systems EHR数据库</block>
-  <block id="224e9eec2fd87e16d2279d6b3af39ffd" category="list-text"><block ref="224e9eec2fd87e16d2279d6b3af39ffd" category="inline-link-rx"></block></block>
-  <block id="0640f8426a4e2b6fd26e5781a0d83423" category="inline-link">使用BlueXP通过符合3：2：1的备份策略保护Epic EHR</block>
-  <block id="877c5c5f7c8dea5977d0afa33b04ba27" category="list-text"><block ref="877c5c5f7c8dea5977d0afa33b04ba27" category="inline-link-rx"></block></block>
   <block id="95a83699f1df2afc6db5cefab9b1faea" category="inline-link">请采用这些指标并绘制图表</block>
-  <block id="0d3070d9b3e203b82acc3648bc6640bc" category="list-text"><block ref="0d3070d9b3e203b82acc3648bc6640bc" category="inline-link-rx"></block></block>
-  <block id="c7ac4da048763b47bbcdece35b85888c" category="inline-link">重温《天国赛》：StorageGRID 和FabricPool 是否仍在度其度蜜月？</block>
-  <block id="55b8b087867c64daf35174d860d118f8" category="list-text"><block ref="55b8b087867c64daf35174d860d118f8" category="inline-link-rx"></block></block>
-  <block id="66a87c45817234dc192962234400d3be" category="inline-link">存储和管理内部备份和复制数据</block>
-  <block id="0c9ab203493ddea3f1fa7c7a3e7ea13e" category="list-text"><block ref="0c9ab203493ddea3f1fa7c7a3e7ea13e" category="inline-link-rx"></block></block>
   <block id="e53ca4cf41c016e5c7bcc4ddd097afa4" category="inline-link">将StorageGRID 与开源ELK堆栈相集成以增强客户体验</block>
-  <block id="18221e85be3f55a15b54ea06c961322b" category="list-text"><block ref="18221e85be3f55a15b54ea06c961322b" category="inline-link-rx"></block></block>
-  <block id="553a4eedf96f515c58307c5a4de771f4" category="inline-link">启用StorageGRID AutoSupport 并与Active IQ 集成</block>
-  <block id="078ed0e8d4116a19a21863270ee53134" category="list-text"><block ref="078ed0e8d4116a19a21863270ee53134" category="inline-link-rx"></block></block>
   <block id="4597c6456c903b0438172862b21e44a3" category="inline-link">适用于采用StorageGRID 的Amazon S3 alpha版本的挂载点</block>
-  <block id="0fc658012801f67f5e1fbf52dea93faa" category="list-text"><block ref="0fc658012801f67f5e1fbf52dea93faa" category="inline-link-rx"></block></block>
   <block id="090d6d22cbcf3abf1c59e0bbfa33247e" category="inline-link">NetApp StorageGRID 获得通用标准安全认证</block>
-  <block id="7518fead03521bc046cf7f6aa25d27f5" category="list-text"><block ref="7518fead03521bc046cf7f6aa25d27f5" category="inline-link-rx"></block></block>
   <block id="179a10301fc37bd566b117df96c0cf5a" category="inline-link">StorageGRID 获得KPMG合规认证</block>
-  <block id="ea5d153cad1f6ffbb88f8e766d3ba9ad" category="list-text"><block ref="ea5d153cad1f6ffbb88f8e766d3ba9ad" category="inline-link-rx"></block></block>
   <block id="2ed8ae3807508906882c40f16d022099" category="inline-link">StorageGRID 续订了NF203和ISO/IEC 25051合规性认证</block>
-  <block id="22056b4073bdfc4a3a0d7e41b5c73905" category="list-text"><block ref="22056b4073bdfc4a3a0d7e41b5c73905" category="inline-link-rx"></block></block>
-  <block id="13a0bb19d4dba2a85f8ce89067551360" category="inline-link">StorageGRID 是否已经与COSI保持了舒适的关系？</block>
-  <block id="d3ae1cab85f1bc42cc244202309c2052" category="list-text"><block ref="d3ae1cab85f1bc42cc244202309c2052" category="inline-link-rx"></block></block>
   <block id="2ed6d70b5e2da609ab0189205d91bfdf" category="inline-link">适用于服务提供商的NetApp StorageGRID</block>
-  <block id="b0683f88401e885e0b3666425fc2ece4" category="list-text"><block ref="b0683f88401e885e0b3666425fc2ece4" category="inline-link-rx"></block></block>
   <block id="6cbbedbe1a7c21e39c47b4f1a82a163f" category="inline-link">NetApp Cloud Insights 增加了StorageGRID 库信息板</block>
-  <block id="2bcdd95f3cb8f3103d11364e112764a4" category="list-text"><block ref="2bcdd95f3cb8f3103d11364e112764a4" category="inline-link-rx"></block></block>
   <block id="19c82d20138dc6c19a1867bb09242586" category="inline-link">借助NetApp和Alluio打造现代化的分析工作负载</block>
-  <block id="4cc268a01e6c9acfc87fa9d77f1ee5c7" category="list-text"><block ref="4cc268a01e6c9acfc87fa9d77f1ee5c7" category="inline-link-rx"></block></block>
-  <block id="a81323b2951f0fa374a55f20035b40fa" category="list-text"><block ref="a81323b2951f0fa374a55f20035b40fa" category="inline-link-rx"></block></block>
   <block id="75b3da38185f43fa45f8c192cf70fee6" category="inline-link">所有操作都从对象锁定…开始 为关键备份应用程序构建S3存储生态系统</block>
-  <block id="d26d933f097b6d60c44039496ebd9870" category="list-text"><block ref="d26d933f097b6d60c44039496ebd9870" category="inline-link-rx"></block></block>
   <block id="17691c35f7a924dab178837550e01894" category="inline-link">在StorageGRID 上构建数据湖</block>
-  <block id="3111459beb2b4cd09e2c8a19cea53dae" category="list-text"><block ref="3111459beb2b4cd09e2c8a19cea53dae" category="inline-link-rx"></block></block>
   <block id="af9f1a77fa9bd1ac998aca9149105fc2" category="inline-link">适用于StorageGRID 的DataLock和勒索软件保护支持</block>
-  <block id="17158b84260059ff1aa18625167a5a6c" category="list-text"><block ref="17158b84260059ff1aa18625167a5a6c" category="inline-link-rx"></block></block>
   <block id="b7eaf149486b5f672a67a1b9225ffdf1" category="inline-link">在StorageGRID for Snowfl您 的数据上除以数据</block>
-  <block id="43c09b3603cc727adf8a48b8bcb279fa" category="list-text"><block ref="43c09b3603cc727adf8a48b8bcb279fa" category="inline-link-rx"></block></block>
   <block id="49cef513124e46e406c7202a3021a460" category="inline-link">利用由NetApp和Modzy提供支持的MLOps实现可解释的人工智能</block>
-  <block id="cbbde27bb1462ff9c4461c927cdea6f8" category="list-text"><block ref="cbbde27bb1462ff9c4461c927cdea6f8" category="inline-link-rx"></block></block>
   <block id="d75270f11a8c4b0a352ba60a70b2e51e" category="inline-link">巧克力、滑板、表和大型机有哪些共同之处？</block>
-  <block id="3e19204799798377076bd778ab168941" category="list-text"><block ref="3e19204799798377076bd778ab168941" category="inline-link-rx"></block></block>
   <block id="bda9db150ef3470445a403dda26b131c" category="admonition">如果需要忽略SSL证书、请使用-no-check-certificate。</block>
   <block id="47edbb9e6d6e6e874eb40c274a0e2e0f" category="sidebar">博客文章</block>
   <block id="3e786c26b331e7dd273f5cb3ee10f59e" category="sidebar">StorageGRID 博客</block>
@@ -1163,11 +1135,8 @@
   <block id="e7e23fdc645b150075b11f4c4918739b" category="paragraph">建议始终保持最新、并为Veeam Backup &amp; Replication 12系统应用最新的修补程序。目前、我们建议至少安装Veeam修补程序P20230718。</block>
   <block id="8a30f8c97261f6be55fd4a89233559fc" category="section-title">S3存储库配置</block>
   <block id="6ee286a7db9c406f8c2971e8ec86b74d" category="paragraph">横向扩展备份存储库(SOBR)是S3对象存储的容量层。容量层是主存储库的扩展、可提供更长的数据保留期限和更低的存储解决方案成本。Veeam能够通过S3对象锁定API提供不可变功能。Veeam 12可以在一个横向扩展存储库中使用多个分段。StorageGRID对单个存储分段中的对象数量或容量没有限制。使用多个分段可以提高备份非常大的数据集时的性能、在这些数据集中、对象中的备份数据可能会达到PB级。</block>
-  <block id="48911c3ddb06d15c07c25b15627109d6" category="paragraph">可能需要限制并发任务、具体取决于特定解决方案的规模估算和要求。默认设置指定2个存储库任务插槽、并为每个任务插槽指定一个并发任务插槽限制"S3ConcurentTaskLimit"注册表项值64。对象存储共有128个并发线程。这包括Put、GET和批删除。建议先为任务时隙选择一个保守限制、并在Veeam备份达到新备份和即将过期备份数据的稳定状态后调整此值。请与您的NetApp客户团队合作、适当估算StorageGRID系统的规模、以满足所需的时间窗口和性能要求。要提供最佳解决方案、可能需要调整任务插槽数量和每个插槽的任务限制。</block>
   <block id="274d09dbf63a4b2cf6067da7bdccc520" category="section-title">备份作业配置</block>
-  <block id="6859565d94b1aa5262122016e1d0ca31" category="paragraph">Veeam备份作业可以使用不同的块大小选项进行配置、应仔细考虑这些选项。默认块大小为1 MB、而Veeam具有数据压缩和重复数据删除功能、可为初始完整备份创建大约500 KB的对象大小、为增量作业创建100-200 KB的对象大小。通过选择更大的备份块大小、我们可以大幅提高性能并降低对象存储的要求。尽管较大的块大小可以显著提高对象存储的性能、但由于存储效率性能降低、可能会增加主存储容量需求。建议为备份作业配置4 MB的块大小、以便为完整备份创建大约2 MB的对象、并为增量备份创建大约700 kB-1 MB的对象大小。客户甚至可以考虑使用8 MB的块大小配置备份作业、可以启用该功能来实施"UISHOLE -导致的"注册表项。</block>
   <block id="0e71d2971c1d3e37252ab5b94a556ab5" category="paragraph">实施不可配置备份时会使用对象存储上的S3对象锁定。不可更改性选项会生成更多的对象存储请求、以更新对象的列表和保留。</block>
-  <block id="2ae57a117ceed123c4f715126adb75bf" category="paragraph">随着备份保留过期、备份作业将处理对象删除。Veeam以多对象删除请求的形式将删除请求发送到对象存储、每个请求1000个对象。对于小型解决方案、可能需要使用"S3MultiObjectDeleteLimit"注册表项进行调整、以减少每个请求的对象数量。降低此值还可以更均匀地在StorageGRID系统中的节点之间分布删除请求。建议使用下表中的值作为配置多对象删除限制的起点。将表中的值乘以所选设备类型的节点数、即可获得Veeam中注册表设置的值。如果此值等于或大于1000、则无需调整注册表设置中的默认值。</block>
   <block id="f155778379e9bde49e66b15a4cb59aa4" category="cell">设备型号</block>
   <block id="09e895a7d52e3b7e14028a710c859bf4" category="cell">每个节点的S3MultiObjectDeleteLimit</block>
   <block id="d23f070363a51bb19a371740717fb008" category="cell">SG5712</block>
@@ -1237,4 +1206,75 @@
   <block id="2c03d0abe3f02a4e8010af61356f3a13" category="paragraph"><block ref="2c03d0abe3f02a4e8010af61356f3a13" category="inline-image-macro-rx" type="image"></block></block>
   <block id="41626bdee063e6c3bb48894a7b384438" category="list-text"><block ref="81bbc4df100e2c72e0ac40c7f4e45348" category="inline-link-macro-rx"></block></block>
   <block id="112e3eabbbb552d94c0e006c23999aa3" category="sidebar">将Veeam备份和复制与StorageGRID结合使用</block>
+  <block id="2e296ce530e2049ec036a4c14f33b6d8" category="paragraph">可能需要限制并发任务、具体取决于特定解决方案的规模估算和要求。默认设置为每个CPU核心指定一个存储库任务插槽、并发任务插槽限制为64。例如，如果服务器有2个CPU核心，则对象存储总共将使用128个并发线程。这包括Put、GET和批删除。建议先为任务时隙选择一个保守限制、并在Veeam备份达到新备份和即将过期备份数据的稳定状态后调整此值。请与您的NetApp客户团队合作、适当估算StorageGRID系统的规模、以满足所需的时间窗口和性能要求。要提供最佳解决方案、可能需要调整任务插槽数量和每个插槽的任务限制。</block>
+  <block id="088329f80e8f7c77482109c96eff3a31" category="paragraph">Veeam备份作业可以使用不同的块大小选项进行配置、应仔细考虑这些选项。默认块大小为1 MB、而Veeam具有数据压缩和重复数据删除功能、可为初始完整备份创建大约500 KB的对象大小、为增量作业创建100-200 KB的对象大小。通过选择更大的备份块大小、我们可以大幅提高性能并降低对象存储的要求。尽管较大的块大小可以显著提高对象存储的性能、但由于存储效率性能降低、可能会增加主存储容量需求。建议为备份作业配置4 MB的块大小、以便为完整备份创建大约2 MB的对象、并为增量备份创建大约700 kB-1 MB的对象大小。客户甚至可以考虑使用8 MB块大小配置备份作业、此功能可在Veeam支持人员的协助下启用。</block>
+  <block id="592907ef9f546e11799fa30830cdbbf8" category="paragraph">随着备份保留过期、备份作业将处理对象删除。Veeam以多对象删除请求的形式将删除请求发送到对象存储、每个请求1000个对象。对于小型解决方案、可能需要对此进行调整、以减少每个请求的对象数量。降低此值还可以更均匀地在StorageGRID系统中的节点之间分布删除请求。建议使用下表中的值作为配置多对象删除限制的起点。将表中的值乘以所选设备类型的节点数、即可获得Veeam中设置的值。如果此值等于或大于1000、则无需调整默认值。如果需要调整此值、请与Veeam支持部门合作进行更改。</block>
+  <block id="6e288d3dc69075a7b00e3a5eccc75f53" category="summary">使用StorageGRID配置d不良 数据源</block>
+  <block id="1d7ab5441faeddab8907d949dffcf445" category="paragraph">多米奥支持多种数据源、包括基于云的或内部对象存储。  您可以将d不良 配置为使用StorageGRID作为对象存储数据源。</block>
+  <block id="51854bc16ca42e133bfde4123211eeec" category="section-title">配置d不良 数据源</block>
+  <block id="e94a48672671c2f16283c02dcd7e1ed4" category="list-text">StorageGRID S3端点URL、租户S3访问密钥ID和机密访问密钥。</block>
+  <block id="cc4a915b35ae50b8e57f0283d6015e40" category="list-text">StorageGRID配置建议：禁用数据压缩(默认情况下处于禁用状态)。  +
+DERMIO使用字节范围GET在查询期间同时从同一对象中提取不同的字节范围。  字节范围请求的典型大小为1 MB。经过压缩的对象会降低字节范围GET性能。</block>
+  <block id="e331942f70e82f4959f01731cbfb1328" category="section-title">d不良 指南</block>
+  <block id="141251846236cc8d2f20c851f61ea3f9" category="inline-link">连接到Amazon S3 -配置S3兼容存储</block>
+  <block id="c4db22c6e122c5ccedb3f043979a4a4c" category="paragraph"><block ref="d976dfca18716e67b46df95d5b29f87e" category="inline-link-rx"></block>。</block>
+  <block id="39b41a7ee2c69c38d0a4a470a61e4998" category="list-text">在"Desmio数据集"页面上、单击+符号以添加源、然后选择"Amazon S3"。</block>
+  <block id="8dff40ea2a76ab9fc22d69c42706243c" category="list-text">输入此新数据源的名称、StorageGRID S3租户访问密钥ID和机密访问密钥。</block>
+  <block id="7eacc2961df39c56af10b4230194cc77" category="list-text">如果使用https连接到StorageGRID S3端点、请选中"加密连接"复选框。+
+如果对此S3端点使用自签名CA证书、请按照dremio指南说明将此CA证书添加到&lt;JAVA_HOME&gt;服务器的dre/jre/lib/security +中
+*屏幕截图示例*</block>
+  <block id="41b33d7f98a9cf866375085c504e7a7f" category="image-alt">新源-常规</block>
+  <block id="db492536be467309872671bce85cee04" category="list-text">单击"高级选项"、选中"启用兼容模式"</block>
+  <block id="c8a971d9405e02862be7569e04d2ede1" category="list-text">在连接属性下、单击+添加属性并添加这些S3A属性。</block>
+  <block id="e43ca2d39dd7142ec638ac64443b6f0d" category="list-text">fs.s3a.connection．maximum默认值为100。  如果S3数据集包含具有100个或更多列的大型镶木地板文件、则必须输入一个大于100的值。  有关此设置的信息、请参见《drefio指南》。</block>
+  <block id="b326b5062b2f0e69046810717534cb09" category="paragraph">true</block>
+  <block id="7493cad84b7f7b5b1c3a6d47a5acc12d" category="paragraph">FS.S3A.CONNECTION。最大值</block>
+  <block id="55b13b50c6791d963f403e8ab7a5ec9a" category="paragraph">_&lt;大于100&gt;_的值</block>
+  <block id="066fdfceeffa2c65588a0f6b8d7953de" category="image-alt">新源-高级选项</block>
+  <block id="79af4add835219b58d07f6d1876a3e3b" category="list-text">根据您的组织或应用程序要求配置其他的多米奥选项。</block>
+  <block id="09ac23f768d2697bd567221390fbafe7" category="list-text">单击保存按钮以创建此新数据源。</block>
+  <block id="af514c8f85939e6df535289d025e6acd" category="list-text">成功添加StorageGRID数据源后、左侧面板将显示存储分段列表。+
+*屏幕截图示例*</block>
+  <block id="3b55448bec6300a3af924b399eb26957" category="image-alt">已添加新数据源</block>
+  <block id="2804a96d012f15794c6aaa8f11797dfc" category="inline-link">Lab on Demand是StorageGRID的最佳销售工具</block>
+  <block id="bd00951af49350539c0b3c83069c10d7" category="list-text">5月10日：<block ref="debc4c6191d7e706232e96c2789d3930" category="inline-link-rx"></block></block>
+  <block id="f831e1930f47c4aab7026c9b3fd8b63a" category="list-text">5月24日：<block ref="efe27e9a7520722932d06c2a314e517b" category="inline-link-rx"></block></block>
+  <block id="d2634778cafa4c3045e5e3351c9098fc" category="inline-link">StorageGRID：存储和管理内部备份和复制数据</block>
+  <block id="84726e93025c87cd938d691b89d3f639" category="list-text">5月26日：<block ref="919c9f44a16e685bcbda321efc4479b1" category="inline-link-rx"></block></block>
+  <block id="fc1b196880b3fb677bc0664f3b3558dd" category="list-text">6月9日：<block ref="bc61cc71bae06945f8e3338c0faa1d28" category="inline-link-rx"></block></block>
+  <block id="f49b908c8064ba5b4ab223b14e8d376a" category="inline-link">查看不断增长的经验证的StorageGRID合作伙伴解决方案列表</block>
+  <block id="4e4854ee1dbabb6501c2ad5e2db49e79" category="list-text">7月26日：<block ref="dcc8150a969e49a02dd3cd5f53c489a0" category="inline-link-rx"></block></block>
+  <block id="835d683a9952f5aac9469c1ede8ba395" category="list-text">8月5日：<block ref="262aaa550c02638a3973245ae3d6d03e" category="inline-link-rx"></block></block>
+  <block id="0ca94b4799049f29d9ab6b15cdbdcd9f" category="list-text">8月16日：<block ref="b2f8710f8f504eba14016ef400ef8a20" category="inline-link-rx"></block></block>
+  <block id="4127789560b28b4c403fdfbdfc5eed08" category="list-text">8月17日：<block ref="2cb03523d29d45df344e7e35aeae9b09" category="inline-link-rx"></block></block>
+  <block id="38176191294d1e8ad7a85b48d0817ab6" category="list-text">8月23日：<block ref="e69bd0d41d124ab466e32e26b75521a0" category="inline-link-rx"></block></block>
+  <block id="16d6a17ba907f2aaabc05d0e9374b9e7" category="list-text">9月1日：<block ref="6fba2287f3b879f9355d55f6093dd086" category="inline-link-rx"></block></block>
+  <block id="f448282611ca0fd56d7631be9d78c632" category="list-text">9月19日：<block ref="d3b1520ae76b2d8916030b44fa119b18" category="inline-link-rx"></block></block>
+  <block id="71a7022fb195acbc7636097156a6b24e" category="list-text">9月26日：<block ref="bac8af8866fb18858bb2bc38accfee93" category="inline-link-rx"></block></block>
+  <block id="12b5ffe0dda514d44a5959f0d4ce1565" category="list-text">10月5日：<block ref="743b55649bf0de5fef17881c2182c74e" category="inline-link-rx"></block></block>
+  <block id="0c916e3c762e297dcf2e2fb5fb7d7c57" category="list-text">10月5日：<block ref="7a820536864c4b8ba1158a633db675d7" category="inline-link-rx"></block></block>
+  <block id="7b64a6cb40cb02632443e1013c298656" category="list-text">11月7日：<block ref="c8168f81ebd9cd26583947065ec9bf4e" category="inline-link-rx"></block></block>
+  <block id="6e34863e3dd3ed9c1dbd78f02c8f8e07" category="list-text">11月23日：<block ref="67d6d3a21cc9af1520f991806f578b6b" category="inline-link-rx"></block></block>
+  <block id="92eb8dae85c6ef95da075172842bc3fe" category="list-text">12月6日：<block ref="e235608a45034e1deea87e6e77daddf3" category="inline-link-rx"></block></block>
+  <block id="5651e92851825e5a0e8222e952670765" category="list-text">1月16日：<block ref="68d21b96499b1933cc9fc03f94f1e388" category="inline-link-rx"></block></block>
+  <block id="47ac119989829cf384ff1ad266df420f" category="inline-link">StorageGRID S3对象锁定已通过Veritas NetBackup的验证</block>
+  <block id="dc468876fffa7c2d7c4ed6843ea250d1" category="list-text">1月18日：<block ref="6ea6516d4586962fa5f8e8460c33ccd0" category="inline-link-rx"></block></block>
+  <block id="16a0cfdc7c0bfce417b18af07ddddc59" category="list-text">2月14日：<block ref="276d9658a5f8a049f2dcc595745c0879" category="inline-link-rx"></block></block>
+  <block id="32c5d0704854c4b5e7209732f36776fe" category="list-text">3月14日：<block ref="3c7ed37db994ec363730d455072b8b2b" category="inline-link-rx"></block></block>
+  <block id="0883099d6628246c0f3172404097c1d1" category="inline-link">使用BlueXP通过符合3：2：1的备份策略保护Epic EHR</block>
+  <block id="aa343baad902cd182f9c8de146e9cef1" category="list-text">3月30日：<block ref="b439a8f44229e6c1e7b2461211f6849b" category="inline-link-rx"></block></block>
+  <block id="da8fd7d6e7f3612bc460f85954532237" category="list-text">3月30日：<block ref="3a37c13e60469949c226e6fe44730d5d" category="inline-link-rx"></block></block>
+  <block id="1e81f3787bf865826867c808345c93cf" category="inline-link">StorageGRID对象存储系列中的新增功能</block>
+  <block id="e08d2fc1e7efc48dd610ca33e91f3865" category="list-text">5月16日：<block ref="55400ccf8fd45f41eb658085301654a8" category="inline-link-rx"></block></block>
+  <block id="f0d2294cd432ef286ea4c0d40d486219" category="inline-link">介绍StorageGRID 11.7和全新全闪存对象存储设备GF6112</block>
+  <block id="96a50e94edaba5ec9fe3b3c43f94ce1a" category="list-text">5月16日：<block ref="822011c4a35ab965678b4e99560374f9" category="inline-link-rx"></block></block>
+  <block id="3cc60dd0d810d80d23db5dfe54b351da" category="inline-link">Amazon S3文件系统的装载点现已正式发布</block>
+  <block id="5aa7060311e71d085890eeaf60f649b1" category="list-text">8月30日：<block ref="90e42dccda167e27664cb4046795d9d2" category="inline-link-rx"></block></block>
+  <block id="dd6f0ba1a70b208ed9294a411ace7f5b" category="inline-link">利用Cloud Insights使用Fluent Bit监控和收集日志</block>
+  <block id="c19c164e1f7d2decc0e8ce134540a517" category="list-text">9月1日：<block ref="71f54938bd1ce25b1fc86aa20da828f4" category="inline-link-rx"></block></block>
+  <block id="831dc58cce04528855c0f71b7c4c7427" category="inline-link">从Hadoop继续发展：借助德米奥和StorageGRID打造现代化数据分析</block>
+  <block id="cac309a9762976e1cd514f372dcc5d5d" category="list-text">10月17日：<block ref="64e3b33ccfb012d90bff9bcf09d2035a" category="inline-link-rx"></block></block>
+  <block id="0de69010a0b885390944d59945579799" category="inline-link">采用StorageGRID的光谱逻辑在本机Glacier</block>
+  <block id="cda1cacdbb2c1506d847fed8599faa68" category="list-text">11月7日：<block ref="4558e5f7bc147029e407b74c0a6768e6" category="inline-link-rx"></block></block>
+  <block id="d8d45aa5142f174e3e83b7f1de8895a1" category="sidebar">使用StorageGRID配置多米奥</block>
 </blocks>

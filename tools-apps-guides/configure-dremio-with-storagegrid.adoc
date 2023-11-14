@@ -1,0 +1,94 @@
+---
+permalink: tools-apps-guides/configure-Dremio-StorageGRID.html 
+sidebar: sidebar 
+keywords: Dremio, StorageGRID, lakehouse, object storage, s3 
+summary: 使用StorageGRID配置d不良 数据源 
+---
+= 使用StorageGRID配置d不良 数据源
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+:firstname:  Angela
+:authorinitials:  C
+:lastname: Cheng 
+:author:  Angela Cheng 
+:authors:  Angela Cheng 
+
+
+[role="lead"]
+多米奥支持多种数据源、包括基于云的或内部对象存储。  您可以将d不良 配置为使用StorageGRID作为对象存储数据源。
+
+
+
+== 配置d不良 数据源
+
+
+
+=== 前提条件
+
+* StorageGRID S3端点URL、租户S3访问密钥ID和机密访问密钥。
+* StorageGRID配置建议：禁用数据压缩(默认情况下处于禁用状态)。  +
+DERMIO使用字节范围GET在查询期间同时从同一对象中提取不同的字节范围。  字节范围请求的典型大小为1 MB。经过压缩的对象会降低字节范围GET性能。
+
+
+
+
+=== d不良 指南
+
+https://docs.dremio.com/current/sonar/data-sources/object/s3/["连接到Amazon S3 -配置S3兼容存储"^]。
+
+
+
+== 说明
+
+. 在"Desmio数据集"页面上、单击+符号以添加源、然后选择"Amazon S3"。
+. 输入此新数据源的名称、StorageGRID S3租户访问密钥ID和机密访问密钥。
+. 如果使用https连接到StorageGRID S3端点、请选中"加密连接"复选框。+
+如果对此S3端点使用自签名CA证书、请按照dremio指南说明将此CA证书添加到<JAVA_HOME>服务器的dre/jre/lib/security +中
+*屏幕截图示例*
++
+image::../media/dremio/dremio-add-source-general.png[新源-常规]
+
+. 单击"高级选项"、选中"启用兼容模式"
+. 在连接属性下、单击+添加属性并添加这些S3A属性。
+. fs.s3a.connection．maximum默认值为100。  如果S3数据集包含具有100个或更多列的大型镶木地板文件、则必须输入一个大于100的值。  有关此设置的信息、请参见《drefio指南》。
++
+[cols="2a,3a"]
+|===
+| Name | 价值 
+
+
+ a| 
+fs.s3a.endpoint
+ a| 
+StorageGRID S3端点：端口>_
+
+
+
+ a| 
+fs.s3a.path.style.access
+ a| 
+true
+
+
+
+ a| 
+FS.S3A.CONNECTION。最大值
+ a| 
+_<大于100>_的值
+
+|===
++
+*屏幕截图示例*
+
++
+image::../media/dremio/dremio-add-source-advanced.png[新源-高级选项]
+
+. 根据您的组织或应用程序要求配置其他的多米奥选项。
+. 单击保存按钮以创建此新数据源。
+. 成功添加StorageGRID数据源后、左侧面板将显示存储分段列表。+
+*屏幕截图示例*
++
+image::../media/dremio/dremio-source-added.png[已添加新数据源]
+
+
