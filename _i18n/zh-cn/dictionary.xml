@@ -1277,4 +1277,5 @@ DERMIO使用字节范围GET在查询期间同时从同一对象中提取不同�
   <block id="0de69010a0b885390944d59945579799" category="inline-link">采用StorageGRID的光谱逻辑在本机Glacier</block>
   <block id="cda1cacdbb2c1506d847fed8599faa68" category="list-text">11月7日：<block ref="4558e5f7bc147029e407b74c0a6768e6" category="inline-link-rx"></block></block>
   <block id="d8d45aa5142f174e3e83b7f1de8895a1" category="sidebar">使用StorageGRID配置多米奥</block>
+  <block id="9792e23419583666b178605decaec552" category="list-text">Gitlab</block>
 </blocks>

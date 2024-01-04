@@ -81,6 +81,7 @@ summary: 已针对StorageGRID 11.5进行验证的第三方解决方案
 * Encoding.com
 * 富士尼尔姆对象归档
 * GE Centricity企业档案库
+* Gitlab
 * Hyland Acuo
 * IBM Aspera
 * 里程碑系统
