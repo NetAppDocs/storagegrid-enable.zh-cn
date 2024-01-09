@@ -203,3 +203,74 @@ summary: '以下是存储分段策略和组策略(IAM策略)的示例。'
     ]
 }
 ----
+
+
+=== 将组限制为具有只读访问权限的单个子目录(前缀)
+
+此策略允许组成员对分段中的子目录(前缀)具有只读访问权限。分段名称为"study"、子目录为"study01"。
+
+[source, json]
+----
+{
+    "Statement": [
+        {
+            "Sid": "AllowUserToSeeBucketListInTheConsole",
+            "Action": [
+                "s3:ListAllMyBuckets"
+            ],
+            "Effect": "Allow",
+            "Resource": [
+                "arn:aws:s3:::*"
+            ]
+        },
+        {
+            "Sid": "AllowRootAndstudyListingOfBucket",
+            "Action": [
+                "s3:ListBucket"
+            ],
+            "Effect": "Allow",
+            "Resource": [
+                "arn:aws:s3::: study"
+            ],
+            "Condition": {
+                "StringEquals": {
+                    "s3:prefix": [
+                        "",
+                        "study01/"
+                    ],
+                    "s3:delimiter": [
+                        "/"
+                    ]
+                }
+            }
+        },
+        {
+            "Sid": "AllowListingOfstudy01",
+            "Action": [
+                "s3:ListBucket"
+            ],
+            "Effect": "Allow",
+            "Resource": [
+                "arn:aws:s3:::study"
+            ],
+            "Condition": {
+                "StringLike": {
+                    "s3:prefix": [
+                        "study01/*"
+                    ]
+                }
+            }
+        },
+        {
+            "Sid": "AllowAllS3ActionsInstudy01Folder",
+            "Effect": "Allow",
+            "Action": [
+                "s3:Getobject"
+            ],
+            "Resource": [
+                "arn:aws:s3:::study/study01/*"
+            ]
+        }
+    ]
+}
+----
