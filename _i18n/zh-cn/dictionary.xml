@@ -1280,4 +1280,14 @@ DERMIO使用字节范围GET在查询期间同时从同一对象中提取不同�
   <block id="9792e23419583666b178605decaec552" category="list-text">Gitlab</block>
   <block id="d2f2caed07026483a659ddedff29363a" category="section-title">将组限制为具有只读访问权限的单个子目录(前缀)</block>
   <block id="12e569a2475c87038546154b45eafa4f" category="paragraph">此策略允许组成员对分段中的子目录(前缀)具有只读访问权限。分段名称为"study"、子目录为"study01"。</block>
+  <block id="d40d489ee06ec7f85fb2d17fd332ec2c" category="list-text">AWS装载点</block>
+  <block id="dab38c58c86e39075df5ca86464b6e59" category="summary">第三方解决方案已通过StorageGRID 11.8.</block>
+  <block id="43c9d447791c3e84501a3b86b522a4c1" category="doc">StorageGRID 11.8经验证的第三方解决方案</block>
+  <block id="80880f7955cf3e0bbe904bbb677a357b" category="paragraph">以下第三方解决方案已通过验证、可用于StorageGRID 11.8.+
+如果您要查找的解决方案未列出、请联系您的NetApp客户代表。</block>
+  <block id="9283e244bcd98f1bdd350c1b4f2da148" category="inline-link">StorageGRID设备</block>
+  <block id="eff26b146dbf07b93a3af4954ea77c6d" category="list-text"><block ref="eff26b146dbf07b93a3af4954ea77c6d" category="inline-link-rx"></block></block>
+  <block id="0c116dd1f4daf14c460a0c77a9e0e674" category="inline-link">StorageGRID 11.8.</block>
+  <block id="6a9dbde708e64ed0ece8a4d0b0dc1d32" category="list-text"><block ref="6a9dbde708e64ed0ece8a4d0b0dc1d32" category="inline-link-rx"></block></block>
+  <block id="fca3b43498fce810dfcc0f52e38e42a6" category="list-text"><block ref="fca3b43498fce810dfcc0f52e38e42a6" category="inline-link-rx"></block></block>
 </blocks>
