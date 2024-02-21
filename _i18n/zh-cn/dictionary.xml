@@ -830,31 +830,23 @@
   <block id="67e5f0e53462232f2aa589a464eea4b8" category="list-text">netapp-sg-11.4.0-20200721.1338.d3969b3.vmdk</block>
   <block id="579b803b8e20891c89683e797fdbd01f" category="list-text">部署虚拟机后、从虚拟机列表中选择该虚拟机、然后选择配置选项卡vApp选项。</block>
   <block id="07ab08f304d7cfe4d3d5ea13bbde9f1d" category="inline-image-macro">vApp选项选项卡</block>
-  <block id="d24354c28f6eda12a84300886d0bae91" category="paragraph"><block ref="d24354c28f6eda12a84300886d0bae91" category="inline-image-macro-rx" type="image"></block></block>
   <block id="c9fc6d8e3be4de1d4c27b9f0b82c5e2a" category="list-text">向下滚动到属性部分、然后选择port_remap_inbound属性</block>
   <block id="9e24f5887a5bfec21b66a7a9bf2c2e9e" category="inline-image-macro">端口重新映射入站</block>
-  <block id="b234cd8b9202dfa24815cd14203cde1a" category="paragraph"><block ref="b234cd8b9202dfa24815cd14203cde1a" category="inline-image-macro-rx" type="image"></block></block>
   <block id="44149ca1e58524f8537ae00b2d6e4b99" category="list-text">滚动到属性列表顶部、然后单击编辑</block>
   <block id="fb1b9b4a3c929c6a466a1452400315f4" category="inline-image-macro">编辑按钮</block>
-  <block id="dcb0bfe5be50507cbd364a2d0fdfd056" category="paragraph"><block ref="dcb0bfe5be50507cbd364a2d0fdfd056" category="inline-image-macro-rx" type="image"></block></block>
   <block id="0e8c86fd50178cb280113dfa414bfaef" category="list-text">选择类型选项卡、确认已选中用户可配置复选框、然后单击保存。</block>
   <block id="71f961422f32dab92bd408435e59e11f" category="inline-image-macro">键入Tab</block>
-  <block id="9c15e570ff0d3a398f314911048e34f6" category="paragraph"><block ref="9c15e570ff0d3a398f314911048e34f6" category="inline-image-macro-rx" type="image"></block></block>
   <block id="083e7091efe8fb649ee9fb0c0870917c" category="list-text">在"Properties"列表顶部、仍选择了"port_remap_inbound"属性、然后单击"Set value"。</block>
   <block id="58a9fe2002d87ad86a952f2aa06b652f" category="inline-image-macro">设置值按钮</block>
-  <block id="2f4bfe6caa4a2e3bf8657b624787ecf2" category="paragraph"><block ref="2f4bfe6caa4a2e3bf8657b624787ecf2" category="inline-image-macro-rx" type="image"></block></block>
   <block id="7cabe4a6c37ea2ab4c5afff39965feca" category="list-text">在属性值字段中、输入网络(网格、管理员或客户端)、TCP、原始端口(8082)和新端口(10443)、每个值之间均包含"/"、如下所示。</block>
   <block id="c8e309d9efc8bcc3c0a6de4a0a6bde89" category="inline-image-macro">属性值</block>
-  <block id="03a85f67d3528d13af543e9104884bf5" category="paragraph"><block ref="03a85f67d3528d13af543e9104884bf5" category="inline-image-macro-rx" type="image"></block></block>
   <block id="b755dc1994e1391a0aff77ad323c4d58" category="list-text">如果使用多个网络、请使用逗号(、)分隔网络字符串、例如GRIDE/TCP/8082/10443、admin/TCP/8082/10443、client/TCP/8082/10443</block>
   <block id="a053ed3549ecf3e6087e7328aeace847" category="section-title">恢复网关节点</block>
   <block id="0e495d4bce7b9fde6238de8cfff28959" category="paragraph">要恢复网关节点、请执行以下步骤：</block>
   <block id="7679db7e2b0055ab46be43f42a01bf23" category="list-text">导航到网格管理UI的维护/恢复部分。</block>
   <block id="e46a0719f8df97ff4d12f03dd8ce959c" category="inline-image-macro">维护菜单</block>
-  <block id="6724e2cab4809a16c4c5d1a71c4efc8a" category="paragraph"><block ref="6724e2cab4809a16c4c5d1a71c4efc8a" category="inline-image-macro-rx" type="image"></block></block>
   <block id="c086be1149c183dc763a11cf3ad5faea" category="list-text">打开VM节点的电源、并等待此节点显示在网格管理UI的维护/恢复待定节点部分中。</block>
   <block id="b91ce83799a5a14738726ef1b7dbd9f7" category="inline-image-macro">恢复待定</block>
-  <block id="1a47c5b4c56facc13874c121e4100dcc" category="paragraph"><block ref="1a47c5b4c56facc13874c121e4100dcc" category="inline-image-macro-rx" type="image"></block></block>
   <block id="bf30086dfd38bd897ca450b6573d0874" category="list-text">恢复节点后、如果适用、可以将此IP包括在所有DNS轮循实体或负载平衡器池中。</block>
   <block id="6b6336923a8b76c43c7d0a3bd89a11ce" category="paragraph">现在、端口8082上的任何HTTPS会话都会转到端口10443</block>
   <block id="eca02f566d0b3032cdf4b10c546bf899" category="section-title">重新映射端口443、以便在管理节点上进行客户端S3访问</block>
@@ -902,11 +894,9 @@
   <block id="994ff1bbb04f124b59b3dd4a433092d0" category="list-text">经过一段时间后、设备将重新启动、您将能够访问节点PGE UI。</block>
   <block id="e0c8d6ece2eaab52ccd3626588818424" category="list-text">浏览到Configure Networking</block>
   <block id="ef4629263d4d3026510ab03b348385aa" category="inline-image-macro">选择重新映射端口</block>
-  <block id="2bc8e44de2063c0bd15ca5716f63f7e0" category="paragraph"><block ref="2bc8e44de2063c0bd15ca5716f63f7e0" category="inline-image-macro-rx" type="image"></block></block>
   <block id="1d1860aedee67c6087f6eae17d49c67d" category="list-text">选择所需的网络、协议、方向和端口、然后单击添加规则按钮。</block>
   <block id="914553520d8387b82a2e431e0b5e6fa3" category="admonition">重新映射网格网络上的入站端口443将中断安装和扩展过程。建议不要重新映射网格网络上的端口443。</block>
   <block id="9cf22d7237e8977b5bb6bc54a7354822" category="inline-image-macro">将端口重新映射到网络</block>
-  <block id="a93f7571d3de7b14fc5d89b0ece8d2f0" category="paragraph"><block ref="a93f7571d3de7b14fc5d89b0ece8d2f0" category="inline-image-macro-rx" type="image"></block></block>
   <block id="1b08be650ccd06f880223bd76fffb99f" category="list-text">添加了所需的端口重新映射之一、您可以返回到主页选项卡并单击开始安装按钮。</block>
   <block id="b8891129cb3bcf5e407a67d926f3bd1e" category="inline-link-macro">产品文档</block>
   <block id="15f0a90501b756c24e6d343c84e4078a" category="paragraph">现在、您可以按照中的管理节点恢复过程进行操作 <block ref="c237ceedd52c48d2a2c789bd64cdcbb1" category="inline-link-macro-rx"></block></block>
@@ -1001,12 +991,8 @@
   <block id="e5b8a0443d27d612e7426f6f3f8681c2" category="sidebar">配置Datadog以收集StorageGRID SNMP指标和陷阱</block>
   <block id="45c8288f990abd9a185e596536152688" category="sidebar">存储分段和组策略示例</block>
   <block id="38d38399d4a7514463d665125ae50a4a" category="list-text">Rubrik CDM</block>
-  <block id="bd1d0553bdfeecc93cebcd45f1a220e4" category="paragraph">_Aron Klein_</block>
-  <block id="ef5b2819cd8ee32cf57797475fc6ac0b" category="paragraph">_Jonathan Wong</block>
-  <block id="80c122176ee490cc5a86d6ffa18ab689" category="paragraph">_Angela Cheng_</block>
   <block id="5edf8edbb4c16aa5184e63b04c0b8b6d" category="summary">rclone是一种用于S3操作的免费命令行工具和客户端。您可以使用rclone迁移、复制和删除StorageGRID 上的对象数据。</block>
   <block id="16bf3dc54feeb86e32811292a7567606" category="doc">使用rclone在StorageGRID 上迁移、放置和删除对象</block>
-  <block id="4518583de94dd09da7a8f8e98ec98386" category="paragraph">_Siegfried Hepp和Aron Klein_</block>
   <block id="8fc8ce37b13be17581bdf9362c7e50b2" category="paragraph">rclone是一种用于S3操作的免费命令行工具和客户端。您可以使用rclone迁移、复制和删除StorageGRID 上的对象数据。rclone可以删除存储分段、即使不是空存储分段也可以使用"清除"功能、如以下示例所示。</block>
   <block id="9f164cf2b6160300227f2205a159f653" category="section-title">安装和配置rclone</block>
   <block id="15b28fa90c8a5a6ac00ece9ba66eeae6" category="inline-link">rclone.org</block>
@@ -1122,7 +1108,6 @@
   <block id="14d782d4b4bcaf927ddb317c08f8c416" category="list-text"><block ref="14d782d4b4bcaf927ddb317c08f8c416" category="inline-link-macro-rx"></block></block>
   <block id="85517cd70ba2a2e551e4f0c99c6e56d7" category="summary">本指南重点介绍NetApp StorageGRID以及部分Veeam备份和复制的配置。本白皮书面向熟悉Linux系统并负责维护或实施NetApp StorageGRID系统与Veeam备份和复制的存储和网络管理员。</block>
   <block id="5a80f6f017611133cae300eeb1b8838f" category="doc">使用Veeam备份和复制进行部署的StorageGRID最佳实践</block>
-  <block id="118df32a81dd2fdb06e6ccff0f984121" category="paragraph">_Oliver Haensel和Aron Klein_</block>
   <block id="3e8343417cb49b5fac72e19c07a7e1b7" category="paragraph">存储管理员希望通过满足可用性、快速恢复目标、可扩展以满足其需求以及自动执行长期数据保留策略的解决方案来管理数据增长。这些解决方案还应提供保护、防止丢失或恶意攻击。Veeam和NetApp合作创建了一个将Veeam备份和恢复与NetApp StorageGRID相结合的数据保护解决方案、用于内部对象存储。</block>
   <block id="cb88016fd6a4561b0ba47d4d2349e01a" category="paragraph">Veeam和NetApp StorageGRID提供了一个易于使用的解决方案、可协同工作、帮助满足全球数据快速增长和法规不断增长的需求。基于云的对象存储因其弹性、扩展能力、运营效率和成本效益而闻名、这使其成为备份目标的自然选择。本文档将为Veeam Backup解决方案和StorageGRID系统的配置提供指导和建议。</block>
   <block id="3f2a8b3ac5243a078416a91ba12f5677" category="paragraph">Veeam的对象工作负载会为小型对象创建大量并发放置、删除和列表操作。启用不可迁移性将增加对对象存储的请求数量、以设置保留和列出版本。备份作业的过程包括为每日更改写入对象、新写入完成后、该作业将根据备份的保留策略删除任何对象。备份作业的计划几乎总是重叠的。这种重叠将导致备份窗口的很大一部分在对象存储上包含50/50的放置/删除工作负载。在Veeam中调整任务插槽设置的并发操作数、通过增加备份作业块大小来增加对象大小、减少多对象删除请求中的对象数量、 选择完成作业的最长时间窗口将优化解决方案的性能和成本。</block>
@@ -1161,49 +1146,32 @@
   <block id="6a91fddc67312e23440e7297f57a6e75" category="section-title">实施要点</block>
   <block id="0dc64850ea098a695ef04ad4917575f8" category="paragraph">如果需要不可破坏性、请确保在StorageGRID系统上启用对象锁定。在管理UI中的"Configuration/S3 Object Lock"(配置/S3对象锁定)下找到相应选项。</block>
   <block id="21e26b17ef37d6789ef963babce3bcf7" category="inline-image-macro">启用网格范围对象锁定</block>
-  <block id="9eb0c7fe294867f4025650c8c0709e57" category="paragraph"><block ref="9eb0c7fe294867f4025650c8c0709e57" category="inline-image-macro-rx" type="image"></block></block>
   <block id="a1d354bcc841b4fd7414aa3b5cc067b9" category="paragraph">创建存储分段时、如果要将此存储分段用于不可移动备份、请选择"Enable S3 Object Lock"(启用S3对象锁定)。这将自动启用存储分段版本控制。保持禁用默认保留、因为Veeam将明确设置对象保留。如果Veeam不创建不可变备份、则不应选择版本控制和S3对象锁定。</block>
   <block id="a01314a14731335aa7b83dabe139b1bc" category="inline-image-macro">在存储分段上启用对象锁定</block>
-  <block id="fe418f43b0dec57499cf347d109f86b1" category="paragraph"><block ref="fe418f43b0dec57499cf347d109f86b1" category="inline-image-macro-rx" type="image"></block></block>
   <block id="913ca82ae339f347d099d594b95fc5d0" category="paragraph">创建存储分段后、转到所创建存储分段的详细信息页面。选择一致性级别。</block>
   <block id="0bb9673c8d3a007a2aec60e0eb872235" category="inline-image-macro">存储分段选项</block>
-  <block id="0bd39904534d738466d23700af014b93" category="paragraph"><block ref="0bd39904534d738466d23700af014b93" category="inline-image-macro-rx" type="image"></block></block>
   <block id="81f068f3d3e42253d4aad514fd607d9d" category="paragraph">Veeam要求S3存储分段具有强大的一致性。因此、对于Veeam从多个位置访问数据的多站点部署、请选择"strong-globation"。如果Veeam备份和还原仅在单个站点上进行、则一致性级别应设置为"strong-site"。保存更改。</block>
   <block id="b47fa19cf7fc1f946539cdca83a310f6" category="inline-image-macro">存储分段一致性</block>
-  <block id="e60d52b4e43de4ee2416f9b9d4c543ae" category="paragraph"><block ref="e60d52b4e43de4ee2416f9b9d4c543ae" category="inline-image-macro-rx" type="image"></block></block>
   <block id="33cb018e166847decbe1831bcbda0dfe" category="paragraph">StorageGRID在每个管理节点和专用网关节点上提供集成负载平衡器服务。使用此负载平衡器的众多优势之一是能够配置流量分类策略(QoS)。虽然这些指标主要用于限制应用程序对其他客户端工作负载的影响或将工作负载划分为优先级、但它们还提供了额外的指标收集功能、以协助监控。</block>
   <block id="be01644f81aa9785fd9a47a133f6b06b" category="paragraph">在配置选项卡中、选择"Traffic Classification"(流量分类)并创建新策略。命名规则并选择存储分段或租户作为类型。输入存储分段或租户的名称。如果需要QoS、请设置限制、但对于大多数实施、我们只希望添加此功能提供的监控优势、因此不要设置限制。</block>
   <block id="ffa056c913f2233a9d6c17d77ec6c2ea" category="inline-image-macro">创建TC策略</block>
-  <block id="27b29720bc7935776a8007b13c881a1e" category="paragraph"><block ref="27b29720bc7935776a8007b13c881a1e" category="inline-image-macro-rx" type="image"></block></block>
   <block id="05241239c2e205951eabc51d0b39de96" category="section-title">Veeam</block>
   <block id="1747f94b0479dd6f64566f9def184149" category="paragraph">根据StorageGRID设备的型号和数量、可能需要选择并配置对存储分段上的并发操作数的限制。</block>
   <block id="e0c5284488d876ff3c0ab4615c30f264" category="inline-image-macro">Veeam并发任务限制</block>
-  <block id="feb1270f2d249021c93d4845a9be6d8d" category="paragraph"><block ref="feb1270f2d249021c93d4845a9be6d8d" category="inline-image-macro-rx" type="image"></block></block>
   <block id="583ffa11c93d679d28e4223a3a34e9e4" category="paragraph">按照Veeam控制台中有关备份作业配置的Veeam文档启动向导。添加VM后、选择SOBR存储库。</block>
   <block id="2269301dc6504a2bb4291697a42d6372" category="inline-image-macro">备份作业</block>
-  <block id="f80bb521fa0915867adb4ac2385f431a" category="paragraph"><block ref="f80bb521fa0915867adb4ac2385f431a" category="inline-image-macro-rx" type="image"></block></block>
   <block id="09b5418e51b83d62c4785d219e745382" category="paragraph">单击高级设置并将存储优化设置更改为4 MB或更大。应启用数据压缩和重复数据删除。根据需要更改子系统设置并配置备份作业计划。</block>
-  <block id="1a267127d1c75146fba631f5be6cc720" category="inline-image-macro">自动生成的计算机问题描述的屏幕截图、其中、wide=320、height=375</block>
-  <block id="a6b3c8ce8a0f7b47961a71ca8f691360" category="paragraph"><block ref="a6b3c8ce8a0f7b47961a71ca8f691360" category="inline-image-macro-rx" type="image"></block></block>
   <block id="680a28709f4f4046002e60fa297d351a" category="section-title">监控StorageGRID</block>
   <block id="3843e063a231c099f5416c34c95f4042" category="paragraph">要全面了解Veeam和StorageGRID的协同运行情况、您需要等待第一个备份的保留时间到期。到目前为止、Veeam工作负载主要由Put操作组成、尚未执行任何删除操作。备份数据过期并进行清理后、您现在可以在对象存储中看到完全一致的使用情况、并根据需要调整Veeam中的设置。</block>
   <block id="b2f0530b7f3eff1d4dbe439b30663ed9" category="paragraph">StorageGRID在"Support"(支持)选项卡"Metrics (指标)"页面中提供了方便的图表来监控系统的运行。要查看的主要信息板是S3概述、ILM和流量分类策略(如果已创建策略)。在"S3概述"信息板中、您可以找到有关S3操作速率、延期和请求响应的信息。</block>
-  <block id="231b32850a7fef5c4be77eedcd54b7c4" category="inline-image-macro">S3概览速率</block>
-  <block id="b5d405519c83b44b871a7fb2a7401500" category="paragraph">通过查看S3速率和活动请求、您可以按类型查看每个节点正在处理的负载以及请求总数。
-<block ref="09a4b2cfcdf675e5f1f1ab0e8d545c44" category="inline-image-macro-rx" type="image"></block></block>
   <block id="1f8f94c350e86ecbf5f8b0933d9dd0b2" category="paragraph">"平均持续时间"图表显示每个节点针对每种请求类型花费的平均时间。这是请求的平均延迟、可能很好地指示可能需要进行额外调整、或者StorageGRID系统有承担更多负载的空间。</block>
   <block id="dfb4d9aca7ff63a8b59297daaa36013e" category="inline-image-macro">S3概述持续时间</block>
-  <block id="1be387f78502bd155ac8b9f6243be096" category="paragraph"><block ref="1be387f78502bd155ac8b9f6243be096" category="inline-image-macro-rx" type="image"></block></block>
   <block id="97e697a60f8fc93ff1b8ab5d2fecf264" category="paragraph">在“已完成请求总数”图表中，您可以按类型和响应代码查看请求。如果您看到的响应不是200 (OK)、则可能表示问题描述(如StorageGRID系统)负载过重、正在发送503 (减慢)响应、可能需要进行一些额外调整、或者现在是扩展系统以应对增加的负载的时候了。</block>
   <block id="b49a867e529855d0406df931c97b5128" category="inline-image-macro">S3概述请求</block>
-  <block id="4d53d2d4fecbf45d3f80638358f5d314" category="paragraph"><block ref="4d53d2d4fecbf45d3f80638358f5d314" category="inline-image-macro-rx" type="image"></block></block>
   <block id="a1350656a4a8103a53007527e1543062" category="paragraph">在ILM信息板中、您可以监控StorageGRID系统的删除性能。StorageGRID会在每个节点上同时执行同步和异步删除、以尝试优化所有请求的整体性能。</block>
   <block id="2bd51718453d33063e1d9ab37fca0aef" category="inline-image-macro">ILM删除</block>
-  <block id="49ce7b2f13d2e86a8ac31b5b7c9f0698" category="paragraph"><block ref="49ce7b2f13d2e86a8ac31b5b7c9f0698" category="inline-image-macro-rx" type="image"></block></block>
   <block id="b95f246819e27a4486f140cce28a5ca9" category="paragraph">通过流量分类策略、我们可以查看有关负载平衡器请求吞吐量、速率、持续时间以及Veeam正在发送和接收的对象大小的指标。</block>
   <block id="0163b2e276a1d083b8a419a32c771680" category="inline-image-macro">流量分类策略指标</block>
-  <block id="ed456358a6cded4a701707d28ed42b9c" category="paragraph"><block ref="ed456358a6cded4a701707d28ed42b9c" category="inline-image-macro-rx" type="image"></block></block>
-  <block id="2c03d0abe3f02a4e8010af61356f3a13" category="paragraph"><block ref="2c03d0abe3f02a4e8010af61356f3a13" category="inline-image-macro-rx" type="image"></block></block>
   <block id="41626bdee063e6c3bb48894a7b384438" category="list-text"><block ref="81bbc4df100e2c72e0ac40c7f4e45348" category="inline-link-macro-rx"></block></block>
   <block id="112e3eabbbb552d94c0e006c23999aa3" category="sidebar">将Veeam备份和复制与StorageGRID结合使用</block>
   <block id="2e296ce530e2049ec036a4c14f33b6d8" category="paragraph">可能需要限制并发任务、具体取决于特定解决方案的规模估算和要求。默认设置为每个CPU核心指定一个存储库任务插槽、并发任务插槽限制为64。例如，如果服务器有2个CPU核心，则对象存储总共将使用128个并发线程。这包括Put、GET和批删除。建议先为任务时隙选择一个保守限制、并在Veeam备份达到新备份和即将过期备份数据的稳定状态后调整此值。请与您的NetApp客户团队合作、适当估算StorageGRID系统的规模、以满足所需的时间窗口和性能要求。要提供最佳解决方案、可能需要调整任务插槽数量和每个插槽的任务限制。</block>
@@ -1290,4 +1258,12 @@ DERMIO使用字节范围GET在查询期间同时从同一对象中提取不同�
   <block id="0c116dd1f4daf14c460a0c77a9e0e674" category="inline-link">StorageGRID 11.8.</block>
   <block id="6a9dbde708e64ed0ece8a4d0b0dc1d32" category="list-text"><block ref="6a9dbde708e64ed0ece8a4d0b0dc1d32" category="inline-link-rx"></block></block>
   <block id="fca3b43498fce810dfcc0f52e38e42a6" category="list-text"><block ref="fca3b43498fce810dfcc0f52e38e42a6" category="inline-link-rx"></block></block>
+  <block id="e9868d7697657696cac82d1e0b5159e2" category="paragraph">_作者：Aron Klein_</block>
+  <block id="f1b702f1ec8f237dcd7b5c954b6d27b8" category="paragraph">_作者：郑安杰_</block>
+  <block id="3ffee984625220881b57c95936a54d55" category="paragraph">作者：Siegfried Hepp和Aron Klein_</block>
+  <block id="f2c634ca704e26f96be1723db6dda32a" category="image-alt">自动生成的计算机问题描述的屏幕截图</block>
+  <block id="54887fd2fb284c696f5a78f49abeb0b0" category="paragraph">通过查看S3速率和活动请求、您可以按类型查看每个节点正在处理的负载以及请求总数。
+图像：：s3_over_rate.png[S3概览价格]</block>
+  <block id="de8e421137ae87b94e3b716c2ac38854" category="paragraph">_作者：Oliver Haensel和Aron Klein_</block>
+  <block id="9224315283279b10c8f6eac37416df31" category="paragraph">作者：Jonathan Wong</block>
 </blocks>

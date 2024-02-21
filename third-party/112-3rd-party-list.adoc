@@ -5,7 +5,10 @@ keywords: 11.2, third-party applications, storagegrid, ISV
 summary: 已针对StorageGRID 11.2进行验证的第三方解决方案 
 ---
 = StorageGRID 11.2验证了第三方解决方案
+:hardbreaks:
 :allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
 
 
 [role="lead"]

@@ -5,10 +5,11 @@ keywords: node clone, clone, clone performance, performance
 summary: 节点克隆性能和最佳实践。 
 ---
 = 节点克隆
+:hardbreaks:
 :allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
 
-
-_Aron Klein_
 
 [role="lead"]
 节点克隆注意事项和性能。
@@ -509,3 +510,4 @@ _Aron Klein_
 7 天
 
 |===
+_作者：Aron Klein_

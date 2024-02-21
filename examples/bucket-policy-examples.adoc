@@ -5,7 +5,10 @@ keywords: iam, bucket policy, group policy, policy
 summary: '以下是存储分段策略和组策略(IAM策略)的示例。' 
 ---
 = 分段和组(IAM)策略示例
+:hardbreaks:
 :allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
 
 
 [role="lead"]

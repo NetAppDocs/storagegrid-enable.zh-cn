@@ -5,10 +5,11 @@ keywords: Vertica Eon Mode database
 summary: 本指南介绍在NetApp StorageGRID 上使用公共存储创建Vertica Eon模式数据库的操作步骤。 
 ---
 = 使用NetApp StorageGRID 作为公共存储的Vertica Eon模式数据库
+:hardbreaks:
 :allow-uri-read: 
+:icons: font
+:imagesdir: ../media/vertica-eon/
 
-
-_Angela Cheng_
 
 [role="lead"]
 本指南介绍在NetApp StorageGRID 上使用公共存储创建Vertica Eon模式数据库的操作步骤。
@@ -33,7 +34,7 @@ Eon模式可将计算资源与数据库的公用存储层分离、从而使计�
 
 Eon模式将数据存储在名为公共存储的共享对象存储中、即S3存储分段、托管在内部或Amazon S3上。
 
-image::../media/vertica-eon/sg-vertica-eon-mode-cluster-with-communal-storage.png[使用公用存储的Vertica Eon模式集群]
+image::sg-vertica-eon-mode-cluster-with-communal-storage.png[使用公用存储的Vertica Eon模式集群]
 
 
 
@@ -714,3 +715,4 @@ DATABASE | UseDepotForWrites | 1
 初始版本。
 
 |===
+_作者：郑安杰_

@@ -5,10 +5,11 @@ keywords: cli, aws, S3, object lock, compliance, worm, api
 summary: 对象锁定提供了一个WORM模型、用于防止删除或覆盖对象。对StorageGRID 对象锁定实施情况进行了评估、以帮助满足法规要求、支持对象保留的合法保留和合规模式以及默认存储分段保留策略。 
 ---
 = 测试并演示StorageGRID 上的S3对象锁定
+:hardbreaks:
 :allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
 
-
-_Aron Klein_
 
 [role="lead"]
 对象锁定提供了一个WORM模型、用于防止删除或覆盖对象。对StorageGRID 对象锁定实施情况进行了评估、以帮助满足法规要求、支持对象保留的合法保留和合规模式以及默认存储分段保留策略。
@@ -220,3 +221,5 @@ aws s3api delete-object  --bucket <bucket> --key <file> --version-id "<VersionId
 An error occurred (AccessDenied) when calling the DeleteObject operation: Access Denied
 ----
 
+
+_作者：Aron Klein_

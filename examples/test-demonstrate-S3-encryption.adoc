@@ -5,10 +5,11 @@ keywords: cli, aws, S3, encryption, SSE, SSE-C, SSE-S3, api
 summary: StorageGRID 和S3 API提供了多种不同的方法来加密空闲数据。 
 ---
 = 在StorageGRID 上测试和演示S3加密选项
+:hardbreaks:
 :allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
 
-
-_Aron Klein_
 
 [role="lead"]
 StorageGRID 和S3 API提供了多种不同的方法来加密空闲数据。要了解更多信息，请参见 https://docs.netapp.com/us-en/storagegrid-116/admin/reviewing-storagegrid-encryption-methods.html["查看 StorageGRID 加密方法"^]。
@@ -185,3 +186,5 @@ aws s3api head-object --bucket <bucket> --key <file> --endpoint-url https://s3.e
 aws s3api get-object --bucket <bucket>  --key <file> <file> --endpoint-url https://s3.example.com
 ----
 
+
+_作者：Aron Klein_

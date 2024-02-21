@@ -5,10 +5,11 @@ keywords: Amazon OpenSearch Service, on-premises, Elasticsearch
 summary: 本指南详细说明了如何使用Amazon OpenSearch服务或内部Elasticsearch配置NetApp StorageGRID 11.6搜索集成服务。 
 ---
 = 配置StorageGRID 搜索集成服务
+:hardbreaks:
 :allow-uri-read: 
+:icons: font
+:imagesdir: ../media/storagegrid-search-integration-service/
 
-
-_Angela Cheng_
 
 [role="lead"]
 本指南详细说明了如何使用Amazon OpenSearch服务或内部Elasticsearch配置NetApp StorageGRID 11.6搜索集成服务。
@@ -37,7 +38,7 @@ S3租户可通过租户管理器UI配置平台服务。有关详细信息，请�
 . 使用Grid Manager创建S3租户、输入显示名称并选择S3协议。
 . 在权限页面上、选择允许平台服务选项。如果需要、也可以选择其他权限。
 +
-image::../media/storagegrid-search-integration-service/sg-sis-select-permissions.png[选择权限屏幕截图]
+image::sg-sis-select-permissions.png[选择权限屏幕截图]
 
 . 设置租户root用户初始密码、或者如果在网格上启用了标识联合、则选择具有root访问权限的联合组来配置租户帐户。
 . 单击以root用户身份登录、然后选择分段：创建和管理分段。
@@ -101,7 +102,7 @@ NOTE: 要订阅OpenSearch服务、您必须拥有有效的AWS控制台登录名�
 }
 ----
 +
-image::../media/storagegrid-search-integration-service/sg-sis-search-integration-amazon-opensearch.png[搜索集成屏幕截图]
+image::sg-sis-search-integration-amazon-opensearch.png[搜索集成屏幕截图]
 
 
 
@@ -109,17 +110,17 @@ image::../media/storagegrid-search-integration-service/sg-sis-search-integration
 
 . 等待15到20分钟、使此域变为活动状态。
 +
-image::../media/storagegrid-search-integration-service/sg-sis-activating-domain.png[激活域屏幕截图]
+image::sg-sis-activating-domain.png[激活域屏幕截图]
 
 . 单击OpenSearch Dashboards URL以在新选项卡中打开域以访问此信息板。如果出现访问被拒绝错误、请验证访问策略源IP地址是否已正确设置为您的计算机公有 IP、以允许访问域信息板。
 . 在信息板欢迎页面上、选择"Explore on your own"。从菜单中、转到"Management"->"Dev Tools"
 . 在Dev Tools -> Console下、输入`PUT <index>`、在此可以使用索引存储StorageGRID 对象元数据。我们在以下示例中使用索引名称"gmetadata"。单击小三角形符号以执行PUT命令。预期结果显示在右侧面板上、如以下示例屏幕截图所示。
 +
-image::../media/storagegrid-search-integration-service/sg-sis-using-put-command-for-index.png[使用PUT命令查看索引屏幕截图]
+image::sg-sis-using-put-command-for-index.png[使用PUT命令查看索引屏幕截图]
 
 . 验证索引是否可从Amazon OpenSearch UI的sgdomain >索引下查看。
 +
-image::../media/storagegrid-search-integration-service/sg-sis-verifying-the-index.png[正在验证索引屏幕截图]
+image::sg-sis-verifying-the-index.png[正在验证索引屏幕截图]
 
 
 
@@ -139,17 +140,17 @@ image::../media/storagegrid-search-integration-service/sg-sis-verifying-the-inde
 在此示例中、URN变为`arn：AWS：es：us-east-1：211234567890：domain/sgdemo /sgmedata/_doc`。
 
 +
-image::../media/storagegrid-search-integration-service/sg-sis-enter-end-points-details.png[端点详细信息屏幕截图]
+image::sg-sis-enter-end-points-details.png[端点详细信息屏幕截图]
 
 
 
 . 要访问Amazon OpenSearch sgdomain、请选择访问密钥作为身份验证类型、然后输入Amazon S3访问密钥和机密密钥。要转到下一页、请单击继续。
 +
-image::../media/storagegrid-search-integration-service/sg-sis-authenticate-connections-to-endpoints.png[对端点连接进行身份验证屏幕截图]
+image::sg-sis-authenticate-connections-to-endpoints.png[对端点连接进行身份验证屏幕截图]
 
 . 要验证端点、请选择使用操作系统CA证书和测试并创建端点。如果验证成功、则会显示一个类似于下图的端点屏幕。如果验证失败、请确认URN在路径末尾包含`/<index>/_doc`、并且AWS访问密钥和机密密钥正确无误。
 +
-image::../media/storagegrid-search-integration-service/sg-sis-platform-service-endpoints.png[平台服务端点屏幕截图]
+image::sg-sis-platform-service-endpoints.png[平台服务端点屏幕截图]
 
 
 
@@ -197,14 +198,14 @@ sudo systemctl start docker
 TIP: 记下由Elasticsearch创建的用户名/密码和令牌、您需要使用它们来启动Kibana UI和StorageGRID 平台端点身份验证。
 
 +
-image::../media/storagegrid-search-integration-service/sg-sis-search-integration-elasticsearch.png[搜索集成弹性搜索屏幕截图]
+image::sg-sis-search-integration-elasticsearch.png[搜索集成弹性搜索屏幕截图]
 
 . 启动Kibana Docker容器后、控制台中将显示URL链接`\https://0.0.0.0:5601`。将0.0.0.0替换为URL中的服务器IP地址。
 . 使用用户名`弹性`和Elastic在上一步中生成的密码登录到Kibana UI。
 . 首次登录时、请在信息板欢迎页面上选择"Explore on your own"。从菜单中、选择"Management">"Dev Tools"。
 . 在开发工具控制台屏幕上、输入`PUT <index>`、在此可以使用此索引存储StorageGRID 对象元数据。我们在此示例中使用索引名称`sgmetadata`。单击小三角形符号以执行PUT命令。预期结果显示在右侧面板上、如以下示例屏幕截图所示。
 +
-image::../media/storagegrid-search-integration-service/sg-sis-execute-put-command.png[执行PUT命令屏幕截图]
+image::sg-sis-execute-put-command.png[执行PUT命令屏幕截图]
 
 
 
@@ -221,17 +222,17 @@ image::../media/storagegrid-search-integration-service/sg-sis-execute-put-comman
 ** URI：`\https://<elasticsearch-server-ip或hostname>：9200`
 ** urn：`urn：<something>：es：：：<部分唯一文本>/<索引名称>/_doc`、其中索引名称是您在Kibana控制台上使用的名称。示例：`urn：local：es：：：sgmd/sgmetadata/_doc`
 +
-image::../media/storagegrid-search-integration-service/sg-sis-platform-service-endpoint-details.png[平台服务端点详细信息屏幕截图]
+image::sg-sis-platform-service-endpoint-details.png[平台服务端点详细信息屏幕截图]
 
 
 
 . 选择基本HTTP作为身份验证类型、输入用户名`弹性`以及Elasticsearch安装过程生成的密码。要转到下一页、请单击继续。
 +
-image::../media/storagegrid-search-integration-service/sg-sis-platform-service-endpoint-authentication-type.png[平台服务端点身份验证屏幕截图]
+image::sg-sis-platform-service-endpoint-authentication-type.png[平台服务端点身份验证屏幕截图]
 
 . 选择不验证证书和测试并创建端点以验证端点。如果验证成功、则会显示类似于以下屏幕截图的端点屏幕。如果验证失败、请验证URN、URI和用户名/密码条目是否正确。
 +
-image::../media/storagegrid-search-integration-service/sg-sis-successfully-verified-endpoint.png[已成功验证端点]
+image::sg-sis-successfully-verified-endpoint.png[已成功验证端点]
 
 
 
@@ -270,7 +271,7 @@ image::../media/storagegrid-search-integration-service/sg-sis-successfully-verif
 ----
 . 使用S3浏览器使用租户访问/密钥连接到StorageGRID 、将测试对象上传到`sgmetada-test`存储分段、并向对象添加标记或自定义元数据。
 +
-image::../media/storagegrid-search-integration-service/sg-sis-upload-test-objects.png[上传测试对象屏幕截图]
+image::sg-sis-upload-test-objects.png[上传测试对象屏幕截图]
 
 . 使用Kibana UI验证对象元数据是否已加载到sgmetadata的索引中。
 +
@@ -290,7 +291,7 @@ GET sgmetadata/_search
 }
 ----
 +
-image::../media/storagegrid-search-integration-service/sg-sis-query1-sample-result.png[查询1结果示例屏幕截图]
+image::sg-sis-query1-sample-result.png[查询1结果示例屏幕截图]
 
 +
 以下屏幕截图中的查询2示例结果显示了标记类型为jpg的两条记录。
@@ -309,7 +310,7 @@ GET sgmetadata/_search
 }
 ----
 +
-image::../media/storagegrid-search-integration-service/sg-sis-query-two-sample.png[查询2示例]
+image::sg-sis-query-two-sample.png[查询2示例]
 
 
 
@@ -324,3 +325,5 @@ image::../media/storagegrid-search-integration-service/sg-sis-query-two-sample.p
 * https://docs.netapp.com/us-en/storagegrid-116/tenant/what-platform-services-are.html["什么是平台服务"^]
 * https://docs.netapp.com/us-en/storagegrid-116/index.html["StorageGRID 11.6 文档"^]
 
+
+_作者：郑安杰_

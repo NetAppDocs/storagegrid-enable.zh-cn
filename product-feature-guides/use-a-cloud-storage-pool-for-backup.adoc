@@ -5,10 +5,11 @@ keywords: cloud storage pool, backup, ILM, CSP
 summary: 您可以创建ILM规则、将对象移动到云存储池进行备份。 
 ---
 = 使用云存储池进行备份
+:hardbreaks:
 :allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
 
-
-_Jonathan Wong
 
 [role="lead"]
 您可以创建ILM规则、将对象移动到云存储池进行备份。
@@ -34,3 +35,5 @@ _Jonathan Wong
 确认保留示意图显示了存储在StorageGRID 本地和云存储池中用于备份的对象。
 
 确认在触发ILM规则后、云存储池中存在副本、您可以在本地检索对象而无需执行对象还原。
+
+作者：Jonathan Wong

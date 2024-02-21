@@ -5,10 +5,11 @@ keywords: ELK, log analytics, log analysis, StorageGRID troubleshooting
 summary: '通过StorageGRID 11.6系统日志转发功能、您可以配置外部系统日志服务器来收集和分析StorageGRID 日志消息。ELK (Elasticsearch、Logstash、Kibana)已成为最受欢迎的日志分析解决方案之一。本文包括用于筛选和定义日志消息模式的Logstash配置示例、Kibana查询、图表和信息板示例、可帮助您快速开始StorageGRID 日志管理和分析。' 
 ---
 = 使用ELK堆栈进行StorageGRID 日志分析
+:hardbreaks:
 :allow-uri-read: 
+:icons: font
+:imagesdir: ../media/elk-config/
 
-
-_Angela Cheng_
 
 [role="lead"]
 通过StorageGRID 11.6系统日志转发功能、您可以配置外部系统日志服务器来收集和分析StorageGRID 日志消息。ELK (Elasticsearch、Logstash、Kibana)已成为最受欢迎的日志分析解决方案之一。请观看 https://www.netapp.tv/details/29396["使用ELK视频进行StorageGRID 日志分析"] 查看ELK配置示例以及如何使用它来识别失败的S3请求并对其进行故障排除。本文提供了Logstash配置、Kibana查询、图表和信息板的示例文件、可帮助您快速开始StorageGRID 日志管理和分析。
@@ -47,11 +48,11 @@ match => {"message" => '<%{POSINT:syslog_pri}>%{SYSLOGBASE} %{GREEDYDATA:msg-det
 ----
 * Logstash 7.17示例*
 
-image::../media/elk-config/logstash-7.17.fields-sample.png[Logstash 7.17示例]
+image::logstash-7.17.fields-sample.png[Logstash 7.17示例]
 
 * Logstash 8.23示例*
 
-image::../media/elk-config/logstash-8.x.fields-sample.png[Logstash 8.23示例]
+image::logstash-8.x.fields-sample.png[Logstash 8.23示例]
 
 * 步骤 *
 
@@ -98,13 +99,13 @@ GET /_cat/indices/*?v=true&s=index
 . 在Kibana GUI中、创建索引模式(ELK 7.x)或数据视图(ELK 8.x)。
 . 在Kibana GUI的顶部中间的搜索框中输入"saved objects"。+在已保存对象页面上、选择导入。在导入选项下、选择"请求冲突操作"
 +
-image::../media/elk-config/kibana-import-options.png[Kibana导入选项]
+image::kibana-import-options.png[Kibana导入选项]
 
 +
 导入ELK <version>-query-chart -sample.ndjson。+当系统提示您解决冲突时、请选择您在第8步中创建的索引模式或数据视图。
 
 +
-image::../media/elk-config/kibana-import-conflict.png[Kibana冲突]
+image::kibana-import-conflict.png[Kibana冲突]
 
 +
 导入以下Kibana对象： +*查询*+* audit-msg-s3rq-orlm +* byncast log S3相关消息+*日志级别警告或更高+*失败的安全事件+*图表*+* S3请求计数基于bycast.log +* HTTP状态代码+*审核消息类型细分+*平均S3响应 时间+*信息板*+* S3请求信息板使用上述图表。
@@ -125,3 +126,5 @@ image::../media/elk-config/kibana-import-conflict.png[Kibana冲突]
 * https://www.elastic.co/guide/en/kibana/master/document-explorer.html["Kibana指南—浏览文档"]
 * https://docs.netapp.com/us-en/storagegrid-116/audit/index.html["StorageGRID 审核日志消息参考"]
 
+
+_作者：郑安杰_

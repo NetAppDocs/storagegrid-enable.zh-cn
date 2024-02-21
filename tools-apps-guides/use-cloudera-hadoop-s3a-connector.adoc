@@ -5,10 +5,11 @@ keywords: hadoop, cloudera, s3a
 summary: 通过Hadoop、可以使用简单的编程框架在多个计算机集群之间分布式处理大型数据集。Hadoop旨在从单个服务器扩展到数千台计算机、每台计算机都提供本地计算和存储。 
 ---
 = 将Cloudera Hadoop S3A连接器与StorageGRID 结合使用
+:hardbreaks:
 :allow-uri-read: 
+:icons: font
+:imagesdir: ../media/hadoop-s3a/
 
-
-_Angela Cheng_
 
 [role="lead"]
 Hadoop在一段时间内一直是数据科学家的青睐。通过Hadoop、可以使用简单的编程框架在多个计算机集群之间分布式处理大型数据集。Hadoop旨在从单个服务器扩展到数千台计算机、每台计算机都拥有本地计算和存储。
@@ -140,11 +141,11 @@ true或false (如果缺少此条目、则默认为虚拟主机模式)
 *屏幕截图示例*
 
 +
-image::../media/hadoop-s3a/hadoop-s3a-configuration.png[S3A配置]
+image::hadoop-s3a-configuration.png[S3A配置]
 
 . 单击保存更改按钮。从HDFS菜单栏中选择陈旧配置图标、在下一页上选择重新启动陈旧服务、然后选择立即重新启动。
 +
-image::../media/hadoop-s3a/hadoop-restart-stale-service-icon.png[重新启动Hadoop的陈旧服务图标]
+image::hadoop-restart-stale-service-icon.png[重新启动Hadoop的陈旧服务图标]
 
 
 
@@ -255,3 +256,5 @@ keytool -import -trustcacerts -keystore $JAVA_HOME/lib/security/cacerts -storepa
 `Hadoop FS -ls S3a：//<bucket-name>_/&>error.log`
 
 
+
+_作者：郑安杰_

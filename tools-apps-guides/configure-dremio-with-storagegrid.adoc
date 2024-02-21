@@ -5,14 +5,10 @@ keywords: Dremio, StorageGRID, lakehouse, object storage, s3
 summary: 使用StorageGRID配置d不良 数据源 
 ---
 = 使用StorageGRID配置d不良 数据源
+:hardbreaks:
 :allow-uri-read: 
 :icons: font
-:imagesdir: ../media/
-:firstname:  Angela
-:authorinitials:  C
-:lastname: Cheng 
-:author:  Angela Cheng 
-:authors:  Angela Cheng 
+:imagesdir: ../media/dremio/
 
 
 [role="lead"]
@@ -47,7 +43,7 @@ https://docs.dremio.com/current/sonar/data-sources/object/s3/["连接到Amazon S
 如果对此S3端点使用自签名CA证书、请按照dremio指南说明将此CA证书添加到<JAVA_HOME>服务器的dre/jre/lib/security +中
 *屏幕截图示例*
 +
-image::../media/dremio/dremio-add-source-general.png[新源-常规]
+image::dremio-add-source-general.png[新源-常规]
 
 . 单击"高级选项"、选中"启用兼容模式"
 . 在连接属性下、单击+添加属性并添加这些S3A属性。
@@ -82,13 +78,15 @@ _<大于100>_的值
 *屏幕截图示例*
 
 +
-image::../media/dremio/dremio-add-source-advanced.png[新源-高级选项]
+image::dremio-add-source-advanced.png[新源-高级选项]
 
 . 根据您的组织或应用程序要求配置其他的多米奥选项。
 . 单击保存按钮以创建此新数据源。
 . 成功添加StorageGRID数据源后、左侧面板将显示存储分段列表。+
 *屏幕截图示例*
 +
-image::../media/dremio/dremio-source-added.png[已添加新数据源]
+image::dremio-source-added.png[已添加新数据源]
 
 
+
+_作者：郑安杰_
