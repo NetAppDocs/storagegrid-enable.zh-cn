@@ -8,7 +8,7 @@ summary: 本指南重点介绍NetApp StorageGRID以及部分Veeam备份和复制
 :hardbreaks:
 :allow-uri-read: 
 :icons: font
-:imagesdir: ../media/veeam-bp/
+:imagesdir: ../media/
 
 
 [role="lead"]
@@ -115,25 +115,25 @@ StorageGRID支持在StorageGRID节点和站点之间进行复制和纠删编码�
 
 如果需要不可破坏性、请确保在StorageGRID系统上启用对象锁定。在管理UI中的"Configuration/S3 Object Lock"(配置/S3对象锁定)下找到相应选项。
 
-image::obj_lock_en.png[启用网格范围对象锁定]
+image::veeam-bp/obj_lock_en.png[启用网格范围对象锁定]
 
 创建存储分段时、如果要将此存储分段用于不可移动备份、请选择"Enable S3 Object Lock"(启用S3对象锁定)。这将自动启用存储分段版本控制。保持禁用默认保留、因为Veeam将明确设置对象保留。如果Veeam不创建不可变备份、则不应选择版本控制和S3对象锁定。
 
-image::obj_lock_bucket.png[在存储分段上启用对象锁定]
+image::veeam-bp/obj_lock_bucket.png[在存储分段上启用对象锁定]
 
 创建存储分段后、转到所创建存储分段的详细信息页面。选择一致性级别。
 
-image::bucket_consist_1.png[存储分段选项]
+image::veeam-bp/bucket_consist_1.png[存储分段选项]
 
 Veeam要求S3存储分段具有强大的一致性。因此、对于Veeam从多个位置访问数据的多站点部署、请选择"strong-globation"。如果Veeam备份和还原仅在单个站点上进行、则一致性级别应设置为"strong-site"。保存更改。
 
-image::bucket_consist_2.png[存储分段一致性]
+image::veeam-bp/bucket_consist_2.png[存储分段一致性]
 
 StorageGRID在每个管理节点和专用网关节点上提供集成负载平衡器服务。使用此负载平衡器的众多优势之一是能够配置流量分类策略(QoS)。虽然这些指标主要用于限制应用程序对其他客户端工作负载的影响或将工作负载划分为优先级、但它们还提供了额外的指标收集功能、以协助监控。
 
 在配置选项卡中、选择"Traffic Classification"(流量分类)并创建新策略。命名规则并选择存储分段或租户作为类型。输入存储分段或租户的名称。如果需要QoS、请设置限制、但对于大多数实施、我们只希望添加此功能提供的监控优势、因此不要设置限制。
 
-image::tc_policy.png[创建TC策略]
+image::veeam-bp/tc_policy.png[创建TC策略]
 
 
 
@@ -141,15 +141,15 @@ image::tc_policy.png[创建TC策略]
 
 根据StorageGRID设备的型号和数量、可能需要选择并配置对存储分段上的并发操作数的限制。
 
-image::veeam_concur_limit.png[Veeam并发任务限制]
+image::veeam-bp/veeam_concur_limit.png[Veeam并发任务限制]
 
 按照Veeam控制台中有关备份作业配置的Veeam文档启动向导。添加VM后、选择SOBR存储库。
 
-image::veeam_1.png[备份作业]
+image::veeam-bp/veeam_1.png[备份作业]
 
 单击高级设置并将存储优化设置更改为4 MB或更大。应启用数据压缩和重复数据删除。根据需要更改子系统设置并配置备份作业计划。
 
-image::veeam_blk_sz.png[自动生成的计算机问题描述的屏幕截图,320,375]
+image::veeam-bp/veeam_blk_sz.png[自动生成的计算机问题描述的屏幕截图,320,375]
 
 
 
@@ -160,25 +160,25 @@ image::veeam_blk_sz.png[自动生成的计算机问题描述的屏幕截图,320,
 StorageGRID在"Support"(支持)选项卡"Metrics (指标)"页面中提供了方便的图表来监控系统的运行。要查看的主要信息板是S3概述、ILM和流量分类策略(如果已创建策略)。在"S3概述"信息板中、您可以找到有关S3操作速率、延期和请求响应的信息。
 
 通过查看S3速率和活动请求、您可以按类型查看每个节点正在处理的负载以及请求总数。
-图像：：s3_over_rate.png[S3概览价格]
+图像：：Veeam-BP/S3_over_rate.png[S3概览价格]
 
 "平均持续时间"图表显示每个节点针对每种请求类型花费的平均时间。这是请求的平均延迟、可能很好地指示可能需要进行额外调整、或者StorageGRID系统有承担更多负载的空间。
 
-image::s3_over_duration.png[S3概述持续时间]
+image::veeam-bp/s3_over_duration.png[S3概述持续时间]
 
 在“已完成请求总数”图表中，您可以按类型和响应代码查看请求。如果您看到的响应不是200 (OK)、则可能表示问题描述(如StorageGRID系统)负载过重、正在发送503 (减慢)响应、可能需要进行一些额外调整、或者现在是扩展系统以应对增加的负载的时候了。
 
-image::s3_over_requests.png[S3概述请求]
+image::veeam-bp/s3_over_requests.png[S3概述请求]
 
 在ILM信息板中、您可以监控StorageGRID系统的删除性能。StorageGRID会在每个节点上同时执行同步和异步删除、以尝试优化所有请求的整体性能。
 
-image::ilm_delete.png[ILM删除]
+image::veeam-bp/ilm_delete.png[ILM删除]
 
 通过流量分类策略、我们可以查看有关负载平衡器请求吞吐量、速率、持续时间以及Veeam正在发送和接收的对象大小的指标。
 
-image::tc_1.png[流量分类策略指标]
+image::veeam-bp/tc_1.png[流量分类策略指标]
 
-image::tc_2.png[流量分类策略指标]
+image::veeam-bp/tc_2.png[流量分类策略指标]
 
 
 

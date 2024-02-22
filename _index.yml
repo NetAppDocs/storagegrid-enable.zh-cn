@@ -54,7 +54,7 @@ indexpage:
     - title: 将Veeam备份和复制与StorageGRID结合使用
       url: "/tools-apps-guides/veeam-br.html"
     - title: 使用StorageGRID配置多米奥
-      url: "/tools-apps-guides/configure-Dremio-StorageGRID.html"
+      url: "/tools-apps-guides/configure-dremio-storagegrid.html"
   - title: 过程和API示例
     links:
     - title: 测试和演示S3加密

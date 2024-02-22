@@ -8,7 +8,7 @@ summary: 配置Datadog HQ以收集StorageGRID SNMP指标和陷阱。
 :hardbreaks:
 :allow-uri-read: 
 :icons: font
-:imagesdir: ../media/datadog/
+:imagesdir: ../media/
 
 
 [role="lead"]
@@ -121,6 +121,6 @@ network_devices:
 
 StorageGRID 系统中的SNMP代理位于配置选项卡的监控列下。启用SNMP并输入所需信息。如果要配置陷阱、请选择"陷阱目标"并为包含陷阱配置的Datadog代理主机创建一个目标。
 
-image::sg_snmp_conf.png[StorageGRID SNMP配置]
+image::datadog/sg_snmp_conf.png[StorageGRID SNMP配置]
 
 _作者：Aron Klein_

@@ -8,7 +8,7 @@ summary: 通过Hadoop、可以使用简单的编程框架在多个计算机集�
 :hardbreaks:
 :allow-uri-read: 
 :icons: font
-:imagesdir: ../media/hadoop-s3a/
+:imagesdir: ../media/
 
 
 [role="lead"]
@@ -141,11 +141,11 @@ true或false (如果缺少此条目、则默认为虚拟主机模式)
 *屏幕截图示例*
 
 +
-image::hadoop-s3a-configuration.png[S3A配置]
+image::hadoop-s3a/hadoop-s3a-configuration.png[S3A配置]
 
 . 单击保存更改按钮。从HDFS菜单栏中选择陈旧配置图标、在下一页上选择重新启动陈旧服务、然后选择立即重新启动。
 +
-image::hadoop-restart-stale-service-icon.png[重新启动Hadoop的陈旧服务图标]
+image::hadoop-s3a/hadoop-restart-stale-service-icon.png[重新启动Hadoop的陈旧服务图标]
 
 
 
