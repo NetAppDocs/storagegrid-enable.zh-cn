@@ -319,9 +319,7 @@
   <block id="ea9349a37bfee247df0f87cbcacca796" category="paragraph">初始版本。</block>
   <block id="0a7fcea811cb899434230e06e3477b84" category="summary">通过Hadoop、可以使用简单的编程框架在多个计算机集群之间分布式处理大型数据集。Hadoop旨在从单个服务器扩展到数千台计算机、每台计算机都提供本地计算和存储。</block>
   <block id="e28a2374ec10c84082a75afb2254f4e2" category="doc">将Cloudera Hadoop S3A连接器与StorageGRID 结合使用</block>
-  <block id="69cfaca1831444acadd7835297b7d501" category="paragraph">Hadoop在一段时间内一直是数据科学家的青睐。通过Hadoop、可以使用简单的编程框架在多个计算机集群之间分布式处理大型数据集。Hadoop旨在从单个服务器扩展到数千台计算机、每台计算机都拥有本地计算和存储。</block>
   <block id="ae19997258b86e93601b9072dd73b100" category="section-title">为什么要使用S3A执行Hadoop工作流？</block>
-  <block id="edb332fdf13a795cb04d8673475e7002" category="paragraph">随着数据量的不断增长、使用自己的计算和存储添加新计算机的方法变得效率低下。线性扩展解决了高效利用资源和管理基础架构的难题。</block>
   <block id="ab8402eb6a573e76dfe21f21689c9ae9" category="paragraph">为了应对这些挑战、Hadoop S3A客户端可为S3对象存储提供高性能I/O。使用S3A实施Hadoop工作流有助于将对象存储用作数据存储库、并将计算和存储分开、进而使您能够独立扩展计算和存储。通过分离计算和存储、您还可以将适当数量的资源专用于计算作业、并根据数据集的大小提供容量。因此、您可以降低Hadoop工作流的总体TCO。</block>
   <block id="95c00c41a442070ea0794b977de417b8" category="section-title">将S3A连接器配置为使用StorageGRID</block>
   <block id="ee68e5b99222bbc29a480fcb0d1d6ee2" category="section-title">前提条件</block>
@@ -1083,7 +1081,6 @@
   <block id="21b17c7b7d71861473c6337e153ea6ea" category="paragraph"><block ref="21b17c7b7d71861473c6337e153ea6ea" category="inline-link-rx"></block></block>
   <block id="29007b92e2b6688072358d8f25529d24" category="paragraph"><block ref="29007b92e2b6688072358d8f25529d24" category="inline-link-rx"></block></block>
   <block id="d31ba7e4c6f469a6c88f05aac3e0e91c" category="list-text">Datadobi</block>
-  <block id="8727881150b0ace8b598a648cdfcd4e1" category="sidebar">NetApp StorageGRID 是一款软件定义的对象存储套件、支持公共、私有和混合多云环境中的各种用例。StorageGRID 为Amazon S3 API提供本机支持、并提供行业领先的创新技术、例如自动化生命周期管理、以便长期经济高效地存储、保护和保留非结构化数据。</block>
   <block id="a88f9b6efeacfebaca582083cb9bd819" category="paragraph">此组策略仅允许用户访问名为Users username的分段中的对象。</block>
   <block id="a16b735f7d349dcc23b45a7a101460f3" category="paragraph">此组策略将限制用户创建在存储分段上启用了对象锁定的存储分段。</block>
   <block id="5ccd1d9b602b536952729ea6084688f1" category="section-title">对象锁定保留限制</block>
@@ -1266,4 +1263,7 @@ DERMIO使用字节范围GET在查询期间同时从同一对象中提取不同�
   <block id="9224315283279b10c8f6eac37416df31" category="paragraph">作者：Jonathan Wong</block>
   <block id="8cd84a7eff267a91caead66f5ac5a7d2" category="paragraph">通过查看S3速率和活动请求、您可以按类型查看每个节点正在处理的负载以及请求总数。
 图像：：Veeam-BP/S3_over_rate.png[S3概览价格]</block>
+  <block id="66dc7cd0b0a02168bc30f9fcad8cdbb3" category="paragraph">一段时间以来、Hadoop一直是数据科学家的最爱。通过Hadoop、可以使用简单的编程框架在多个计算机集群之间分布式处理大型数据集。Hadoop旨在从单个服务器扩展到数千台计算机、每台计算机都拥有本地计算和存储。</block>
+  <block id="afa1796bcfe5f602d94a2ed1d5b82a74" category="paragraph">随着数据量的不断增长、使用自己的计算和存储添加新计算机的方法变得效率低下。线性扩展为高效使用资源和管理基础架构带来了挑战。</block>
+  <block id="1ed32842544e52d59a55b4b962d478b4" category="sidebar">NetApp StorageGRID 是一款软件定义的对象存储套件，支持公有 ，私有云和混合多云环境中的各种用例。StorageGRID 为Amazon S3 API提供本机支持、并提供行业领先的创新技术、例如自动化生命周期管理、以便长期经济高效地存储、保护和保留非结构化数据。</block>
 </blocks>
