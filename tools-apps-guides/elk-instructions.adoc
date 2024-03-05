@@ -48,11 +48,11 @@ match => {"message" => '<%{POSINT:syslog_pri}>%{SYSLOGBASE} %{GREEDYDATA:msg-det
 ----
 * Logstash 7.17示例*
 
-image::elk-config/logstash-7.17.fields-sample.png[Logstash 7.17示例]
+image:elk-config/logstash-7.17.fields-sample.png["Logstash 7.17示例"]
 
 * Logstash 8.23示例*
 
-image::elk-config/logstash-8.x.fields-sample.png[Logstash 8.23示例]
+image:elk-config/logstash-8.x.fields-sample.png["Logstash 8.23示例"]
 
 * 步骤 *
 
@@ -99,13 +99,13 @@ GET /_cat/indices/*?v=true&s=index
 . 在Kibana GUI中、创建索引模式(ELK 7.x)或数据视图(ELK 8.x)。
 . 在Kibana GUI的顶部中间的搜索框中输入"saved objects"。+在已保存对象页面上、选择导入。在导入选项下、选择"请求冲突操作"
 +
-image::elk-config/kibana-import-options.png[Kibana导入选项]
+image:elk-config/kibana-import-options.png["Kibana导入选项"]
 
 +
 导入ELK <version>-query-chart -sample.ndjson。+当系统提示您解决冲突时、请选择您在第8步中创建的索引模式或数据视图。
 
 +
-image::elk-config/kibana-import-conflict.png[Kibana冲突]
+image:elk-config/kibana-import-conflict.png["Kibana冲突"]
 
 +
 导入以下Kibana对象： +*查询*+* audit-msg-s3rq-orlm +* byncast log S3相关消息+*日志级别警告或更高+*失败的安全事件+*图表*+* S3请求计数基于bycast.log +* HTTP状态代码+*审核消息类型细分+*平均S3响应 时间+*信息板*+* S3请求信息板使用上述图表。

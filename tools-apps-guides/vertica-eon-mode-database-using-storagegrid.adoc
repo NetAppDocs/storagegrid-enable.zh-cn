@@ -34,7 +34,7 @@ Eon模式可将计算资源与数据库的公用存储层分离、从而使计�
 
 Eon模式将数据存储在名为公共存储的共享对象存储中、即S3存储分段、托管在内部或Amazon S3上。
 
-image::vertica-eon/sg-vertica-eon-mode-cluster-with-communal-storage.png[使用公用存储的Vertica Eon模式集群]
+image:vertica-eon/sg-vertica-eon-mode-cluster-with-communal-storage.png["使用公用存储的Vertica Eon模式集群"]
 
 
 

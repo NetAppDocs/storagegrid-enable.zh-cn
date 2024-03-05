@@ -73,27 +73,27 @@ summary: 如何使用端口重新映射。
 
 . 部署虚拟机后、从虚拟机列表中选择该虚拟机、然后选择配置选项卡vApp选项。
 +
-image::port-remap/vapp_options.png[vApp选项选项卡]
+image:port-remap/vapp_options.png["vApp选项选项卡"]
 
 . 向下滚动到属性部分、然后选择port_remap_inbound属性
 +
-image::port-remap/remap_inbound.png[端口重新映射入站]
+image:port-remap/remap_inbound.png["端口重新映射入站"]
 
 . 滚动到属性列表顶部、然后单击编辑
 +
-image::port-remap/edit_button.png[编辑按钮]
+image:port-remap/edit_button.png["编辑按钮"]
 
 . 选择类型选项卡、确认已选中用户可配置复选框、然后单击保存。
 +
-image::port-remap/type_tab.png[键入Tab]
+image:port-remap/type_tab.png["键入Tab"]
 
 . 在"Properties"列表顶部、仍选择了"port_remap_inbound"属性、然后单击"Set value"。
 +
-image::port-remap/edit_button.png[设置值按钮]
+image:port-remap/edit_button.png["设置值按钮"]
 
 . 在属性值字段中、输入网络(网格、管理员或客户端)、TCP、原始端口(8082)和新端口(10443)、每个值之间均包含"/"、如下所示。
 +
-image::port-remap/value.png[属性值]
+image:port-remap/value.png["属性值"]
 
 . 如果使用多个网络、请使用逗号(、)分隔网络字符串、例如GRIDE/TCP/8082/10443、admin/TCP/8082/10443、client/TCP/8082/10443
 
@@ -106,11 +106,11 @@ image::port-remap/value.png[属性值]
 
 . 导航到网格管理UI的维护/恢复部分。
 +
-image::port-remap/maint_menu.png[维护菜单]
+image:port-remap/maint_menu.png["维护菜单"]
 
 . 打开VM节点的电源、并等待此节点显示在网格管理UI的维护/恢复待定节点部分中。
 +
-image::port-remap/recover_pend.png[恢复待定]
+image:port-remap/recover_pend.png["恢复待定"]
 
 +
 [NOTE]
@@ -284,7 +284,7 @@ Initiating a reboot to trigger the StorageGRID Webscale appliance installation w
 . 经过一段时间后、设备将重新启动、您将能够访问节点PGE UI。
 . 浏览到Configure Networking
 +
-image::port-remap/remap_link.png[选择重新映射端口]
+image:port-remap/remap_link.png["选择重新映射端口"]
 
 . 选择所需的网络、协议、方向和端口、然后单击添加规则按钮。
 +
@@ -292,7 +292,7 @@ image::port-remap/remap_link.png[选择重新映射端口]
 NOTE: 重新映射网格网络上的入站端口443将中断安装和扩展过程。建议不要重新映射网格网络上的端口443。
 
 +
-image::port-remap/app_remap.png[将端口重新映射到网络]
+image:port-remap/app_remap.png["将端口重新映射到网络"]
 
 . 添加了所需的端口重新映射之一、您可以返回到主页选项卡并单击开始安装按钮。
 
