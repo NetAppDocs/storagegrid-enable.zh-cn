@@ -1,0 +1,1568 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head class="at-element-marker">
+  <title>使用Veeam备份和复制进行部署的StorageGRID最佳实践</title>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge,chrome=1">
+  <meta http-equiv="language" content="en">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta property="og:title" content="使用Veeam备份和复制进行部署的StorageGRID最佳实践" />
+	<meta property="og:type" content="website" />
+	<meta property="og:url" content="https://docs.netapp.com/zh-cn/storagegrid-enable/tools-apps-guides/veeam-br.html" />
+	<meta property="og:description" content="本指南重点介绍NetApp StorageGRID以及部分Veeam备份和复制的配置。本白皮书面向熟悉Linux系统并负责维护或实施NetApp StorageGRID系统与Veeam备份和复制的存储和网络管理员。" />
+  <meta property="og:image" content="https://docs.netapp.com/zh-cn/storagegrid-enable/images/logo-tophat-social.png" />
+  <meta property="og:image:alt" content="NetApp Logo" />
+  <meta name="format-detection" content="telephone=no">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="encoding" content="utf-8">
+  <meta http-equiv="nss-type" content="Product Documentation"/>
+  <meta http-equiv="nss-subtype" content="User Guide"/><meta name="description" content="本指南重点介绍NetApp StorageGRID以及部分Veeam备份和复制的配置。本白皮书面向熟悉Linux系统并负责维护或实施NetApp StorageGRID系统与Veeam备份和复制的存储和网络管理员。">
+  <meta name="keywords" content=" veeam,backup,veeam12,veeam11,"><!-- Icons -->
+  <link rel="icon" href="/zh-cn/storagegrid-enable/images/favicon.ico" type="image/x-icon">
+
+  <!-- RSS Feed --><!-- CSS Definitions: NetApp CSS should be defined after generic css -->
+
+
+  <!-- Combined CSS -->
+  <link rel="stylesheet" type="text/css" href="/zh-cn/storagegrid-enable/css/ie-netappdocs.css">
+
+  
+  <link rel="stylesheet" href="/zh-cn/storagegrid-enable/css/ie-landing-page.css" type="text/css">
+  <link rel="stylesheet" href="/zh-cn/storagegrid-enable/css/ie-tabbed-blocks.css" type="text/css">
+  <!-- Canonical url -->
+  <link rel="canonical" href="https://docs.netapp.com/zh-cn/storagegrid-enable/tools-apps-guides/veeam-br.html" />
+  <link rel="alternate" hreflang="x-default" href="https://docs.netapp.com/us-en/storagegrid-enable/tools-apps-guides/veeam-br.html" />
+  <link rel="alternate" hreflang="zh-Hans" href="https://docs.netapp.com/zh-cn/storagegrid-enable/tools-apps-guides/veeam-br.html" />
+  <link rel="alternate" hreflang="en" href="https://docs.netapp.com/us-en/storagegrid-enable/tools-apps-guides/veeam-br.html" />
+  <link rel="alternate" hreflang="ja" href="https://docs.netapp.com/ja-jp/storagegrid-enable/tools-apps-guides/veeam-br.html" />
+  <link rel="alternate" hreflang="ko" href="https://docs.netapp.com/ko-kr/storagegrid-enable/tools-apps-guides/veeam-br.html" />
+  <link rel="alternate" hreflang="zh-Hant" href="https://docs.netapp.com/zh-tw/storagegrid-enable/tools-apps-guides/veeam-br.html" />
+  <link rel="alternate" hreflang="de" href="https://docs.netapp.com/de-de/storagegrid-enable/tools-apps-guides/veeam-br.html" />
+  <link rel="alternate" hreflang="es" href="https://docs.netapp.com/es-es/storagegrid-enable/tools-apps-guides/veeam-br.html" />
+  <link rel="alternate" hreflang="fr" href="https://docs.netapp.com/fr-fr/storagegrid-enable/tools-apps-guides/veeam-br.html" />
+  <link rel="alternate" hreflang="it" href="https://docs.netapp.com/it-it/storagegrid-enable/tools-apps-guides/veeam-br.html" />
+  <!-- Top level site integrations -->
+<script type="text/javascript" src="https://cdn.cookielaw.org/consent/72570c5c-fe30-465f-b0e0-b77f7fb4ae34/OtAutoBlock.js"></script>
+    <script type="text/javascript" src="https://cdn.cookielaw.org/scripttemplates/otSDKStub.js" charset="UTF-8" data-document-language="true" data-domain-script="72570c5c-fe30-465f-b0e0-b77f7fb4ae34"></script>
+    <script type="text/javascript">function OptanonWrapper() { }</script>
+    <script type="text/plain" class="optanon-category-C0002" src="https://assets.adobedtm.com/60287eadf1ee/c284da483c83/launch-e9ff3acac59f.min.js"></script>
+    <script class="optanon-category-C0001">(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.setAttributeNode(d.createAttribute('data-ot-ignore'));j.setAttribute('class','optanon-category-C0001');j.async=true;
+        j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl+'';f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer','GTM-MD73T9M');</script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+  
+  <script>
+    $(document).ready(function() {
+      const MASTHEAD_OFFSET = 65;
+      const SECTIONS = $("main h2, main h3");
+      // PAGE NAV - Init
+      if (SECTIONS.length == 0) {
+        // remove if there is no elements
+        /*
+        $("#ie-right-navbar").remove();
+        $("#ie-right-navbar-collapse").remove();
+        */
+      } else {
+        $(".page-nav-title").css('display', 'block');
+        for (var i = 0; i < SECTIONS.length; i++) {
+          var sectionId = $(SECTIONS[i]).attr('id');
+          var sectionName = $(SECTIONS[i]).text();
+          var subClass = $(SECTIONS[i]).is("h3") ? ' page-nav__sublink' : '';
+          $("#page-menu").append('<li class="page-nav-item"><a href="#' + sectionId + '" class="page-nav__link' + subClass + '">' + sectionName + '</a></li>');
+        }
+      }
+    });
+  </script>
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+
+  <!-- Used for Product Family Page Sidebar Visibility --><!-- Used to import Promise for IE. Required for SearchKit -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bluebird/3.3.5/bluebird.min.js"></script><script src='/zh-cn/storagegrid-enable/js/na-search.js'></script><script src='/zh-cn/storagegrid-enable/js/ie-clouddocs.js'></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script><script>
+    /*
+      $(document).ready(function() {
+          $("#tg-sb-link").click(function() {
+              $("#tg-sb-sidebar").toggle();
+              $("#tg-sb-content").toggleClass('col-md-9');
+              $("#tg-sb-content").toggleClass('col-md-12');
+              $("#tg-sb-icon").toggleClass('fa-toggle-on');
+              $("#tg-sb-icon").toggleClass('fa-toggle-off');
+          });
+      });
+      */
+  </script>
+  <script src='/zh-cn/storagegrid-enable/js/custom-dropdown.js'></script>
+  <script src='/zh-cn/storagegrid-enable/js/FileSaver.min.js'></script>
+  <script src='/zh-cn/storagegrid-enable/js/jszip-utils.min.js'></script>
+  <script src='/zh-cn/storagegrid-enable/js/jszip.min.js'></script><script src='/zh-cn/storagegrid-enable/js/ie-pdf-ux.js'></script></head>
+
+
+  <body class role="document" data-flavor="">
+    <div class="skip-to-main">
+      <a href="#main" >Skip to main content</a>
+    </div><noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MD73T9M"
+      height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript><div id="page" class="">
+      <div id="ie-phone-menu" class=""></div>
+      <div id="ie-content-wrap" class="">
+        <nav id="ie-new-header">
+    <ul>
+        <li id="ie-phone-menu-button">
+            <a href="#">
+                <image id="" src="/zh-cn/storagegrid-enable/images/hamburger.svg" alt="menu" />
+            </a>
+        </li>
+
+        <li>
+            <a href="https://www.netapp.com/cn">
+                <image id="ie-header-logo" src="/zh-cn/storagegrid-enable/images/netapp_logo.svg" alt="netapp" />
+            </a>
+        </li>
+        <li id="ie-header-docs">
+            <a href="https://www.netapp.com/support-and-training/documentation/">文档</a>
+        </li>
+
+        <!-- Empty container to push header left with or without lang selector -->
+        <li id="empty-container" style="margin-left: auto">
+        </li>
+        <!-- Start Language Selector --><li id="ie-language-dropdown">
+            <div id="language-dropdown" class="custom-dropdown custom-dropdown-lang">
+                <div class="custom-dropdown-select custom-dropdown-select-lang">
+                    <img src="/zh-cn/storagegrid-enable/images/language_white_24dp.svg" class="n-globe__icon" />
+                    <span class="lang-name">简体中文</span>
+                    <img src="/zh-cn/storagegrid-enable/images/dropdown-arrow.svg" alt="" class="custom-icon chevrondown header invisible" />
+                    <img src="/zh-cn/storagegrid-enable/images/dropdown-arrow.svg" alt="" class="custom-icon chevronup header" />
+                    </button>
+                </div>
+
+                <ul class="custom-dropdown-menu"><li>
+                        <a href="https://docs.netapp.com/zh-cn/storagegrid-enable/tools-apps-guides/veeam-br.html"
+                            target="_self"><span translate="no" class="notranslate">简体中文</span></a>
+                    </li><li>
+                        <a href="https://docs.netapp.com/us-en/storagegrid-enable/tools-apps-guides/veeam-br.html"
+                            target="_self"><span translate="no" class="notranslate">English</span></a>
+                    </li><li>
+                        <a href="https://docs.netapp.com/ja-jp/storagegrid-enable/tools-apps-guides/veeam-br.html"
+                            target="_self"><span translate="no" class="notranslate">日本語</span></a>
+                    </li><li>
+                        <a href="https://docs.netapp.com/ko-kr/storagegrid-enable/tools-apps-guides/veeam-br.html"
+                            target="_self"><span translate="no" class="notranslate">한국어</span></a>
+                    </li><li>
+                        <a href="https://docs.netapp.com/zh-tw/storagegrid-enable/tools-apps-guides/veeam-br.html"
+                            target="_self"><span translate="no" class="notranslate">繁體中文</span></a>
+                    </li><li>
+                        <a href="https://docs.netapp.com/de-de/storagegrid-enable/tools-apps-guides/veeam-br.html"
+                            target="_self"><span translate="no" class="notranslate">Deutsch</span></a>
+                    </li><li>
+                        <a href="https://docs.netapp.com/es-es/storagegrid-enable/tools-apps-guides/veeam-br.html"
+                            target="_self"><span translate="no" class="notranslate">Español</span></a>
+                    </li><li>
+                        <a href="https://docs.netapp.com/fr-fr/storagegrid-enable/tools-apps-guides/veeam-br.html"
+                            target="_self"><span translate="no" class="notranslate">Français</span></a>
+                    </li><li>
+                        <a href="https://docs.netapp.com/it-it/storagegrid-enable/tools-apps-guides/veeam-br.html"
+                            target="_self"><span translate="no" class="notranslate">Italiano</span></a>
+                    </li></ul>
+            </div>
+            </li>
+        <!-- End Language Selector -->
+
+
+        <li id="ie-allnetapp">
+            <div id="allnetapp-dropdown" class="custom-dropdown custom-dropdown-allnetapp">
+                <div class="custom-dropdown-select custom-dropdown-select-allnetapp">
+                    <img src="/zh-cn/storagegrid-enable/images/apps_white_24dp.svg" alt="" class="allnetapp-icon" />
+                    <span class="allnetapp-name">全部来自 NetApp</span>
+                    <img src="/zh-cn/storagegrid-enable/images/dropdown-arrow.svg" alt="" class="custom-icon chevrondown header invisible" />
+                    <img src="/zh-cn/storagegrid-enable/images/dropdown-arrow.svg" alt="" class="custom-icon chevronup header" />
+                    </button>
+                </div>
+
+                <ul class="custom-dropdown-menu allnetapp-dropdown">
+                    <li>
+                        <a href="https://bluexp.netapp.com/"
+                            target="_self"><span translate="no" class="notranslate">BlueXP</span></a>
+                    </li>
+                    <li>
+                        <a href="https://mysupport.netapp.com/site/"
+                            target="_self"><span translate="no" class="notranslate">支持</span></a>
+                    </li>
+                    <li>
+                        <a href="https://kb.netapp.com/"
+                            target="_self"><span translate="no" class="notranslate">知识库</span></a>
+                    </li>
+                    <li>
+                        <a href="https://www.netapp.com/zh-hans/support-and-training/netapp-learning-services/"
+                            target="_self"><span translate="no" class="notranslate">训练</span></a>
+                    </li>
+                </ul>
+            </div>
+
+        </li>
+
+    </ul>
+</nav>
+
+        <main id="n-main-content" class="n-main-content">
+          <!-- Start Documentation Content -->
+<div class="ie-main">
+
+<div id="ie-new-sidebar-collapse" style="display: none">
+    <img id="sidebar-expand" class="ie-searchbox-icon" src="/zh-cn/storagegrid-enable/images/double_arrow.svg" alt="" />
+</div>
+<div id="ie-new-sidebar">
+    <div id="ie-product-identity-lockup">
+        <div id="sidebar-collapse" class="">
+            <img src="/zh-cn/storagegrid-enable/images/double_arrow.svg" alt="" />
+        </div>
+        <div id="ie-breadcrumb" class="">
+  <ul class="ie-breadcrumb">
+    <li class="">
+      <a href="https://docs.netapp.com">所有文档</a>
+    </li>
+    
+    
+
+    
+  </ul>
+  
+  <div class="ie-product-name" >
+    <!--<a href="/zh-cn/storagegrid-enable/">-->
+      How to enable StorageGRID in your environment
+    <!--</a>-->
+  </div>
+</div>
+
+            
+
+        
+        
+
+<div id="ie-searchbox" class="ie-searchbox-sidebar ">
+    <img class="ie-searchbox-icon" src="/zh-cn/storagegrid-enable/images/loupe.svg" alt=""/>
+    <div id="react-search" 
+        data-search-html="/zh-cn/storagegrid-enable/search.html" 
+        data-type="widget"
+        data-placeholder="搜索文档"
+        data-no-results-found="未找到 {query} 的相关结果"
+        data-did-you-mean="搜索 {suggestion}。"
+        data-no-results-found-did-you-mean="未找到 {query} 的相关结果。您是指 {suggestion}？"
+        data-results-found="找到 {hitCount} 个结果"
+        data-error-message="发生错误。请重试。"
+        data-error-reset="重置搜索"
+        data-sk-es-pf-indexes="" 
+        data-flavor="">
+    </div>
+</div>
+        
+    </div>
+    <div id="ie-new-toc"><script>
+  let sidebarAccordion = true;
+
+  /* specific css rules for Mac */
+  if(navigator.platform.match('Mac') !== null) {
+    document.body.setAttribute('class', 'OSX');
+  }
+
+</script>
+
+<div id="ie-sidebar-container">
+  <ul id="ie-sidebar-list" ><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="如何启用StorageGRID"
+      data-li-level="1#" 
+      class="   "
+      dale-page-url="/tools-apps-guides/veeam-br.html" 
+      dale-entry-url="/index.html" 
+    ><a class="ie-sidebar-menuitem-1 " href="/zh-cn/storagegrid-enable/index.html">
+        如何启用StorageGRID
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="经验证的第三方解决方案"
+      data-li-level="1" 
+      class=" sidebar-folder    "
+      dale-page-url="/tools-apps-guides/veeam-br.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-1  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/zh-cn/storagegrid-enable/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/zh-cn/storagegrid-enable/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> 经验证的第三方解决方案</div>-->
+         经验证的第三方解决方案
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="经验证的第三方解决方案—概述"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/tools-apps-guides/veeam-br.html" 
+      dale-entry-url="/third-party/index.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/zh-cn/storagegrid-enable/third-party/index.html">
+        概述
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="StorageGRID 11.8."
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/tools-apps-guides/veeam-br.html" 
+      dale-entry-url="/third-party/118-3rd-party-list.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/zh-cn/storagegrid-enable/third-party/118-3rd-party-list.html">
+        StorageGRID 11.8.
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="StorageGRID 11.7"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/tools-apps-guides/veeam-br.html" 
+      dale-entry-url="/third-party/117-3rd-party-list.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/zh-cn/storagegrid-enable/third-party/117-3rd-party-list.html">
+        StorageGRID 11.7
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="StorageGRID 11.6."
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/tools-apps-guides/veeam-br.html" 
+      dale-entry-url="/third-party/116-3rd-party-list.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/zh-cn/storagegrid-enable/third-party/116-3rd-party-list.html">
+        StorageGRID 11.6.
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="StorageGRID 11.5"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/tools-apps-guides/veeam-br.html" 
+      dale-entry-url="/third-party/115-3rd-party-list.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/zh-cn/storagegrid-enable/third-party/115-3rd-party-list.html">
+        StorageGRID 11.5
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="StorageGRID 11.4."
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/tools-apps-guides/veeam-br.html" 
+      dale-entry-url="/third-party/114-3rd-party-list.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/zh-cn/storagegrid-enable/third-party/114-3rd-party-list.html">
+        StorageGRID 11.4.
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="StorageGRID 11.3"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/tools-apps-guides/veeam-br.html" 
+      dale-entry-url="/third-party/113-3rd-party-list.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/zh-cn/storagegrid-enable/third-party/113-3rd-party-list.html">
+        StorageGRID 11.3
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="StorageGRID 11.2"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/tools-apps-guides/veeam-br.html" 
+      dale-entry-url="/third-party/112-3rd-party-list.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/zh-cn/storagegrid-enable/third-party/112-3rd-party-list.html">
+        StorageGRID 11.2
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="产品功能指南"
+      data-li-level="1" 
+      class=" sidebar-folder    "
+      dale-page-url="/tools-apps-guides/veeam-br.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-1  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/zh-cn/storagegrid-enable/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/zh-cn/storagegrid-enable/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> 产品功能指南</div>-->
+         产品功能指南
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="为AWS或Google Cloud创建云存储池"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/tools-apps-guides/veeam-br.html" 
+      dale-entry-url="/product-feature-guides/create-cloud-storage-pool-aws-google-cloud.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/zh-cn/storagegrid-enable/product-feature-guides/create-cloud-storage-pool-aws-google-cloud.html">
+        为AWS或Google Cloud创建云存储池
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="为Azure Blob存储创建云存储池"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/tools-apps-guides/veeam-br.html" 
+      dale-entry-url="/product-feature-guides/create-cloud-storage-pool-azure-blob-storage.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/zh-cn/storagegrid-enable/product-feature-guides/create-cloud-storage-pool-azure-blob-storage.html">
+        为Azure Blob存储创建云存储池
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="使用云存储池进行备份"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/tools-apps-guides/veeam-br.html" 
+      dale-entry-url="/product-feature-guides/use-a-cloud-storage-pool-for-backup.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/zh-cn/storagegrid-enable/product-feature-guides/use-a-cloud-storage-pool-for-backup.html">
+        使用云存储池进行备份
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="配置搜索集成服务"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/tools-apps-guides/veeam-br.html" 
+      dale-entry-url="/product-feature-guides/storagegrid-search-integration-service.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/zh-cn/storagegrid-enable/product-feature-guides/storagegrid-search-integration-service.html">
+        配置搜索集成服务
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="节点克隆注意事项和性能"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/tools-apps-guides/veeam-br.html" 
+      dale-entry-url="/product-feature-guides/node-clone.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/zh-cn/storagegrid-enable/product-feature-guides/node-clone.html">
+        节点克隆注意事项和性能
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="如何使用端口重新映射"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/tools-apps-guides/veeam-br.html" 
+      dale-entry-url="/product-feature-guides/port-remap.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/zh-cn/storagegrid-enable/product-feature-guides/port-remap.html">
+        如何使用端口重新映射
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="工具和应用程序指南"
+      data-li-level="1" 
+      class=" sidebar-folder    "
+      dale-page-url="/tools-apps-guides/veeam-br.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-1  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/zh-cn/storagegrid-enable/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/zh-cn/storagegrid-enable/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> 工具和应用程序指南</div>-->
+         工具和应用程序指南
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="使用Cloudera Hadoop S3A连接器"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/tools-apps-guides/veeam-br.html" 
+      dale-entry-url="/tools-apps-guides/use-cloudera-hadoop-s3a-connector.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/zh-cn/storagegrid-enable/tools-apps-guides/use-cloudera-hadoop-s3a-connector.html">
+        使用Cloudera Hadoop S3A连接器
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="使用S3cmd测试和演示S3访问"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/tools-apps-guides/veeam-br.html" 
+      dale-entry-url="/tools-apps-guides/use-S3cmd-test-demonstrate-S3-access.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/zh-cn/storagegrid-enable/tools-apps-guides/use-S3cmd-test-demonstrate-S3-access.html">
+        使用S3cmd测试和演示S3访问
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="使用公共存储创建Vertica Eon模式数据库"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/tools-apps-guides/veeam-br.html" 
+      dale-entry-url="/tools-apps-guides/vertica-eon-mode-database-using-storagegrid.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/zh-cn/storagegrid-enable/tools-apps-guides/vertica-eon-mode-database-using-storagegrid.html">
+        使用公共存储创建Vertica Eon模式数据库
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="使用Elasticsearch、Logstash和Kibana进行日志分析"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/tools-apps-guides/veeam-br.html" 
+      dale-entry-url="/tools-apps-guides/elk-instructions.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/zh-cn/storagegrid-enable/tools-apps-guides/elk-instructions.html">
+        使用Elasticsearch、Logstash和Kibana进行日志分析
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="使用Prometheus和Grafana延长指标保留期限"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/tools-apps-guides/veeam-br.html" 
+      dale-entry-url="/tools-apps-guides/federate-prometheus.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/zh-cn/storagegrid-enable/tools-apps-guides/federate-prometheus.html">
+        使用Prometheus和Grafana延长指标保留期限
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="配置Datadog以收集StorageGRID SNMP指标和陷阱"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/tools-apps-guides/veeam-br.html" 
+      dale-entry-url="/tools-apps-guides/use-datadog-snmp.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/zh-cn/storagegrid-enable/tools-apps-guides/use-datadog-snmp.html">
+        配置Datadog以收集StorageGRID SNMP指标和陷阱
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="使用rclone在StorageGRID 上迁移、放置和删除对象"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/tools-apps-guides/veeam-br.html" 
+      dale-entry-url="/tools-apps-guides/use-rclone-migrate-delete.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/zh-cn/storagegrid-enable/tools-apps-guides/use-rclone-migrate-delete.html">
+        使用rclone在StorageGRID 上迁移、放置和删除对象
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="将Veeam备份和复制与StorageGRID结合使用"
+      data-li-level="2#" 
+      class="  ie-sidebar-selected    "
+      dale-page-url="/tools-apps-guides/veeam-br.html" 
+      dale-entry-url="/tools-apps-guides/veeam-br.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/zh-cn/storagegrid-enable/tools-apps-guides/veeam-br.html">
+        将Veeam备份和复制与StorageGRID结合使用
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="使用StorageGRID配置多米奥"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/tools-apps-guides/veeam-br.html" 
+      dale-entry-url="/tools-apps-guides/configure-dremio-storagegrid.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/zh-cn/storagegrid-enable/tools-apps-guides/configure-dremio-storagegrid.html">
+        使用StorageGRID配置多米奥
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="过程和API示例"
+      data-li-level="1" 
+      class=" sidebar-folder    "
+      dale-page-url="/tools-apps-guides/veeam-br.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-1  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/zh-cn/storagegrid-enable/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/zh-cn/storagegrid-enable/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> 过程和API示例</div>-->
+         过程和API示例
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="测试和演示S3加密"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/tools-apps-guides/veeam-br.html" 
+      dale-entry-url="/examples/test-demonstrate-S3-encryption.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/zh-cn/storagegrid-enable/examples/test-demonstrate-S3-encryption.html">
+        测试和演示S3加密
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="测试和演示S3对象锁定"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/tools-apps-guides/veeam-br.html" 
+      dale-entry-url="/examples/test-demonstrate-S3-object-lock.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/zh-cn/storagegrid-enable/examples/test-demonstrate-S3-object-lock.html">
+        测试和演示S3对象锁定
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="存储分段和组策略示例"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/tools-apps-guides/veeam-br.html" 
+      dale-entry-url="/examples/bucket-policy-examples.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/zh-cn/storagegrid-enable/examples/bucket-policy-examples.html">
+        存储分段和组策略示例
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="博客文章"
+      data-li-level="1#" 
+      class="   "
+      dale-page-url="/tools-apps-guides/veeam-br.html" 
+      dale-entry-url="/blogs.html" 
+    ><a class="ie-sidebar-menuitem-1 " href="/zh-cn/storagegrid-enable/blogs.html">
+        博客文章
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="StorageGRID 文档"
+      data-li-level="1#" 
+      class="   "
+      dale-page-url="/tools-apps-guides/veeam-br.html" 
+      dale-entry-url="/storagegrid-documentation.html" 
+    ><a class="ie-sidebar-menuitem-1 " href="/zh-cn/storagegrid-enable/storagegrid-documentation.html">
+        StorageGRID 文档
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="法律声明"
+      data-li-level="1#" 
+      class="   "
+      dale-page-url="/tools-apps-guides/veeam-br.html" 
+      dale-entry-url="/legal-notices.html" 
+    ><a class="ie-sidebar-menuitem-1 " href="/zh-cn/storagegrid-enable/legal-notices.html">
+        法律声明
+      </a></li></ul>
+</div>
+<script>
+
+  $(".ie-sidebar-button").click(function (e) {
+    e.preventDefault();
+    e.stopPropagation();
+
+    expandedLI = $('li.ie-sidebar-expand')
+
+    const li = $(this).closest("li");
+
+    const parentsLI = $(li).parents('li');
+
+    expandedLI.map(element => {
+      if (sidebarAccordion && !li.hasClass('ie-sidebar-expand') && jQuery.inArray(expandedLI[element], parentsLI) == -1) {
+        $(expandedLI[element]).toggleClass('ie-sidebar-expand');
+        $(expandedLI[element]).children("ul").animate({ height: 'toggle' }, 400, function () {
+          $(li).children("ul").toggleClass('ie-sidebar-open');
+
+        })
+      }
+
+    })
+
+    $(li).toggleClass('ie-sidebar-expand');
+    $(li).children("ul").animate({ height: 'toggle' }, 400, function () {
+      $(li).children("ul").toggleClass('ie-sidebar-open');
+    })
+  });
+
+
+  
+    $("li.ie-sidebar-selected").parents('ul').toggleClass("ie-sidebar-open");
+    $("li.ie-sidebar-selected").toggleClass("ie-sidebar-expand")
+    $("ul.ie-sidebar-open").parent().toggleClass("ie-sidebar-expand");
+    $("li.ie-sidebar-selected").children('ul').toggleClass("ie-sidebar-open")
+  
+  
+</script>
+    </div>
+</div>
+<script>
+
+    
+    let sidebarScrollTopPosition = 0;
+    $("#ie-new-toc").on("scroll", function () {
+        if (sidebarScrollTopPosition == 0) {
+            $.cookie("sidebarScroll", $("#ie-new-toc").scrollTop(), {
+                path: "/zh-cn/storagegrid-enable"
+            });
+        }
+
+        if ($("#ie-new-toc").scrollTop() > 0) {
+            $('#ie-product-identity-lockup').addClass('ie-addShadow');
+        } else {
+            $('#ie-product-identity-lockup').removeClass('ie-addShadow');
+        }
+    });
+
+    $(function () {
+        if ($.cookie("sidebarScroll")) {
+            $("#ie-new-toc").scrollTop($.cookie("sidebarScroll"));
+        }
+    });
+
+    function setSidebarBottom() {
+        const footerGap = PXinViewport($(".n-footer"));
+        document.getElementById("ie-new-sidebar").style.bottom = Math.max(0, footerGap) + "px";
+    }
+
+    window.onscroll = () => {
+        setSidebarBottom();
+    };
+
+    $("#sidebar-collapse").click(function (e) {
+        const sidebarWidth = $("#ie-new-sidebar").width() - $("#ie-new-sidebar-collapse").width();
+        e.preventDefault();
+        const width = $(".ie-content-pane").width();
+        const marginLeft = parseInt($(".ie-content-pane").css('marginLeft'));
+
+        if ($.cookie("sidebarScroll")) {
+            sidebarScrollTopPosition = $.cookie("sidebarScroll");
+        }
+
+        $("#ie-new-sidebar").animate({ width: 'toggle' }, 350, function () {
+            $("#ie-new-sidebar-collapse").show();
+            $("#ie-new-sidebar").removeClass("open")
+            $("#ie-new-sidebar").addClass("close")
+            $("#ie-new-sidebar").removeAttr("style")
+        });
+        $(".ie-content-pane").animate({ width: (width + sidebarWidth), marginLeft: (marginLeft - sidebarWidth) }, 350, function () {
+            resizeContent()
+        })
+
+    });
+    $("#sidebar-expand").click(function (e) {
+        const sidebarWidth = $("#ie-new-sidebar").width() - $("#ie-new-sidebar-collapse").width();
+        e.preventDefault();
+        const width = $(".ie-content-pane").width();
+        const marginLeft = parseInt($(".ie-content-pane").css('marginLeft'));
+
+        $("#ie-new-sidebar").animate({ width: 'toggle' }, 250, function () {
+            $('#ie-new-sidebar').css('display', 'flex');
+            $("#ie-new-sidebar-collapse").hide();
+            $("#ie-new-sidebar").removeClass("close")
+            $("#ie-new-sidebar").addClass("open")
+            setSidebarBottom();
+
+            if (sidebarScrollTopPosition != 0) {
+                $.cookie("sidebarScroll", sidebarScrollTopPosition, {
+                    path: "/zh-cn/storagegrid-enable"
+                })
+                $("#ie-new-toc").scrollTop(sidebarScrollTopPosition);
+                sidebarScrollTopPosition = 0;
+            }
+        });
+        $(".ie-content-pane").animate({ width: (width - sidebarWidth), 'marginLeft': (marginLeft + sidebarWidth) }, 250, function () {
+            resizeContent()
+        })
+    });
+    function resizeContent() {
+        const sidebarWidth = $("#ie-new-sidebar").width() - $("#ie-new-sidebar-collapse").width();
+        const rightNavbarVisible =  $("#ie-right-navbar").css('display') && $("#ie-right-navbar").css('display') != 'none';
+        const sidebarVisible = $("#ie-new-sidebar").css('display') != 'none';
+        const rightNavbarWidth = $("#ie-right-navbar").width();
+        const rightNavbarCollapseWidth = $("#ie-right-navbar-collapse").width();
+        const rightNavbarCollapseVisible = $("#ie-right-navbar-collapse").css('display') && $("#ie-right-navbar-collapse").css('display') != 'none';
+        
+        if (rightNavbarVisible && sidebarVisible) {
+            $(".ie-content-pane").width(`calc(100% - ${sidebarWidth + rightNavbarWidth}px)`)
+            $(".ie-content-pane").css('marginLeft', `${sidebarWidth}px`)
+        } else if (sidebarVisible) {
+            $(".ie-content-pane").css('marginLeft', `${sidebarWidth}px`)
+            if (rightNavbarCollapseVisible) {
+                $(".ie-content-pane").width(`calc(100% - ${sidebarWidth + rightNavbarCollapseWidth}px)`)
+            } else {
+                $(".ie-content-pane").width(`calc(100% - ${$("#ie-new-sidebar").width()}px)`)
+            }
+
+        } else if (rightNavbarVisible) {
+            $(".ie-content-pane").css('marginLeft', `${$("#ie-new-sidebar-collapse").width()}px`)
+            $(".ie-content-pane").width(`calc(100% - ${rightNavbarWidth}px)`)
+        } else {
+            $(".ie-content-pane").css('marginLeft', `${$("#ie-new-sidebar-collapse").width()}px`)
+            if (rightNavbarCollapseVisible) {
+                $(".ie-content-pane").width(`calc(100% - ${rightNavbarCollapseWidth}px)`);
+            } else {
+                $(".ie-content-pane").width(`calc(100% - ${$("#ie-new-sidebar-collapse").width()}px) `);
+            }
+            
+        }
+    }
+    $(window).on("resize load", function () {
+        setSidebarBottom();
+        resizeContent()
+    });
+
+
+</script>
+
+<div class="ie-content-pane ie-component-detail-content ie-component-detail-content--show-code">
+    <!-- Begin of page container --><article class="page-content" id="main">
+      <!-- include utility.html -->
+      <div class="ie-info-disclaimer">
+    <span>
+      <div class="ie-info-disclaimer-container">
+        <div class="ie-info-disclaimer-icon">
+          <img src="/zh-cn/storagegrid-enable/images/notification-icons.svg" class="luci-icon" alt="" />
+        </div>
+        <div class="ie-info-disclaimer-content">
+          <span> 简体中文版经机器翻译而成，仅供参考。如与英语版出现任何冲突，应以英语版为准。 </span>
+        </div>
+        <div style="clear:both;"></div>
+      </div>
+    </span>
+  </div><div class="ie-component-detail-heading-wrap">
+  <h1 class="ie-component-detail-heading">使用Veeam备份和复制进行部署的StorageGRID最佳实践</h1>
+</div>
+
+<div id="ie-byline">
+  
+<div class="page-details">
+    
+        
+            <time datetime="2024-03-07 04:53:13 +0000">03/07/2024</time>
+        
+    
+    
+        <span>贡献者
+        </span>
+    
+    
+</div>
+<div class="page-controls">
+    <div id="contribute-dropdown" class="custom-dropdown custom-dropdown-contrib" >
+        <div class="custom-dropdown-select custom-dropdown-select-contrib">
+        <span class="contrib-name"><img src="/zh-cn/storagegrid-enable/images/discuss-sm.svg" alt="" class="github-icon" />建议更改</span>
+        <img src="/zh-cn/storagegrid-enable/images/dropdown-arrow.svg" alt="" class="custom-icon chevrondown invisible" />
+        <img src="/zh-cn/storagegrid-enable/images/dropdown-arrow.svg" alt="" class="custom-icon chevronup" />
+        </div>
+        <ul class="custom-dropdown-menu suggested-changes-dropdown"><li>
+                <a target="_blank" href="https://github.com/NetAppDocs/storagegrid-enable.zh-cn/issues/new?template=new-from-page.yml&page-url=https://docs.netapp.com/zh-cn/storagegrid-enable/tools-apps-guides/veeam-br.html&page-title=使用Veeam备份和复制进行部署的StorageGRID最佳实践" class="page-nav-contribute-link" role="button">请求文档更改</a>
+            </li><li> 
+                <a target="_blank" href="https://github.com/NetAppDocs/storagegrid-enable/blob/main/tools-apps-guides/veeam-br.adoc" class="page-nav-contribute-link" role="button">编辑此页面</a>
+            </li><li><a target="_blank" href="https://docs.netapp.com/us-en/contribute/" class="page-nav-contribute-link"  >了解如何贡献</a></li>
+        </ul>
+    </div>
+    <div id="pdf-control-container">
+        <div class="n-pdf-header">
+            <a id="toggleButtonPdf" class="n-pdf-button" type="button">
+                <img class="adobe-icon" src="/zh-cn/storagegrid-enable/images/pdf-icon.png" alt="" width="16" height="16"/>PDF<img src="/zh-cn/storagegrid-enable/images/dropdown-arrow.svg" class="custom-icon" alt="" />
+            </a>
+        </div>
+        <div class="n-pdf-body-container">
+            <ul id="toggleContainerPdf" class="n-pdf-body" style="display:none;"><li class="pdf-ux-container">
+                    
+                    
+                    
+                    <a target="_blank" class="pdf-download-link" href="/zh-cn/storagegrid-enable/pdfs/fullsite-sidebar/如何在您的环境中启用StorageGRID.pdf" >
+                    <img src="/zh-cn/storagegrid-enable/images/pdf-icon.png" alt="" width="16" height="16"/>本文档站点的 PDF</a>
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/zh-cn/storagegrid-enable/pdfs/sidebar/经验证的第三方解决方案.pdf" 
+            
+          >
+            <img src="/zh-cn/storagegrid-enable/images/pdf-icon.png" alt="" width="16" height="16"/>
+            经验证的第三方解决方案
+          </a>
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/zh-cn/storagegrid-enable/pdfs/sidebar/产品功能指南.pdf" 
+            
+          >
+            <img src="/zh-cn/storagegrid-enable/images/pdf-icon.png" alt="" width="16" height="16"/>
+            产品功能指南
+          </a>
+          
+
+
+
+
+
+
+
+
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/zh-cn/storagegrid-enable/pdfs/sidebar/工具和应用程序指南.pdf" 
+            
+          >
+            <img src="/zh-cn/storagegrid-enable/images/pdf-icon.png" alt="" width="16" height="16"/>
+            工具和应用程序指南
+          </a>
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <ul class="subfolders" id="pdf-remove" style="display:none;"><li class="active"></li></ul>
+  
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/zh-cn/storagegrid-enable/pdfs/sidebar/过程和API示例.pdf" 
+            
+          >
+            <img src="/zh-cn/storagegrid-enable/images/pdf-icon.png" alt="" width="16" height="16"/>
+            过程和API示例
+          </a>
+          
+
+
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+
+
+
+
+</li></ul>
+            <div class="zip-pdf-link-container" style="display: none;">   
+                <a href="#" id="zipPdf">
+                <img src="/zh-cn/storagegrid-enable/images/pdf-zip.png" alt="" width="16" height="16"/>
+                <pre>单独 PDF 文档的收集<span class="zip-size"></span></pre>
+                </a><div id="zip-link-popup" class="hide">
+    <div class="inner-modal">
+        <div class="downloading-progress">
+            <div class="spinner"></div>
+            <h1>Creating your file...</h1>
+            <div>This may take a few minutes. Thanks for your patience.</div>
+            <button class="cancel-download-btn" type="button">Cancel</button>
+        </div>
+        <div class="download-complete hide">
+            <div class="done-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M20.285 2l-11.285 11.567-5.286-5.011-3.714 3.716 9 8.728 15-15.285z"/></svg>
+            </div>
+            <div>Your file is ready</div>
+            <button class="cancel-download-btn" type="button">OK</button>
+        </div>
+    </div>
+</div>
+<script>
+    $(".cancel-download-btn").click(function(){
+        $("#zip-link-popup").addClass("hide");
+        $("#zip-link-popup .downloading-progress").removeClass("hide");
+        $("#zip-link-popup .download-complete").addClass("hide");
+    });
+</script></div>
+        </div>
+    </div>        
+<script>
+$("#toggleContainerPdf li.active:last-child").parents('ul.subfolders').toggle('display');
+$("#toggleButtonPdf").on('click', function(e){ 
+    e.stopPropagation();
+    $("#toggleContainerPdf").toggle('display');
+    $(".n-pdf-body-container .zip-pdf-link-container").toggle('display');
+});
+
+//hide is by clicking outside pdfcontainer
+$(document).on('click', function (e) {
+    if ($('#toggleContainerPdf').is(':visible') && !$('.n-pdf-body-container').is(e.target) && !$('.n-pdf-body-container').has(e.target).length)  {
+        
+        $("#toggleContainerPdf").toggle('display');
+        $(".n-pdf-body-container .zip-pdf-link-container").toggle('display');
+        $("#toggleButtonPdf").removeClass("active");
+    }
+});
+</script>
+<script>
+    function getPdfLocation() {
+        const pdfLocation = window.scrollX + document.querySelector('#pdf-control-container').getBoundingClientRect().left
+        if (pdfLocation < 450) {
+            $(".n-pdf-body-container").addClass("block")
+        } else {
+            $(".n-pdf-body-container").removeClass("block")
+        }
+    
+    }
+    $( window ).on( "resize", function() {
+        getPdfLocation()
+} );
+</script>
+<script>
+    const pdfButtonWidth =  $(".n-pdf-header").width();
+    const pdfMenuWidth = $(".n-pdf-body-container").width();
+    $(".n-pdf-body-container").css('margin-left', `calc(${pdfButtonWidth - pdfMenuWidth}px)`);
+</script>
+</div>
+
+    
+
+</div>
+
+
+
+
+<div class="content-to-index">
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph lead">
+<p>本指南重点介绍NetApp StorageGRID以及部分Veeam备份和复制的配置。本白皮书面向熟悉Linux系统并负责维护或实施NetApp StorageGRID系统与Veeam备份和复制的存储和网络管理员。</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="概述">概述</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>存储管理员希望通过满足可用性、快速恢复目标、可扩展以满足其需求以及自动执行长期数据保留策略的解决方案来管理数据增长。这些解决方案还应提供保护、防止丢失或恶意攻击。Veeam和NetApp合作创建了一个将Veeam备份和恢复与NetApp StorageGRID相结合的数据保护解决方案、用于内部对象存储。</p>
+</div>
+<div class="paragraph">
+<p>Veeam和NetApp StorageGRID提供了一个易于使用的解决方案、可协同工作、帮助满足全球数据快速增长和法规不断增长的需求。基于云的对象存储因其弹性、扩展能力、运营效率和成本效益而闻名、这使其成为备份目标的自然选择。本文档将为Veeam Backup解决方案和StorageGRID系统的配置提供指导和建议。</p>
+</div>
+<div class="paragraph">
+<p>Veeam的对象工作负载会为小型对象创建大量并发放置、删除和列表操作。启用不可迁移性将增加对对象存储的请求数量、以设置保留和列出版本。备份作业的过程包括为每日更改写入对象、新写入完成后、该作业将根据备份的保留策略删除任何对象。备份作业的计划几乎总是重叠的。这种重叠将导致备份窗口的很大一部分在对象存储上包含50/50的放置/删除工作负载。在Veeam中调整任务插槽设置的并发操作数、通过增加备份作业块大小来增加对象大小、减少多对象删除请求中的对象数量、 选择完成作业的最长时间窗口将优化解决方案的性能和成本。</p>
+</div>
+<div class="paragraph">
+<p>请务必阅读的产品文档 <a href="https://www.veeam.com/documentation-guides-datasheets.html?productId=8&amp;version=product%3A8%2F221" target="_blank" rel="noopener">"Veeam备份和复制"</a> 和 <a href="https://docs.netapp.com/us-en/storagegrid-117/" target="_blank" rel="noopener">"StorageGRID"</a> 开始之前。Veeam提供了一些计算器、用于了解Veeam基础架构的规模估算以及在调整StorageGRID 解决方案 规模之前应使用的容量要求。请始终访问Veeam Ready计划网站查看经Veeam-NetApp验证的配置 <a href="https://www.veeam.com/alliance-partner-technical-programs.html?alliancePartner=netapp1&amp;page=1" target="_blank" rel="noopener">"Veeam Ready对象、对象不可变性和存储库"</a>。</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="veeam配置">Veeam配置</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="建议版本">建议版本</h3>
+<div class="paragraph">
+<p>建议始终保持最新、并为Veeam Backup &amp; Replication 12系统应用最新的修补程序。目前、我们建议至少安装Veeam修补程序P20230718。</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="s3存储库配置">S3存储库配置</h3>
+<div class="paragraph">
+<p>横向扩展备份存储库(SOBR)是S3对象存储的容量层。容量层是主存储库的扩展、可提供更长的数据保留期限和更低的存储解决方案成本。Veeam能够通过S3对象锁定API提供不可变功能。Veeam 12可以在一个横向扩展存储库中使用多个分段。StorageGRID对单个存储分段中的对象数量或容量没有限制。使用多个分段可以提高备份非常大的数据集时的性能、在这些数据集中、对象中的备份数据可能会达到PB级。</p>
+</div>
+<div class="paragraph">
+<p>可能需要限制并发任务、具体取决于特定解决方案的规模估算和要求。默认设置为每个CPU核心指定一个存储库任务插槽、并发任务插槽限制为64。例如，如果服务器有2个CPU核心，则对象存储总共将使用128个并发线程。这包括Put、GET和批删除。建议先为任务时隙选择一个保守限制、并在Veeam备份达到新备份和即将过期备份数据的稳定状态后调整此值。请与您的NetApp客户团队合作、适当估算StorageGRID系统的规模、以满足所需的时间窗口和性能要求。要提供最佳解决方案、可能需要调整任务插槽数量和每个插槽的任务限制。</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="备份作业配置">备份作业配置</h3>
+<div class="paragraph">
+<p>Veeam备份作业可以使用不同的块大小选项进行配置、应仔细考虑这些选项。默认块大小为1 MB、而Veeam具有数据压缩和重复数据删除功能、可为初始完整备份创建大约500 KB的对象大小、为增量作业创建100-200 KB的对象大小。通过选择更大的备份块大小、我们可以大幅提高性能并降低对象存储的要求。尽管较大的块大小可以显著提高对象存储的性能、但由于存储效率性能降低、可能会增加主存储容量需求。建议为备份作业配置4 MB的块大小、以便为完整备份创建大约2 MB的对象、并为增量备份创建大约700 kB-1 MB的对象大小。客户甚至可以考虑使用8 MB块大小配置备份作业、此功能可在Veeam支持人员的协助下启用。</p>
+</div>
+<div class="paragraph">
+<p>实施不可配置备份时会使用对象存储上的S3对象锁定。不可更改性选项会生成更多的对象存储请求、以更新对象的列表和保留。</p>
+</div>
+<div class="paragraph">
+<p>随着备份保留过期、备份作业将处理对象删除。Veeam以多对象删除请求的形式将删除请求发送到对象存储、每个请求1000个对象。对于小型解决方案、可能需要对此进行调整、以减少每个请求的对象数量。降低此值还可以更均匀地在StorageGRID系统中的节点之间分布删除请求。建议使用下表中的值作为配置多对象删除限制的起点。将表中的值乘以所选设备类型的节点数、即可获得Veeam中设置的值。如果此值等于或大于1000、则无需调整默认值。如果需要调整此值、请与Veeam支持部门合作进行更改。</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">设备型号</th>
+<th class="tableblock halign-left valign-top">每个节点的S3MultiObjectDeleteLimit</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">SG5712</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">34.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">SG5760</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">75</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">SG6060</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">200</p></td>
+</tr>
+</tbody>
+</table>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<img src="/us-en/storagegrid-enable/images/note.svg" alt="备注">
+</td>
+<td class="content">
+<div class="paragraph">
+<p>请与您的NetApp客户团队合作、根据您的特定需求确定建议的配置。Veeam配置设置建议包括：</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>备份作业块大小= 4 MB</p>
+</li>
+<li>
+<p>SOBR任务插槽限制为2-16</p>
+</li>
+<li>
+<p>多对象删除限制= 34 - 1000</p>
+</li>
+</ul>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="storagegrid配置">StorageGRID配置</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="建议版本-2">建议版本</h3>
+<div class="paragraph">
+<p>对于Veeam部署、建议使用带有最新修补程序的NetApp StorageGRID 11.5或11.7版本。StorageGRID 11.6.0.11和11.7.0.4中引入了许多优化功能、这些功能对Veeam工作负载非常有用。建议始终保持最新、并为StorageGRID系统应用最新的修补程序。</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="负载平衡器和s3端点配置">负载平衡器和S3端点配置</h3>
+<div class="paragraph">
+<p>Veeam仅要求通过HTTPS连接端点。Veeam不支持非加密连接。SSL证书可以是自签名证书、专用可信证书颁发机构或公共可信证书颁发机构。为了确保持续访问S3存储库、建议在HA配置中至少使用两个负载平衡器。负载平衡器可以是位于每个管理节点和网关节点上的StorageGRID提供的集成负载平衡器服务、也可以是位于F5、Kemp、HAProxy、Loadbalanacer.org等第三方解决方案上的集成负载平衡器服务 通过使用StorageGRID负载平衡器、可以设置流量划分器(QoS规则)、以便确定Veeam工作负载的优先级、或者限制Veeam、使其不会影响StorageGRID系统上优先级较高的工作负载。</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="s3-存储分段">S3 存储分段</h3>
+<div class="paragraph">
+<p>StorageGRID是一种安全多租户存储系统。建议为Veeam工作负载创建一个专用租户。可以选择分配存储配额。作为最佳实践、请启用"使用自己的身份源"。使用适当的密码保护租户root管理用户的安全。Veeam Backup 12要求S3存储分段具有强大的一致性。StorageGRID提供了在存储分段级别配置的多个一致性选项。对于使用Veeam从多个位置访问数据的多站点部署、请选择"strong-globation"。如果Veeam备份和还原仅在单个站点上进行、则一致性级别应设置为"strong-site"。有关存储分段一致性级别的详细信息、请查看 <a href="https://docs.netapp.com/us-en/storagegrid-117/s3/consistency-controls.html">"文档。"</a>。要使用StorageGRID进行Veeam不可变备份、必须在创建存储分段期间全局启用S3对象锁定并在存储分段上进行配置。</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="生命周期管理">生命周期管理</h3>
+<div class="paragraph">
+<p>StorageGRID支持在StorageGRID节点和站点之间进行复制和纠删编码、以实现对象级保护。纠删编码至少需要200 KB的对象大小。Veeam的默认块大小为1 MB、所产生的对象大小通常会低于Veeam存储效率后建议的200 KB最小大小。为了提高解决方案的性能、建议不要使用跨越多个站点的纠删编码配置文件、除非这些站点之间的连接足以避免增加延迟或限制StorageGRID系统的带宽。在多站点StorageGRID系统中、可以将ILM规则配置为在每个站点存储一个副本。为了获得最佳持久性、可以配置一条规则、以便在每个站点上存储一个经过删除的编码副本。对于此工作负载、最建议使用Veeam备份服务器本地的两个副本。</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="实施要点">实施要点</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="storagegrid">StorageGRID</h3>
+<div class="paragraph">
+<p>如果需要不可破坏性、请确保在StorageGRID系统上启用对象锁定。在管理UI中的"Configuration/S3 Object Lock"(配置/S3对象锁定)下找到相应选项。</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="../media/veeam-bp/obj_lock_en.png" alt="启用网格范围对象锁定"></span></p>
+</div>
+<div class="paragraph">
+<p>创建存储分段时、如果要将此存储分段用于不可移动备份、请选择"Enable S3 Object Lock"(启用S3对象锁定)。这将自动启用存储分段版本控制。保持禁用默认保留、因为Veeam将明确设置对象保留。如果Veeam不创建不可变备份、则不应选择版本控制和S3对象锁定。</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="../media/veeam-bp/obj_lock_bucket.png" alt="在存储分段上启用对象锁定"></span></p>
+</div>
+<div class="paragraph">
+<p>创建存储分段后、转到所创建存储分段的详细信息页面。选择一致性级别。</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="../media/veeam-bp/bucket_consist_1.png" alt="存储分段选项"></span></p>
+</div>
+<div class="paragraph">
+<p>Veeam要求S3存储分段具有强大的一致性。因此、对于Veeam从多个位置访问数据的多站点部署、请选择"strong-globation"。如果Veeam备份和还原仅在单个站点上进行、则一致性级别应设置为"strong-site"。保存更改。</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="../media/veeam-bp/bucket_consist_2.png" alt="存储分段一致性"></span></p>
+</div>
+<div class="paragraph">
+<p>StorageGRID在每个管理节点和专用网关节点上提供集成负载平衡器服务。使用此负载平衡器的众多优势之一是能够配置流量分类策略(QoS)。虽然这些指标主要用于限制应用程序对其他客户端工作负载的影响或将工作负载划分为优先级、但它们还提供了额外的指标收集功能、以协助监控。</p>
+</div>
+<div class="paragraph">
+<p>在配置选项卡中、选择"Traffic Classification"(流量分类)并创建新策略。命名规则并选择存储分段或租户作为类型。输入存储分段或租户的名称。如果需要QoS、请设置限制、但对于大多数实施、我们只希望添加此功能提供的监控优势、因此不要设置限制。</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="../media/veeam-bp/tc_policy.png" alt="创建TC策略"></span></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="veeam">Veeam</h3>
+<div class="paragraph">
+<p>根据StorageGRID设备的型号和数量、可能需要选择并配置对存储分段上的并发操作数的限制。</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="../media/veeam-bp/veeam_concur_limit.png" alt="Veeam并发任务限制"></span></p>
+</div>
+<div class="paragraph">
+<p>按照Veeam控制台中有关备份作业配置的Veeam文档启动向导。添加VM后、选择SOBR存储库。</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="../media/veeam-bp/veeam_1.png" alt="备份作业"></span></p>
+</div>
+<div class="paragraph">
+<p>单击高级设置并将存储优化设置更改为4 MB或更大。应启用数据压缩和重复数据删除。根据需要更改子系统设置并配置备份作业计划。</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="../media/veeam-bp/veeam_blk_sz.png" alt="自动生成的计算机问题描述的屏幕截图、其中、wide=320、height=375"></span></p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="监控storagegrid">监控StorageGRID</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>要全面了解Veeam和StorageGRID的协同运行情况、您需要等待第一个备份的保留时间到期。到目前为止、Veeam工作负载主要由Put操作组成、尚未执行任何删除操作。备份数据过期并进行清理后、您现在可以在对象存储中看到完全一致的使用情况、并根据需要调整Veeam中的设置。</p>
+</div>
+<div class="paragraph">
+<p>StorageGRID在"Support"(支持)选项卡"Metrics (指标)"页面中提供了方便的图表来监控系统的运行。要查看的主要信息板是S3概述、ILM和流量分类策略(如果已创建策略)。在"S3概述"信息板中、您可以找到有关S3操作速率、延期和请求响应的信息。</p>
+</div>
+<div class="paragraph">
+<p>通过查看S3速率和活动请求、您可以按类型查看每个节点正在处理的负载以及请求总数。<br>
+<span class="image"><img src="../media/veeam-bp/s3_over_rates.png" alt="S3概览速率"></span></p>
+</div>
+<div class="paragraph">
+<p>"平均持续时间"图表显示每个节点针对每种请求类型花费的平均时间。这是请求的平均延迟、可能很好地指示可能需要进行额外调整、或者StorageGRID系统有承担更多负载的空间。</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="../media/veeam-bp/s3_over_duration.png" alt="S3概述持续时间"></span></p>
+</div>
+<div class="paragraph">
+<p>在“已完成请求总数”图表中，您可以按类型和响应代码查看请求。如果您看到的响应不是200 (OK)、则可能表示问题描述(如StorageGRID系统)负载过重、正在发送503 (减慢)响应、可能需要进行一些额外调整、或者现在是扩展系统以应对增加的负载的时候了。</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="../media/veeam-bp/s3_over_requests.png" alt="S3概述请求"></span></p>
+</div>
+<div class="paragraph">
+<p>在ILM信息板中、您可以监控StorageGRID系统的删除性能。StorageGRID会在每个节点上同时执行同步和异步删除、以尝试优化所有请求的整体性能。</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="../media/veeam-bp/ilm_delete.png" alt="ILM删除"></span></p>
+</div>
+<div class="paragraph">
+<p>通过流量分类策略、我们可以查看有关负载平衡器请求吞吐量、速率、持续时间以及Veeam正在发送和接收的对象大小的指标。</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="../media/veeam-bp/tc_1.png" alt="流量分类策略指标"></span></p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="../media/veeam-bp/tc_2.png" alt="流量分类策略指标"></span></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="从何处查找追加信息">从何处查找追加信息</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>要了解有关本文档中所述信息的更多信息，请查看以下文档和 / 或网站：</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://docs.netapp.com/us-en/storagegrid-117/" target="_blank" rel="noopener">"NetApp StorageGRID 11.7产品文档"</a></p>
+</li>
+<li>
+<p><a href="https://www.veeam.com/documentation-guides-datasheets.html?productId=8&amp;version=product%3A8%2F221" target="_blank" rel="noopener">"Veeam备份和复制"</a></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><em>作者：Oliver Haensel和Aron Klein</em></p>
+</div>
+</div>
+</div>
+</div>
+
+
+
+
+    </article>
+    <!-- Page Container -->
+  </div>
+
+  
+  <!-- Start Page Toolbar -->
+<div id="ie-right-navbar-collapse" class="close">
+  <img id="navbar-expand" class="ie-searchbox-icon" src="/zh-cn/storagegrid-enable/images/double_arrow.svg" alt="" />
+</div>
+<div id="ie-right-navbar" class="open">
+  <div id="right-navbar-collapse">
+    <img src="/zh-cn/storagegrid-enable/images/double_arrow.svg" alt="" />
+  </div>
+  <div class="page-nav-container">
+    <nav class="page-nav-fixed">
+      <div class="page-nav-title">在本页面中</div>
+      <div class="page-nav-links">
+        <ul class="page-nav-inner" id="page-menu"></ul>
+      </div>
+    </nav>
+  </div>
+</div>
+
+
+<script>
+  resizeContent();
+  function setRightBarHeight() {
+    var h = 0;
+
+    // header 1
+    h += PXinViewport($('.n-footer'));
+    h += PXinViewport($('#ie-new-header'));
+
+    if ($('#ie-right-navbar').length) {
+      $('#ie-right-navbar').css({ height: `calc(100vh - ${h}px)` });
+    }
+    if ($('.page-nav-links').length) {
+      h += 98;
+      $('.page-nav-links').css({ height: `calc(100vh - ${h}px)` });
+    }
+  }
+
+  $(document).ready(function () {
+    // PAGE NAV - Click
+    const MASTHEAD_OFFSET = 65;
+    const SECTIONS = $("main h2, main h3");
+    let calculateActiveSection = false;
+    setTimeout(() => {
+      calculateActiveSection = true;
+    }, 100)
+
+    $(".page-nav__link").click(function (event) {
+      calculateActiveSection = false;
+      $(".page-nav__link").removeClass('page-nav__link--active');
+      var target = $(event.target);
+      target.addClass('page-nav__link--active');
+      location.hash = event.target.hash;
+      setTimeout(() => {
+        calculateActiveSection = true;
+      }, 100)
+
+    });
+
+    // PAGE NAV - Scroll
+    $(window).on('resize scroll', function () {
+      if (calculateActiveSection) {
+        var activeSection = getActiveSection(SECTIONS, MASTHEAD_OFFSET);
+        if (activeSection) {
+          var activeHref = $(activeSection).attr('id');
+          $(".page-nav__link").removeClass('page-nav__link--active');
+          $("#page-menu a[href=#" + activeHref + "]").addClass('page-nav__link--active');
+          if (location.hash != "#" + activeHref) {
+            if (history.replaceState) {
+              history.replaceState(null, null, "#" + activeHref);
+            }
+          }
+        }
+      }
+    });
+
+    $(".n-pdf-button").click(function () {
+      $(this).toggleClass("active");
+    });
+
+    $.fn.isVisibleAndInViewport = function () {
+      var elementTop = $(this).offset().top;
+      var elementBottom = elementTop + $(this).outerHeight();
+
+      var viewportTop = $(window).scrollTop();
+      var viewportBottom = viewportTop + $(window).height();
+
+      return elementBottom > viewportTop && elementTop < viewportBottom && $(this).is(":visible");
+    };
+
+
+    $(window).on('resize scroll', function () {
+      setRightBarHeight();
+    });
+
+    $(window).trigger('resize');
+
+
+  });
+
+  $("#right-navbar-collapse").click(function (e) {
+    const rightNavbarWidth = $("#ie-right-navbar").width() - $("#ie-right-navbar-collapse").width();
+    e.preventDefault();
+    const width = $(".ie-content-pane").width();
+
+    $("#ie-right-navbar").animate({ width: 'toggle' }, 350, function () {
+      $("#ie-right-navbar-collapse").removeClass("close")
+      $("#ie-right-navbar-collapse").addClass("open")
+      $("#ie-right-navbar").removeClass("open")
+      $("#ie-right-navbar").addClass("close")
+    });
+    $(".ie-content-pane").animate({ width: (width + rightNavbarWidth) }, 350, function () {
+      resizeContent()
+      setSidebarBottom();
+    })
+
+  });
+  $("#navbar-expand").click(function (e) {
+    const rightNavbarWidth = $("#ie-right-navbar").width() - $("#ie-right-navbar-collapse").width();
+    e.preventDefault();
+    const width = $(".ie-content-pane").width();
+    $("#ie-right-navbar").animate({ width: 'toggle' }, 250, function () {
+      $("#ie-right-navbar-collapse").removeClass("open")
+      $("#ie-right-navbar-collapse").addClass("close")
+      $("#ie-right-navbar").removeClass("close")
+      $("#ie-right-navbar").addClass("open")
+      setRightBarHeight();
+      setSidebarBottom();
+    });
+    $(".ie-content-pane").animate({ width: (width - rightNavbarWidth) }, 250, function () {
+      resizeContent()
+    })
+  });
+
+  function navbarResize() {
+    const rightNavbarResized = $("#ie-right-navbar-collapse").hasClass('resized');
+    if (window.innerWidth < 1024) {
+      $("#ie-right-navbar").removeClass("open")
+      $("#ie-right-navbar").addClass("close")
+      $("#ie-right-navbar").removeAttr("style")
+      $("#ie-right-navbar-collapse").removeClass("close")
+      $("#ie-right-navbar-collapse").addClass("open")
+      $("#ie-right-navbar-collapse").addClass("resized")
+    } else {
+      if (rightNavbarResized) {
+        $('#ie-right-navbar').removeClass('close');
+        $('#ie-right-navbar').addClass('open');
+        $("#ie-right-navbar-collapse").removeClass("resized")
+        $("#ie-right-navbar-collapse").removeClass("open")
+        $("#ie-right-navbar-collapse").addClass("close")
+      }
+    }
+    resizeContent()
+  }
+  navbarResize();
+  $(window).on('resize load', function () {
+    navbarResize()
+  });
+
+  function getActiveSection(sections, offset) {
+    var scrollPosition = $(window).scrollTop() + offset + 5;
+    var activeSection;
+    for (var i = 0; i < sections.length; i++) {
+      var el = $(sections[i]);
+      var activePosition = el.offset().top;
+      if (activePosition > scrollPosition) {
+        break;
+      }
+
+      activeSection = sections[i];
+    }
+
+    return activeSection;
+  }
+
+  $("a[href*=#]:not([href=#])").click(function () {
+    setTimeout(() => {
+      $(window).trigger('scroll');
+    }, 105)
+  })
+
+  const hashOnLoad = location.href.split("#")[1];
+  setTimeout(function () {
+    if (hashOnLoad) {
+      $(".page-nav__link").removeClass('page-nav__link--active');
+      $("#page-menu a[href=#" + hashOnLoad + "]").addClass('page-nav__link--active');
+    }
+  }, 100)
+
+</script>
+
+
+  <div style="clear: both"></div><!-- Main needs to have height --></div>
+
+        </main>
+
+        <footer class="n-footer">
+  <div class="n-footer__bottom">
+    <div class="n-container">
+        <div class="n-footer__left">
+          <li class="n-footer__copyright-link">
+                    <a href="https://www.netapp.com/company/legal/copyright/">© 2024 NetApp, Inc.</a>
+          </li>
+        </div>
+        <div class="n-footer__center">
+          <ul class="n-footer__copyright-list">
+            <li class="n-footer__copyright-link">
+              <a href="https://www.netapp.com/company/legal/terms-of-use/">使用条款</a>
+            </li>
+            <li class="n-footer__copyright-link">
+              <a href="https://www.netapp.com/company/legal/privacy-policy/">隐私策略</a>
+            </li>
+            <li class="n-footer__copyright-link">
+              <a href="https://www.netapp.com/company/legal/cookie-policy/">Cookie 政策</a>
+            </li>
+            <li class="n-footer__copyright-link">
+              <a class="ot-sdk-show-settings">Cookie 设置</a>
+            </li>
+          </ul>
+       </div>
+        <div class="n-footer__right">
+              <li class="n-footer__copyright-link">
+                <a target="_self" href="javascript:netapp_mailto()">请发送有关此页面的反馈</a>
+              </li>
+        </div>
+     </div>
+  </div>
+</footer>
+
+      </div><!-- Elasticsearch JS -->
+      <script type="text/javascript" src='/zh-cn/storagegrid-enable/js/bundle.js'></script>
+
+      <!-- Syntax Highlighting -->
+      <script type="text/javascript" src='/zh-cn/storagegrid-enable/js/prism.js'></script>
+      <script type="text/javascript" src='/zh-cn/storagegrid-enable/js/prism-curl.js'></script>
+    </div>
+    <script>
+      document.body.offsetWidth=1903;
+      cookieLaw = {}
+      cookieLaw.euCountry = "US";
+      cookieLaw.invoke = function(){return false;}
+    </script>
+    <script src='/zh-cn/storagegrid-enable/js/ie-tabbed-blocks.js'></script>
+    <script src='/zh-cn/storagegrid-enable/js/ie-sidebar.js'></script>
+  </body>
+
+</html>
