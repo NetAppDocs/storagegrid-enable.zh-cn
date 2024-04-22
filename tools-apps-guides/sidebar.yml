@@ -20,3 +20,5 @@ entries:
   url: "/tools-apps-guides/veeam-br.html"
 - title: 使用StorageGRID配置多米奥
   url: "/tools-apps-guides/configure-dremio-storagegrid.html"
+- title: 使用StorageGRID配置GitLab
+  url: "/tools-apps-guides/integrate-gitlab.html"

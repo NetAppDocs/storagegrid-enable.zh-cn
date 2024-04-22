@@ -1342,4 +1342,190 @@ DERMIO使用字节范围GET在查询期间同时从同一对象中提取不同�
   <block id="29271d5d57f8d6e8670b7fc88d53d6e8" category="paragraph"><block ref="29271d5d57f8d6e8670b7fc88d53d6e8" category="inline-image-macro-rx" type="image"></block></block>
   <block id="cef940a89117c81a10863795c4ddd30e" category="paragraph"><block ref="cef940a89117c81a10863795c4ddd30e" category="inline-image-macro-rx" type="image"></block></block>
   <block id="db42e15c186d3f7b8ba7a666052fc779" category="paragraph"><block ref="db42e15c186d3f7b8ba7a666052fc779" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="a9ad8a7a7798500b5e52f25607ed3485" category="list-text">短对影(最低对影数据质量版本2024.02)</block>
+  <block id="f56cff2f7966f4ffe98e416084bb7e95" category="list-text">目标存储设备中的卷数必须大于或等于源节点中的卷数。即使目标设备的容量大于源节点、您也无法将包含16个对象存储卷(rangedb)的源节点克隆到包含12个对象存储卷的目标存储设备。大多数存储设备都有16个对象存储卷、但只有12个对象存储卷的SGF6112存储设备除外。例如、不能将SG5760克隆到SGF6112。</block>
+  <block id="301ed7b461a16811c00829d5bd1c6624" category="summary">本指南提供了有关使用GitLab配置StorageGRID的信息。</block>
+  <block id="ef012cefa8ad7693b5c808fa1ce94bbd" category="doc">NetApp StorageGRID与GitLab</block>
+  <block id="75049db1e349683b35a7dca115f7b290" category="inline-link">GitLab对象存储配置指南</block>
+  <block id="830a8857ba237b976f92dcbaa5cdec26" category="paragraph">NetApp已使用GitLab对StorageGRID进行了测试。请参见下面的GitLab配置示例。  请参见<block ref="1fbed9049876aa2874e9bb4887a0f320" category="inline-link-rx"></block> 了解详细信息。</block>
+  <block id="dc74db24a8e5e1f23203fff3257066b1" category="section-title">对象存储连接示例</block>
+  <block id="4e2805091f9d6d4c2bf36af3331432cc" category="paragraph">对于Linux软件包安装、这是的一个示例<block ref="4717d53ebfdfea8477f780ec66151dcb" prefix=" " category="inline-code"></block> 在合并表单中设置。编辑<block ref="371d9aee577f2cef4df0163cf7dc8a0c" prefix=" " category="inline-code"></block> 并添加以下行、替换所需的值：</block>
+  <block id="38ffd8c22488922588812e688de792ac" category="summary">本报告介绍如何针对StorageGRID调整S3A。</block>
+  <block id="c422c82e21b1ef6485ec6d88beb6b06c" category="doc">Hadoop S3A调整</block>
+  <block id="1b40687ad18cfd6efdf4810ebb337b1a" category="paragraph">Hadoop S3A连接器有助于在基于Hadoop的应用程序和S3对象存储之间实现无缝交互。在使用S3对象存储时、要优化性能、必须调整Hadoop S3A Connector。在深入介绍调整详细信息之前、我们先大致了解一下Hadoop及其组件。</block>
+  <block id="e41757b122e008baee063abf23c19c8e" category="section-title">什么是Hadoop？</block>
+  <block id="b654c608145226171f0898ccbae5cec7" category="paragraph">*Hadoop* 是一个功能强大的开源框架，专为处理大规模数据处理和存储而设计。它支持跨多个计算机集群进行分布式存储和并行处理。</block>
+  <block id="286bb4752ab8cc6c9ab926108e89ff74" category="paragraph">Hadoop的三个核心组件是：</block>
+  <block id="b27a1acd006213b6e473f4749269fd71" category="list-text">*Hadoop HDFS (Hadoop分布式文件系统)*：用于处理存储、将数据拆分为块并在节点之间分布。</block>
+  <block id="88d3606426a43318176abdbbccebd0bf" category="list-text">*Hadoop MapReredget*：负责将任务划分为较小的区块并并行执行来处理数据。</block>
+  <block id="4e3559b639014f651bda365ff91a1be1" category="inline-link">高效管理资源并计划任务</block>
+  <block id="27a5b1eb9e47fddd3fa124843d505156" category="list-text">*Hadoop yar (Yet Another Resource Neotiator)：*<block ref="0a2f651ef2ec562f49ee6f3ee518be8b" category="inline-link-rx"></block></block>
+  <block id="d00c5d3d4637dd8d67672efd5e9370a7" category="section-title">Hadoop HDFS和S3A连接器</block>
+  <block id="a3d3b46a8ca353af62834cbd44407f28" category="paragraph">HDFS是Hadoop生态系统的重要组成部分、在高效处理大数据方面发挥着关键作用。HDFS可实现可靠的存储和管理。它可确保并行处理和优化数据存储、从而加快数据访问和分析速度。</block>
+  <block id="7cba2f74e0ab52b47dc032ae00b28539" category="paragraph">在大数据处理方面、HDFS在为大型数据集提供容错存储方面表现出色。它通过数据复制来实现这一点。它可以在数据仓库环境中存储和管理大量结构化和非结构化数据。此外、它还可以与领先的大数据处理框架无缝集成、例如Apache Spark、Hive、Pig和Flink、从而实现可扩展的高效数据处理。它与基于Unix (Linux)的操作系统兼容、因此对于更喜欢使用基于Linux的环境进行大数据处理的组织来说、它是理想的选择。</block>
+  <block id="19db330c0bad5316cc12c5dfd0667649" category="paragraph">随着数据量逐渐增长、使用自己的计算和存储向Hadoop集群添加新计算机的方法变得效率低下。线性扩展为高效使用资源和管理基础架构带来了挑战。</block>
+  <block id="22e7bb54fa5c10b5b025b5533a88999d" category="paragraph">为了应对这些挑战、Hadoop S3A连接器可针对S3对象存储提供高性能I/O。使用S3A实施Hadoop工作流有助于将对象存储用作数据存储库、并将计算和存储分开、进而使您能够独立扩展计算和存储。分离计算和存储还可以让您将适当数量的资源专用于计算作业、并根据数据集大小提供容量。因此、您可以降低Hadoop工作流的总体TCO。</block>
+  <block id="bea7f21895dd503dbb2c3260b3af74b5" category="section-title">Hadoop S3A连接器调整</block>
+  <block id="53fa8f489fea78504f2a690e70f6624d" category="paragraph">S3的行为与HDFS不同、某些尝试保留文件系统外观的行为也明显欠佳。要最高效地利用S3资源、必须仔细调整/测试/试验。</block>
+  <block id="485a45d91872aeb5af4b8a55fa265c39" category="inline-link">Hadoop 3.3.5 core-site.xml</block>
+  <block id="413d791e09959ec487ff70f6a5fa8f5f" category="paragraph">本文档中的Hadoop选项基于Hadoop 3.3.5、请参见<block ref="ff5a0a931f8a3b6af413721cf09c3790" category="inline-link-rx"></block> 所有可用选项。</block>
+  <block id="18e3e9625172b950f27bfa276bc9bac2" category="paragraph">注意—某些Hadoop FS.S3a设置的默认值在每个Hadoop版本中都不同。请务必查看特定于当前Hadoop版本的默认值。如果未在Hadoop core-site.xml中指定这些设置、则会使用默认值。您可以使用Spark或Hive配置选项在运行时覆盖此值。</block>
+  <block id="85745090e2519b4e232f691071d9b425" category="inline-link">Apache Hadoop页面</block>
+  <block id="78c46ef71aa9afef44c6367560cca566" category="paragraph">您必须访问此页面<block ref="abad591e30e327768342ad907b293959" category="inline-link-rx"></block> 了解每个FS.S3A选项。如果可能、请在非生产Hadoop集群中对其进行测试、以查找最佳值。</block>
+  <block id="85d6e5d0078a84fc29dd42a208f9629b" category="inline-link">在使用S3A连接器时最大限度地提高性能</block>
+  <block id="dcab9d5d9c10d726c90c6c4d3ac65fe0" category="paragraph">您应阅读<block ref="bd3cc6effa7ab467cddf323c1824c302" category="inline-link-rx"></block> 了解其他调整建议。</block>
+  <block id="d909d5361378ec585bfd069b0711a66f" category="paragraph">让我们来探讨一些关键注意事项：</block>
+  <block id="245a20d95f90b2748cffdfc73cbffb3f" category="paragraph">* 。数据压缩*</block>
+  <block id="77223f8255f1260a06b0735cd6f7cfe8" category="paragraph">请勿启用StorageGRID数据压缩。大多数大数据系统都使用字节范围GET、而不是检索整个对象。对压缩对象使用字节范围GET会显著降低GET性能。</block>
+  <block id="4dd2bed9c1980f32df795815ba1bc2c9" category="paragraph">* 。S3a提交人*</block>
+  <block id="d478615245634189a8210b6069fb0383" category="inline-link">通用S3A提交器选项页面</block>
+  <block id="7ac30a4c19c86427129a4848b169de86" category="paragraph">一般情况下、建议使用magic S3A提交器。请参见此部分<block ref="7bd5d7726ff15eb3278019d14d9791ad" category="inline-link-rx"></block> 更好地了解Magic committer及其相关的S3A设置。</block>
+  <block id="1c90757eed18fc6bd4eb8aba8421533f" category="paragraph">魔力委员会：</block>
+  <block id="5fd47885b78e7fc30d2f24ef46be983b" category="paragraph">Magic Commonter特别依靠S3Guard在S3对象存储上提供一致的目录列表。</block>
+  <block id="1299ce4463815e5b17364f972f897e66" category="paragraph">借助一致的S3 (现在是这种情况)、Magic Comm캯 풱 믡 可以安全地与任何S3存储分段配合使用。</block>
+  <block id="83f0ca20cfa52e6400b17cab93a1cf17" category="paragraph">选择和实验：</block>
+  <block id="fb9962c4a0d3937d268fc2deb23bea85" category="paragraph">根据您的使用情形、您可以在Staging Commenter (依赖于集群HDFS文件系统)和Magic Commenter之间进行选择。</block>
+  <block id="bcdd4afe5d0cbdf8cc04de0c92ddc7df" category="paragraph">尝试这两种方法、确定哪种方法最适合您的工作负载和要求。</block>
+  <block id="b2272f16c45a7fc4af509338bc22504e" category="paragraph">总之、S3A委员会为应对持续、高性能和可靠的S3输出承诺这一根本性挑战提供了解决方案。其内部设计可确保高效的数据传输、同时保持数据完整性。</block>
+  <block id="81501235b286178b5df292f16c6e8b47" category="inline-image-macro">S3A选项表</block>
+  <block id="749d1c1d8a18506e442bfbbaec54f349" category="paragraph"><block ref="749d1c1d8a18506e442bfbbaec54f349" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="dc1717f3744878e6dbb68b8a22974e06" category="paragraph">*3.线程、连接池大小和块大小*</block>
+  <block id="b35c467aea8fb0e4ad9d636d48d0b8db" category="list-text">与单个存储分段交互的每个*S3A*客户端都有自己的专用池，其中包含用于上传和复制操作的开放HTTP 1.1连接和线程。</block>
+  <block id="4b7fc1639229d7f089f2e8c85436106e" category="inline-link">您可以调整这些池大小、以便在性能与内存/线程使用量之间取得平衡</block>
+  <block id="901a6addd359ee8998a8f1e41f45789f" category="list-text"><block ref="801a4dc74c7b120220c9c416fd446c6b" category="inline-link-rx"></block>。</block>
+  <block id="10fbe332f21fbd575e849cde38283e2e" category="list-text">将数据上传到S3时、数据会划分为多个块。默认块大小为32 MB。您可以通过设置FS.S3a.block.size属性来自定义此值。</block>
+  <block id="ffa0e6a713cabf752ba8055eaaede5fc" category="list-text">较大的块大小可通过减少上传期间管理多部件的开销来提高大型数据上传的性能。对于大型数据集、建议值为256 MB或以上。</block>
+  <block id="06227b83b2c17941a4d807e7d9b74710" category="paragraph"><block ref="06227b83b2c17941a4d807e7d9b74710" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="f40f5a29dd719649854707ad2ed54faa" category="paragraph">*4.多部分上传*</block>
+  <block id="289795451e85a0a16d75e7868c7480d0" category="paragraph">S3A提交者*始终*使用MPU (多部分上传)将数据上传到S3存储分段。这是在以下情况下所必需的：任务失败、任务的推测性执行以及提交前作业中止。以下是与多部件上传相关的一些关键规格：</block>
+  <block id="a9da1ffc95aa8035dfd68dae308c2231" category="list-text">最大对象大小：5 TiB (TB)。</block>
+  <block id="d0fb74e477b55b97737f386acec3b84e" category="list-text">每次上传的最大部件数：10、000。</block>
+  <block id="83b29781f2e067cdc992c431a51a9935" category="list-text">部件号：范围为1到10、000 (含1到10、000)。</block>
+  <block id="7345af9128ab03965deea092bbcd2202" category="list-text">部件大小：介于5 MiB和5 GiB之间。值得注意的是、多部分上传的最后一部分没有最小大小限制。</block>
+  <block id="f9064148ac19ecdf76f9ddca593dbddb" category="paragraph">对S3多部件上传使用较小的部件大小既有优点也有缺点。</block>
+  <block id="1ef80274ba7e199b46d885662e8e2e9f" category="paragraph">*优势*：</block>
+  <block id="e4461ace39f3509a41ff3e20c71902cf" category="list-text">从网络问题中快速恢复：当您上传较小的部分时、由于网络错误而重新启动失败的上传所产生的影响将降至最低。如果某个部件出现故障、您只需要重新上传该特定部件、而不是整个对象。</block>
+  <block id="df3a8de4dd7f4c840c5cd07e596cb5de" category="list-text">更好的并行处理：利用多线程或并发连接、可以并行上传更多部件。这种并行处理可提高性能、尤其是在处理大型文件时。</block>
+  <block id="c44c778d63d4fd51a252f196604c2ec6" category="paragraph">*缺点*：</block>
+  <block id="5c62a121681103dd6392f0859e18473a" category="list-text">网络开销：部件较小意味着要上传的部件较多、每个部件都需要自己的HTTP请求。HTTP请求越多、启动和完成单个请求的开销就越大。管理大量小部件可能会影响性能。</block>
+  <block id="748b6dc8bff1881d38cec5375d3045a7" category="list-text">复杂性：管理订单、跟踪部件和确保上传成功可能会非常繁琐。如果需要中止上传、则需要跟踪并清除已上传的所有部件。</block>
+  <block id="f3983123dcac058e305af36c45c988e8" category="paragraph">对于Hadoop、建议对fs.s3a.multipart.size使用256MB或以上的部件大小。请始终将FS.S3a.mutlpart.threshold"值设置为2 x FS.S3a.multipart.size值。例如、如果fs.s3a.multipart.size = 256M、则fs.s3a.mutlifpart.threshold"应为512M。</block>
+  <block id="4251dd2508268d84d780950cfa957f88" category="paragraph">对大型数据集使用较大的零件大小。根据您的特定使用情形和网络条件、选择一个能够平衡这些因素的部件大小非常重要。</block>
+  <block id="56d98abf32151f1e7a60c6cdad4b995e" category="inline-link">三步流程</block>
+  <block id="40a26596045288b6e31e0524da1e78d4" category="paragraph">多部分上传是<block ref="119a74f2526c1f8ee38f113c37745d3a" category="inline-link-rx"></block>：</block>
+  <block id="e77511b5a47e9ce5242b5e2707d34871" category="list-text">上传已启动、StorageGRID将返回一个上传ID.</block>
+  <block id="465c4cf2408ae7723d681a9c8607de37" category="list-text">对象部件将使用上载-id进行上载。</block>
+  <block id="265f70ced2325f215340985c129b8fff" category="list-text">上传所有对象部件后、发送包含上传id的完整多部分上传请求。StorageGRID根据上传的部分构建对象、客户端可以访问该对象。</block>
+  <block id="65638a5ddb2ddbd00963cc5b84f206d1" category="paragraph">如果未成功发送完整的多部件上传请求、则这些部件将保留在StorageGRID中、不会创建任何对象。作业中断、失败或中止时会发生这种情况。这些部件将保留在网格中、直到多部件上传完成或中止、或者如果上传启动后15天、StorageGRID会清除这些部件。如果一个存储分段中有许多(几百到几百万个)正在进行的多部分上传、则当Hadoop发送‘list-multipart-Uploads’(此请求不按上传ID筛选)时、此请求可能需要很长时间才能完成、或者最终超时。您可以考虑使用适当的FS.S3a.mutlpart.purge值将FS.S3a.multipart.purge.age设置为true (例如、5到7天、不要使用默认值86400、即1天)。或者联系NetApp支持部门调查情况。</block>
+  <block id="caf1551badab24f35930164061cff3dd" category="paragraph"><block ref="caf1551badab24f35930164061cff3dd" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="d9703f8bc6fb70abb3d253a5ded96197" category="paragraph">*5.缓冲区写入数据存储在内存中*</block>
+  <block id="36a89ed4836d3b5b5f59193e28776e5c" category="paragraph">为了提高性能、您可以在将写入数据上传到S3之前将其缓冲在内存中。这样可以减少小型写入次数并提高效率。</block>
+  <block id="f26f197ffec0d3e726569f182287a9a8" category="paragraph"><block ref="f26f197ffec0d3e726569f182287a9a8" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="63d5657772886960693d8740023cf233" category="paragraph">请记住、S3和HDFS的工作方式各不相同。要最有效地利用S3资源、必须仔细调整/测试/实验。</block>
+  <block id="38a5cc39717b20b4cde7ce17adfaf8c7" category="summary">本报告涵盖StorageGRID上的大数据分析。</block>
+  <block id="5d272a32f1e2287537ac7e73dbde5d69" category="doc">NetApp StorageGRID和大数据分析</block>
+  <block id="f5787e6402b1cee555a3442483bd6327" category="section-title">NetApp StorageGRID用例</block>
+  <block id="92f1edc36d1985b5746e924fb88bb19b" category="paragraph">NetApp StorageGRID对象存储解决方案可提供可扩展性、数据可用性、安全性和高性能。各种规模和各行各业的组织都在广泛的使用情形中使用StorageGRID S3。让我们来了解一些典型场景：</block>
+  <block id="27f32b3f9512c62dc40543d9cc892611" category="paragraph">*大数据分析：* StorageGRID S3常用作数据湖、企业可在其中存储大量结构化和非结构化数据、以便使用Apache Spark、Splunk Smartstore和DREMIO等工具进行分析。</block>
+  <block id="e77b3574759aea5c11a8d04312bc2cbe" category="paragraph">*数据分层：* NetApp客户使用ONTAP的FabricPool功能在高性能本地层之间自动将数据移动到StorageGRID。在将冷数据保留在低成本对象存储上的同时、将昂贵的闪存存储释放出来、以存储热数据。这样可以最大限度地提高性能并节省成本。</block>
+  <block id="4dc7ef59b422ad6beec0dcf560a3fdf9" category="paragraph">*数据备份和灾难恢复：*企业可以使用StorageGRID S3作为可靠且经济高效的解决方案来备份关键数据并在发生灾难时进行恢复。</block>
+  <block id="b05954e05454ab56e0d356cb4ad49d95" category="paragraph">*应用程序的数据存储：* StorageGRID S3可用作应用程序的存储后端，使开发人员能够轻松地存储和检索文件、图像、视频和其他类型的数据。</block>
+  <block id="5623c900b98e0e5e17c60c75ded947b1" category="paragraph">*内容交付：* StorageGRID S3可用于存储静态网站内容、媒体文件和软件下载并提供给全球用户、利用StorageGRID的地区分布和全局命名空间实现快速可靠的内容交付。</block>
+  <block id="60b72d1ecbd87ac726a3dbb733456c59" category="paragraph">*数据分层：* NetApp客户使用ONTAP FabricPool功能在高性能本地层之间自动将数据移动到StorageGRID。在将冷数据从低成本对象存储中随时可用的同时、通过层化释放昂贵的闪存存储来存储热数据。这样可以最大限度地提高性能并节省成本。</block>
+  <block id="454845c7ca306686c28f96a59487d70c" category="paragraph">*数据归档：* StorageGRID提供不同的存储类型、并支持分层到公共长期低成本存储选项、使其成为出于合规性或历史目的需要保留的数据归档和长期保留的理想解决方案。</block>
+  <block id="a324e6c3bb7d6684738c923e7b52ea98" category="paragraph">*对象存储用例*</block>
+  <block id="9f79f86c9a539a911125a876ef6a3c2e" category="inline-image-macro">StorageGRID用例图、宽度=396、高度=394</block>
+  <block id="2ae53f7687415e47352b3c8fdf11602c" category="paragraph"><block ref="2ae53f7687415e47352b3c8fdf11602c" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="c9e24c78b995a9f99006f7b470383259" category="paragraph">在上述情形中、大数据分析是最热门的使用情形之一、其使用量呈上升趋势。</block>
+  <block id="d9adadb4a0063dcb9fae0a43c0073259" category="section-title">为什么选择StorageGRID解决数据湖问题？</block>
+  <block id="20ee9cfabde8b905c9a64689a84b0921" category="list-text">增强协作—利用行业标准API访问实现大规模共享多站点、多租户</block>
+  <block id="884ee76830efc6a2368841cf8e70b390" category="list-text">降低运营成本—通过一个自我修复型自动化横向扩展架构简化运营</block>
+  <block id="abdafbcb8273ebb7d3d1776426912eea" category="list-text">可扩展性—与传统的Hadoop和数据仓库解决方案不同、StorageGRID S3对象存储可将存储与计算和数据分离、从而使企业能够随着增长扩展存储需求。</block>
+  <block id="94756ff0a241ceb246fb4e92f9e8b5db" category="list-text">耐用性和可靠性—StorageGRID的耐用性高达99.9999999%、这意味着存储的数据能够高度抵御数据丢失。它还提供高可用性、确保数据始终可访问。</block>
+  <block id="6d5424acc89d68777ded882e67fba989" category="list-text">安全性—StorageGRID提供各种安全功能、包括加密、访问控制策略、数据生命周期管理、对象锁定和版本控制、以保护S3存储分段中存储的数据</block>
+  <block id="9ed95e053e569a8027874c20fc968fa0" category="paragraph">* StorageGRID S3数据湖*</block>
+  <block id="16440189dc2ac5b52ea041615f4e3502" category="inline-image-macro">StorageGRID数据报时示例、宽度=不等、高度= 345</block>
+  <block id="8c6ce2dc10841da36e2b55063b73a29e" category="paragraph"><block ref="8c6ce2dc10841da36e2b55063b73a29e" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="bcf6df0d4fc301b73dfb0f84c2b25fca" category="section-title">哪种数据仓库或数据湖最适合S3对象存储</block>
+  <block id="f5fb5a608581154f9f31a7efeaf26b22" category="inline-link">Apache iceberg：权威指南</block>
+  <block id="961898fd5ba4fc2d612d1c831953550a" category="paragraph">NetApp通过三个数据仓库/湖屋生态系统(Hive、Delta湖和德雷米奥)对StorageGRID进行了基准测试。<block ref="ea7970154750f3c7264130a8bd2b3dc5" category="inline-link-rx"></block> 简要介绍了数据仓库和数据湖屋以及这两种架构的利弊。</block>
+  <block id="d74100f8d86dca0577d39ba1e04a17a6" category="list-text">基准测试工具- TPC-DS -<block ref="d703b8825e30c09e87a04e77b042a1a8" category="inline-link-rx"></block></block>
+  <block id="d30ec88779257c0b31627ba4c551888a" category="list-text">大数据生态系统</block>
+  <block id="3d8fdb479ba6a1b9cecf651f9b7eea26" category="list-text">一个由5个VM组成的集群、每个VM具有128 G RAM和24个vCPU、SSD存储用于系统磁盘</block>
+  <block id="a7bc6add825dafcb28d8468de2244c0e" category="list-text">采用Hive 3.1.3的Hadoop 3.3.5 (1个名称节点+ 4个数据节点)</block>
+  <block id="6b3b732f04270b0bc61c4e04a2f39184" category="list-text">采用Spark 3.2.0 (1个主服务器+ 4个员工)和Hadoop 3.3.5的Delta Lake</block>
+  <block id="6b18ec7d77a4e9e064cbf7907da0f995" category="list-text">d不良V23 (1个主服务器+ 4个执行器)</block>
+  <block id="670aaecb1a526fbed439dad3ec353a96" category="list-text">对象存储</block>
+  <block id="2d9b029355e87294061ae6f1de033209" category="list-text">NetApp^®^ StorageGRID^®^ 11.5，带有3个SG6060 + 1个SG1000负载平衡器</block>
+  <block id="3e02059b0b44d7c31aea68d26d910c82" category="list-text">对象保护—2个副本</block>
+  <block id="3cf72a217876a6502e40c6bc45a93c60" category="list-text">数据库大小为1000 GB</block>
+  <block id="8db25bfcdb041c33cb3750cd355e2821" category="list-text">在所有3个生态系统上禁用缓存、以便在每个查询测试中获得一致的结果。</block>
+  <block id="4775694e0c94905d9a80366e4fa7f65a" category="paragraph">TPC-DS附带99个复杂的SQL查询、用于查询基准测试。我们测量了完成所有99个查询所需的总分钟数、并通过细分S3请求的类型和数量来深入分析结果。下面的第一个表显示了所有99个查询的总持续时间、第二个表汇总了每个生态系统发送到StorageGRID的S3请求的数量和类型。</block>
+  <block id="6d250f65ee48829b160dce910ccf0190" category="paragraph">*TPC-DS查询结果*</block>
+  <block id="47e3170ffb3d6c316975632968933646" category="cell">生态系统</block>
+  <block id="c05def664dae0985e5984993db2b69a0" category="cell">配置</block>
+  <block id="e51fc2a250a74f84b11010c0f9316c46" category="cell">三角洲湖</block>
+  <block id="6f632a1f063dc14df220da8c1d176f38" category="cell">存储层</block>
+  <block id="49519cec4f69d00412deaceb05c68eb8" category="cell">NetApp^®^ StorageGRID^®^</block>
+  <block id="ce1dc110e77caccbe12e51dce2d1c9b7" category="cell">驱动器类型</block>
+  <block id="9c2dc227590d4220750b52b21b0aeb99" category="cell">HDD</block>
+  <block id="5128c40e9b4875ff6b6f9b08e8d0a03f" category="cell">表格格式</block>
+  <block id="ace780da4816e1e457db8c57d60b5d66" category="cell">镶木地板</block>
+  <block id="f49606530a9567c51e160fcce34b8f71" category="cell">镶木地板^1^</block>
+  <block id="6267eaec7dcff27c3dc9e28ff41252d0" category="cell">数据库大小</block>
+  <block id="a0b2fbadd5b3ebfe64b31483a2ac8886" category="cell">1000 G</block>
+  <block id="35b5589d5690d7ef32acf311beb9bbea" category="cell">TPCDS 99查询+
+总分钟数</block>
+  <block id="d06520689ef9c6002c5ceab8146281f6" category="cell">1084 ^2^</block>
+  <block id="b53b3a3d6ab90ce0268229151c9bde11" category="cell">55</block>
+  <block id="67c6a1e7ce56d3d6fa748ab6d9af3fd7" category="cell">47.1.</block>
+  <block id="fb9fcf59d7e277fffe7705ce2be3777a" category="paragraph">^1^测试了镶木地板和冰山一角表格式，结果相似。</block>
+  <block id="673b0197afb5ff5d157542553d103217" category="paragraph">^2^ Hive无法完成查询编号72。</block>
+  <block id="95f1998726f8cd4be0aff86865fa8eae" category="paragraph">*TPC-DS查询- S3请求细分*</block>
+  <block id="3e197ca7a19378fad3e5581cbd39fb4b" category="cell">S3请求</block>
+  <block id="7528035a93ee69cedb1dbddb2f0bfcc8" category="cell">获取</block>
+  <block id="8db7bb1512ff25e1db67c5b9a53f897d" category="cell">1、117184</block>
+  <block id="2569e54b8230d5c2746fa85c61dcf512" category="cell">2、074、610</block>
+  <block id="7cea2b87e7eb0c4d67994a7b9fa4f3d3" category="cell">4、414、227</block>
+  <block id="6f53c4f40f0a0d7fefdb89564ac1c713" category="cell">观察：+
+所有范围GET</block>
+  <block id="a9d41bf59f53e6160f0b13f571ea418a" category="cell">从32 MB对象中获取2 KB到2 MB的80%范围、每秒50到100个请求</block>
+  <block id="e0b8bceb4cded5e4c1e2d73d9331f0f7" category="cell">73%的范围从32 MB对象开始低于100 KB、每秒1000到1400个请求</block>
+  <block id="bfe0f96dc7eb9140699f8fdd7568c553" category="cell">从256MB对象获取90% 1M字节范围、2000到2300个请求/秒</block>
+  <block id="0f220d208874b104e26e73ec94b0e690" category="cell">列出对象</block>
+  <block id="bfc2dfc2cb23058c08a7d12b5c3abb19" category="cell">312、053</block>
+  <block id="0e706da47bd945de88f06af5c56e1e6a" category="cell">24、158</block>
+  <block id="335f5352088d7d9bf74191e006d8e24c" category="cell">240</block>
+  <block id="c03e2ac569e5aac15b52493eef30e9e7" category="cell">头部+
+(不存在的对象)</block>
+  <block id="b920dc6d7f4f2319e93bdcc850be6166" category="cell">156、027</block>
+  <block id="8e43c25a28a92db67de364324cbdf9dd" category="cell">12、103</block>
+  <block id="58a2fc6ed39fd083f55d4182bf88826d" category="cell">192.</block>
+  <block id="d241bb72f8484e8c12847a1c342893cc" category="cell">头部+
+(存在的对象)</block>
+  <block id="791138a3078a87a630b0ddcc779f5365" category="cell">982、126</block>
+  <block id="41157fd52202414d46b193aa0dc0e7ed" category="cell">922732</block>
+  <block id="4a12caac680acef61b9d5542d0bdd153" category="cell">1、845</block>
+  <block id="645d67b4eb5a0d06bf14fe7a682ced76" category="cell">请求总数</block>
+  <block id="a56d0d38d9846ac044442ecabae19902" category="cell">2.</block>
+  <block id="6dfffbda5aeba01126df9439ffbc82a3" category="cell">3、033、603</block>
+  <block id="b0f186b9ad3639a900dc289160a9505b" category="cell">4、416、504</block>
+  <block id="15dc52463e414693d28f722fd4d402db" category="paragraph">从第一张桌子上、我们可以看到Delta Lake和德雷米奥比Hive快得多。从第二个表中、我们注意到Hive发送了大量S3列表对象请求、这在所有对象存储平台中通常都很慢、尤其是在处理包含许多对象的分段时。这会显著增加整体查询持续时间。另一个观察结果是、在Hive中、德尔米奥能够并行发送大量GET请求、每秒2000到2、300个请求、而每秒50到100个请求。Hive和Hadoop S3A模拟标准文件系统会导致S3对象存储运行减速。</block>
+  <block id="5fd92565468cb3e9de156c317d9d5f07" category="paragraph">要将Hadoop (无论是在HDFS还是S3对象存储上)与Hive或Spark结合使用、需要具备有关Hadoop和Hive或Spark以及每个服务中的设置如何交互的广泛知识—它们共同具有1000多个设置。这些设置通常是相互关联的、不能单独更改。要找到要使用的设置和值的最佳组合、需要花费大量时间和精力。</block>
+  <block id="8a96077dd21be324029bd1c265c53313" category="paragraph">dremio是一种数据湖引擎、它使用端到端Apache Arrow(阿帕奇箭头)来显著提高查询性能。Apache Arrow"提供标准化的列式内存格式、可实现高效的数据共享和快速分析。ARrow采用不受语言限制的方法、旨在消除数据序列化和反序列化的需求、从而提高复杂数据流程和系统之间的性能和互操作性。</block>
+  <block id="dec1fbcbe442f11c3d728feb8041cb00" category="paragraph">在很大程度上、Mirio的性能取决于其集群的计算能力。虽然desmio会使用Hadoop的S3A连接器建立S3对象存储连接、但不需要使用Hadoop、并且desmio不会使用Hadoop的大多数FS.S3A设置。这样、无需花费时间学习和测试各种Hadoop S3A设置、即可轻松调整德米奥的性能。</block>
+  <block id="71860c77c6745379b0d44304d66b6a13" category="inline-link">页面。</block>
+  <block id="5db9c9da095f8d74e0628dbbdfdfb825" category="paragraph">根据此基准测试结果、我们可以得出结论、针对基于S3的工作负载进行优化的大数据分析系统是一个主要性能因素。在使用S3存储时、由于使用的是Hive、因此、使用此解决方案可以优化查询执行、高效利用元数据并提供对S3数据的无缝访问、从而获得比Hive更高的性能。请参见此部分<block ref="e4ec3c3ef03861ef67845dfb086c7b17" category="inline-link-rx"></block> 使用StorageGRID配置d不良S3数据源。</block>
+  <block id="c0c37f88f031a9b491d9a8bbea81dda7" category="paragraph">请访问以下链接、详细了解StorageGRID和德莱米奥如何协同工作来提供现代化且高效的数据湖基础架构、以及NetApp如何从Hive + HDFS迁移到德莱米奥+ StorageGRID来显著提高大数据分析效率。</block>
+  <block id="79304bd05c48f486a8924e2c45f39311" category="inline-link">借助NetApp StorageGRID提升大数据的性能</block>
+  <block id="9f6a1ff945eb33fcb8e19e5c7f4d3562" category="list-text"><block ref="9f6a1ff945eb33fcb8e19e5c7f4d3562" category="inline-link-rx"></block></block>
+  <block id="5683e5844e7df088ba30c5038415b393" category="inline-link">借助StorageGRID和d处 米奥打造现代化、功能强大且高效的数据湖基础架构</block>
+  <block id="90db912c71e3eeae0631168476c49b1d" category="list-text"><block ref="90db912c71e3eeae0631168476c49b1d" category="inline-link-rx"></block></block>
+  <block id="1f3f85a45cc94830ad50d8dcc85d553a" category="inline-link">NetApp如何利用产品分析重新定义客户体验</block>
+  <block id="7014c893b79b05f09938975b394e0ca5" category="list-text"><block ref="7014c893b79b05f09938975b394e0ca5" category="inline-link-rx"></block></block>
+  <block id="06b48b444551989a8bbf76e3cb86a3d2" category="sidebar">使用StorageGRID配置GitLab</block>
+  <block id="00f36bd2b4cd1d9e59ff895b5e131be2" category="sidebar">技术报告</block>
+  <block id="0ad1cadfe97c5910e1b3ce75c8b0ff1f" category="sidebar">NetApp StorageGRID和大数据分析</block>
+  <block id="6407baffaf35e5f51c2e06e83659fcae" category="sidebar">Hadoop S3A调整最佳实践</block>
+  <block id="34d8c979f20e6e946fc25898c9b703b0" category="sidebar">Hadoop S3A调整</block>
 </blocks>

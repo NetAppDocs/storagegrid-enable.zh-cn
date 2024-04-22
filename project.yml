@@ -17,6 +17,7 @@ sidebar:
   - section: product-feature-guides
   - section: tools-apps-guides
   - section: examples
+  - section: technical-reports
   - title: 博客文章
     url: "/blogs.html"
   - title: StorageGRID 文档

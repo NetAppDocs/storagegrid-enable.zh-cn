@@ -28,6 +28,7 @@ summary: 第三方解决方案已通过StorageGRID 11.8.
 * Bridgestor
 * Cantemo
 * Citrix内容协作
+* 短对影(最低对影数据质量版本2024.02)
 * Commvault 11
 * Ctera门户6.
 * 达莱特

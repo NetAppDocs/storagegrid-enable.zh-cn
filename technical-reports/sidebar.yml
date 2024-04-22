@@ -1,0 +1,8 @@
+---
+section: technical-reports
+title: 技术报告
+entries:
+- title: NetApp StorageGRID和大数据分析
+  url: "/technical-reports/datalake-analytics.html"
+- title: Hadoop S3A调整
+  url: "/technical-reports/s3a-tuning.html"

@@ -1,0 +1,44 @@
+---
+permalink: tools-apps-guides/integrate-gitlab.html 
+sidebar: sidebar 
+keywords: gitlab, on-premises, integration, storagegrid, object 
+summary: 本指南提供了有关使用GitLab配置StorageGRID的信息。 
+---
+= NetApp StorageGRID与GitLab
+:allow-uri-read: 
+
+
+NetApp已使用GitLab对StorageGRID进行了测试。请参见下面的GitLab配置示例。  请参见 https://docs.gitlab.com/ee/administration/object_storage.html["GitLab对象存储配置指南"] 了解详细信息。
+
+
+
+== 对象存储连接示例
+
+对于Linux软件包安装、这是的一个示例 `connection` 在合并表单中设置。编辑 `/etc/gitlab/gitlab.rb` 并添加以下行、替换所需的值：
+
+[source]
+----
+# Consolidated object storage configuration
+gitlab_rails['object_store']['enabled'] = true
+gitlab_rails['object_store']['proxy_download'] = true
+gitlab_rails['object_store']['connection'] = {
+  'provider' => 'AWS',
+  'region' => 'us-east-1',
+  'endpoint' => 'https://<storagegrid-s3-endpoint:port>',
+  'path_stype' => 'true',
+  'aws_access_key_id' => '<AWS_ACCESS_KEY_ID>',
+  'aws_secret_access_key' => '<AWS_SECRET_ACCESS_KEY>'
+}
+# OPTIONAL: The following lines are only needed if server side encryption is required
+gitlab_rails['object_store']['storage_options'] = {
+  'server_side_encryption' => 'AES256'
+}
+gitlab_rails['object_store']['objects']['artifacts']['bucket'] = 'gitlab-artifacts'
+gitlab_rails['object_store']['objects']['external_diffs']['bucket'] = 'gitlab-mr-diffs'
+gitlab_rails['object_store']['objects']['lfs']['bucket'] = 'gitlab-lfs'
+gitlab_rails['object_store']['objects']['uploads']['bucket'] = 'gitlab-uploads'
+gitlab_rails['object_store']['objects']['packages']['bucket'] = 'gitlab-packages'
+gitlab_rails['object_store']['objects']['dependency_proxy']['bucket'] = 'gitlab-dependency-proxy'
+gitlab_rails['object_store']['objects']['terraform_state']['bucket'] = 'gitlab-terraform-state'
+gitlab_rails['object_store']['objects']['pages']['bucket'] = 'gitlab-pages'
+----
