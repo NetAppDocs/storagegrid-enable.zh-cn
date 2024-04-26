@@ -37,6 +37,8 @@ indexpage:
       url: "/product-feature-guides/node-clone.html"
     - title: 如何使用端口重新映射
       url: "/product-feature-guides/port-remap.html"
+    - title: 如何重新定位站点和更改网络
+      url: "/product-feature-guides/site-relocation-and-network-change.html"
   - title: 工具和应用程序指南
     links:
     - title: 使用Cloudera Hadoop S3A连接器

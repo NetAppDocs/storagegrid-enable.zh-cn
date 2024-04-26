@@ -1,0 +1,92 @@
+---
+permalink: product-feature-guides/site-relocation-and-network-change.html 
+sidebar: sidebar 
+keywords: relocation move network change 
+summary: 本指南介绍了在多站点网格中进行StorageGRID站点重新定位的准备和操作步骤。 
+---
+= 网格站点重新定位和站点范围网络更改操作步骤
+:hardbreaks:
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+本指南介绍了在多站点网格中进行StorageGRID站点重新定位的准备和操作步骤。您应全面了解此操作步骤、并提前做好规划、以确保流程顺畅、最大限度地减少对客户的中断。
+
+如果需要更改整个网格的网格网络、请参见
+link:https://docs.netapp.com/us-en/storagegrid-118/maintain/changing-nodes-network-configuration.html["更改网格中所有节点的 IP 地址"]。
+
+
+
+== 站点重新定位前的注意事项
+
+* 应在15天内完成站点移动并使所有节点联机、以避免重建cassandrebuild数据库。
+link:https://docs.netapp.com/us-en/storagegrid-118/maintain/recovering-storage-node-that-has-been-down-more-than-15-days.html["将存储节点恢复到关闭状态超过 15 天"^]
+* 如果活动策略中的任何ILM规则使用严格的写入行为、如果客户希望在站点重新定位期间继续将对象放入网格、请考虑将其更改为平衡或双重提交。
+* 对于包含60个或更多驱动器的存储设备、切勿移动安装了磁盘驱动器的磁盘架。  在打包/移动之前、为每个磁盘驱动器贴上标签并将其从存储机箱中取出。
+* 更改StorageGRID设备网格网络VLAN可以通过管理网络或客户端网络远程执行。  或者计划在重新定位之前或之后到现场执行更改。
+* 检查客户应用程序是否正在使用HEAD或在放置前获取不存在的对象。如果是、请将存储分段一致性更改为强站点、以避免出现HTTP 500错误。  如果不确定，请查看S3概述Grafana图表*网格管理器>支持>指标*，将鼠标悬停在"已完成请求总数"图表上。  如果404 GET对象或404 HEAD对象的计数非常高、则一个或多个应用程序可能正在使用HEAD或GET不存在对象。计数会累计、将鼠标悬停在不同的时间线上可查看差异。
++
+image:site-relocation/s3-completed-request.png["S3概述Grafana图表示例"]
+
+
+
+
+
+=== 操作步骤以在站点重新定位之前更改网格IP地址
+
+.步骤
+. 如果新位置要使用新的网格网络子网、
+link:https://docs.netapp.com/us-en/storagegrid-118/expand/updating-subnets-for-grid-network.htmll["将子网添加到网格网络子网列表"^]
+. 登录到主管理节点、使用change-ip进行网格IP更改、必须*暂存*更改、然后才能关闭节点进行重新定位。
++
+.. 选择2、然后选择1以更改网格IP
++
+image:site-relocation/ip-change-1.png[""]
+
+.. 选择5以显示更改
++
+image:site-relocation/ip-change-2.png[""]
+
+.. 选择10以验证并应用更改。
++
+image:site-relocation/ip-change-3.png[""]
+
+.. 必须在此步骤中选择*阶段*。
++
+image:site-relocation/ip-change-4.png[""]
+
+.. 如果上述更改中包括主管理节点，请输入*'A'手动重新启动主管理节点*
++
+image:site-relocation/ip-change-5.png[""]
+
+.. 按ENTER键返回上一菜单并退出change-ip界面。
++
+image:site-relocation/ip-change-6.png[""]
+
+
+
+. 从Grid Manager中下载新的恢复软件包。*网格管理器*>*维护*>*恢复包*
+. 如果StorageGRID设备需要更改VLAN、请参见一节 <<设备VLAN更改>>。
+. 关闭站点上的所有节点和/或设备、根据需要标记/移除磁盘驱动器、然后卸载、打包和移动。
+. 如果您计划更改管理网络IP和/或客户端VLAN和IP地址、则可以在重新定位后执行更改。
+
+
+
+
+=== 设备VLAN更改
+
+以下操作步骤假定您可以远程访问StorageGRID设备的管理或客户端网络以远程执行更改。
+
+.步骤
+. 在关闭设备之前，
+link:https://docs.netapp.com/us-en/storagegrid-appliances/commonhardware/placing-appliance-into-maintenance-mode.html["将设备置于维护模式"]。
+. 使用浏览器访问StorageGRID设备安装程序图形用户界面 https://<admin-or-client-network-ip>:8443[]。  设备启动至维护模式后、无法使用Grid IP作为新的Grid IP。
+. 更改网格网络的VLAN。  如果您正在通过客户端网络访问设备、则此时无法更改客户端VLAN、可以在移动后进行更改。
+. 通过SSH连接到设备并使用"shutdoown -h now "关闭节点
+. 在新站点上准备好设备后、使用访问StorageGRID设备安装程序图形用户界面 https://<grid-network-ip>:8443[]。  在GUI中使用Ping/nmap工具确认存储处于最佳状态、并确认与其他网格节点的网络连接。
+. 如果计划更改客户端网络IP、则可以在此阶段更改客户端VLAN。  在稍后使用change-ip工具更新客户端网络IP之前、客户端网络尚未准备就绪。
+. 退出维护模式：在 StorageGRID 设备安装程序中，选择 * 高级 * > * 重新启动控制器 * ，然后选择 * 重新启动至 StorageGRID * 。
+. 在所有节点均已启动且网格未显示任何连接问题描述后、根据需要使用change-ip更新设备管理网络和客户端网络。
+

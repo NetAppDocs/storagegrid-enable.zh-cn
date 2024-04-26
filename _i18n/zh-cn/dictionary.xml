@@ -1528,4 +1528,54 @@ DERMIO使用字节范围GET在查询期间同时从同一对象中提取不同�
   <block id="0ad1cadfe97c5910e1b3ce75c8b0ff1f" category="sidebar">NetApp StorageGRID和大数据分析</block>
   <block id="6407baffaf35e5f51c2e06e83659fcae" category="sidebar">Hadoop S3A调整最佳实践</block>
   <block id="34d8c979f20e6e946fc25898c9b703b0" category="sidebar">Hadoop S3A调整</block>
+  <block id="23e421cbf9f56a23426fd9d29746a636" category="summary">本指南介绍了在多站点网格中进行StorageGRID站点重新定位的准备和操作步骤。</block>
+  <block id="8295ab4dfd6c34f8b3da70a8bfaaada3" category="doc">网格站点重新定位和站点范围网络更改操作步骤</block>
+  <block id="a7b0b12fd572901946be0ed19cb6a438" category="paragraph">本指南介绍了在多站点网格中进行StorageGRID站点重新定位的准备和操作步骤。您应全面了解此操作步骤、并提前做好规划、以确保流程顺畅、最大限度地减少对客户的中断。</block>
+  <block id="731561f650e3a36691bae029b4547c66" category="inline-link-macro">更改网格中所有节点的 IP 地址</block>
+  <block id="e16a17e0f04937786448505101cf5703" category="paragraph">如果需要更改整个网格的网格网络、请参见
+<block ref="25fe4ea07c9ed2c1ea3e524430970ba9" category="inline-link-macro-rx"></block>。</block>
+  <block id="d62541926508b7fc98152bdd26f6b28c" category="section-title">站点重新定位前的注意事项</block>
+  <block id="adb2a3f1ce6044cca831a1c3e1fcc38c" category="inline-link-macro">将存储节点恢复到关闭状态超过 15 天</block>
+  <block id="79286dd19701572b9607fd1b47f14c5f" category="list-text">应在15天内完成站点移动并使所有节点联机、以避免重建cassandrebuild数据库。
+<block ref="fb2aa662be1b0eb04ce42e59fa10d995" category="inline-link-macro-rx"></block></block>
+  <block id="d81093eaf5709c0a3ae4db45ea962851" category="list-text">如果活动策略中的任何ILM规则使用严格的写入行为、如果客户希望在站点重新定位期间继续将对象放入网格、请考虑将其更改为平衡或双重提交。</block>
+  <block id="5fcd60bee26dbdd38058786d89d30945" category="list-text">对于包含60个或更多驱动器的存储设备、切勿移动安装了磁盘驱动器的磁盘架。  在打包/移动之前、为每个磁盘驱动器贴上标签并将其从存储机箱中取出。</block>
+  <block id="3bf27243eed945ae028b0d83a672aafd" category="list-text">更改StorageGRID设备网格网络VLAN可以通过管理网络或客户端网络远程执行。  或者计划在重新定位之前或之后到现场执行更改。</block>
+  <block id="fc1ade2120cd035ae884b4c776a06e08" category="list-text">检查客户应用程序是否正在使用HEAD或在放置前获取不存在的对象。如果是、请将存储分段一致性更改为强站点、以避免出现HTTP 500错误。  如果不确定，请查看S3概述Grafana图表*网格管理器&gt;支持&gt;指标*，将鼠标悬停在"已完成请求总数"图表上。  如果404 GET对象或404 HEAD对象的计数非常高、则一个或多个应用程序可能正在使用HEAD或GET不存在对象。计数会累计、将鼠标悬停在不同的时间线上可查看差异。</block>
+  <block id="61bce3e94387d562e70e4344c21875a9" category="inline-image-macro">S3概述Grafana图表示例</block>
+  <block id="c8d25296b6242f878bcc65b3463a9213" category="paragraph"><block ref="c8d25296b6242f878bcc65b3463a9213" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="91ecbe84c3a3b51ceb6c3c1c46fe828e" category="section-title">操作步骤以在站点重新定位之前更改网格IP地址</block>
+  <block id="7ce3d8dcf98150ca295b4e8b4a175d28" category="inline-link-macro">将子网添加到网格网络子网列表</block>
+  <block id="ef79c64bf374a8f7d8f11ddac8bac6ea" category="list-text">如果新位置要使用新的网格网络子网、
+<block ref="a48adf12485e7e1fabf51f229ceb57fd" category="inline-link-macro-rx"></block></block>
+  <block id="a27c73113b9f8b1c8936231a5c6b72db" category="list-text">登录到主管理节点、使用change-ip进行网格IP更改、必须*暂存*更改、然后才能关闭节点进行重新定位。</block>
+  <block id="e8ebed2710314532bd7421c291775f7a" category="list-text">选择2、然后选择1以更改网格IP</block>
+  <block id="f246621acb182eca202eb998d35a0a71" category="paragraph"><block ref="f246621acb182eca202eb998d35a0a71" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="0fc35f100f57d71f3d04d75f8e34db7a" category="list-text">选择5以显示更改</block>
+  <block id="51db02a440736bec001c7d690821ec49" category="paragraph"><block ref="51db02a440736bec001c7d690821ec49" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="0db10ef124f48bf74646e51d511e42e7" category="list-text">选择10以验证并应用更改。</block>
+  <block id="ecf8b3b84403afdd8f30ff4ca92df4d0" category="paragraph"><block ref="ecf8b3b84403afdd8f30ff4ca92df4d0" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="b535a2204d1cc298ac5c3b36cc8a9249" category="list-text">必须在此步骤中选择*阶段*。</block>
+  <block id="a8c78f88b73dcaf8b7082c7d8bab4356" category="paragraph"><block ref="a8c78f88b73dcaf8b7082c7d8bab4356" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="23e28a352f23f6051ecbe97b0516b42f" category="list-text">如果上述更改中包括主管理节点，请输入*'A'手动重新启动主管理节点*</block>
+  <block id="6cfd9d702fc475a31c16db4299ee31a0" category="paragraph"><block ref="6cfd9d702fc475a31c16db4299ee31a0" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="355ec7ab5ee5e52899a8a48528d82b93" category="list-text">按ENTER键返回上一菜单并退出change-ip界面。</block>
+  <block id="34efad53185ba8366fcb774fe4502175" category="paragraph"><block ref="34efad53185ba8366fcb774fe4502175" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="6a713acf175fd861bbb563ab540a06fe" category="list-text">从Grid Manager中下载新的恢复软件包。*网格管理器*&gt;*维护*&gt;*恢复包*</block>
+  <block id="96557217b00ac75f863bec84c65347bf" category="list-text">如果StorageGRID设备需要更改VLAN、请参见一节 <block ref="f1c1d143229526a165bf49ac775d4ecd" category="inline-xref-macro-rx"></block>。</block>
+  <block id="26afb12dd81518887c60c85ae47dab08" category="list-text">关闭站点上的所有节点和/或设备、根据需要标记/移除磁盘驱动器、然后卸载、打包和移动。</block>
+  <block id="850fa0cd526764089644bd18997fcf0b" category="list-text">如果您计划更改管理网络IP和/或客户端VLAN和IP地址、则可以在重新定位后执行更改。</block>
+  <block id="28b10382e67e37853ae45379b731cfaf" category="section-title">设备VLAN更改</block>
+  <block id="a65d2c0e652207280c57973442478f26" category="paragraph">以下操作步骤假定您可以远程访问StorageGRID设备的管理或客户端网络以远程执行更改。</block>
+  <block id="840a6c754184c6fbce872458dcf35141" category="inline-link-macro">将设备置于维护模式</block>
+  <block id="5b8e4de8e50ebe10173b2539d1612010" category="list-text">在关闭设备之前，
+<block ref="1d36a7361466de3adde00ce864c41474" category="inline-link-macro-rx"></block>。</block>
+  <block id="24377316ae141b63c8170119bbfe4239" category="list-text">使用浏览器访问StorageGRID设备安装程序图形用户界面<block ref="41c0f2506f64eaa17788753cf29de6aa" category="inline-link-rx"></block>。  设备启动至维护模式后、无法使用Grid IP作为新的Grid IP。</block>
+  <block id="fe21d31242c56f4eee91182bd1268a5a" category="list-text">更改网格网络的VLAN。  如果您正在通过客户端网络访问设备、则此时无法更改客户端VLAN、可以在移动后进行更改。</block>
+  <block id="293c5807e9e9ab4b268fd617e8e5a56d" category="list-text">通过SSH连接到设备并使用"shutdoown -h now "关闭节点</block>
+  <block id="1c33a8d84128bb59ae10a50b662e3a98" category="list-text">在新站点上准备好设备后、使用访问StorageGRID设备安装程序图形用户界面<block ref="fba5b5bfbff166288edb187e140418b2" category="inline-link-rx"></block>。  在GUI中使用Ping/nmap工具确认存储处于最佳状态、并确认与其他网格节点的网络连接。</block>
+  <block id="786f3a0a71ff6ad9513f86143e55c1ce" category="list-text">如果计划更改客户端网络IP、则可以在此阶段更改客户端VLAN。  在稍后使用change-ip工具更新客户端网络IP之前、客户端网络尚未准备就绪。</block>
+  <block id="fff8d22924e491405ba3026b24555fa6" category="list-text">退出维护模式：在 StorageGRID 设备安装程序中，选择 * 高级 * &gt; * 重新启动控制器 * ，然后选择 * 重新启动至 StorageGRID * 。</block>
+  <block id="6668d4dfafe68f86bfe1db4386e9ce7b" category="list-text">在所有节点均已启动且网格未显示任何连接问题描述后、根据需要使用change-ip更新设备管理网络和客户端网络。</block>
+  <block id="bae75f6502d7126b5a2837bf5628cab3" category="sidebar">如何重新定位站点和更改网络</block>
 </blocks>
