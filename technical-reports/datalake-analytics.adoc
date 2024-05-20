@@ -5,7 +5,10 @@ keywords: data lake, on-premises, analytics, storagegrid, object
 summary: 本报告涵盖StorageGRID上的大数据分析。 
 ---
 = NetApp StorageGRID和大数据分析
+:hardbreaks:
 :allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
 
 
 
@@ -30,7 +33,7 @@ NetApp StorageGRID对象存储解决方案可提供可扩展性、数据可用�
 
 *对象存储用例*
 
-image:../media/datalake-analytics/image1.png["StorageGRID用例图、宽度=396、高度=394"]
+image:datalake-analytics/image1.png["StorageGRID用例图、宽度=396、高度=394"]
 
 在上述情形中、大数据分析是最热门的使用情形之一、其使用量呈上升趋势。
 
@@ -47,7 +50,7 @@ image:../media/datalake-analytics/image1.png["StorageGRID用例图、宽度=396�
 
 * StorageGRID S3数据湖*
 
-image:../media/datalake-analytics/image2.png["StorageGRID数据报时示例、宽度=不等、高度= 345"]
+image:datalake-analytics/image2.png["StorageGRID数据报时示例、宽度=不等、高度= 345"]
 
 
 

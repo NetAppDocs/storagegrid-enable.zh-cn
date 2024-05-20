@@ -5,9 +5,13 @@ keywords: data lake, on-premises, analytics, storagegrid, object, hadoop
 summary: 本报告介绍如何针对StorageGRID调整S3A。 
 ---
 = Hadoop S3A调整
+:hardbreaks:
 :allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
 
 
+[role="lead"]
 Hadoop S3A连接器有助于在基于Hadoop的应用程序和S3对象存储之间实现无缝交互。在使用S3对象存储时、要优化性能、必须调整Hadoop S3A Connector。在深入介绍调整详细信息之前、我们先大致了解一下Hadoop及其组件。
 
 
@@ -73,7 +77,7 @@ Magic Commonter特别依靠S3Guard在S3对象存储上提供一致的目录列�
 
 总之、S3A委员会为应对持续、高性能和可靠的S3输出承诺这一根本性挑战提供了解决方案。其内部设计可确保高效的数据传输、同时保持数据完整性。
 
-image:../media/s3a-tuning/image1.png["S3A选项表"]
+image:s3a-tuning/image1.png["S3A选项表"]
 
 *3.线程、连接池大小和块大小*
 
@@ -83,7 +87,7 @@ image:../media/s3a-tuning/image1.png["S3A选项表"]
 * 较大的块大小可通过减少上传期间管理多部件的开销来提高大型数据上传的性能。对于大型数据集、建议值为256 MB或以上。
 
 
-image:../media/s3a-tuning/image2.png["S3A选项表"]
+image:s3a-tuning/image2.png["S3A选项表"]
 
 *4.多部分上传*
 
@@ -122,12 +126,12 @@ S3A提交者*始终*使用MPU (多部分上传)将数据上传到S3存储分段�
 
 如果未成功发送完整的多部件上传请求、则这些部件将保留在StorageGRID中、不会创建任何对象。作业中断、失败或中止时会发生这种情况。这些部件将保留在网格中、直到多部件上传完成或中止、或者如果上传启动后15天、StorageGRID会清除这些部件。如果一个存储分段中有许多(几百到几百万个)正在进行的多部分上传、则当Hadoop发送‘list-multipart-Uploads’(此请求不按上传ID筛选)时、此请求可能需要很长时间才能完成、或者最终超时。您可以考虑使用适当的FS.S3a.mutlpart.purge值将FS.S3a.multipart.purge.age设置为true (例如、5到7天、不要使用默认值86400、即1天)。或者联系NetApp支持部门调查情况。
 
-image:../media/s3a-tuning/image3.png["S3A选项表"]
+image:s3a-tuning/image3.png["S3A选项表"]
 
 *5.缓冲区写入数据存储在内存中*
 
 为了提高性能、您可以在将写入数据上传到S3之前将其缓冲在内存中。这样可以减少小型写入次数并提高效率。
 
-image:../media/s3a-tuning/image4.png["S3A选项表"]
+image:s3a-tuning/image4.png["S3A选项表"]
 
 请记住、S3和HDFS的工作方式各不相同。要最有效地利用S3资源、必须仔细调整/测试/实验。
