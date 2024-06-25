@@ -926,7 +926,6 @@
   <block id="639a958d74ef218710689b55aa4ef73e" category="list-text">从SG5660或SG5760设备迁移到SG6060设备时、请注意SG5x60具有60个容量驱动器、而SG6060只有58个容量驱动器。</block>
   <block id="4d1c46cee1bdcec65653b2e2163398e0" category="list-text">节点克隆过程要求源节点在克隆过程中与网格脱机。如果在此期间另一个节点脱机、则客户端服务可能会受到影响。</block>
   <block id="83d1a0f23bb258b2a270a1d6f7ff51d7" category="list-text">存储节点只能脱机15天。如果克隆过程估计接近15天或将超过15天、请使用扩展和停用过程。</block>
-  <block id="efde8725bd1e96e2479c137c19099fae" category="list-text">对于带有扩展架的SG6060、您需要将正确磁盘架驱动器大小的时间与基本设备时间相加、以获得完整的克隆持续时间。</block>
   <block id="fec00ca7ab315b679cc642c66a770bd8" category="section-title">估计节点克隆性能</block>
   <block id="517e3359377bb6a7ea9488482299838f" category="paragraph">下表包含节点克隆持续时间的计算估计值。条件会有所不同、因此、如果节点关闭、*粗体*中的条目可能会超过15天的限制。</block>
   <block id="39ab52e8aaafa95380d3f56ccd8095d9" category="section-title">DDP8.</block>
@@ -946,15 +945,12 @@
   <block id="6c32f983ee38ad5089298aa659cd011c" category="paragraph">4天</block>
   <block id="a5dffc518be58d2936a993ee100d71b6" category="paragraph">4.5天</block>
   <block id="e5d3435cf14793a49310fa8d85bcc4a1" category="paragraph">25 GB</block>
-  <block id="885e215d2d15d2ac1b34e5b8d416f86a" category="section-title">SG5712 -&gt;任何</block>
-  <block id="97fce1ba98948ee51fbf31978af80696" category="section-title">SG5660 -&gt; SG5760</block>
   <block id="9958432b6417f293cb0d15128b08e42f" category="paragraph">3天</block>
   <block id="366adabd6f1babc8138db3063adaf869" category="paragraph">6天</block>
   <block id="374616a0b786e9bffadc7f28e68d6c59" category="paragraph">7 天</block>
   <block id="51ab732b98b519b5e54ce60864cc8d69" category="paragraph">8.5天</block>
   <block id="b00a84012a03b35beb30466d8baa4a1c" category="paragraph">11.5天</block>
   <block id="194ae66ddb8567ab63da3b82c925fa03" category="paragraph">* 13天*</block>
-  <block id="85c75ace300325f8e407a841eb055d37" category="section-title">SG5660 -&gt; SG6060</block>
   <block id="61cab577ce1bed82e1b5d7caacb7456b" category="paragraph">2.5天</block>
   <block id="bf30897fe2ce34b7e9f89291e20d9eae" category="paragraph">5.5天</block>
   <block id="e5fd76b3288061d2c2638ccc41688416" category="paragraph">6.5天</block>
@@ -963,11 +959,8 @@
   <block id="e727fed489e8b7eecf1901196ec3ede9" category="paragraph">2天</block>
   <block id="6383598717ae8ac458dc988dff77c800" category="paragraph">5天</block>
   <block id="79e241fd6b320cbb41d67b028ec6f1c0" category="paragraph">8天</block>
-  <block id="c6a6ab48074fa03db6df437c1f27b415" category="section-title">SG5760 -&gt; SG5760</block>
-  <block id="4c0768167e7e249808ed4bd4ad28b2ed" category="section-title">SG5760 -&gt; SG6060</block>
   <block id="2a8a1b5738432b51afcd4dcbbbfe1434" category="paragraph">1.5天</block>
   <block id="9e6b8df1cd23e71938af979057e5144a" category="paragraph">3.5天</block>
-  <block id="bf0581629b559d1033e12e37f31bb0d7" category="section-title">SG6060 -&gt; SG6060</block>
   <block id="7da42b5478786d91e64cb31ec52e2511" category="paragraph">9.5天</block>
   <block id="d2bfdb3de60e1c2f154e5f9fa5a1dfc1" category="section-title">DDP16</block>
   <block id="00471150fc4d84adcd57392d7a47a3cb" category="paragraph">3.5天</block>
@@ -976,7 +969,6 @@
   <block id="383aea8468a529b339b755e27b1d4668" category="paragraph">7.5天</block>
   <block id="9ff416b798a88ec4bfb30f4f045aada5" category="paragraph">11天</block>
   <block id="ed01ec12331788a408398b059da47a39" category="paragraph">10.5天</block>
-  <block id="ec3751d915801591991ca3553c2fa5a7" category="section-title">扩展架(在源设备上的每个磁盘架上添加到SG6060以上)</block>
   <block id="fc1e2d26b4330f83ecfffe3439410229" category="summary">以下是存储分段策略和组策略(IAM策略)的示例。</block>
   <block id="3f2327c90ede247dca9387ef500bf746" category="doc">分段和组(IAM)策略示例</block>
   <block id="640ca9533a2fd150e7d3ed390e2aae66" category="section-title">组策略(IAM)</block>
@@ -1134,7 +1126,6 @@
   <block id="a4bd669931c15a4828a4c38a495d7ff3" category="section-title">StorageGRID配置</block>
   <block id="b85a187b18cf0ecaff36c27f7e5e7500" category="paragraph">对于Veeam部署、建议使用带有最新修补程序的NetApp StorageGRID 11.5或11.7版本。StorageGRID 11.6.0.11和11.7.0.4中引入了许多优化功能、这些功能对Veeam工作负载非常有用。建议始终保持最新、并为StorageGRID系统应用最新的修补程序。</block>
   <block id="8215067184a09c074108be8e3fbbe725" category="section-title">负载平衡器和S3端点配置</block>
-  <block id="923dc06db89bcd66cca887f28c0733c5" category="paragraph">Veeam仅要求通过HTTPS连接端点。Veeam不支持非加密连接。SSL证书可以是自签名证书、专用可信证书颁发机构或公共可信证书颁发机构。为了确保持续访问S3存储库、建议在HA配置中至少使用两个负载平衡器。负载平衡器可以是位于每个管理节点和网关节点上的StorageGRID提供的集成负载平衡器服务、也可以是位于F5、Kemp、HAProxy、Loadbalanacer.org等第三方解决方案上的集成负载平衡器服务 通过使用StorageGRID负载平衡器、可以设置流量划分器(QoS规则)、以便确定Veeam工作负载的优先级、或者限制Veeam、使其不会影响StorageGRID系统上优先级较高的工作负载。</block>
   <block id="84ace9fb8e132c96d1dfcd31447efedc" category="section-title">S3 存储分段</block>
   <block id="55876228853abf632dec9346a4f372ec" category="inline-link">文档。</block>
   <block id="69e163f50758f77f10618e8e4b89f0cb" category="paragraph">StorageGRID是一种安全多租户存储系统。建议为Veeam工作负载创建一个专用租户。可以选择分配存储配额。作为最佳实践、请启用"使用自己的身份源"。使用适当的密码保护租户root管理用户的安全。Veeam Backup 12要求S3存储分段具有强大的一致性。StorageGRID提供了在存储分段级别配置的多个一致性选项。对于使用Veeam从多个位置访问数据的多站点部署、请选择"strong-globation"。如果Veeam备份和还原仅在单个站点上进行、则一致性级别应设置为"strong-site"。有关存储分段一致性级别的详细信息、请查看<block ref="782397d2a33ccd7da9c1580a84d10f9d" category="inline-link-rx"></block>。要使用StorageGRID进行Veeam不可变备份、必须在创建存储分段期间全局启用S3对象锁定并在存储分段上进行配置。</block>
@@ -1816,4 +1807,13 @@ StorageGRID可以通过为存储节点或运行负载平衡器和管理节点的
 <block ref="fa4af55c3fdbce23e96d2cf73261fa5b" category="inline-link-rx"></block></block>
   <block id="748e9574a05efa0e0738de58c2ff670b" category="list-text">CommVault文档+
 <block ref="27eb3a3d6ca60f8dbf05e2df1f7e4644" category="inline-link-rx"></block></block>
+  <block id="c4d7e990537b5cabb7c53ef27e8240d3" category="paragraph">Veeam仅要求通过HTTPS连接端点。Veeam不支持非加密连接。SSL证书可以是自签名证书、专用可信证书颁发机构或公共可信证书颁发机构。为了确保持续访问S3存储库、建议在HA配置中至少使用两个负载平衡器。负载平衡器可以是位于每个管理节点和网关节点上的StorageGRID提供的集成负载平衡器服务、也可以是位于F5、Kemp、HAProxy、Loadbalancer.org等第三方解决方案上的集成负载平衡器服务 通过使用StorageGRID负载平衡器、可以设置流量划分器(QoS规则)、以便确定Veeam工作负载的优先级、或者限制Veeam、使其不会影响StorageGRID系统上优先级较高的工作负载。</block>
+  <block id="2adef84f9348cc9769b8c3e1982c3cb1" category="list-text">对于带有扩展架的SG6060或SG6160、您需要将正确磁盘架驱动器大小所需的时间与基本设备时间相加、以获取完整克隆持续时间。</block>
+  <block id="77ffe904133c5c2e3ab960ef54b7be2d" category="section-title">SG5712/SG5812 -&gt;任意</block>
+  <block id="2060afee4c8201b859d447131ee1434a" category="section-title">SG5660 -&gt; SG5760/SG5860</block>
+  <block id="85b9faf406d03aaecca5e119294ceb1a" category="section-title">SG5660 -&gt; SG6060/SG6160</block>
+  <block id="7d9a95e91e60865aaa29da1eb0f75121" category="section-title">SG5760/SG5860 -&gt; SG5760/SG5860</block>
+  <block id="ab7ccd4f66da0de459e420e05417e0dd" category="section-title">SG5760/SG5860 -&gt; SG6060/SG6160</block>
+  <block id="25b15e92a1710d10f6bca458e130baaa" category="section-title">SG6060/SG6160 -&gt; SG6060/SG6160</block>
+  <block id="6219d1d3d5ac2385dfb8d391122edd3e" category="section-title">扩展架(为源设备上的每个磁盘架添加SG6060/SG6160以上的磁盘架)</block>
 </blocks>
