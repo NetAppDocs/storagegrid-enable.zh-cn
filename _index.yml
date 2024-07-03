@@ -64,11 +64,11 @@ indexpage:
   - title: 技术报告
     links:
     - title: TR-4993:《NetApp StorageGRID与大数据分析》
-      url: "/technical-reports/technical-reports/datalake-analytics.html"
+      url: "/technical-reports/datalake-analytics.html"
     - title: TR-4994：《Hadoop S3A调整最佳实践》
-      url: "/technical-reports/technical-reports/s3a-tuning.html"
+      url: "/technical-reports/s3a-tuning.html"
     - title: TR-4871：《Commvault"完整备份和恢复以及NetApp StorageGRID》
-      url: "/technical-reports/technical-reports/tr-4871-commvault.html"
+      url: "/technical-reports/tr-4871-commvault.html"
     - title: TR-4645：安全功能
       url: "/technical-reports/data-security/index.html"
     - title: TR-4921：勒索软件防御
