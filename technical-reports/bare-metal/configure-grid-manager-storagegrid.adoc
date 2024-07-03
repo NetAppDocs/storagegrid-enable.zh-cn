@@ -1,0 +1,67 @@
+---
+sidebar: sidebar 
+permalink: technical-reports/bare-metal/configure-grid-manager-storagegrid.html 
+keywords: grid manager, storagegrid 
+summary: 了解如何在主管理节点上的StorageGRID中配置网格管理器。 
+---
+= 在StorageGRID中配置网格管理器
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../../media/
+
+
+[role="lead"]
+了解如何在主管理节点上的StorageGRID中配置网格管理器。
+
+通过主管理节点上的网格管理器用户界面配置StorageGRID系统来完成安装。
+
+
+
+== 高级步骤
+
+配置网格并完成安装涉及以下任务：
+
+.步骤
+. <<导航到网格管理器>>
+. link:storagegrid-license.html["指定 StorageGRID 许可证信息"]
+. link:add-sites-storagegrid.html["将站点添加到StorageGRID"]
+. link:grid-network-subnets-storagegrid.html["指定网格网络子网"]
+. link:approve-grid-nodes-storagegrid.html["批准待定网格节点"]
+. link:ntp-server-storagegrid.html["指定NTP服务器信息"]
+. link:dns-server-storagegrid.html["指定域名系统服务器信息"]
+. link:system-passwords-storagegrid.html["指定 StorageGRID 系统密码"]
+. link:review-config-complete-storagegrid-install.html["查看您的配置并完成安装"]
+
+
+
+
+== 导航到网格管理器
+
+使用网格管理器定义配置StorageGRID系统所需的所有信息。
+
+开始之前、必须先部署主管理节点并完成初始启动序列。
+
+要使用网格管理器定义信息、请完成以下步骤。
+
+.步骤
+. 通过以下地址访问网格管理器：
++
+[listing]
+----
+https://primary_admin_node_grid_ip
+----
++
+或者、您也可以通过端口8443访问Grid Manager。
+
++
+[listing]
+----
+https://primary_admin_node_ip:8443
+----
+. 单击安装StorageGRID系统。此时将显示用于配置StorageGRID网格的页面。
+
+
+image:bare-metal-configure-storagegrid-grid.png["裸机配置storagegrid"]

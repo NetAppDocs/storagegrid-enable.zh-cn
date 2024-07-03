@@ -1,0 +1,104 @@
+---
+sidebar: sidebar 
+permalink: technical-reports/data-security/index.html 
+keywords: security features, storagegrid 
+summary: 了解StorageGRID对象存储解决方案不可或缺的安全功能。 
+---
+= 保护对象存储中的StorageGRID数据和元数据的安全
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../../media/
+
+
+[role="lead"]
+了解StorageGRID对象存储解决方案不可或缺的安全功能。
+
+本文档概述了NetApp®StorageGRID®中的许多安全功能，包括数据访问、对象和元数据、管理访问和平台安全性。它已进行更新、加入了随StorageGRID 11.8.
+
+安全性是NetApp StorageGRID对象存储解决方案不可或缺的一部分。安全性尤为重要、因为非常适合对象存储的许多类型的富内容数据在本质上也是敏感的、并受法规和合规性的约束。随着StorageGRID功能的不断发展、该软件提供了许多安全功能、这些功能对于保护组织的安全防护以及帮助组织遵守行业最佳实践至关重要。
+
+本文概述了StorageGRID 11.8中的许多安全功能、分为五类：
+
+* 数据访问安全功能
+* 对象和元数据安全功能
+* 管理安全性功能
+* 平台安全功能
+* 云集成
+
+
+本白皮书旨在提供一个安全产品规格、其中并未详细说明如何配置系统以支持中枚举的默认未配置的安全功能。 https://docs.netapp.com/us-en/storagegrid-118/harden/index.html["《StorageGRID加强指南》"^]可在官方页面上找到 https://docs.netapp.com/us-en/storagegrid-118/["StorageGRID 文档"^] 。
+
+除了本报告中介绍的功能之外，StorageGRID还遵循 https://www.netapp.com/us/legal/vulnerability-response.aspx["NetApp产品安全漏洞响应和通知策略"^]。根据产品安全事件响应流程、对报告的漏洞进行验证和响应。
+
+NetApp StorageGRID可为要求苛刻的企业对象存储用例提供高级安全功能。
+
+
+
+== 从何处查找追加信息
+
+要了解有关本文档中所述信息的更多信息，请查看以下文档和 / 或网站：
+
+* NetApp StorageGRID：SEC 17a-4 (f)、FIRA 4511 (c)和CFTC 1.31 (c)-(d)合规性评估 https://www.netapp.com/media/9041-ar-cohasset-netapp-storagegrid-sec-assessment.pdf[]
+* StorageGRID 1.18文档页面 https://docs.netapp.com/us-en/storagegrid-118/[]
+* StorageGRID文档资源页面 https://www.netapp.com/data-storage/storagegrid/documentation/[]
+* NetApp产品文档 https://www.netapp.com/support-and-training/documentation/[]
+
+
+
+
+== 术语和首字母缩略语
+
+本节提供了文档中所用术语的定义。
+
+[cols="40,60"]
+|===
+| 术语或首字母缩略语 | 定义 
+
+
+| S3 | Simple Storage Service。 
+
+
+| 客户端 | 一种可以通过S3协议(用于数据访问)或HTTP协议(用于管理)与StorageGRID连接的应用程序。 
+
+
+| 租户管理员 | StorageGRID租户帐户的管理员 
+
+
+| 租户用户 | StorageGRID租户帐户中的用户 
+
+
+| TLS | 传输层安全性 
+
+
+| ILM | 信息生命周期管理 
+
+
+| LAN | 局域网 
+
+
+| 网格管理员 | StorageGRID系统的管理员 
+
+
+| 网格 | StorageGRID系统 
+
+
+| 存储分段 | 存储在S3中的对象的容器 
+
+
+| LDAP | 轻型目录访问协议 
+
+
+| 秒 | 证券和交易委员会；管理交易所成员、经纪人或交易商 
+
+
+| 这是 | 金融行业监管机构；遵守SEC规则17a-4 (f)的格式和媒体要求 
+
+
+| CFTC | 商品期货交易委员会；管理商品期货交易 
+
+
+| NIST | 国家标准和技术研究所 
+|===

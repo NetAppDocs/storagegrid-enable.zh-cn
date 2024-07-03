@@ -1,0 +1,61 @@
+---
+permalink: technical-reports/monitor/access-metrics-curl.html 
+sidebar: sidebar 
+keywords: access metrics, curl, storagegrid 
+summary: 了解如何在NetApp StorageGRID中使用CURL和授权令牌通过命令行界面访问指标、以便高效检索数据。 
+---
+= 在StorageGRID中使用CURL访问指标
+:hardbreaks:
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../../media/
+
+
+[role="lead"]
+了解如何使用CURL通过命令行界面访问指标。
+
+要执行此操作、您必须先获取授权令牌。要请求令牌、请执行以下步骤：
+
+.步骤
+. 从GMI中、选择菜单：帮助[API文档]。
+. 向下滚动到身份验证以查找授权操作。以下屏幕截图显示了POST方法的参数。
++
+image:monitor-post-method.png["monitor-post-方法"]
+
+. 单击试用并使用您的GMI用户名和密码编辑正文。
+. 单击“执行”。
+. 复制在卷曲部分中提供的卷曲命令、并将其粘贴到终端窗口中。此命令如下所示：
++
+[listing]
+----
+curl -X POST "https:// <Primary_Admin_IP>/api/v3/authorize" -H "accept: application/json" -H "Content-Type: application/json" -H "X-Csrf-Token: dc30b080e1ca9bc05ddb81104381d8c8" -d "{ \"username\": \"MyUsername\", \"password\": \"MyPassword\", \"cookie\": true, \"csrfToken\": false}" -k
+----
++
+
+NOTE: 如果您的GMI密码包含特殊字符、请记得使用\转义特殊字符。例如，替换! 使用\!
+
+. 运行上述URL命令后、输出将为您提供一个授权令牌、如下例所示：
++
+[listing]
+----
+{"responseTime":"2020-06-03T00:12:17.031Z","status":"success","apiVersion":"3.2","data":"8a1e528d-18a7-4283-9a5e-b2e6d731e0b2"}
+----
++
+现在、您可以使用授权令牌字符串通过CURL访问指标。访问度量指标的过程与第节中的步骤类似 link:advanced-monitor-storagegrid.html#export-metrics-through-the-api["StorageGRID中的高级监控"]。但是、出于演示目的、我们显示了一个示例、其中在"指标"类别中选择了GET /grid /metric-labels/｛label"｝/values。
+
+. 例如、以下带有上述授权令牌的URL命令将在StorageGRID中列出站点名称。
++
+[listing]
+----
+curl -X GET "https://10.193.92.230/api/v3/grid/metric-labels/site_name/values" -H "accept: application/json" -H "Authorization: Bearer 8a1e528d-18a7-4283-9a5e-b2e6d731e0b2"
+----
++
+Curl命令将生成以下输出：
+
++
+[listing]
+----
+{"responseTime":"2020-06-03T00:17:00.844Z","status":"success","apiVersion":"3.2","data":["us-east-fuse","us-west-fuse"]}
+----
+

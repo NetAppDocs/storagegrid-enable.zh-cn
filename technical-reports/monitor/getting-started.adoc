@@ -1,0 +1,31 @@
+---
+permalink: technical-reports/monitor/getting-started.html 
+sidebar: sidebar 
+keywords: get started, storagegrid 
+summary: 使用GMI信息板开始监控NetApp StorageGRID、简要概述网格及其核心组件。 
+---
+= 使用GMI信息板监控StorageGRID
+:hardbreaks:
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../../media/
+
+
+[role="lead"]
+StorageGRID网格管理界面(GMI)信息板提供了StorageGRID基础架构的集中视图、可用于监控整个网格的运行状况、性能和容量。
+
+使用GMI信息板检查网格的每个核心组件。
+
+image:monitor-storagegrid-gmi-dashboard.png["monitor-storagegrid—GMI-Dashboard"]
+
+
+
+== 您应定期监控的信息
+
+本技术报告的上一版本列出了要定期检查的指标与趋势。该信息现在包含在中 https://docs.netapp.com/us-en/storagegrid-118/landing-monitor-troubleshoot/index.html["监控和故障排除指南"^]。
+
+
+
+== 监控存储
+
+本技术报告的先前版本列出了监控重要指标的位置、例如对象存储空间、元数据空间、网络资源等。该信息现在包含在中 https://docs.netapp.com/us-en/storagegrid-118/landing-monitor-troubleshoot/index.html["监控和故障排除指南"^]。

@@ -1,0 +1,17 @@
+---
+permalink: technical-reports/index.html 
+sidebar: sidebar 
+keywords: intro, technical, reports, storagegrid 
+summary: StorageGRID技术报告的简介页面。 
+---
+= StorageGRID技术报告简介
+:hardbreaks:
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+NetApp StorageGRID 是一款软件定义的对象存储套件、支持公共、私有和混合多云环境中的各种用例。StorageGRID 为Amazon S3 API提供本机支持、并提供行业领先的创新技术、例如自动化生命周期管理、以便长期经济高效地存储、保护和保留非结构化数据。
+
+StorageGRID提供的文档涵盖了有关多种StorageGRID功能和集成的最佳实践和建议。

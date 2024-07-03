@@ -1,0 +1,28 @@
+---
+sidebar: sidebar 
+permalink: technical-reports/commvault/s3-consistency-levels.html 
+keywords: Backup, on-premises, commvault, storagegrid, object, S3, WORM 
+summary: 了解客户和NetApp IT实施的StorageGRID配置的少数用例。 
+---
+= 存储分段一致性级别建议
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../../media/
+
+
+[role="lead"]
+通过NetApp StorageGRID、最终用户可以为对简单存储服务(S3)分段中的对象执行的操作选择一致性级别。
+
+CommVault MediaAgent是CommVault环境中的数据迁移程序。大多数情况下，MediaAgent配置为在本地写入主StorageGRID站点。因此、建议在本地主站点中使用高一致性级别。在StorageGRID中创建的Commvault"分段上设置一致性级别时、请遵循以下准则。
+
+[NOTE]
+====
+如果您的CommVault版本早于11.0.0 - Service Pack 16、请考虑将CommVault升级到最新版本。如果不能这样做、请务必遵循适用于您的版本的准则。
+
+====
+* Commvault11.0.0之前的版本- Service Pack 16.*在11.0.0之前的版本- Service Pack 16中，Commvault"会在还原和删减过程中对不存在的对象执行S3 head和GET操作。将存储分段一致性级别设置为强站点、以便为Commvaultvault"备份到StorageGRID实现最佳一致性级别。
+* Commvault11.0.0版- Service Pack 16及更高版本。*在11.0.0版- Service Pack 16及更高版本中、对不存在的对象执行S3机头和GET操作的数量将降至最低。将默认分段一致性级别设置为read-after-new-write、以确保StorageGRID环境中的高一致性级别。
+

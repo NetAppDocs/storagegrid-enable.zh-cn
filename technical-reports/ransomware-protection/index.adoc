@@ -1,0 +1,47 @@
+---
+sidebar: sidebar 
+permalink: technical-reports/ransomware-protection/index.html 
+keywords: ransomware attacks, storagegrid, best practices 
+summary: 了解勒索软件攻击以及如何利用StorageGRID安全最佳实践保护数据。 
+---
+= 保护StorageGRID S3对象免遭勒索软件的攻击
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../../media/
+
+
+[role="lead"]
+了解勒索软件攻击以及如何利用StorageGRID安全最佳实践保护数据。
+
+勒索软件攻击呈上升趋势。本文档就如何保护StorageGRID上的对象数据提供了一些建议。
+
+如今、勒索软件已成为数据中心面临的一个始终存在的威胁。勒索软件旨在对数据进行加密、使依赖该数据的用户和应用程序无法使用该数据。保护从强化网络和可靠用户安全实践的常规防御开始、我们需要遵循数据访问安全实践。
+
+勒索软件是当今最大的安全威胁之一。NetApp StorageGRID团队正在与我们的客户合作、以防范这些威胁。通过使用对象锁定和版本控制、您可以防止不必要的更改并从恶意攻击中恢复。数据安全是一项多层风险、您的对象存储只是数据中心的一部分。
+
+
+
+== StorageGRID最佳实践
+
+对于StorageGRID、安全最佳实践应包括使用HTTPS和签名证书进行管理和对象访问。为应用程序和个人创建专用用户帐户、不要使用租户root帐户进行应用程序访问或用户数据访问。换言之、遵循最小特权原则。使用具有定义的身份和访问管理(IAM)策略的安全组来管理用户权限以及特定于应用程序和用户的访问帐户。实施这些措施后、您仍然必须确保数据受到保护。对于简单存储服务(S3)、在修改对象以对其进行加密时、可以通过覆盖原始对象来实现。
+
+
+
+== 辩护方法
+
+S3 API中的主要勒索软件保护机制是实施对象锁定。并非所有应用程序都与对象锁定兼容、因此本报告中介绍了另外两个保护对象的选项：复制到启用了版本控制的另一个存储分段以及使用IAM策略进行版本控制。
+
+
+
+== 从何处查找追加信息
+
+要了解有关本文档中所述信息的更多信息，请查看以下文档和 / 或网站：
+
+* NetApp StorageGRID文档中心 https://docs.netapp.com/us-en/storagegrid-118/[]
+* NetApp StorageGRID支持 https://docs.netapp.com/us-en/storagegrid-enable/[]
+* StorageGRID文档资源页面 https://www.netapp.com/data-storage/storagegrid/documentation/[]
+* NetApp产品文档 https://www.netapp.com/support-and-training/documentation/[]
+

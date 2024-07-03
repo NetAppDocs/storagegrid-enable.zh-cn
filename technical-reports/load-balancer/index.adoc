@@ -1,0 +1,79 @@
+---
+sidebar: sidebar 
+permalink: technical-reports/load-balancer/index.html 
+keywords: object storage, load balancer 
+summary: 了解第三方和全局负载平衡器在StorageGRID等对象存储系统中的作用。 
+---
+= 将第三方负载平衡器与StorageGRID结合使用
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../../media/
+
+
+[role="lead"]
+了解第三方和全局负载平衡器在StorageGRID等对象存储系统中的作用。
+
+使用第三方负载平衡器实施NetApp®StorageGRID®的一般指导。
+
+对象存储与"云存储"一词同义、正如您所期望的那样、利用云存储的应用程序会通过URL为该存储寻址。在这一简单URL的支持下、StorageGRID可以在单个站点或分布在不同地理位置的站点上扩展容量、性能和持久性。负载平衡器是实现这种精简性的组件。
+
+本文档的目的是向StorageGRID客户介绍负载平衡器选项、并提供配置第三方负载平衡器的一般指导。
+
+
+
+== 负载平衡器基础知识
+
+负载平衡器是StorageGRID等企业级对象存储系统的基本组件。StorageGRID由多个存储节点组成、每个存储节点都可以为给定StorageGRID实例提供整个简单存储服务(Simple Storage Service、S3)名称空间。负载平衡器会创建一个高度可用的端点、我们可以将StorageGRID节点放置在该端点的后面。StorageGRID在与S3兼容的对象存储系统中是独一无二的、因为它提供自己的负载平衡器、但它也支持第三方或通用负载平衡器、例如F5、Citrix NetScaler、HA代理、NGINX等。
+
+下图使用示例URL/完全限定域名(FQDN) s3.company.com”。负载平衡器会创建一个虚拟IP (VIP)、该IP可通过DNS解析为FQDN、然后将应用程序的任何请求定向到StorageGRID节点池。负载平衡器会对每个节点执行运行状况检查、并仅与运行状况良好的节点建立连接。
+
+image:load-balancer-local-traffic-manager-load-balancer.png["本地流量管理器负载平衡器"]
+
+此图显示了StorageGRID提供的负载平衡器、但第三方负载平衡器的概念相同。应用程序使用负载平衡器上的VIP建立HTTP会话、流量将通过负载平衡器传输到存储节点。默认情况下、从应用程序到负载平衡器以及从负载平衡器到存储节点的所有流量都会通过HTTPS进行加密。HTTP是一个受支持的选项。
+
+
+
+=== 本地和全局负载平衡器
+
+负载平衡器有两种类型：
+
+* *本地交通管理系统(LTM)*。将连接分布在单个站点的一个节点池中。
+* *全局服务负载平衡器(GSLB)*。将连接分布在多个站点上、从而有效地对LTM负载平衡器进行负载平衡。可以将GSLB视为智能DNS服务器。当客户端请求StorageGRID端点URL时、GSLB会根据可用性或其他因素(例如、哪个站点可以为应用程序提供更低的延迟)将其解析为LTM的VIP。虽然LTM始终是必需的、但GSLB是可选的、具体取决于StorageGRID站点数量和应用程序要求。
+
+
+
+
+=== StorageGRID网关节点负载平衡器与第三方负载平衡器
+
+在与S3兼容的对象存储供应商中、StorageGRID是独一无二的、因为它提供了一个本机负载平衡器、可用作专用设备、VM或容器。StorageGRID提供的负载平衡器也称为网关节点。
+
+对于尚未拥有F5、Citrix等负载平衡器的客户、实施第三方负载平衡器可能非常复杂。StorageGRID负载平衡器可显著简化负载平衡器操作。
+
+网关节点是一种高可用性、高性能的企业级负载平衡器。客户可以选择在同一网格中实施网关节点、第三方负载平衡器甚至两者。网关节点是本地流量管理器、而不是GSLB。
+
+StorageGRID负载平衡器具有以下优势：
+
+* *精简性*。自动配置资源池、运行状况检查、修补和维护、所有这些都由StorageGRID进行管理。
+* *性能*。StorageGRID负载平衡器专用于StorageGRID、您不会与其他应用程序争用带宽。
+* *成本*。虚拟机(VM)和容器版本免费提供。
+* *交通分类*。高级流量分类功能支持StorageGRID专用的QoS规则以及工作负载分析。
+* *未来的StorageGRID特定功能*。在即将发布的版本中、StorageGRID将继续优化负载平衡器并为其添加创新功能。
+
+
+有关部署StorageGRID网关节点的详细信息，请参见 https://docs.netapp.com/us-en/storagegrid-117/["StorageGRID 文档"^]。
+
+
+
+== 从何处查找追加信息
+
+要了解有关本文档中所述信息的更多信息，请查看以下文档和 / 或网站：
+
+* NetApp StorageGRID文档中心 https://docs.netapp.com/us-en/storagegrid-118/[]
+* NetApp StorageGRID支持 https://docs.netapp.com/us-en/storagegrid-enable/[]
+* StorageGRID F5负载平衡器设计注意事项 https://www.netapp.com/blog/storagegrid-f5-load-balancer-design-considerations/[]
+* Loadbalancer.org—Load平衡NetApp StorageGRID https://www.loadbalancer.org/applications/load-balancing-netapp-storagegrid/[]
+* KEMP—负载平衡NetApp StorageGRID https://support.kemptechnologies.com/hc/en-us/articles/360045186451-NetApp-StorageGRID[]
+

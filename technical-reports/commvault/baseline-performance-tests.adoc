@@ -1,0 +1,49 @@
+---
+sidebar: sidebar 
+permalink: technical-reports/commvault/baseline-performance-tests.html 
+keywords: Backup, on-premises, commvault, storagegrid, object, S3, WORM 
+summary: 了解客户和NetApp IT实施的StorageGRID配置的少数用例。 
+---
+= 查看基线性能测试
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../../media/
+
+
+[role="lead"]
+在辅助副本操作中、四个CommvaultMediaAgent将数据备份到NetApp AFF A300系统、并在NetApp StorageGRID上创建了一个辅助副本。有关测试设置环境的详细信息、请阅读技术报告中的"解决方案设计和最佳实践"一节 https://www.netapp.com/us/media/tr-4831.pdf["借助Commvault,实现NetApp横向扩展数据保护"] 。
+
+测试涉及100个VM和1000个VM、这两个测试都包含50/50的Windows和CentOS VM。下表显示了基线性能测试的结果：
+
+[cols="1a,1a,1a"]
+|===
+| 操作 | 备份速度 | 恢复速度 
+
+
+ a| 
+辅助复印
+ a| 
+2 TB/小时
+ a| 
+1.27 TB/小时
+
+
+
+ a| 
+直接与对象连接和从对象连接(启用重复数据删除)
+ a| 
+2.2 TB/小时
+ a| 
+1.22 TB/小时
+
+|===
+为了测试过期性能、删除了250万个对象。如图2和图3所示、删除操作在3小时内完成、并释放了80 TB以上的空间。删除运行于上午10：30开始。
+
+.图1：在不到3小时的时间内删除250万(80 TB)对象。
+image:commvault/obj-time.png["对象"]
+
+.图2：在不到3小时的时间内释放80 TB的存储。
+image:commvault/storage-time.png["存储随时间变化"]

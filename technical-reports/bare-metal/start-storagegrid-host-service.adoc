@@ -1,0 +1,64 @@
+---
+sidebar: sidebar 
+permalink: technical-reports/bare-metal/start-storagegrid-host-service.html 
+keywords: host service, storagegrid 
+summary: 了解如何启动StorageGRID主机服务。 
+---
+= 启动 StorageGRID 主机服务
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../../media/
+
+
+[role="lead"]
+了解如何启动StorageGRID主机服务。
+
+要启动StorageGRID节点并确保它们在主机重新启动后重新启动、您必须启用并启动StorageGRID主机服务。
+
+要启动StorageGRID主机服务、请完成以下步骤。
+
+.步骤
+. 在每个主机上运行以下命令：
++
+[listing]
+----
+sudo systemctl enable storagegrid
+sudo systemctl start storagegrid
+----
++
+
+NOTE: 初始运行时、启动过程可能需要一段时间。
+
+. 运行以下命令以确保部署正在进行：
++
+[listing]
+----
+sudo storagegrid node status node-name
+----
+. 对于任何返回或状态的节点 `Not-Running` `Stopped`，请运行以下命令：
++
+[listing]
+----
+sudo storagegrid node start node-name
+----
++
+例如、根据以下输出、您应启动 `dc1-adm1` 节点：
+
++
+[listing]
+----
+[user@host1]# sudo storagegrid node status
+Name Config-State Run-State
+dc1-adm1 Configured Not-Running
+dc1-sn1 Configured Running
+----
+. 如果您之前已启用并启动StorageGRID主机服务(或者不确定该服务是否已启用并启动)、请同时运行以下命令：
++
+[listing]
+----
+sudo systemctl reload-or-restart storagegrid
+----
+

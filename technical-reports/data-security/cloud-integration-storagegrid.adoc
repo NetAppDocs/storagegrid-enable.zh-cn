@@ -1,0 +1,25 @@
+---
+sidebar: sidebar 
+permalink: technical-reports/data-security/cloud-integration-storagegrid.html 
+keywords: cloud integration, storagegrid 
+summary: 了解StorageGRID如何与云服务集成。 
+---
+= 云集成
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../../media/
+
+
+[role="lead"]
+了解StorageGRID如何与云服务集成。
+
+[cols="30,35,35"]
+|===
+| 功能 | 功能 | 影响 
+
+
+| 基于通知的病毒扫描 | StorageGRID平台服务支持事件通知。事件通知可与外部云计算服务结合使用、用于对数据触发病毒扫描工作流。 | 允许租户管理员使用外部云计算服务触发数据病毒扫描。 
+|===

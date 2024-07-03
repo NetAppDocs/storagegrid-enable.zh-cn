@@ -1,0 +1,181 @@
+---
+sidebar: sidebar 
+permalink: technical-reports/bare-metal/node-config-file-storagegrid.html 
+keywords: node config, storagegrid 
+summary: 了解如何为StorageGRID准备节点配置文件。 
+---
+= 为StorageGRID准备节点配置文件
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../../media/
+
+
+[role="lead"]
+了解如何为StorageGRID准备节点配置文件。
+
+总体而言、节点配置过程包括以下步骤：
+
+.步骤
+. 在所有主机上创建 `/etc/storagegrid/nodes` 目录。
++
+[listing]
+----
+sudo [root@host1 ~]# mkdir -p /etc/storagegrid/nodes
+----
+. 为每个物理主机创建所需的文件、以匹配容器/节点类型布局。在此示例中、我们在每台主机上的每个物理主机上创建了两个文件。
++
+
+NOTE: 文件名用于定义实际的安装节点名称。例如， `dc1-adm1.conf` 将成为名为的节点 `dc1-adm1`。
+
++
+--主机1：
+`dc1-adm1.conf`
+`dc1-sn1.conf`
+
++
+--主机2：
+`dc1-gw1.conf`
+`dc1-sn2.conf`
+
++
+--主机3：
+`dc1-gw2.conf`
+`dc1-sn3.conf`
+
+
+
+
+
+== 正在准备节点配置文件
+
+以下示例使用 `/dev/disk/by-path` 格式。您可以运行以下命令来验证路径是否正确：
+
+[listing]
+----
+[root@host1 ~]# lsblk
+NAME MAJ:MIN RM SIZE RO TYPE MOUNTPOINT
+sda 8:0 0 90G 0 disk
+├─sda1 8:1 0 1G 0 part /boot
+└─sda2 8:2 0 89G 0 part
+├─rhel-root 253:0 0 50G 0 lvm /
+├─rhel-swap 253:1 0 9G 0 lvm
+└─rhel-home 253:2 0 30G 0 lvm /home
+sdb 8:16 0 200G 0 disk /var/lib/docker
+sdc 8:32 0 90G 0 disk
+sdd 8:48 0 200G 0 disk
+sde 8:64 0 200G 0 disk
+sdf 8:80 0 4T 0 disk
+sdg 8:96 0 4T 0 disk
+sdh 8:112 0 4T 0 disk
+sdi 8:128 0 90G 0 disk
+sr0 11:0 1 1024M 0 rom
+----
+以及以下命令：
+
+[listing]
+----
+[root@host1 ~]# ls -l /dev/disk/by-path/
+total 0
+lrwxrwxrwx 1 root root 9 Dec 21 16:42 pci-0000:02:01.0-ata-1.0 -> ../../sr0
+lrwxrwxrwx 1 root root 9 Dec 21 16:42 pci-0000:03:00.0-scsi-0:0:0:0 -> ../../sda
+lrwxrwxrwx 1 root root 10 Dec 21 16:42 pci-0000:03:00.0-scsi-0:0:0:0-part1 -> ../../sda1
+lrwxrwxrwx 1 root root 10 Dec 21 16:42 pci-0000:03:00.0-scsi-0:0:0:0-part2 -> ../../sda2
+lrwxrwxrwx 1 root root 9 Dec 21 16:42 pci-0000:03:00.0-scsi-0:0:1:0 -> ../../sdb
+lrwxrwxrwx 1 root root 9 Dec 21 16:42 pci-0000:03:00.0-scsi-0:0:2:0 -> ../../sdc
+lrwxrwxrwx 1 root root 9 Dec 21 16:42 pci-0000:03:00.0-scsi-0:0:3:0 -> ../../sdd
+lrwxrwxrwx 1 root root 9 Dec 21 16:42 pci-0000:03:00.0-scsi-0:0:4:0 -> ../../sde
+lrwxrwxrwx 1 root root 9 Dec 21 16:42 pci-0000:03:00.0-scsi-0:0:5:0 -> ../../sdf
+lrwxrwxrwx 1 root root 9 Dec 21 16:42 pci-0000:03:00.0-scsi-0:0:6:0 -> ../../sdg
+lrwxrwxrwx 1 root root 9 Dec 21 16:42 pci-0000:03:00.0-scsi-0:0:8:0 -> ../../sdh
+lrwxrwxrwx 1 root root 9 Dec 21 16:42 pci-0000:03:00.0-scsi-0:0:9:0 -> ../../sdi
+----
+
+
+== 主管理节点示例
+
+示例文件名：
+
+[listing]
+----
+/etc/storagegrid/nodes/dc1-adm1.conf
+----
+示例文件内容：
+
+
+NOTE: 磁盘路径可以遵循以下示例或使用 `/dev/mapper/alias` 模式命名。请勿使用块设备名称(如) `/dev/sdb` 、因为它们可能会在重新启动时更改、并对网格造成严重损坏。
+
+[listing]
+----
+NODE_TYPE = VM_Admin_Node
+ADMIN_ROLE = Primary
+MAXIMUM_RAM = 24g
+BLOCK_DEVICE_VAR_LOCAL = /dev/disk/by-path/pci-0000:03:00.0-scsi-0:0:2:0
+BLOCK_DEVICE_AUDIT_LOGS = /dev/disk/by-path/pci-0000:03:00.0-scsi-0:0:3:0
+BLOCK_DEVICE_TABLES = /dev/disk/by-path/pci-0000:03:00.0-scsi-0:0:4:0
+GRID_NETWORK_TARGET = ens192
+CLIENT_NETWORK_TARGET = ens224
+GRID_NETWORK_IP = 10.193.204.43
+GRID_NETWORK_MASK = 255.255.255.0
+GRID_NETWORK_GATEWAY = 10.193.204.1
+CLIENT_NETWORK_CONFIG = STATIC
+CLIENT_NETWORK_IP = 10.193.205.43
+CLIENT_NETWORK_MASK = 255.255.255.0
+CLIENT_NETWORK_GATEWAY = 10.193.205.1
+----
+
+
+== 存储节点示例
+
+示例文件名：
+
+[listing]
+----
+/etc/storagegrid/nodes/dc1-sn1.conf
+----
+示例文件内容：
+
+[listing]
+----
+NODE_TYPE = VM_Storage_Node
+MAXIMUM_RAM = 24g
+ADMIN_IP = 10.193.174.43
+BLOCK_DEVICE_VAR_LOCAL = /dev/disk/by-path/pci-0000:03:00.0-scsi-0:0:9:0
+BLOCK_DEVICE_RANGEDB_00 = /dev/disk/by-path/pci-0000:03:00.0-scsi-0:0:5:0
+BLOCK_DEVICE_RANGEDB_01 = /dev/disk/by-path/pci-0000:03:00.0-scsi-0:0:6:0
+BLOCK_DEVICE_RANGEDB_02 = /dev/disk/by-path/pci-0000:03:00.0-scsi-0:0:8:0
+GRID_NETWORK_TARGET = ens192
+CLIENT_NETWORK_TARGET = ens224
+GRID_NETWORK_IP = 10.193.204.44
+GRID_NETWORK_MASK = 255.255.255.0
+GRID_NETWORK_GATEWAY = 10.193.204.1
+----
+
+
+== 网关节点示例
+
+示例文件名：
+
+[listing]
+----
+/etc/storagegrid/nodes/dc1-gw1.conf
+----
+示例文件内容：
+
+[listing]
+----
+NODE_TYPE = VM_API_Gateway
+MAXIMUM_RAM = 24g
+ADMIN_IP = 10.193.204.43
+BLOCK_DEVICE_VAR_LOCAL = /dev/disk/by-path/pci-0000:03:00.0-scsi-0:0:1:0
+GRID_NETWORK_TARGET = ens192
+CLIENT_NETWORK_TARGET = ens224
+GRID_NETWORK_IP = 10.193.204.47
+GRID_NETWORK_MASK = 255.255.255.0
+GRID_NETWORK_GATEWAY = 10.193.204.1
+CLIENT_NETWORK_IP = 10.193.205.47
+CLIENT_NETWORK_MASK = 255.255.255.0
+CLIENT_NETWORK_GATEWAY = 10.193.205.1
+----

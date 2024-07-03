@@ -1,0 +1,127 @@
+---
+sidebar: sidebar 
+permalink: technical-reports/commvault/sizing.html 
+keywords: Backup, on-premises, commvault, storagegrid, object, S3, WORM 
+summary: 了解客户和NetApp IT实施的StorageGRID配置的少数用例。 
+---
+= StorageGRID规模估算指南
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../../media/
+
+
+[role="lead"]
+有关适用于您环境的特定规模估算、请咨询NetApp数据保护专家。NetApp数据保护专家可以使用CommvaultTotal Backup Storage Calculator工具来估计备份基础架构需求。该工具需要CommvaultPartner Portal访问权限。如果需要、请注册访问权限。
+
+
+
+== Commvaults规模估算输入
+
+可以使用以下任务来执行发现以调整数据保护解决方案的大小：
+
+* 确定需要保护的系统或应用程序/数据库工作负载以及相应的前端容量(以TB为单位)。
+* 确定需要保护的虚拟机/文件工作负载和类似前端容量(TB)。
+* 确定短期和长期保留要求。
+* 确定已确定的数据集/工作负载的每日变更率百分比。
+* 确定未来12、24和36个月的预计数据增长。
+* 根据业务需求定义用于数据保护/恢复的RTO和RPO。
+
+
+获得此信息后、便可完成备份基础架构规模估算、从而细分所需的存储容量。
+
+
+
+== StorageGRID规模估算指南
+
+在执行NetApp StorageGRID规模估算之前、请考虑工作负载的以下方面：
+
+* 可用容量
+* WORm模式
+* 平均对象大小
+* 性能要求
+* 已应用ILM策略
+
+
+可用容量需要满足您已分层到StorageGRID的备份工作负载的大小以及保留计划。
+
+WORM模式是否启用？在Commvault"中启用WORM后、此操作将在StorageGRID上配置对象锁定。这将增加所需的对象存储容量。所需的容量因保留期限和每次备份的对象更改数而异。
+
+平均对象大小是一个输入参数、用于帮助估算StorageGRID环境中的性能规模。Commvault"工作负载使用的平均对象大小取决于备份类型。
+
+下表按备份类型列出了平均对象大小、并说明了还原过程从对象存储中读取的内容：
+
+[cols="1a,1a,1a"]
+|===
+| 备份类型 | 平均对象大小 | 还原行为 
+
+
+ a| 
+在StorageGRID中创建辅助副本
+ a| 
+32 MB
+ a| 
+完全读取32 MB对象
+
+
+
+ a| 
+将备份定向到StorageGRID (已启用重复数据删除)
+ a| 
+8MB
+ a| 
+1 MB随机范围读取
+
+
+
+ a| 
+将备份定向到StorageGRID (已禁用重复数据删除)
+ a| 
+32 MB
+ a| 
+完全读取32 MB对象
+
+|===
+此外、了解完整备份和增量备份的性能要求有助于确定StorageGRID存储节点的规模估算。StorageGRID信息生命周期管理(ILM)策略数据保护方法可确定存储Commvaults备份所需的容量、并影响网格的规模估算。
+
+StorageGRID ILM复制是StorageGRID用于存储对象数据的两种机制之一。当StorageGRID将对象分配给复制数据的ILM规则时、系统会为对象的数据创建精确副本、并将这些副本存储在存储节点上。
+
+纠删编码是 StorageGRID 存储对象数据的第二种方法。当StorageGRID将对象分配给配置为创建经过删除编码的副本的ILM规则时、它会将对象数据分区为数据片段。然后、它会额外地对奇偶校验片段进行运算、并将每个片段存储在不同的存储节点上。访问某个对象时，系统会使用存储的片段重新组合该对象。如果数据片段或奇偶校验片段损坏或丢失、纠删编码算法可以使用剩余数据和奇偶校验片段的一部分重新创建该片段。
+
+这两种机制需要不同的存储量、如以下示例所示：
+
+* 如果存储两个复制副本、则存储开销会增加一倍。
+* 如果您存储的是2+1经过删除的副本、则存储开销会增加1.5倍。
+
+
+对于测试的解决方案、我们使用了单个站点上的入门级StorageGRID部署：
+
+* 管理节点：VMware虚拟机(VM)
+* 负载平衡器：VMware VM
+* 存储节点：4个SG5712、带有4 TB驱动器
+* 主管理节点和网关节点：具有最低生产工作负载要求的VMware VM
+
+
+[NOTE]
+====
+StorageGRID还支持第三方负载平衡器。
+
+====
+StorageGRID通常部署在两个或更多站点中、并采用数据保护策略来复制数据、以防止发生节点和站点级故障。通过将数据备份到StorageGRID、您的数据将受到多个副本或通过纠删编码的保护、这些编码可通过一种算法可靠地分隔和重新组合数据。
+
+您可以使用规模估算工具 https://fusion.netapp.com["Fusion"] 调整网格大小。
+
+
+
+== 扩展
+
+您可以通过向存储节点添加存储、向现有站点添加新网格节点或添加新数据中心站点来扩展NetApp StorageGRID系统。您可以在不中断当前系统运行的情况下执行扩展。
+StorageGRID可以通过为存储节点或运行负载平衡器和管理节点的物理设备使用性能更高的节点来扩展性能、也可以通过简单地添加更多节点来扩展性能。
+
+[NOTE]
+====
+有关扩展StorageGRID系统的详细信息、请参见 https://docs.netapp.com/us-en/storagegrid-118/landing-expand/index.html["《StorageGRID 11.8."]。
+
+====

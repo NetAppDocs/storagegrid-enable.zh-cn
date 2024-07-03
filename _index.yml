@@ -63,12 +63,22 @@ indexpage:
       url: "/tools-apps-guides/integrate-gitlab.html"
   - title: 技术报告
     links:
-    - title: NetApp StorageGRID和大数据分析
-      url: "/technical-reports/datalake-analytics.html"
-    - title: Hadoop S3A调整最佳实践
-      url: "/technical-reports/s3a-tuning.html"
-    - title: TR-4871 - Commvault"完整备份和恢复以及NetApp StorageGRID
-      url: "/technical-reports/tr-4871-commvault.html"
+    - title: TR-4993:《NetApp StorageGRID与大数据分析》
+      url: "/technical-reports/technical-reports/datalake-analytics.html"
+    - title: TR-4994：《Hadoop S3A调整最佳实践》
+      url: "/technical-reports/technical-reports/s3a-tuning.html"
+    - title: TR-4871：《Commvault"完整备份和恢复以及NetApp StorageGRID》
+      url: "/technical-reports/technical-reports/tr-4871-commvault.html"
+    - title: TR-4645：安全功能
+      url: "/technical-reports/data-security/index.html"
+    - title: TR-4921：勒索软件防御
+      url: "/technical-reports/ransomware-protection/index.html"
+    - title: TR-4765：《监控StorageGRID》
+      url: "/technical-reports/monitor/index.html"
+    - title: TR-4882：安装StorageGRID裸机网格
+      url: "/technical-reports/bare-metal/index.html"
+    - title: TR-4904：《使用Veritas Enterprise Vault配置StorageGRID》
+      url: "/technical-reports/veritas/index.html"
   - title: 过程和API示例
     links:
     - title: 测试和演示S3加密

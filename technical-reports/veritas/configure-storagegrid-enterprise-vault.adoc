@@ -1,0 +1,94 @@
+---
+permalink: technical-reports/veritas/configure-storagegrid-enterprise-vault.html 
+sidebar: sidebar 
+keywords: storagegrid, enterprise vault, configure 
+summary: 了解如何实施StorageGRID 11.5和Veritas Enterprise Vault 14.1的基本配置。 
+---
+= 配置StorageGRID和Veritas Enterprise Vault
+:hardbreaks:
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../../media/
+
+
+[role="lead"]
+了解如何实施StorageGRID 11.5或更高版本以及Veritas Enterprise Vault 14.1或更高版本的基本配置。
+
+本配置指南基于StorageGRID 11.5和Enterprise Vault 14.1。对于一次写入、使用S3对象锁定、StorageGRID 11.5和Enterprise Vault 14.2.2进行多次读取(WORM)模式存储。有关这些准则的更多详细信息、请参见 https://docs.netapp.com/us-en/storagegrid-118/["StorageGRID 文档"^] 页面或联系StorageGRID专家。
+
+
+
+== 配置StorageGRID和Veritas Enterprise Vault的前提条件
+
+* 在使用Veritas Enterprise Vault配置StorageGRID之前、请验证以下前提条件：
+
+
+
+NOTE: 对于WORM存储(对象锁定)、需要使用StorageGRID 11.5或更高版本。
+
+* 已安装Veritas Enterprise Vault 14.1或更高版本。
+
+
+
+NOTE: 对于WORM存储(对象锁定)、需要Enterprise Vault 14.2.2或更高版本。
+
+* 已创建存储组和存储存储。有关详细信息、请参见《Veritas Enterprise Vault管理指南》。
+* 已创建StorageGRID租户、访问密钥、机密密钥和存储分段。
+* 已创建StorageGRID负载平衡器端点(HTTP或HTTPS)。
+* 如果使用自签名证书、请将StorageGRID自签名CA证书添加到企业存储服务器。有关详细信息，请参见此 https://www.veritas.com/support/en_US/article.100049744["Veritas知识库文章"^]。
+* 更新并应用最新的企业存储配置文件以启用受支持的存储解决方案、例如NetApp StorageGRID。有关详细信息，请参见此 https://www.veritas.com/content/support/en_US/article.100039174["Veritas知识库文章"^]。
+
+
+
+
+== 使用Veritas Enterprise Vault配置StorageGRID
+
+要使用Veritas Enterprise Vault配置StorageGRID、请完成以下步骤：
+
+.步骤
+. 启动Enterprise Vault管理控制台。
++
+image:third-party-enterprise-vault.png["介质/第三方企业存储"]
+
+. 在适当的存储库中创建新的存储分区。展开存储组文件夹、然后展开相应的存储。右键单击分区并选择菜单：新建[Partition (分区)]。
++
+image:third-party-enterprise-vault-2.png["media/thiry-party-Enterprise vault-2"]
+
+. 按照新建分区创建向导进行操作。从存储类型下拉菜单中、选择NetApp StorageGRID (S3)。单击下一步。
++
+image:third-party-new-partition.png["第三方新分区"]
+
+. 保持选中"Store Data in WORM Mode Using S3 Object Lock"(使用S3对象锁定在WORM模式下存储数据)选项。单击下一步。
++
+image:third-party-new-partition-2.png["thir-party-new-partpartition－2 (第三方新分区－2)"]
+
+. 在连接设置页面上、提供以下信息：
++
+** 访问密钥 ID
+** 机密访问密钥
+** 服务主机名称：确保包括在StorageGRID中配置的负载平衡器端点(LBE)端口(例如\https：//Data <hostname>：<LBE_port>)
+** 存储分段名称：预先创建的目标存储分段的名称。Veritas Enterprise Vault不会创建分段。
+** 存储分段区域： `us-east-1` 为默认值。
++
+image:third-party-new-partition-3.png["thir-party-new-partiry-3"]
+
+
+
+. 要验证与StorageGRID存储分段的连接、请单击测试。验证连接测试是否成功。单击"OK"(确定)、然后单击"Next"(下一步)。
++
+image:third-party-new-partition-4.png["thiry-party-4"]
+
+. StorageGRID不支持S3复制参数。为了保护对象、StorageGRID使用信息生命周期管理(ILM)规则指定数据保护方案-多个副本或纠删编码。选择When Archived Files Existing on the Storage (存储上存在归档文件时)选项、然后单击Next (下一步)。
++
+image:third-party-new-partition-5.png["thir-party-new-partiry-5"]
+
+. 验证摘要页面上的信息、然后单击完成。
++
+image:third-party-new-partition-6.png["thiry-party-6"]
+
+. 成功创建新的存储分区后、您可以在以StorageGRID作为主存储的企业存储中存档、还原和搜索数据。
++
+image:third-party-new-partition-7.png["thiry-party-7"]
+
+

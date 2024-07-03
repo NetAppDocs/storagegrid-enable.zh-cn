@@ -1,0 +1,19 @@
+---
+permalink: technical-reports/monitor/storagegrid-app-splunk.html 
+sidebar: sidebar 
+keywords: storagegrid app, splunk 
+summary: 了解适用于Splunk的NetApp StorageGRID应用程序、该应用程序可从StorageGRID导入和丰富数据、并提供强大的搜索和分析功能。 
+---
+= 使用适用于Splunk的StorageGRID应用程序
+:hardbreaks:
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../../media/
+
+
+[role="lead"]
+了解适用于Splunk的NetApp StorageGRID应用程序、该应用程序允许您在Splunk平台中监控和分析StorageGRID环境。
+
+Splunk是一个软件平台、用于导入计算机数据并为其编制索引、以提供强大的搜索和分析功能。NetApp StorageGRID应用程序是适用于Splunk的附加软件、用于导入和丰富从StorageGRID利用的数据。
+
+有关如何安装、升级和配置StorageGRID加载项的说明、请参见： https://splunkbase.splunk.com/app/3895/#/details[]

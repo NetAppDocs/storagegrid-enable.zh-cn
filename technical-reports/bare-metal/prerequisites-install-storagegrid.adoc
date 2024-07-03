@@ -1,0 +1,499 @@
+---
+sidebar: sidebar 
+permalink: technical-reports/bare-metal/prerequisites-install-storagegrid.html 
+keywords: prerequisites, install storagegrid 
+summary: 了解部署StorageGRID所需的计算、存储、网络、Docker和节点采购。 
+---
+= 安装StorageGRID的前提条件
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../../media/
+
+
+[role="lead"]
+了解部署StorageGRID所需的计算、存储、网络、Docker和节点采购。
+
+
+
+== 计算要求
+
+下表列出了每种类型的StorageGRID节点支持的最低资源要求。这是StorageGRID节点所需的最低资源。
+
+[cols="30,35,35"]
+|===
+| 节点类型 | CPU核心 | RAM 
+
+
+| 管理员 | 8. | 24 GB 
+
+
+| 存储 | 8. | 24 GB 
+
+
+| 网关 | 8. | 24 GB 
+|===
+此外、每个物理Docker主机至少应分配16 GB RAM、以便正常运行。因此、例如、要在一个物理Docker主机上同时托管表中所述的任意两项服务、应执行以下计算：
+
+24 + 24 + 16 = 64 GB RAM、8 + 8 = 16核
+
+由于许多现代服务器都超过了这些要求、因此我们将六种服务(StorageGRID容器)组合到三个物理服务器上。
+
+
+
+== 网络要求
+
+三种类型的StorageGRID流量包括：
+
+* *网格流量(必需)。*网格中所有节点之间传输的内部 StorageGRID 流量。
+* *管理员流量(可选)。*用于系统管理和维护的流量。
+* *客户端流量(可选)。*在外部客户端应用程序和网格之间传输的流量，包括来自 S3 和 Swift 客户端的所有对象存储请求。
+
+
+您最多可以配置三个网络以用于StorageGRID系统。每种网络类型都必须位于一个单独的子网上、不能重叠。如果所有节点都位于同一子网上、则不需要网关地址。
+
+在此评估中、我们将部署在两个网络上、其中包含网格和客户端流量。可以稍后添加一个管理网络来执行该附加功能。
+
+将网络一致地映射到所有主机中的接口非常重要。例如、如果每个节点上有两个接口、即ens192和ens224、则它们都应映射到所有主机上的同一网络或VLAN。在此安装中、安装程序会将这些映像映射到Docker容器中、并将其映射为eth0@if2和eth2@if3 (因为环回是容器内的IF1)、因此、一致的模型非常重要。
+
+
+
+=== 有关Docker网络连接的说明
+
+StorageGRID使用网络的方式与某些Docker容器实施方式不同。它不使用Docker (或Kubnetes或Swarm)提供的网络。相反、StorageGRID实际上会将容器生成为--net=none、这样、Docker就不会对容器执行任何网络连接操作。StorageGRID服务生成容器后、将从节点配置文件中定义的接口创建一个新的macvlan设备。该设备具有一个新的MAC地址、并作为一个单独的网络设备、可以从物理接口接收数据包。然后、macvlan设备将移至容器命名空间、并重命名为容器中的eth0、eth1或eth2之一。此时、此网络设备将在主机操作系统中不再可见。在本示例中、Docker容器中的网格网络设备为eth0、客户端网络为eth2。如果我们有一个管理网络、则此设备在容器中将为eth1。
+
+
+NOTE: 在某些网络和虚拟环境中、容器网络设备的新MAC地址可能需要启用混杂模式。此模式允许物理设备接收和发送与已知物理MAC地址不同的MAC地址的数据包。++++如果在VMware vSphere中运行、则在运行RHEL时、必须在提供StorageGRID流量的端口组中接受混杂模式、MAC地址更改和伪传输。在大多数情况下、Ubuntu或Debian都可以在不进行这些更改的情况下运行。++++
+
+
+
+== 存储要求
+
+每个节点都需要下表所示大小的基于SAN的磁盘设备或本地磁盘设备。
+
+
+NOTE: 表中的数字适用于每种StorageGRID服务类型、而不适用于整个网格或每个物理主机。根据部署选项，我们将在本文档后面的中计算每个物理主机的数量 link:prerequisites-install-storagegrid.html#physical-host-layout-and-requirements["物理主机布局和要求"]。++++安装程序将在StorageGRID容器中创建标有星号的路径或文件系统。管理员不需要手动配置或创建文件系统、但主机需要块设备来满足这些要求。换言之、块设备应使用命令显示 `lsblk` 、但不能在主机操作系统中进行格式化或挂载。++++
+
+[cols="15,20,15,15,15,20"]
+|===
+| 节点类型 | LUN 用途 | LUN 数量 | LUN的最小大小 | 需要手动文件系统 | 建议的节点配置条目 
+
+
+| 全部 | 管理节点系统空间
+`/var/local` (此处的SSD非常有用) | 每个管理节点一个 | 90GB | 否 | `BLOCK_DEVICE_VAR_LOCAL = /dev/mapper/ADM-VAR-LOCAL` 
+
+
+| 所有节点 | Docker存储池、位于
+`/var/lib/docker for container pool` | 每个主机(物理或VM)一个 | 每个容器100 GB | 是—etx4 | 不适用—格式化并挂载为主机文件系统(未映射到容器) 
+
+
+| 管理员 | 管理节点审核日志(管理容器中的系统数据)
+`/var/local/audit/export` | 每个管理节点一个 | 200GB | 否 | `BLOCK_DEVICE_AUDIT_LOGS =/dev/mapper/ADM-OS` 
+
+
+| 管理员 | 管理节点表(管理容器中的系统数据)
+`/var/local/mysql_ibdata` | 每个管理节点一个 | 200GB | 否 | `BLOCK_DEVICE_TABLES = /dev/mapper/ADM-MySQL` 
+
+
+| 存储节点 | 对象存储(块设备)  `/var/local/rangedb0` (此处的SSD非常有用)  `/var/local/rangedb1`  `/var/local/rangedb2` | 每个存储容器三个 | 4000GB | 否 | `BLOCK_DEVICE_RANGEDB_000 = /dev/mapper/SN-Db00
+BLOCK_DEVICE_RANGEDB_001 = /dev/mapper/SN-Db01
+BLOCK_DEVICE_RANGEDB_002 = /dev/mapper/SN-Db02` 
+|===
+在此示例中、每种容器类型都需要下表中显示的磁盘大小。每个物理主机的要求将在本文档后面的中进行介绍 link:prerequisites-install-storagegrid.html#physical-host-layout-and-requirements["物理主机布局和要求"]。
+
+
+
+== 每个容器类型的磁盘大小
+
+
+
+=== 管理容器
+
+[cols="50,50"]
+|===
+| Name | 大小 (GiB) 
+
+
+| Docker存储 | 100 (每个容器) 
+
+
+| ADM-OS | 90 
+
+
+| ADM-Audit | 200 
+
+
+| ADM-MySQL | 200 
+|===
+
+
+=== 存储容器
+
+[cols="50,50"]
+|===
+| Name | 大小 (GiB) 
+
+
+| Docker存储 | 100 (每个容器) 
+
+
+| SN-OS | 90 
+
+
+| Rangedb-0 | 4096 
+
+
+| Rangedb-1 | 4096 
+
+
+| Rangedb-2 | 4096 
+|===
+
+
+=== 网关容器
+
+[cols="50,50"]
+|===
+| Name | 大小 (GiB) 
+
+
+| Docker存储 | 100 (每个容器) 
+
+
+| /var/local | 90 
+|===
+
+
+== 物理主机布局和要求
+
+通过将上表所示的计算和网络要求相结合、您可以获得此安装所需的一组基本硬件、其中包括三个物理(或虚拟)服务器、16核、64 GB RAM和两个网络接口。如果需要更高的吞吐量、可以在网格或客户端网络上绑定两个或更多接口、并在节点配置文件中使用带VLAN标记的接口、例如bond0.520。如果您希望工作负载更密集、则为主机和容器提供更多内存会更好。
+
+如下图所示、这些服务器将托管六个Docker容器、每个主机两个。RAM的计算方法是、为每个容器提供24 GB、为主机操作系统本身提供16 GB。
+
+image:bare-metal-layout-for-three-hosts.png["三台主机的布局示例。"]
+
+每个物理主机(或VM)所需的总RAM为24 x 2 + 16 = 64 GB。下表列出了主机1、2和3所需的磁盘存储。
+
+[cols="50,50"]
+|===
+| 主机 1 | 大小 (GiB) 
+
+
+ a| 
+*Docker存储*
+
+
+
+| `/var/lib/docker` (文件系统) | 200 (100 x 2) 
+
+
+ a| 
+*管理容器*
+
+
+
+| `BLOCK_DEVICE_VAR_LOCAL` | 90 
+
+
+| `BLOCK_DEVICE_AUDIT_LOGS` | 200 
+
+
+| `BLOCK_DEVICE_TABLES` | 200 
+
+
+ a| 
+*存储容器*
+
+
+
+| SN-OS
+`/var/local` (设备) | 90 
+
+
+| Rangedb-0(设备) | 4096 
+
+
+| Rangedb-1 (设备) | 4096 
+
+
+| Rangedb-2 (设备) | 4096 
+|===
+[cols="50,50"]
+|===
+| 主机 2 | 大小 (GiB) 
+
+
+ a| 
+*Docker存储*
+
+
+
+| `/var/lib/docker` (共享) | 200 (100 x 2) 
+
+
+ a| 
+*网关容器*
+
+
+
+| GW-OS *`/var/local` | 100 
+
+
+ a| 
+*存储容器*
+
+
+
+| *`/var/local` | 100 
+
+
+| Rangedb-0 | 4096 
+
+
+| Rangedb-1 | 4096 
+
+
+| Rangedb-2 | 4096 
+|===
+[cols="50,50"]
+|===
+| 主机 3 | 大小 (GiB) 
+
+
+ a| 
+*Docker存储*
+
+
+
+| `/var/lib/docker` (共享) | 200 (100 x 2) 
+
+
+ a| 
+*网关容器*
+
+
+
+| *`/var/local` | 100 
+
+
+ a| 
+*存储容器*
+
+
+
+| *`/var/local` | 100 
+
+
+| Rangedb-0 | 4096 
+
+
+| Rangedb-1 | 4096 
+
+
+| Rangedb-2 | 4096 
+|===
+Docker存储的计算方法是、每个/var/local (每个容器)允许100 GB x两个容器= 200 GB。
+
+
+
+== 准备节点
+
+要为StorageGRID的初始安装做准备、请先安装RHEL 9.2版并启用SSH。根据最佳实践设置网络接口、网络时间协议(NTP)、DNS和主机名。您需要在网格网络上至少启用一个网络接口、而在客户端网络上至少启用另一个网络接口。如果您使用的是带VLAN标记的接口、请按照以下示例进行配置。否则、只需简单的标准网络接口配置即可。
+
+如果您需要在网格网络接口上使用VLAN标记、则您的配置应具有以下格式的两个文件 `/etc/sysconfig/network-scripts/` ：
+
+[listing]
+----
+# cat /etc/sysconfig/network-scripts/ifcfg-enp67s0
+# This is the parent physical device
+TYPE=Ethernet
+BOOTPROTO=none
+DEVICE=enp67s0
+ONBOOT=yes
+# cat /etc/sysconfig/network-scripts/ifcfg-enp67s0.520
+# The actual device that will be used by the storage node file
+DEVICE=enp67s0.520
+BOOTPROTO=none
+NAME=enp67s0.520
+IPADDR=10.10.200.31
+PREFIX=24
+VLAN=yes
+ONBOOT=yes
+----
+此示例假设网格网络的物理网络设备为enp67s0。它也可以是绑定的设备、例如、绑定0。无论是使用绑定还是标准网络接口、如果网络端口没有默认VLAN或默认VLAN未与网格网络关联、则必须在节点配置文件中使用带VLAN标记的接口。StorageGRID容器本身不会取消标记以太网帧、因此必须由父操作系统处理。
+
+
+
+== 使用iSCSI设置可选存储
+
+如果不使用iSCSI存储、则必须确保host1、host2和host3包含足够大的块设备、以满足其要求。有关host1、host2和host3的存储要求、请参见 link:prerequisites-install-storagegrid.html#disk-sizes-per-container-type["每个容器类型的磁盘大小"] 。
+
+要使用iSCSI设置存储、请完成以下步骤：
+
+.步骤
+. 如果使用外部iSCSI存储，如NetApp E系列或NetApp ONTAP®数据管理软件，请安装以下软件包：
++
+[listing]
+----
+sudo yum install iscsi-initiator-utils
+sudo yum install device-mapper-multipath
+----
+. 查找每个主机上的启动程序ID。
++
+[listing]
+----
+# cat /etc/iscsi/initiatorname.iscsi
+InitiatorName=iqn.2006-04.com.example.node1
+----
+. 使用步骤2中的启动程序名称、将存储设备上的LUN (即表中所示的数量和大小)映射到每个存储 link:prerequisites-install-storagegrid.html#storage-requirements["存储要求"] 节点。
+. 使用发现并登录到新创建的LUN `iscsiadm` 。
++
+[listing]
+----
+# iscsiadm -m discovery -t st -p target-ip-address
+# iscsiadm -m node -T iqn.2006-04.com.example:3260 -l
+Logging in to [iface: default, target: iqn.2006-04.com.example:3260, portal: 10.64.24.179,3260] (multiple)
+Login to [iface: default, target: iqn.2006-04.com.example:3260, portal: 10.64.24.179,3260] successful.
+----
++
+
+NOTE: 有关详细信息、请参见 https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/storage_administration_guide/osm-create-iscsi-initiator["正在创建iSCSI启动程序"^] Red Hat客户门户上的。
+
+. 要显示多路径设备及其关联的LUN WWID、请运行以下命令：
++
+[listing]
+----
+# multipath -ll
+----
++
+如果您不对多路径设备使用iSCSI、只需使用唯一的路径名称挂载设备即可、该名称将保留设备更改并以类似方式重新启动。
+
++
+[listing]
+----
+/dev/disk/by-path/pci-0000:03:00.0-scsi-0:0:1:0
+----
++
+
+TIP: 如果稍后删除或添加设备、只需使用 `/dev/sdx` 设备名称可能会导致问题。++++如果使用多路径设备、请按如下所示修改 `/etc/multipath.conf` 文件以使用别名。++++
+
++
+
+NOTE: 这些设备可能存在于所有节点上、也可能不存在于所有节点上、具体取决于布局。
+
++
+[listing]
+----
+multipaths {
+multipath {
+wwid 36d039ea00005f06a000003c45fa8f3dc
+alias Docker-Store
+}
+multipath {
+wwid 36d039ea00006891b000004025fa8f597
+alias Adm-Audit
+}
+multipath {
+wwid 36d039ea00005f06a000003c65fa8f3f0
+alias Adm-MySQL
+}
+multipath {
+wwid 36d039ea00006891b000004015fa8f58c
+alias Adm-OS
+}
+multipath {
+wwid 36d039ea00005f06a000003c55fa8f3e4
+alias SN-OS
+}
+multipath {
+wwid 36d039ea00006891b000004035fa8f5a2
+alias SN-Db00
+}
+multipath {
+wwid 36d039ea00005f06a000003c75fa8f3fc
+alias SN-Db01
+}
+multipath {
+    wwid 36d039ea00006891b000004045fa8f5af
+alias SN-Db02
+}
+multipath {
+wwid 36d039ea00005f06a000003c85fa8f40a
+alias GW-OS
+}
+}
+----
+
+
+在主机操作系统中安装Docker之前、请格式化并挂载LUN或磁盘备份 `/var/lib/docker`。其他LUN在节点配置文件中进行定义、并直接由StorageGRID容器使用。也就是说、它们不会显示在主机操作系统中、而是显示在容器本身中、这些文件系统由安装程序处理。
+
+如果您使用的是iSCSI支持的LUN、请在fstab文件中放置类似于以下行的内容。如前所述、其他LUN不需要挂载到主机操作系统中、但必须显示为可用块设备。
+
+[listing]
+----
+/dev/disk/by-path/pci-0000:03:00.0-scsi-0:0:1:0 /var/lib/docker ext4 defaults 0 0
+----
+
+
+== 准备安装Docker
+
+要准备Docker安装、请完成以下步骤：
+
+.步骤
+. 在所有三台主机的Docker存储卷上创建文件系统。
++
+[listing]
+----
+# sudo mkfs.ext4 /dev/sd?
+----
++
+如果使用的是具有多路径的iSCSI设备，请使用 `/dev/mapper/Docker-Store`。
+
+. 创建Docker存储卷挂载点：
++
+[listing]
+----
+# sudo mkdir -p /var/lib/docker
+----
+. 将Docker存储卷设备的类似条目添加到 `/etc/fstab`。
++
+[listing]
+----
+/dev/disk/by-path/pci-0000:03:00.0-scsi-0:0:1:0 /var/lib/docker ext4 defaults 0 0
+----
++
+只有在使用iSCSI设备时、建议使用以下 `_netdev` 选项。如果您不需要使用本地块设备、则建议使用此设备 `_netdev` `defaults` 。
+
++
+[listing]
+----
+/dev/mapper/Docker-Store /var/lib/docker ext4 _netdev 0 0
+----
+. 挂载新文件系统并查看磁盘使用情况。
++
+[listing]
+----
+# sudo mount /var/lib/docker
+[root@host1]# df -h | grep docker
+/dev/sdb 200G 33M 200G 1% /var/lib/docker
+----
+. 出于性能原因、请关闭并禁用交换。
++
+[listing]
+----
+$ sudo swapoff --all
+----
+. 要保留这些设置、请从/etc/fstab中删除所有交换条目、例如：
++
+[listing]
+----
+/dev/mapper/rhel-swap swap defaults 0 0
+----
++
+
+NOTE: 如果未完全禁用交换，则会严重降低性能。
+
+. 对节点执行测试重新启动、以确保 `/var/lib/docker` 卷持久存在且所有磁盘设备均返回。
+

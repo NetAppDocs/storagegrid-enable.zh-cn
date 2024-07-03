@@ -1,0 +1,25 @@
+---
+permalink: technical-reports/monitor/alerts-monitoring.html 
+sidebar: sidebar 
+keywords: alerts, storagegrid 
+summary: 了解如何使用StorageGRID中的警报系统监控问题、管理自定义警报以及通过SNMP或电子邮件延长警报通知。 
+---
+= 使用警报监控StorageGRID
+:hardbreaks:
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../../media/
+
+
+[role="lead"]
+了解如何使用StorageGRID中的警报系统监控问题、管理自定义警报以及使用SNMP或电子邮件扩展警报通知。
+
+警报提供了重要信息、可用于监控StorageGRID系统中的各种事件和状况。
+
+警报系统是用于监控StorageGRID系统中可能发生的任何问题的主要工具。警报系统侧重于系统中可操作的问题、并提供一个易于使用的界面。
+
+我们提供了各种默认警报规则、旨在帮助您监控系统并对其进行故障排除。您可以通过创建自定义警报、编辑或禁用默认警报以及静音警报通知来进一步管理警报。
+
+警报也可通过SNMP或电子邮件通知进行扩展。
+
+有关警报的详细信息、请参见在线提供的PDF格式的 https://docs.netapp.com/us-en/storagegrid-118/monitor/managing-alerts-and-alarms.html["产品文档"^] 。

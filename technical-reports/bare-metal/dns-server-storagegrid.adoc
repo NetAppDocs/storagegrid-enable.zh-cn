@@ -1,0 +1,35 @@
+---
+sidebar: sidebar 
+permalink: technical-reports/bare-metal/dns-server-storagegrid.html 
+keywords: dns server, storagegrid 
+summary: 了解如何为StorageGRID配置DNS服务器。 
+---
+= 指定StorageGRID的DNS服务器详细信息
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../../media/
+
+
+[role="lead"]
+了解如何为StorageGRID配置DNS服务器。
+
+您必须为StorageGRID系统指定DNS信息、以便可以使用主机名而不是IP地址访问外部服务器。
+
+通过指定DNS服务器信息，您可以在电子邮件通知和NetApp AutoSupport®消息中使用完全限定域名(FFQDN)主机名，而不是IP地址。NetApp建议至少指定两个DNS服务器。
+
+
+CAUTION: 您应选择 DNS 服务器，以便在网络隔离时每个站点都可以在本地访问这些服务器。
+
+要指定DNS服务器信息、请完成以下步骤：
+
+.步骤
+. 在服务器1文本框中、指定DNS服务器的IP地址。
+. 如有必要、请单击最后一个条目旁边的加号以添加更多服务器。
++
+image:bare-metal-add-more-servers-2.png["裸机添加更多服务器2"]
+
+. 单击下一步。
+
