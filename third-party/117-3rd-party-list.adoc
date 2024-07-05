@@ -117,3 +117,18 @@ summary: 第三方解决方案已通过StorageGRID 11.7的验证
 * QStar
 * Velasea
 
+
+
+
+== StorageGRID支持密钥管理器
+
+这些解决方案已经过测试。
+
+* 《Terles CipherTrust Manager 2.0》
+* 《Terles CipherTrust Manager 2.1》
+* 《Terles CipherTrust Manager 2.2》
+* Terles CipherTrust Manager 2.3
+* Terles CipherTrust Manager 2.4
+* Terles CipherTrust Manager 2.8
+* Terles CipherTrust Manager 2.9
+
