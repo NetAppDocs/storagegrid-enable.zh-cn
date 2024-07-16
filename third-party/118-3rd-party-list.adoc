@@ -88,6 +88,7 @@ summary: 第三方解决方案已通过StorageGRID 11.8.
 * Commvault 11功能版本26
 * IBM文件集
 * OpenText文档21.4
+* Rubeck
 * Veeam 12.
 * Veritas Enterprise Vault 14.2.2
 * Veritas NetBackup 10.1.1及更高版本

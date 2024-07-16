@@ -2905,4 +2905,5 @@ StorageGRID可以通过为存储节点或运行负载平衡器和管理节点的
   <block id="be89a903679bdf28679c22b4ed6c9806" category="list-text"><block ref="be89a903679bdf28679c22b4ed6c9806" category="inline-link-rx"></block></block>
   <block id="79007772b99cbebaceca4f4abdc9236b" category="paragraph">通过StorageGRID 11.6系统日志转发功能、您可以配置外部系统日志服务器来收集和分析StorageGRID 日志消息。ELK (Elasticsearch、Logstash、Kibana)已成为最受欢迎的日志分析解决方案之一。观看以查看示例的<block ref="a42387db058ee8ea3a8dcc51c8812963" category="inline-link-rx"></block> 模拟配置、以及如何使用它来识别失败的S3请求并对其进行故障排除。本文提供了Logstash配置、Kibana查询、图表和信息板的示例文件、可帮助您快速开始StorageGRID 日志管理和分析。</block>
   <block id="31b606c7f1c871f0b8ba92c74d0c9480" category="list-text">在StorageGRID 管理器图形用户界面中、配置外部系统日志服务器以向Logstash发送日志消息。有关详细信息、请参见<block ref="2216f063c2431b11fee834376e17fce1" category="inline-link-rx"></block> 。</block>
+  <block id="4ecf6b273d67f2120caae7734e1fcf14" category="list-text">Rubeck</block>
 </blocks>
