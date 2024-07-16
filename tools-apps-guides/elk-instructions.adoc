@@ -12,7 +12,7 @@ summary: '通过StorageGRID 11.6系统日志转发功能、您可以配置外部
 
 
 [role="lead"]
-通过StorageGRID 11.6系统日志转发功能、您可以配置外部系统日志服务器来收集和分析StorageGRID 日志消息。ELK (Elasticsearch、Logstash、Kibana)已成为最受欢迎的日志分析解决方案之一。请观看 https://www.netapp.tv/details/29396["使用ELK视频进行StorageGRID 日志分析"] 查看ELK配置示例以及如何使用它来识别失败的S3请求并对其进行故障排除。本文提供了Logstash配置、Kibana查询、图表和信息板的示例文件、可帮助您快速开始StorageGRID 日志管理和分析。
+通过StorageGRID 11.6系统日志转发功能、您可以配置外部系统日志服务器来收集和分析StorageGRID 日志消息。ELK (Elasticsearch、Logstash、Kibana)已成为最受欢迎的日志分析解决方案之一。观看以查看示例的 https://media.netapp.com/video-detail/3d090a61-23d7-5ad7-9746-4cebbb7452fb/storagegrid-log-analysis-using-elk-stack["使用ELK视频进行StorageGRID 日志分析"^] 模拟配置、以及如何使用它来识别失败的S3请求并对其进行故障排除。本文提供了Logstash配置、Kibana查询、图表和信息板的示例文件、可帮助您快速开始StorageGRID 日志管理和分析。
 
 
 
@@ -88,7 +88,7 @@ config.reload.interval: 5s
 netstat -ntpa | grep 5000
 tcp6       0      0 :::5000                 :::*                    LISTEN      25744/java
 ----
-. 在StorageGRID 管理器图形用户界面中、配置外部系统日志服务器以向Logstash发送日志消息。请参见 https://www.netapp.tv/details/29396["演示视频"] 了解详细信息。
+. 在StorageGRID 管理器图形用户界面中、配置外部系统日志服务器以向Logstash发送日志消息。有关详细信息、请参见 https://media.netapp.com/video-detail/3d090a61-23d7-5ad7-9746-4cebbb7452fb/storagegrid-log-analysis-using-elk-stack["演示视频"^] 。
 . 您需要在Logstash服务器上配置或禁用防火墙、以允许StorageGRID 节点连接到定义的TCP端口。
 . 在Kibana GUI中、选择Management -> Dev Tools。在控制台页面上、运行此get命令以确认已在Elasticsearch上创建新索引。
 +

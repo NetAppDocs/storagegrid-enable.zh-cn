@@ -622,7 +622,6 @@
   <block id="51e1f53c9c33ce7f260e99f66853181d" category="summary">通过StorageGRID 11.6系统日志转发功能、您可以配置外部系统日志服务器来收集和分析StorageGRID 日志消息。ELK (Elasticsearch、Logstash、Kibana)已成为最受欢迎的日志分析解决方案之一。本文包括用于筛选和定义日志消息模式的Logstash配置示例、Kibana查询、图表和信息板示例、可帮助您快速开始StorageGRID 日志管理和分析。</block>
   <block id="ba8b98c81be3d04d10309b1945f41b3c" category="doc">使用ELK堆栈进行StorageGRID 日志分析</block>
   <block id="febdad8f949c4133d32f6ec0e8b0ca1c" category="inline-link">使用ELK视频进行StorageGRID 日志分析</block>
-  <block id="b165bee40a44e630afb8a902059ed458" category="paragraph">通过StorageGRID 11.6系统日志转发功能、您可以配置外部系统日志服务器来收集和分析StorageGRID 日志消息。ELK (Elasticsearch、Logstash、Kibana)已成为最受欢迎的日志分析解决方案之一。请观看<block ref="1c3903c549bd0599ac0ebb1c424871aa" category="inline-link-rx"></block> 查看ELK配置示例以及如何使用它来识别失败的S3请求并对其进行故障排除。本文提供了Logstash配置、Kibana查询、图表和信息板的示例文件、可帮助您快速开始StorageGRID 日志管理和分析。</block>
   <block id="5a2ebfb8baa378cfcfcba58bbb1380c2" category="section-title">要求</block>
   <block id="b30496f397e70350f3c0324082c41741" category="list-text">StorageGRID 11.6.0.2或更高版本</block>
   <block id="b8dc02d4e6fb27304a65c0d58fbdf121" category="list-text">ELK (Elasticsearch、Logstash和Kibana)已安装并运行7.1x或更高版本</block>
@@ -646,7 +645,6 @@
   <block id="1e2849b34515b73b14e350b3cfc6a222" category="list-text">检查/var/log/logstash/logstash-plain.log并确认在使用新配置文件启动Logstash时没有错误。</block>
   <block id="25b182c5b3173c341b5471a371174d7d" category="list-text">确认TCP端口已启动并正在侦听。+在此示例中、使用TCP端口5000。</block>
   <block id="225e60e541052bd49fdac4b77ffecbc9" category="inline-link">演示视频</block>
-  <block id="fa1074da41258119adddd6a31eb40641" category="list-text">在StorageGRID 管理器图形用户界面中、配置外部系统日志服务器以向Logstash发送日志消息。请参见<block ref="144d48037e96a9804672c6dc7123d436" category="inline-link-rx"></block> 了解详细信息。</block>
   <block id="defe6f8b45f596c620301bef8fdfbee9" category="list-text">您需要在Logstash服务器上配置或禁用防火墙、以允许StorageGRID 节点连接到定义的TCP端口。</block>
   <block id="9391523be65dad63e7fad8e0d28ee818" category="list-text">在Kibana GUI中、选择Management -&gt; Dev Tools。在控制台页面上、运行此get命令以确认已在Elasticsearch上创建新索引。</block>
   <block id="30d46e8002bdd5c520a62523d772ebca" category="list-text">在Kibana GUI中、创建索引模式(ELK 7.x)或数据视图(ELK 8.x)。</block>
@@ -1470,11 +1468,8 @@ DERMIO使用字节范围GET在查询期间同时从同一对象中提取不同�
   <block id="5db9c9da095f8d74e0628dbbdfdfb825" category="paragraph">根据此基准测试结果、我们可以得出结论、针对基于S3的工作负载进行优化的大数据分析系统是一个主要性能因素。在使用S3存储时、由于使用的是Hive、因此、使用此解决方案可以优化查询执行、高效利用元数据并提供对S3数据的无缝访问、从而获得比Hive更高的性能。请参见此部分<block ref="e4ec3c3ef03861ef67845dfb086c7b17" category="inline-link-rx"></block> 使用StorageGRID配置d不良S3数据源。</block>
   <block id="c0c37f88f031a9b491d9a8bbea81dda7" category="paragraph">请访问以下链接、详细了解StorageGRID和德莱米奥如何协同工作来提供现代化且高效的数据湖基础架构、以及NetApp如何从Hive + HDFS迁移到德莱米奥+ StorageGRID来显著提高大数据分析效率。</block>
   <block id="79304bd05c48f486a8924e2c45f39311" category="inline-link">借助NetApp StorageGRID提升大数据的性能</block>
-  <block id="9f6a1ff945eb33fcb8e19e5c7f4d3562" category="list-text"><block ref="9f6a1ff945eb33fcb8e19e5c7f4d3562" category="inline-link-rx"></block></block>
   <block id="5683e5844e7df088ba30c5038415b393" category="inline-link">借助StorageGRID和d处 米奥打造现代化、功能强大且高效的数据湖基础架构</block>
-  <block id="90db912c71e3eeae0631168476c49b1d" category="list-text"><block ref="90db912c71e3eeae0631168476c49b1d" category="inline-link-rx"></block></block>
   <block id="1f3f85a45cc94830ad50d8dcc85d553a" category="inline-link">NetApp如何利用产品分析重新定义客户体验</block>
-  <block id="7014c893b79b05f09938975b394e0ca5" category="list-text"><block ref="7014c893b79b05f09938975b394e0ca5" category="inline-link-rx"></block></block>
   <block id="06b48b444551989a8bbf76e3cb86a3d2" category="sidebar">使用StorageGRID配置GitLab</block>
   <block id="00f36bd2b4cd1d9e59ff895b5e131be2" category="sidebar">技术报告</block>
   <block id="23e421cbf9f56a23426fd9d29746a636" category="summary">本指南介绍了在多站点网格中进行StorageGRID站点重新定位的准备和操作步骤。</block>
@@ -2905,4 +2900,9 @@ StorageGRID可以通过为存储节点或运行负载平衡器和管理节点的
   <block id="5f4d89602a81547894d41dd65645b683" category="list-text">Terles CipherTrust Manager 2.12</block>
   <block id="46fad314fdbc03f6e06527dc5732d12d" category="list-text">Terles CipherTrust Manager 2.13</block>
   <block id="3447b7450cb0c3a342ab8a5c8c53086e" category="list-text">Terles CipherTrust Manager 2.14</block>
+  <block id="2118853f538fca485356f21c05a7d4f8" category="list-text"><block ref="2118853f538fca485356f21c05a7d4f8" category="inline-link-rx"></block></block>
+  <block id="22e833c8d6d091d576273597a887e60e" category="list-text"><block ref="22e833c8d6d091d576273597a887e60e" category="inline-link-rx"></block></block>
+  <block id="be89a903679bdf28679c22b4ed6c9806" category="list-text"><block ref="be89a903679bdf28679c22b4ed6c9806" category="inline-link-rx"></block></block>
+  <block id="79007772b99cbebaceca4f4abdc9236b" category="paragraph">通过StorageGRID 11.6系统日志转发功能、您可以配置外部系统日志服务器来收集和分析StorageGRID 日志消息。ELK (Elasticsearch、Logstash、Kibana)已成为最受欢迎的日志分析解决方案之一。观看以查看示例的<block ref="a42387db058ee8ea3a8dcc51c8812963" category="inline-link-rx"></block> 模拟配置、以及如何使用它来识别失败的S3请求并对其进行故障排除。本文提供了Logstash配置、Kibana查询、图表和信息板的示例文件、可帮助您快速开始StorageGRID 日志管理和分析。</block>
+  <block id="31b606c7f1c871f0b8ba92c74d0c9480" category="list-text">在StorageGRID 管理器图形用户界面中、配置外部系统日志服务器以向Logstash发送日志消息。有关详细信息、请参见<block ref="2216f063c2431b11fee834376e17fce1" category="inline-link-rx"></block> 。</block>
 </blocks>

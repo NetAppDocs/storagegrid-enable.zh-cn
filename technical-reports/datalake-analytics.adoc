@@ -144,7 +144,7 @@ dremio是一种数据湖引擎、它使用端到端Apache Arrow(阿帕奇箭头)
 
 请访问以下链接、详细了解StorageGRID和德莱米奥如何协同工作来提供现代化且高效的数据湖基础架构、以及NetApp如何从Hive + HDFS迁移到德莱米奥+ StorageGRID来显著提高大数据分析效率。
 
-* https://www.netapp.tv/details/31426?mcid=02148179640195118863901007338453703701["借助NetApp StorageGRID提升大数据的性能"]
-* https://www.netapp.com/media/80932-SB-4236-StorageGRID-Dremio.pdf["借助StorageGRID和d处 米奥打造现代化、功能强大且高效的数据湖基础架构"]
-* https://youtu.be/Y57Gyj4De2I?si=nwVG5ohCj93TggKS["NetApp如何利用产品分析重新定义客户体验"]
+* https://media.netapp.com/video-detail/de55c7b1-eb5e-5b70-8790-1241039209e2/boost-performance-for-your-big-data-with-netapp-storagegrid-1600-1["借助NetApp StorageGRID提升大数据的性能"^]
+* https://www.netapp.com/media/80932-SB-4236-StorageGRID-Dremio.pdf["借助StorageGRID和d处 米奥打造现代化、功能强大且高效的数据湖基础架构"^]
+* https://youtu.be/Y57Gyj4De2I?si=nwVG5ohCj93TggKS["NetApp如何利用产品分析重新定义客户体验"^]
 
