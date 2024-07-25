@@ -1,0 +1,57 @@
+---
+permalink: evaluation-software.html 
+sidebar: sidebar 
+keywords: eval, StorageGRID, S3, software, download 
+summary: 为潜在客户访问StorageGRID评估软件的步骤。 
+---
+= 访问StorageGRID评估软件的步骤
+:hardbreaks:
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+本说明面向与NetApp合作的NetApp销售人员、合作伙伴和潜在客户。
+
+
+
+== 注册帐户
+
+. 使用您的业务电子邮件在上注册帐户 https://mysupport.netapp.com/site/user/registration["NetApp 支持站点"] 。
++
+.. 如果您已有帐户、请继续执行下一步。
+
+
+. 使用创建的帐户登录。
+. 创建非技术支持案例、将访问级别提升到"潜在客户"。要执行此操作、请单击 "https://mysupport.netapp.com/site/help?relevanturl=%2Fuser%2Fregistration["报告问题"]网站页脚中的""链接。
+. 选择"注册问题"作为反馈类别。
+. 在备注部分、写下："我希望获得潜在客户访问权限、以下载StorageGRID评估软件。"
++
+.. 提及建议潜在客户访问请求的NetApp内部人员的姓名。
+
+
+
+
+
+
+== 下载StorageGRID
+
+. 在您的支持案例经过审核和批准后、NetApp支持部门将通过电子邮件通知您、您的帐户已获得潜在客户访问权限。
+. 下载 https://mysupport.netapp.com/site/downloads/evaluation/storagegrid["StorageGRID评估软件"]。
+
+
+[NOTE]
+====
+此Eval许可证文件位于此zip文件中。解压缩后、文件名称为StorageGRID-WebScale <version>\vSphere NLF000000.txt。
+
+====
+[NOTE]
+====
+下载软件是一个涉及贸易合规措施以遵守法律要求的过程。为了确保合规性、用户必须先创建帐户并创建支持案例、然后才能获得访问权限。此流程有助于我们保持适当的控制和文档记录、同时为潜在客户提供他们所需的生产就绪软件。
+
+我们提供StorageGRID的"生产就绪"版本、它不是开源版本或替代版本。需要注意的是，除非潜在客户升级到生产许可证，否则不提供*支持*。
+
+如在上述步骤中遇到任何问题、请联系StorageGRID.Feedback@netapp.com。
+
+====

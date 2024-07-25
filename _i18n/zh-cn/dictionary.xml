@@ -2906,4 +2906,26 @@ StorageGRID可以通过为存储节点或运行负载平衡器和管理节点的
   <block id="79007772b99cbebaceca4f4abdc9236b" category="paragraph">通过StorageGRID 11.6系统日志转发功能、您可以配置外部系统日志服务器来收集和分析StorageGRID 日志消息。ELK (Elasticsearch、Logstash、Kibana)已成为最受欢迎的日志分析解决方案之一。观看以查看示例的<block ref="a42387db058ee8ea3a8dcc51c8812963" category="inline-link-rx"></block> 模拟配置、以及如何使用它来识别失败的S3请求并对其进行故障排除。本文提供了Logstash配置、Kibana查询、图表和信息板的示例文件、可帮助您快速开始StorageGRID 日志管理和分析。</block>
   <block id="31b606c7f1c871f0b8ba92c74d0c9480" category="list-text">在StorageGRID 管理器图形用户界面中、配置外部系统日志服务器以向Logstash发送日志消息。有关详细信息、请参见<block ref="2216f063c2431b11fee834376e17fce1" category="inline-link-rx"></block> 。</block>
   <block id="4ecf6b273d67f2120caae7734e1fcf14" category="list-text">Rubeck</block>
+  <block id="c2d8fc700534345077a260fb9791fba1" category="summary">为潜在客户访问StorageGRID评估软件的步骤。</block>
+  <block id="bc47929a96a58ef3444da8ba390888bc" category="doc">访问StorageGRID评估软件的步骤</block>
+  <block id="0984c1edd8b74672c83f621be7c2371d" category="paragraph">本说明面向与NetApp合作的NetApp销售人员、合作伙伴和潜在客户。</block>
+  <block id="d45294caa04dc2a59a6a9779ecb261e1" category="section-title">注册帐户</block>
+  <block id="8c41baf1ca98e1184f48c4721d44d431" category="inline-link">NetApp 支持站点</block>
+  <block id="6b2e1d4820e2c64094628af51b07c4ae" category="list-text">使用您的业务电子邮件在上注册帐户<block ref="a49f41675f7c48eedf0647a0a62c5043" category="inline-link-rx"></block> 。</block>
+  <block id="c3864a0d9e7266b854aa1d673036710a" category="list-text">如果您已有帐户、请继续执行下一步。</block>
+  <block id="0fedb2e26434d49a94f9450ce477c3cc" category="list-text">使用创建的帐户登录。</block>
+  <block id="0c6d9ab23098fd3e876c216fe1ca7ffc" category="inline-link">报告问题</block>
+  <block id="8751d140672b36b77b265c8fe793befc" category="list-text">创建非技术支持案例、将访问级别提升到"潜在客户"。要执行此操作、请单击 <block ref="94c9ec214c60b057a12eaba547e0acae" category="inline-link-rx"></block>网站页脚中的""链接。</block>
+  <block id="940ab06ee98cba17f3c21dea0e603eb5" category="list-text">选择"注册问题"作为反馈类别。</block>
+  <block id="c1d4a23af565c411cff6271ce577104f" category="list-text">在备注部分、写下："我希望获得潜在客户访问权限、以下载StorageGRID评估软件。"</block>
+  <block id="ea7ab0148c9999f65837f6a1483f42ee" category="list-text">提及建议潜在客户访问请求的NetApp内部人员的姓名。</block>
+  <block id="ed721060d54c51e35da28db6ea8337ef" category="section-title">下载StorageGRID</block>
+  <block id="aed8ceb0f85821c90dc49c2c3bf1e494" category="list-text">在您的支持案例经过审核和批准后、NetApp支持部门将通过电子邮件通知您、您的帐户已获得潜在客户访问权限。</block>
+  <block id="6b387b831a4d44d44954a7effb99b5a1" category="inline-link">StorageGRID评估软件</block>
+  <block id="ad33c2b21ecd662fa9473920d4d724a3" category="list-text">下载<block ref="5b76293412a08db37d60e839e13bbf32" category="inline-link-rx"></block>。</block>
+  <block id="9149b5be5a51932ba9646a6a3707055b" category="paragraph">此Eval许可证文件位于此zip文件中。解压缩后、文件名称为StorageGRID-WebScale &lt;version&gt;\vSphere NLF000000.txt。</block>
+  <block id="51b1dd6c5fdbd0546171ebae104eca57" category="paragraph">下载软件是一个涉及贸易合规措施以遵守法律要求的过程。为了确保合规性、用户必须先创建帐户并创建支持案例、然后才能获得访问权限。此流程有助于我们保持适当的控制和文档记录、同时为潜在客户提供他们所需的生产就绪软件。</block>
+  <block id="c4adfd76b7112414ec7a702816418613" category="paragraph">我们提供StorageGRID的"生产就绪"版本、它不是开源版本或替代版本。需要注意的是，除非潜在客户升级到生产许可证，否则不提供*支持*。</block>
+  <block id="f20e94f5bb986812208034209609d5f1" category="paragraph">如在上述步骤中遇到任何问题、请联系StorageGRID.Feedback@netapp.com。</block>
+  <block id="2988dc07d3c7f2675b337739e6a81ff7" category="sidebar">试用StorageGRID</block>
 </blocks>
