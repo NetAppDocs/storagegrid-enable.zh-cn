@@ -140,7 +140,7 @@ StorageGRID智能策略引擎可帮助您选择以下选项之一：
 |===
 默认规则为ILM 2复制规则。在此测试中、对任何200 KB或更大的对象应用了纠删编码2+1规则。默认规则应用于小于200 KB的对象。以这种方式应用规则是StorageGRID的最佳实践。
 
-有关此测试环境的技术详细信息、请阅读中的解决方案设计和最佳实践一节 https://www.netapp.com/us/media/tr-4831.pdf["借助Commvault,实现NetApp横向扩展数据保护"] 技术报告。
+有关此测试环境的技术详细信息、请阅读技术报告中的"解决方案设计和最佳实践"一节 https://www.netapp.com/pdf.html?item=/media/19372-tr-4831.pdf["借助Commvault,实现NetApp横向扩展数据保护"^] 。
 
 
 
@@ -511,7 +511,7 @@ image:commvault/job-summary.png["作业摘要"]
 
 === 基线性能测试
 
-表7显示了基线性能测试的结果。在辅助副本操作中、四个CommvaultMediaAgent将数据备份到NetApp AFF A300系统、并在NetApp StorageGRID上创建了一个辅助副本。有关测试设置环境的详细信息、请阅读中的解决方案设计和最佳实践一节 https://www.netapp.com/us/media/tr-4831.pdf["借助Commvault,实现NetApp横向扩展数据保护"] 技术报告。
+表7显示了基线性能测试的结果。在辅助副本操作中、四个CommvaultMediaAgent将数据备份到NetApp AFF A300系统、并在NetApp StorageGRID上创建了一个辅助副本。有关测试设置环境的详细信息、请阅读技术报告中的"解决方案设计和最佳实践"一节 https://www.netapp.com/pdf.html?item=/media/19372-tr-4831.pdf["借助Commvault,实现NetApp横向扩展数据保护"^] 。
 
 测试涉及100个VM和1000个VM、这两个测试都包含50/50的Windows和CentOS VM。
 

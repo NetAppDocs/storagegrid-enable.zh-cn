@@ -1768,7 +1768,6 @@ StorageGRID可以通过为存储节点或运行负载平衡器和管理节点的
   <block id="bc2966582cc91a73dfce86d847e8e569" category="inline-image-macro">作业摘要</block>
   <block id="ce8f9b25ff69c679a10481c883fed679" category="paragraph"><block ref="ce8f9b25ff69c679a10481c883fed679" category="inline-image-macro-rx" type="image"></block></block>
   <block id="23571a6157715a68dbc83017094ddb4f" category="section-title">基线性能测试</block>
-  <block id="6e861ca3d49a3946d380c959a4a035f6" category="paragraph">表7显示了基线性能测试的结果。在辅助副本操作中、四个CommvaultMediaAgent将数据备份到NetApp AFF A300系统、并在NetApp StorageGRID上创建了一个辅助副本。有关测试设置环境的详细信息、请阅读中的解决方案设计和最佳实践一节<block ref="03ce17f8b5e1206a493f3bd56ef5953d" category="inline-link-rx"></block> 技术报告。</block>
   <block id="225de55f95e8814ef869602a34589cd7" category="paragraph">测试涉及100个VM和1000个VM、这两个测试都包含50/50的Windows和CentOS VM。</block>
   <block id="229f4b7ae2ae04662d95b14f93a7ebe0" category="section-title">表7)基线性能测试。</block>
   <block id="2a78ed76450c3cb42320882b3e055b31" category="cell">操作</block>
@@ -2928,4 +2927,6 @@ StorageGRID可以通过为存储节点或运行负载平衡器和管理节点的
   <block id="c4adfd76b7112414ec7a702816418613" category="paragraph">我们提供StorageGRID的"生产就绪"版本、它不是开源版本或替代版本。需要注意的是，除非潜在客户升级到生产许可证，否则不提供*支持*。</block>
   <block id="f20e94f5bb986812208034209609d5f1" category="paragraph">如在上述步骤中遇到任何问题、请联系StorageGRID.Feedback@netapp.com。</block>
   <block id="2988dc07d3c7f2675b337739e6a81ff7" category="sidebar">试用StorageGRID</block>
+  <block id="af628eae5a4bda33fe7f98b90dfd07ad" category="paragraph">有关此测试环境的技术详细信息、请阅读技术报告中的"解决方案设计和最佳实践"一节<block ref="42208ea06469332a89cb87f688663202" category="inline-link-rx"></block> 。</block>
+  <block id="d448077c68c161f782d3bf423a865381" category="paragraph">表7显示了基线性能测试的结果。在辅助副本操作中、四个CommvaultMediaAgent将数据备份到NetApp AFF A300系统、并在NetApp StorageGRID上创建了一个辅助副本。有关测试设置环境的详细信息、请阅读技术报告中的"解决方案设计和最佳实践"一节<block ref="42208ea06469332a89cb87f688663202" category="inline-link-rx"></block> 。</block>
 </blocks>
