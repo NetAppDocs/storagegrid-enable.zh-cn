@@ -36,11 +36,11 @@ StorageGRID架构部署通常采用多站点模式。站点可以是主动-主�
 .步骤
 . 要确保在站点出现故障期间连接到StorageGRID、请配置高可用性(HA)组。在StorageGRID网格管理器界面(GMI)中、单击配置、高可用性组和+创建。
 +
-image:third-party-create-high-availability-group.png["thiry-party-crea-high-availability组"]
+image:vertias/veritas-create-high-availability-group.png["veritas/veritas-cree-high-availability组"]
 
 . 输入所需信息。单击Select Interfaces"(选择接口)、并包括Site1和Site2的网络接口、其中Site1 (主站点)是首选主站点。在同一子网中分配一个虚拟IP地址。单击保存。
 +
-image:third-party-edit-high-availability-group.png["thiry-party-edit-high-availability组"]
+image:veritas/veritas-edit-high-availability-group.png["veritas/veritas-edit-high-availability组"]
 
 . 此虚拟IP (VIP)地址应与Veritas Enterprise Vault分区配置期间使用的S3主机名相关联。VIP地址将流量解析为Site1、在Site1发生故障期间、VIP地址会将流量透明地重新路由到Site2。
 . 确保将数据复制到站点1和站点2。这样、如果Site1发生故障、则仍可从Site2访问对象数据。这是通过首先配置存储池来实现的。
@@ -51,14 +51,14 @@ image:third-party-edit-high-availability-group.png["thiry-party-edit-high-availa
 存储池是节点的逻辑分组、用于定义对象放置
 
 +
-image:third-party-storage-pool-details-site-1.png["thir-party-storage-pool-详细 信息-site-1"]
+image:veritas/veritas-storage-pool-details-site-1.png["veritas/veritas-storage-pool-细节-site-1"]
 
 +
-image:third-party-storage-pool-details-site-2.png["thir-party-storage-pool-详细 信息-site-2"]
+image:veritas/veritas-storage-pool-details-site-2.png["veritas/veritas-storage-pool-细节-site-2"]
 
 . 在StorageGRID GMI中、单击"ILM、规则"、然后单击+创建。按照向导中的说明创建ILM规则、为每个站点指定一个要存储的副本、并将其导出行为设置为平衡。
 +
-image:third-party-storage-pool-details-site-3.png["thir-party-storage-pool-详细 信息-site-3"]
+image:veritas/veritas-storage-pool-details-site-3.png["veritas/veritas-storage-pool-细节-site-3"]
 
 . 将ILM规则添加到ILM策略中并激活此策略。
 

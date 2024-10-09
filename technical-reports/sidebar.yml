@@ -20,7 +20,7 @@ entries:
   - title: 运行数据保护作业
     url: "/technical-reports/commvault/data-protection-jobs.html"
   - title: 查看基线性能测试
-    url: "/commvault/baseline-performance-tests.html"
+    url: "/technical-reports/commvault/baseline-performance-tests.html"
   - title: 存储分段一致性级别建议
     url: "/technical-reports/commvault/s3-consistency-levels.html"
 - title: TR-4626：负载平衡器

@@ -28,7 +28,7 @@ summary: 了解如何为StorageGRID配置网格网络子网。
 . 在子网1文本框中、至少为一个网格网络指定CIDR网络地址。
 . 单击最后一个条目旁边的加号以添加其他网络条目。如果已部署至少一个节点、请单击发现网格网络子网以使用已向网格管理器注册的网格节点报告的子网自动填充网格网络子网列表。
 +
-image:bare-metal-subnets-grid-network.png["裸机-子网-网格-网络"]
+image:bare-metal/bare-metal-subnets-grid-network.png["裸机-子网-网格-网络"]
 
 . 单击下一步。
 

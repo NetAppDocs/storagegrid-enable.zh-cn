@@ -172,7 +172,7 @@ BLOCK_DEVICE_RANGEDB_002 = /dev/mapper/SN-Db02`
 
 如下图所示、这些服务器将托管六个Docker容器、每个主机两个。RAM的计算方法是、为每个容器提供24 GB、为主机操作系统本身提供16 GB。
 
-image:bare-metal-layout-for-three-hosts.png["三台主机的布局示例。"]
+image:bare-metal/bare-metal-layout-for-three-hosts.png["三台主机的布局示例。"]
 
 每个物理主机(或VM)所需的总RAM为24 x 2 + 16 = 64 GB。下表列出了主机1、2和3所需的磁盘存储。
 

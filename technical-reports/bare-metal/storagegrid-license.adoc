@@ -28,7 +28,7 @@ summary: 了解如何上传StorageGRID许可证文件。
 NOTE: StorageGRID 安装归档包含一个免费许可证，不提供产品的任何支持授权。您可以在安装后更新为提供支持的许可证。
 
 +
-image:bare-metal-update-license.png["裸机更新许可证"]
+image:bare-metal/bare-metal-update-license.png["裸机更新许可证"]
 
 . 单击下一步。
 

@@ -18,4 +18,4 @@ summary: 了解StorageGRID中全局负载平衡的设计注意事项和要求。
 
 全局负载平衡需要与DNS集成、以便在多个StorageGRID站点之间提供智能路由。此功能不在StorageGRID域中、必须由第三方解决方案(如上文讨论的负载平衡器产品)和/或DNS流量控制解决方案(如Infoblox)提供。此顶级负载平衡可提供到命名空间中最近的目标站点的智能路由、以及中断检测和重定向到命名空间中的下一个站点。典型的GSLB实施由顶级GSLB组成、其中站点池包含站点本地负载平衡器。站点负载平衡器包含本地站点存储节点的池。这可能包括用于GSLB功能的第三方负载平衡器和提供站点本地负载平衡的StorageGRID的组合、或者第三方的组合、或者前面讨论的许多第三方的组合可以同时提供GSLB和站点本地负载平衡。
 
-image:load-balancer-generic-gslb.png["通用GSLB"]
+image:load-balancer/load-balancer-generic-gslb.png["通用GSLB"]

@@ -22,7 +22,7 @@ summary: 了解Veritas Enterprise Vault如何使用StorageGRID作为灾难恢复
 
 StorageGRID为Veritas Enterprise Vault提供了一个与S3兼容的内部云备份目标。下图展示了Veritas Enterprise Vault和StorageGRID架构。
 
-image:third-party-veritas-enterprise-vault-and-storagegrid-architecture.png["第三方-veritas-Enterprise—vault-and-storagegrid—架构"]
+image:veritas/veritas-enterprise-vault-and-storagegrid-architecture.png["Veritas/Veritas-Veritas企业存储和StorageGRID架构"]
 
 
 

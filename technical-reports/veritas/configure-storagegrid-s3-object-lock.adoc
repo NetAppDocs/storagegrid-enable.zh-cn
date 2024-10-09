@@ -29,19 +29,19 @@ summary: 了解如何使用S3对象锁定为WORM存储配置StorageGRID。
 .步骤
 . 在StorageGRID租户管理器中、创建存储分段、然后单击继续
 +
-image:third-party-create-bucket.png["third-party-create-bucket.png"]
+image:veritas/veritas-create-bucket.png["网址：veritas-create-bucket.png"]
 
 . 选择Enable S3 Object Lock选项、然后单击Create Bucket.
 +
-image:third-party-create-bucket-2.png["third-party-create-bucket-2.png"]
+image:veritas/veritas-create-bucket-2.png["网址：veritas-create-bucket-2.png"]
 
 . 创建存储分段后、选择存储分段以查看存储分段选项。展开"S3 Object Lock"(S3对象锁定)下拉选项。
 +
-image:third-party-overview.png["third-party-overview.png"]
+image:veritas/veritas-overview.png["网址：veritas-overview.png"]
 
 . 在默认保留下、选择启用并设置默认保留期限1天。单击 Save Changes 。
 +
-image:third-party-s3-object-lock.png["thir-party-s3-object-lock"]
+image:veritas/veritas-s3-object-lock.png["Veritas/Veritas-s3-object-lock"]
 
 +
 存储分段现已准备就绪、可供Enterprise Vault用来存储WORM数据。
@@ -57,7 +57,7 @@ image:third-party-s3-object-lock.png["thir-party-s3-object-lock"]
 .步骤
 . 重复部分中的步骤1-3 link:configure-storagegrid-s3-object-lock.html#configure-storagegrid-s3-object-lock-default-bucket-retention["基本配置"] 、但这次选择使用S3对象锁定在WORM模式下存储数据选项。单击下一步。
 +
-image:third-party-new-partition-8.png["thir-party-new-partpartition－8"]
+image:veritas/veritas-new-partition-8.png["veritas/veritas-new-partition－8"]
 
 . 输入S3存储分段连接设置时、请确保输入的S3存储分段的名称已启用S3对象锁定默认保留。
 . 测试连接以验证设置。

@@ -32,12 +32,12 @@ NOTE: 如果缺少网格节点，请确认已成功部署该节点。
 
 . 单击要批准的待定节点旁边的单选按钮。
 +
-image:bare-metal-approve-configure-grid-nodes.png["介质/裸机-批准-配置-网格-节点"]
+image:bare-metal/bare-metal-approve-configure-grid-nodes.png["介质/裸机-批准-配置-网格-节点"]
 
 . 单击批准。
 . 在常规设置中、根据需要修改以下属性的设置。
 +
-image:bare-metal-admin-node-configuration.png["裸机管理节点配置"]
+image:bare-metal/bare-metal-admin-node-configuration.png["裸机管理节点配置"]
 
 +
 --*Site*:此网格节点的站点的系统名称。
@@ -109,9 +109,9 @@ NOTE: 如果您为管理网络配置选择了DHCP、并更改了此处的值、�
 
 . 单击保存。网格节点条目将移至 "Approved Nodes" 列表。
 +
-image:bare-metal-approved-node-list.png["裸机批准的节点列表"]
+image:bare-metal/bare-metal-approved-node-list.png["裸机批准的节点列表"]
 
-. 对要批准的每个待定网格节点重复步骤1–8。
+. 对要批准的每个待定网格节点重复步骤1-8。
 +
 您必须批准网格中所需的所有节点。但是、您可以在单击"摘要"页面上的"安装"之前随时返回到此页面。要修改已批准的网格节点的属性、请单击其单选按钮、然后单击编辑。
 

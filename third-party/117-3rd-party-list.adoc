@@ -36,6 +36,7 @@ summary: 第三方解决方案已通过StorageGRID 11.7的验证
 * 默认X
 * 磁盘转换数据
 * Dremio
+* ElASCSearch Snapshot (包括冻结层)
 * 员工
 * 富士尼尔姆对象归档
 * GitHub企业服务器
@@ -70,7 +71,7 @@ summary: 第三方解决方案已通过StorageGRID 11.7的验证
 * Trino
 * varnish Enterprise 6.0.4
 * Veeam 12.
-* Veritas Enterprise Vault 14
+* Veritas Enterprise Vault 14.
 * Veritas NetBackup 8.0
 * Vertica 10.x
 * Viispine
@@ -89,8 +90,8 @@ summary: 第三方解决方案已通过StorageGRID 11.7的验证
 * OpenText文档21.4
 * Rubeck
 * Veeam 12.
-* Veritas Enterprise Vault 14.2.2
-* Veritas NetBackup 10.1.1及更高版本
+* Veritas Enterprise 14.2.2
+* Veritas 10.1.1及更高版本
 
 
 

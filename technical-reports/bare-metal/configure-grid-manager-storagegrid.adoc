@@ -64,4 +64,4 @@ https://primary_admin_node_ip:8443
 . 单击安装StorageGRID系统。此时将显示用于配置StorageGRID网格的页面。
 
 
-image:bare-metal-configure-storagegrid-grid.png["裸机配置storagegrid"]
+image:bare-metal/bare-metal-configure-storagegrid-grid.png["裸机配置storagegrid"]

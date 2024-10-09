@@ -34,7 +34,7 @@ Veeam的对象工作负载会为小型对象创建大量并发放置、删除和
 
 === 建议版本
 
-建议始终保持最新、并为Veeam Backup & Replication 12系统应用最新的修补程序。目前、我们建议至少安装Veeam修补程序P20230718。
+建议始终保持最新、并为Veeam Backup & Replication 12或12.1系统应用最新的修补程序。目前、我们建议至少安装Veeam 12修补程序P20230718。
 
 
 
@@ -85,7 +85,7 @@ Veeam备份作业可以使用不同的块大小选项进行配置、应仔细考
 
 === 建议版本
 
-对于Veeam部署、建议使用带有最新修补程序的NetApp StorageGRID 11.5或11.7版本。StorageGRID 11.6.0.11和11.7.0.4中引入了许多优化功能、这些功能对Veeam工作负载非常有用。建议始终保持最新、并为StorageGRID系统应用最新的修补程序。
+对于Veeam部署、建议使用带有最新修补程序的NetApp StorageGRID 11.7或11.8.建议始终保持最新、并为StorageGRID系统应用最新的修补程序。
 
 
 
@@ -186,7 +186,7 @@ image:veeam-bp/tc_2.png["流量分类策略指标"]
 
 要了解有关本文档中所述信息的更多信息，请查看以下文档和 / 或网站：
 
-* link:https://docs.netapp.com/us-en/storagegrid-117/["NetApp StorageGRID 11.7产品文档"^]
+* link:https://docs.netapp.com/us-en/storagegrid-118/["NetApp StorageGRID 11.8产品文档"^]
 * link:https://www.veeam.com/documentation-guides-datasheets.html?productId=8&version=product%3A8%2F221["Veeam备份和复制"^]
 
 

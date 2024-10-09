@@ -22,7 +22,7 @@ StorageGRID CloudMirror是StorageGRID的一个组件、可以配置为在将某�
 .步骤
 . 要配置CloudMirror、请为S3目标创建一个平台服务端点。
 +
-image:ransomware-protection-create-endpoint.png["勒索软件保护创建端点"]
+image:ransomware/ransomware-protection-create-endpoint.png["勒索软件保护创建端点"]
 
 . 在源存储分段上、配置复制以使用配置的端点。
 +
@@ -42,10 +42,10 @@ image:ransomware-protection-create-endpoint.png["勒索软件保护创建端点"
 ----
 . 创建ILM规则以管理存储放置和版本存储持续时间管理。在此示例中、配置了要存储的对象的非最新版本。
 +
-image:ransomware-protection-create-ilm-rule.png["勒索软件保护创建ILM规则"]
+image:ransomware/ransomware-protection-create-ilm-rule.png["勒索软件保护创建ILM规则"]
 
 +
-image:ransomware-protection-create-ilm-rule-step-2.png["勒索软件保护-cree-ilm-맦 퓲-step 2"]
+image:ransomware/ransomware-protection-create-ilm-rule-step-2.png["勒索软件保护-cree-ilm-맦 퓲-step 2"]
 
 +
 站点1中有两个副本、保留30天。此外、您还可以根据在ILM规则中使用加载时间作为参考时间来为当前版本的对象配置规则、以匹配源存储分段存储持续时间。可以对对象版本的存储放置进行卷或复制。

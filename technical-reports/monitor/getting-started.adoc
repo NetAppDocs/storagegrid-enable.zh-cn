@@ -16,7 +16,7 @@ StorageGRID网格管理界面(GMI)信息板提供了StorageGRID基础架构的�
 
 使用GMI信息板检查网格的每个核心组件。
 
-image:monitor-storagegrid-gmi-dashboard.png["monitor-storagegrid—GMI-Dashboard"]
+image:monitor/monitor-storagegrid-gmi-dashboard.png["monitor-storagegrid—GMI-Dashboard"]
 
 
 

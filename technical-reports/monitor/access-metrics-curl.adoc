@@ -21,7 +21,7 @@ summary: 了解如何在NetApp StorageGRID中使用CURL和授权令牌通过命�
 . 从GMI中、选择菜单：帮助[API文档]。
 . 向下滚动到身份验证以查找授权操作。以下屏幕截图显示了POST方法的参数。
 +
-image:monitor-post-method.png["monitor-post-方法"]
+image:monitor/monitor-post-method.png["monitor-post-方法"]
 
 . 单击试用并使用您的GMI用户名和密码编辑正文。
 . 单击“执行”。

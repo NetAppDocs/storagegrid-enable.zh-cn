@@ -28,7 +28,7 @@ summary: 您可以在此处找到一些NetApp StorageGRID 博客。
 * 2023年3月30日： https://www.netapp.com/blog/3-2-1-backup-bluexp-ontap-storagegrid-rest-apis/["使用BlueXP通过符合3：2：1的备份策略保护Epic EHR"^]
 * 2023年3月14日： https://community.netapp.com/t5/Tech-ONTAP-Blogs/How-to-back-up-Epic-Systems-EHR-databases-with-one-command-in-a-3-2-1-compliant/ba-p/442426#M171["如何在符合3：2：1的架构中使用一个命令备份Epic Systems EHR数据库"^]
 * 2023年2月14日： https://www.netapp.com/blog/bedag-storagegrid-story/["巧克力、滑板、表和大型机有哪些共同之处？"^]
-* 2023年1月18日： https://community.netapp.com/t5/Tech-ONTAP-Blogs/StorageGRID-S3-Object-Lock-validated-for-Veritas-NetBackup/ba-p/440916["StorageGRID S3对象锁定已通过Veritas NetBackup的验证"^]
+* 2023年1月18日： https://community.netapp.com/t5/Tech-ONTAP-Blogs/StorageGRID-S3-Object-Lock-validated-for-veritas-NetBackup/ba-p/440916["StorageGRID S3对象锁定已通过Veritas NetBackup的验证"^]
 * 2023年1月16日： https://community.netapp.com/t5/Tech-ONTAP-Blogs/StorageGRID-renews-NF203-and-ISO-IEC-25051-compliance-certification/ba-p/440942["StorageGRID 续订了NF203和ISO/IEC 25051合规性认证"^]
 * 2022年12月6日： https://community.netapp.com/t5/Tech-ONTAP-Blogs/StorageGRID-achieves-KPMG-compliance-certification/ba-p/440343["StorageGRID 获得KPMG合规认证"^]
 * 2022年11月23日： https://www.netapp.com/blog/explainable-AI-netapp-modzy/["利用由NetApp和Modzy提供支持的MLOps实现可解释的人工智能"^]

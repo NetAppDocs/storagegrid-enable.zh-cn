@@ -30,7 +30,7 @@ summary: 了解第三方和全局负载平衡器在StorageGRID等对象存储系
 
 下图使用示例URL/完全限定域名(FQDN) s3.company.com”。负载平衡器会创建一个虚拟IP (VIP)、该IP可通过DNS解析为FQDN、然后将应用程序的任何请求定向到StorageGRID节点池。负载平衡器会对每个节点执行运行状况检查、并仅与运行状况良好的节点建立连接。
 
-image:load-balancer-local-traffic-manager-load-balancer.png["本地流量管理器负载平衡器"]
+image:load-balancer/load-balancer-local-traffic-manager-load-balancer.png["本地流量管理器负载平衡器"]
 
 此图显示了StorageGRID提供的负载平衡器、但第三方负载平衡器的概念相同。应用程序使用负载平衡器上的VIP建立HTTP会话、流量将通过负载平衡器传输到存储节点。默认情况下、从应用程序到负载平衡器以及从负载平衡器到存储节点的所有流量都会通过HTTPS进行加密。HTTP是一个受支持的选项。
 

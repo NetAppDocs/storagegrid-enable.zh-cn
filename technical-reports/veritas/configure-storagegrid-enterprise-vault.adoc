@@ -49,46 +49,46 @@ NOTE: 对于WORM存储(对象锁定)、需要Enterprise Vault 14.2.2或更高版
 .步骤
 . 启动Enterprise Vault管理控制台。
 +
-image:third-party-enterprise-vault.png["介质/第三方企业存储"]
+image:veritas/veritas-enterprise-vault.png["介质/Veritas/Veritas企业存储"]
 
 . 在适当的存储库中创建新的存储分区。展开存储组文件夹、然后展开相应的存储。右键单击分区并选择菜单：新建[Partition (分区)]。
 +
-image:third-party-enterprise-vault-2.png["media/thiry-party-Enterprise vault-2"]
+image:veritas/veritas-enterprise-vault-2.png["介质/Veritas/Veritas-Enterprise vault-2"]
 
 . 按照新建分区创建向导进行操作。从存储类型下拉菜单中、选择NetApp StorageGRID (S3)。单击下一步。
 +
-image:third-party-new-partition.png["第三方新分区"]
+image:veritas/veritas-new-partition.png["Veritas/Veritas-new-partition"]
 
 . 保持选中"Store Data in WORM Mode Using S3 Object Lock"(使用S3对象锁定在WORM模式下存储数据)选项。单击下一步。
 +
-image:third-party-new-partition-2.png["thir-party-new-partpartition－2 (第三方新分区－2)"]
+image:veritas/veritas-new-partition-2.png["Veritas/Veritas新分区-2"]
 
 . 在连接设置页面上、提供以下信息：
 +
 ** 访问密钥 ID
 ** 机密访问密钥
 ** 服务主机名称：确保包括在StorageGRID中配置的负载平衡器端点(LBE)端口(例如\https：//Data <hostname>：<LBE_port>)
-** 存储分段名称：预先创建的目标存储分段的名称。Veritas Enterprise Vault不会创建分段。
+** 存储分段名称：预先创建的目标存储分段的名称。Veritas Enterprise Vault不会创建存储分段。
 ** 存储分段区域： `us-east-1` 为默认值。
 +
-image:third-party-new-partition-3.png["thir-party-new-partiry-3"]
+image:veritas/veritas-new-partition-3.png["Veritas/Veritas新分区-3"]
 
 
 
 . 要验证与StorageGRID存储分段的连接、请单击测试。验证连接测试是否成功。单击"OK"(确定)、然后单击"Next"(下一步)。
 +
-image:third-party-new-partition-4.png["thiry-party-4"]
+image:veritas/veritas-new-partition-4.png["Veritas/Veritas-new-partition—4"]
 
 . StorageGRID不支持S3复制参数。为了保护对象、StorageGRID使用信息生命周期管理(ILM)规则指定数据保护方案-多个副本或纠删编码。选择When Archived Files Existing on the Storage (存储上存在归档文件时)选项、然后单击Next (下一步)。
 +
-image:third-party-new-partition-5.png["thir-party-new-partiry-5"]
+image:veritas/veritas-new-partition-5.png["Veritas/Veritas-new-partition－5"]
 
 . 验证摘要页面上的信息、然后单击完成。
 +
-image:third-party-new-partition-6.png["thiry-party-6"]
+image:veritas/veritas-new-partition-6.png["Veritas/Veritas-new-partition－6"]
 
 . 成功创建新的存储分区后、您可以在以StorageGRID作为主存储的企业存储中存档、还原和搜索数据。
 +
-image:third-party-new-partition-7.png["thiry-party-7"]
+image:veritas/veritas-new-partition-7.png["Veritas/Veritas-new-partition－7"]
 
 

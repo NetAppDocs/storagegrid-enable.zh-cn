@@ -32,7 +32,7 @@ CAUTION: 客户端网络未在安装过程中尽早启用、无法成为NTP服�
 . 在服务器1到服务器4文本框中、指定至少四个NTP服务器的IP地址。
 . 如有必要、请单击最后一个条目旁边的加号以添加更多服务器条目。
 +
-image:bare-metal-add-server-entries.png["裸机添加服务器条目"]
+image:bare-metal/bare-metal-add-server-entries.png["裸机添加服务器条目"]
 
 . 单击下一步。
 

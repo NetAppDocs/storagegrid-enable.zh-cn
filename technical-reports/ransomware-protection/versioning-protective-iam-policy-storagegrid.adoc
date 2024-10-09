@@ -20,7 +20,7 @@ summary: 了解如何通过在StorageGRID中对存储分段启用版本控制并
 
 在StorageGRID 11.7中、引入了一个新的S3组策略选项"Ransmans要 缓解"、以便于实施此解决方案。在租户中创建用户组时、在选择组权限后、您可以看到此新的可选策略。
 
-image:ransomware-protection-create-group.png["勒索软件保护创建组"]
+image:ransomware/ransomware-protection-create-group.png["勒索软件保护创建组"]
 
 下面是组策略的内容、其中包括显式允许的大多数可用操作以及所需的最小拒绝值。
 

@@ -23,10 +23,10 @@ Grafana是一款用于度量可视化的开源软件。默认情况下、我们�
 . 在GMI中、菜单：Support[Metrics ]。
 . 在Grafana部分下、选择Node信息板。
 +
-image:monitor-node-dashboard.png["monitor-node信息板"]
+image:monitor/monitor-node-dashboard.png["monitor-node信息板"]
 
 . 在Grafana中、将主机设置为要查看指标的任何节点。在这种情况下、将选择一个存储节点。提供的信息比以下屏幕截图所示的信息要多。
 +
-image:monitor-grafana-metrics.png["monitor-grafana指标"]
+image:monitor/monitor-grafana-metrics.png["monitor-grafana指标"]
 
 

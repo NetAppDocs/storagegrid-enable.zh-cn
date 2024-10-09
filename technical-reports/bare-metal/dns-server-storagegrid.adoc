@@ -29,7 +29,7 @@ CAUTION: 您应选择 DNS 服务器，以便在网络隔离时每个站点都可
 . 在服务器1文本框中、指定DNS服务器的IP地址。
 . 如有必要、请单击最后一个条目旁边的加号以添加更多服务器。
 +
-image:bare-metal-add-more-servers-2.png["裸机添加更多服务器2"]
+image:bare-metal/bare-metal-add-more-servers-2.png["裸机添加更多服务器2"]
 
 . 单击下一步。
 

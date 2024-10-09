@@ -32,7 +32,7 @@ summary: 了解客户和NetApp IT实施的StorageGRID配置的少数用例。
 .. 在发送字符串字段中，输入 `OPTIONS / HTTP/1.1\r\n\r\n.` \r\n表示回车；不同版本的大IP软件需要零个、一个或两组\r\n序列。有关详细信息，请参见 https://support.f5.com/csp/article/K10655[]。
 .. 在Receive String (接收字符串)字段中，输入： `HTTP/1.1 200 OK`。
 +
-image:load-balancer-monitor-configuration-page.png["监控器配置页面"]
+image:load-balancer/load-balancer-monitor-configuration-page.png["监控器配置页面"]
 
 
 
@@ -56,9 +56,9 @@ Citrix NetScaler为存储端点创建一个虚拟服务器，并将StorageGRID�
 
 有关详细信息，请参阅Citrix文档 https://docs.citrix.com/en-us/citrix-adc/current-release/load-balancing/load-balancing-builtin-monitors/monitor-ssl-services.html#sample-configuration-for-https-ecv-health-check-monitor["HTTP-ECV运行状况检查监控器的配置示例"^]。
 
-image:load-balancer-citrix-netscaler-configuration-page.png["Citrix NetScaler Monitor配置页"]
+image:load-balancer/load-balancer-citrix-netscaler-configuration-page.png["Citrix NetScaler Monitor配置页"]
 
-image:load-balancer-configure-monitor.png["Configure-monitor.png"]
+image:load-balancer/load-balancer-configure-monitor.png["Configure-monitor.png"]
 
 
 

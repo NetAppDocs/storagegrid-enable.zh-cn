@@ -21,11 +21,11 @@ summary: 了解如何使用指标API监控StorageGRID。
 
 Prometheus是一款用于收集指标的开源软件。要通过GMI访问StorageGRID的嵌入式ProMetheus、请转到菜单：Support[Metrics ]。
 
-image:monitor-metrics-page.png["monitor-metrics-page"]
+image:monitor/monitor-metrics-page.png["monitor-metrics-page"]
 
 或者、您也可以直接导航到该链接。
 
-image:monitor-prometheus-interface.png["Monitor-Prometheus-interface"]
+image:monitor/monitor-prometheus-interface.png["Monitor-Prometheus-interface"]
 
 通过此视图、您可以访问Prometheus界面。您可以从此处搜索可用指标、甚至可以尝试查询。
 
@@ -35,7 +35,7 @@ image:monitor-prometheus-interface.png["Monitor-Prometheus-interface"]
 . 在查询文本框中开始键入。键入时、将列出指标。对于我们而言、只有以StorageGRID和Node开头的指标才很重要。
 . 要查看每个节点的HTTP会话数，请键入 `storagegrid_http` ，然后选择 `storagegrid_http_sessions_incoming_currently_established`。单击Execute、并以图形或控制台格式显示信息。
 +
-image:monitor-http-sessions.png["monitor-http-sesps"]
+image:monitor/monitor-http-sessions.png["monitor-http-sesps"]
 
 
 
@@ -56,13 +56,13 @@ NOTE: 建议不要直接连接到Prometheus实例、因为这需要打开其他�
 . 从GMI中、选择菜单：帮助[API文档]。
 . 向下滚动到Metrics、然后选择GET /grid / metric-query-。
 +
-image:monitor-metrics-query.png["monitor-metrics-Query"]
+image:monitor/monitor-metrics-query.png["monitor-metrics-Query"]
 
 +
 此响应包含可通过Prometheus URL查询获取的相同信息。您可以再次查看当前在每个存储节点上建立的HTTP会话的数量。您还可以下载JSON格式的响应以供阅读。下图显示了Prometheus查询响应示例。
 
 +
-image:monitor-sample-prometheus-query-responses.png["monitor-sSample—Prometheus-query-responses"]
+image:monitor/monitor-sample-prometheus-query-responses.png["monitor-sSample—Prometheus-query-responses"]
 
 
 

@@ -21,7 +21,7 @@ summary: 了解如何验证网格配置信息并完成StorageGRID安装过程。
 .步骤
 . 查看摘要页面。
 +
-image:bare-metal-summary-page.png["裸机摘要页面"]
+image:bare-metal/bare-metal-summary-page.png["裸机摘要页面"]
 
 . 验证所有网格配置信息是否正确。使用摘要页面上的修改链接返回并更正任何错误。
 . 单击安装。
@@ -42,13 +42,13 @@ CAUTION: 恢复包文件必须受到保护，因为它包含可用于从 Storage
 
 . 选择I have successfully downloaded and Verified the Recovery Package File (我已成功下载并验证恢复软件包文件)选项、然后单击Next (下一步)。
 +
-image:bare-metal-download-recovery-package.png["裸机下载恢复包"]
+image:bare-metal/bare-metal-download-recovery-package.png["裸机下载恢复包"]
 
 +
 如果安装仍在进行中、则会打开安装状态页面。此页面指示每个网格节点的安装进度。
 
 +
-image:bare-metal-installation-status.png["裸机安装状态"]
+image:bare-metal/bare-metal-installation-status.png["裸机安装状态"]
 
 +
 当所有网格节点都达到完成阶段时、将打开网格管理器的登录页面。

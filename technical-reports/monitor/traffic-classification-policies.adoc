@@ -25,20 +25,20 @@ summary: 了解如何在StorageGRID 11.4中设置和监控流量分类策略、�
 . 输入策略的名称和说明。
 . 创建匹配规则。
 +
-image:monitor-matching-rule.png["monitor-匹 配规则"]
+image:monitor/monitor-matching-rule.png["monitor-匹 配规则"]
 
 . 设置限制(可选)。
 +
-image:monitor-limit.png["监视器限制"]
+image:monitor/monitor-limit.png["监视器限制"]
 
 . 保存策略
 +
-image:monitor-traffic-policy.png["monitor-Traffic策略"]
+image:monitor/monitor-traffic-policy.png["monitor-Traffic策略"]
 
 +
 要查看与您的流量分类策略关联的指标、请选择您的策略、然后单击指标。此时将生成Grafana信息板、其中显示负载平衡器请求流量和平均请求持续时间等信息。
 
 +
-image:monitor-dashboard-showing-metrics.png["monitor-metric-showing—指标"]
+image:monitor/monitor-dashboard-showing-metrics.png["monitor-metric-showing—指标"]
 
 

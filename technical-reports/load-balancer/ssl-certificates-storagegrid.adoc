@@ -26,4 +26,4 @@ summary: 了解在StorageGRID中实施SSL证书的重要性和步骤。
 
 SSL证书在客户端负载平衡器StorageGRID路径中的放置取决于您需要SSL终止的位置。您可以将负载平衡器配置为客户端的终止端点、然后使用新的SSL证书对负载平衡器与StorageGRID的连接进行重新加密或热加密。或者、您也可以通过此流量并让StorageGRID成为SSL终止端点。如果负载平衡器是SSL终止端点、则此证书将安装在负载平衡器上、并包含DNS名称/URL的使用者名称以及客户端配置为通过负载平衡器连接到StorageGRID目标的任何备用URL/DNS名称。 包括任何通配符名称。如果为负载平衡器配置了直通、则必须在StorageGRID中安装SSL证书。同样、证书必须包含DNS名称/URL的使用者名称、以及客户端配置为通过负载平衡器连接到StorageGRID目标的任何备用URL/DNS名称、包括任何通配符名称。证书中无需包含单个存储节点名称、只需包含端点URL即可。
 
-image:load-balancer-certificate-example.png["StorageGRID中加载的证书示例"]
+image:load-balancer/load-balancer-certificate-example.png["StorageGRID中加载的证书示例"]

@@ -16,3 +16,16 @@ entries:
   url: "/product-feature-guides/port-remap.html"
 - title: 如何重新定位站点和更改网络
   url: "/product-feature-guides/site-relocation-and-network-change.html"
+- title: 将基于对象的存储从ONTAP S3迁移到StorageGRID
+  pdf-filename: 将基于对象的存储从ONTAP S3迁移到StorageGRID
+  entries:
+  - title: 从ONTAP S3迁移到StorageGRID
+    url: "/product-feature-guides/ontap-migrate/index.html"
+  - title: 正在准备ONTAP
+    url: "/product-feature-guides/ontap-migrate/preparing-ontap.html"
+  - title: 正在准备 StorageGRID
+    url: "/product-feature-guides/ontap-migrate/preparing-sg.html"
+  - title: 填充并复制存储分段
+    url: "/product-feature-guides/ontap-migrate/populate-replicate.html"
+  - title: 迁移用户和密钥、然后进行转换
+    url: "/product-feature-guides/ontap-migrate/migrate-cutover.html"
