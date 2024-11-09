@@ -1633,8 +1633,6 @@ DERMIO使用字节范围GET在查询期间同时从同一对象中提取不同�
   <block id="bc967dc2d57e6eff184a821bf7577a80" category="section-title">扩展</block>
   <block id="900c557ee6849406e1e6f451f65bdde1" category="paragraph">您可以通过向存储节点添加存储、向现有站点添加新网格节点或添加新数据中心站点来扩展NetApp StorageGRID系统。您可以在不中断当前系统运行的情况下执行扩展。
 StorageGRID可以通过为存储节点或运行负载平衡器和管理节点的物理设备使用性能更高的节点来扩展性能、也可以通过简单地添加更多节点来扩展性能。</block>
-  <block id="87c6a063dd59ec7afe1b7de60674167f" category="inline-link">《StorageGRID 11.8.</block>
-  <block id="178a2b6eb168714f3392d86f31b81107" category="paragraph">有关扩展StorageGRID系统的详细信息、请参见<block ref="ad2f8b162bf757bc05f37ca0091f2d6d" category="inline-link-rx"></block>。</block>
   <block id="39e0647405a456dbe0f327581e422077" category="section-title">StorageGRID硬件规格</block>
   <block id="7ac8ba0d8d9d0dbf967afc44eebecee4" category="paragraph">表4介绍了此测试中使用的NetApp StorageGRID硬件。采用10Gbps网络连接的StorageGRID SG5712设备是入门级选项、代表了一种基线配置。也可以为SG5712配置25 Gbps网络连接。</block>
   <block id="380be67f84564c575abe95593c0c96c3" category="paragraph">选择NetApp StorageGRID SG5760、SG6060或全闪存SGF6112设备等性能更高的设备选项可以显著提升性能。请咨询NetApp StorageGRID 解决方案 架构师以获得规模估算帮助。</block>
@@ -1753,8 +1751,6 @@ StorageGRID可以通过为存储节点或运行负载平衡器和管理节点的
   <block id="3ceaa99fe3628c0d4ddb470789b9212d" category="list-text">Commvault11.0.0之前的版本- Service Pack 16.*在11.0.0之前的版本- Service Pack 16中，Commvault"会在还原和删减过程中对不存在的对象执行S3 head和GET操作。将存储分段一致性级别设置为强站点、以便为Commvaultvault"备份到StorageGRID实现最佳一致性级别。</block>
   <block id="9a76294cf4d43d5686590bb6c98a280b" category="list-text">Commvault11.0.0版- Service Pack 16及更高版本。*在11.0.0版- Service Pack 16及更高版本中、对不存在的对象执行S3机头和GET操作的数量将降至最低。将默认分段一致性级别设置为read-after-new-write、以确保StorageGRID环境中的高一致性级别。</block>
   <block id="3887d417240a72ab69f6d0301efd3b2b" category="section-title">从何处查找追加信息</block>
-  <block id="b69ce771bb450c54c2a29e08595a1621" category="list-text">StorageGRID 1.18文档中心+
-<block ref="47ea1c2d0f136bec8b3e66c2121bf70f" category="inline-link-rx"></block></block>
   <block id="a1b241b7e61d12e641e864fa7e3c7a8e" category="list-text">NetApp产品文档+
 <block ref="fa4af55c3fdbce23e96d2cf73261fa5b" category="inline-link-rx"></block></block>
   <block id="748e9574a05efa0e0738de58c2ff670b" category="list-text">CommVault文档+
@@ -2271,9 +2267,7 @@ StorageGRID可以通过为存储节点或运行负载平衡器和管理节点的
   <block id="8fcaac261a43456ba5d28692ad76f1a7" category="cell">使客户端能够使用其控制的密钥对对象进行加密。要写入和检索这些对象、需要使用加密密钥。</block>
   <block id="731de27084d8604a1d6b2d4f3db3e813" category="summary">了解StorageGRID对象存储解决方案不可或缺的安全功能。</block>
   <block id="1258e6ff8b374b8ea1a0bd0ab918bd2b" category="doc">保护对象存储中的StorageGRID数据和元数据的安全</block>
-  <block id="37555cad129f87a5d0dbe66af2e608f5" category="paragraph">本文档概述了NetApp®StorageGRID®中的许多安全功能，包括数据访问、对象和元数据、管理访问和平台安全性。它已进行更新、加入了随StorageGRID 11.8.</block>
   <block id="6a26fac444f2fa8249e58b9e1ad5f1f5" category="paragraph">安全性是NetApp StorageGRID对象存储解决方案不可或缺的一部分。安全性尤为重要、因为非常适合对象存储的许多类型的富内容数据在本质上也是敏感的、并受法规和合规性的约束。随着StorageGRID功能的不断发展、该软件提供了许多安全功能、这些功能对于保护组织的安全防护以及帮助组织遵守行业最佳实践至关重要。</block>
-  <block id="4a4dabde11a077d631a0208b03dfdd6a" category="paragraph">本文概述了StorageGRID 11.8中的许多安全功能、分为五类：</block>
   <block id="bc9171df5cd05800ed1cfc0f1e57ee3c" category="list-text">对象和元数据安全功能</block>
   <block id="4c09768521a2b8d071ec184101026f0b" category="list-text">平台安全功能</block>
   <block id="bd3813fae65cb7c59dcb2440c1767ac0" category="inline-link">《StorageGRID加强指南》</block>
@@ -2283,7 +2277,6 @@ StorageGRID可以通过为存储节点或运行负载平衡器和管理节点的
   <block id="e49b7c4182308a3c27dbec32987e8e67" category="paragraph">除了本报告中介绍的功能之外，StorageGRID还遵循<block ref="304cf4448819c099eaccd4f8123ab72d" category="inline-link-rx"></block>。根据产品安全事件响应流程、对报告的漏洞进行验证和响应。</block>
   <block id="23e21fdb0716a632da9ef25685dbc487" category="paragraph">NetApp StorageGRID可为要求苛刻的企业对象存储用例提供高级安全功能。</block>
   <block id="3bdba8537a031ec25e6ed46ff2e22424" category="list-text">NetApp StorageGRID：SEC 17a-4 (f)、FIRA 4511 (c)和CFTC 1.31 (c)-(d)合规性评估 <block ref="dc6d251ee495c96de57ac351b8ca3a6f" category="inline-link-rx"></block></block>
-  <block id="2cbf7b84b091bb76f9e653d971faa3e6" category="list-text">StorageGRID 1.18文档页面 <block ref="47ea1c2d0f136bec8b3e66c2121bf70f" category="inline-link-rx"></block></block>
   <block id="682026a33ae6dd46be9dad491b716b01" category="section-title">术语和首字母缩略语</block>
   <block id="5b66d86127a2b0a925034cfcc284c687" category="paragraph">本节提供了文档中所用术语的定义。</block>
   <block id="2a2006e5a6b22cc16fc0894555912667" category="cell">术语或首字母缩略语</block>
@@ -2327,7 +2320,6 @@ StorageGRID可以通过为存储节点或运行负载平衡器和管理节点的
   <block id="d64aa93292b065628260e9509c89afae" category="paragraph">启用加密后、每个对象都会使用随机生成的唯一对称密钥进行加密、该密钥存储在StorageGRID中、无需外部访问。</block>
   <block id="c3830d20240c4ba204beb61af4e9bd4e" category="cell">无需外部密钥管理即可启用对象加密。</block>
   <block id="26217ba08b7324d30253fffae8ed7ec7" category="cell">符合联邦信息处理标准(Federal Information Processing Standard、FIPS) 140-2的加密磁盘</block>
-  <block id="476d9a8f1d131333f205e6793dd28254" category="paragraph">SG5712、SG5760、SG6060和SGF6024 StorageGRID设备可提供符合FIPS 140-2的加密磁盘选项。磁盘的加密密钥可以选择由外部KMIP服务器管理。</block>
   <block id="fdf3619a8a241ec7b5e5a8d0110b4225" category="cell">支持安全存储系统数据、元数据和对象。此外、还提供基于StorageGRID软件的对象加密功能、可保护对象的存储和传输安全。</block>
   <block id="b56b27275ea9fc75a7ac4dda9b49b749" category="cell">后台完整性扫描和自我修复</block>
   <block id="2e6b4c580a8bcff25b5a47d60fcac9d0" category="paragraph">StorageGRID在对象和子对象级别使用哈希、校验和和和循环冗余校验(CrC)的互斥机制、以防止在对象存储和传输过程中出现数据不一致、篡改或修改。StorageGRID会自动检测损坏和被篡改的对象并进行替换、同时隔离更改后的数据并向管理员发出警报。</block>
@@ -3136,17 +3128,9 @@ StorageGRID可以通过为存储节点或运行负载平衡器和管理节点的
   <block id="b9faea4479e9fc1bc458b58b8247cda0" category="paragraph">StorageGRID为Veritas Enterprise Vault提供了一个与S3兼容的内部云备份目标。下图展示了Veritas Enterprise Vault和StorageGRID架构。</block>
   <block id="055f9879907c22c8cfd3c54bd9f610cb" category="inline-image-macro">Veritas/Veritas-Veritas企业存储和StorageGRID架构</block>
   <block id="52cb822768beb11d3d42a3f9b19804d9" category="paragraph"><block ref="52cb822768beb11d3d42a3f9b19804d9" category="inline-image-macro-rx" type="image"></block></block>
-  <block id="7a14e19b8ee1a0a04a0446df31d46f8c" category="list-text">Veritas Enterprise Vault 11.</block>
-  <block id="6369bbbcf565d042b20a283550fe3ed1" category="list-text">Veritas Enterprise Vault 12.</block>
-  <block id="9d9543f7e1d6b0664f04ff4f8a7c47b9" category="list-text">Veritas NetBackup 8.0</block>
-  <block id="ff5cfc1dbf017ecb8959d053238bf56b" category="list-text">Veritas Enterprise Vault 14.</block>
-  <block id="176411398f4cd808898ca8b28d32a473" category="list-text">Veritas Enterprise 14.2.2</block>
-  <block id="630b3115bbfc0cab3a6c9f0257baa041" category="list-text">Veritas 10.1.1及更高版本</block>
   <block id="8bab4d54d9f4be0e126140976cdd93e4" category="list-text">ElASCSearch Snapshot (包括冻结层)</block>
   <block id="f12757e29dee512b70563c66186ae3d8" category="paragraph">建议始终保持最新、并为Veeam Backup &amp; Replication 12或12.1系统应用最新的修补程序。目前、我们建议至少安装Veeam 12修补程序P20230718。</block>
   <block id="d9077bfff46af079bd1370f652df5fc8" category="paragraph">对于Veeam部署、建议使用带有最新修补程序的NetApp StorageGRID 11.7或11.8.建议始终保持最新、并为StorageGRID系统应用最新的修补程序。</block>
-  <block id="ab04d5a9409dc8a45ac13596c3483cbe" category="inline-link-macro">NetApp StorageGRID 11.8产品文档</block>
-  <block id="0b27dbe2229bcc6cc460d4c9db01ca59" category="list-text"><block ref="0b27dbe2229bcc6cc460d4c9db01ca59" category="inline-link-macro-rx"></block></block>
   <block id="734ae27bd626f001863fc96cdf284a4c" category="sidebar">将基于对象的存储从ONTAP S3迁移到StorageGRID</block>
   <block id="7278573c930789840fac32f75102c4cb" category="sidebar">TR-4904：《使用Veritas Enterprise Vault配置StorageGRID》</block>
   <block id="c4661d92ec5bfd72a43733aea8dc23dd" category="sidebar">从ONTAP S3迁移到StorageGRID</block>
@@ -3154,4 +3138,25 @@ StorageGRID可以通过为存储节点或运行负载平衡器和管理节点的
   <block id="083e747ac97fd71c385f2c89f8eefdb7" category="sidebar">迁移用户和密钥、然后进行转换</block>
   <block id="81022eb5da399c3a2fd9f2b07db1afd3" category="sidebar">StorageGRID灾难恢复—使用Veritas Enterprise Vault配置StorageGRID以实现站点故障转移</block>
   <block id="454255deb718c7d2b26df2342f80d3d3" category="list-text">2024年2月2日： <block ref="890e1ea9b3a6310b9da56310b581c035" category="inline-link-rx"></block></block>
+  <block id="038f39e88db40cdb4f2702538c9f7cac" category="inline-link">StorageGRID</block>
+  <block id="69962f106c568f6867ef85cee5ce38c8" category="list-text"><block ref="69962f106c568f6867ef85cee5ce38c8" category="inline-link-rx"></block></block>
+  <block id="c0ffd7598ab1538e87530f78e30ee7a5" category="list-text">StorageGRID 11．11文档中心+<block ref="8cd5d43b808eac3380916fd8a7010bbf" category="inline-link-rx"></block></block>
+  <block id="023074507079b61efa6f2839e5f70a91" category="inline-link">《StorageGRID 11.9.</block>
+  <block id="f4940e01170c039d45c3e66e940623ae" category="paragraph">有关扩展StorageGRID系统的详细信息，请参阅<block ref="383fbf920d7819c777fd14de7ab5c076" category="inline-link-rx"></block>。</block>
+  <block id="56a72c05a4e2e9d60f84e7af8a5efaa8" category="paragraph">本文档概述了NetApp®StorageGRID®中的许多安全功能，包括数据访问、对象和元数据、管理访问和平台安全性。它已进行更新、加入了随StorageGRID 11.9.</block>
+  <block id="78c953ee6a7bceaa8f9e31793e0d9600" category="paragraph">本文概述了StorageGRID 11.9中的许多安全功能、分为五类：</block>
+  <block id="14898bc1984707385c6d2c37b2a3b038" category="list-text">StorageGRID 11．11文档页 <block ref="8cd5d43b808eac3380916fd8a7010bbf" category="inline-link-rx"></block></block>
+  <block id="7519ba71db8577a641b71a19274cb841" category="paragraph">SG5812、SG5860、SG6160和SGF6024 StorageGRID设备可提供符合FIPS 140-2的加密磁盘选项。磁盘的加密密钥可以选择由外部KMIP服务器管理。</block>
+  <block id="683c5d7a06c262f5e2e17cbb84869a3d" category="list-text">Veritas Enterprise Vault 11</block>
+  <block id="1f61ef960fbeb10906bd09932e1faa5e" category="list-text">Veritas Enterprise Vault 12</block>
+  <block id="aa92d10a39cb2c4707a61d62d73be93f" category="list-text">Veritas NetBackup 8.0</block>
+  <block id="dbaa460bd61bfe1c91c1c136338013e6" category="list-text">Veritas Enterprise Vault 14</block>
+  <block id="401b6d44d3c927f0424adce982cc6506" category="list-text">Veritas Enterprise Vault 14.2.2</block>
+  <block id="e3cd39cab4140108c69a9666712a418b" category="list-text">Veritas NetBackup 10.1.1及更高版本</block>
+  <block id="06575e9a9a342b7dae657473413f7459" category="list-text">Veritas Enterprise Vault 15.1</block>
+  <block id="2a9dd9956ef5047e090fb4fd428760da" category="summary">第三方解决方案已通过StorageGRID 11.9.</block>
+  <block id="24da911d0ea6052fda1a360f3d8d20d2" category="doc">StorageGRID 11.9经验证的第三方解决方案</block>
+  <block id="3595748c33defe605c1fdb5ccbf36297" category="paragraph">以下第三方解决方案已通过验证、可用于StorageGRID 11.9.+如果未列出您要查找的解决方案 、请联系您的NetApp客户代表。</block>
+  <block id="99b12e8f286736e276d9ae9cf6c493e8" category="inline-link-macro">NetApp StorageGRID 11.9产品文档</block>
+  <block id="eeaa535340d552b22fc3654b745ad4ea" category="list-text"><block ref="eeaa535340d552b22fc3654b745ad4ea" category="inline-link-macro-rx"></block></block>
 </blocks>

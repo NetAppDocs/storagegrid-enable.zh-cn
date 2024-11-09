@@ -68,7 +68,7 @@ summary: 已针对StorageGRID 11.6进行验证的第三方解决方案
 * Trino
 * varnish Enterprise 6.0.4
 * Veeam 12.
-* Veritas Enterprise Vault 14.
+* Veritas Enterprise Vault 14
 * Veritas NetBackup 8.0
 * Vertica 10.x
 * Viispine
@@ -86,8 +86,8 @@ summary: 已针对StorageGRID 11.6进行验证的第三方解决方案
 * IBM文件集
 * OpenText文档21.4
 * Veeam 12.
-* Veritas Enterprise 14.2.2
-* Veritas 10.1.1及更高版本
+* Veritas Enterprise Vault 14.2.2
+* Veritas NetBackup 10.1.1及更高版本
 
 
 

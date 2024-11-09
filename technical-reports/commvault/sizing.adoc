@@ -122,6 +122,6 @@ StorageGRID可以通过为存储节点或运行负载平衡器和管理节点的
 
 [NOTE]
 ====
-有关扩展StorageGRID系统的详细信息、请参见 https://docs.netapp.com/us-en/storagegrid-118/landing-expand/index.html["《StorageGRID 11.8."]。
+有关扩展StorageGRID系统的详细信息，请参阅 https://docs.netapp.com/us-en/storagegrid-119/landing-expand/index.html["《StorageGRID 11.9."]。
 
 ====

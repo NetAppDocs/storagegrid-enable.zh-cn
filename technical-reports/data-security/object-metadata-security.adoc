@@ -32,7 +32,7 @@ StorageGRID可为对象提供基于AES 128和AES 256的服务器端加密。网�
 
 
 | 符合联邦信息处理标准(Federal Information Processing Standard、FIPS) 140-2的加密磁盘  a| 
-SG5712、SG5760、SG6060和SGF6024 StorageGRID设备可提供符合FIPS 140-2的加密磁盘选项。磁盘的加密密钥可以选择由外部KMIP服务器管理。
+SG5812、SG5860、SG6160和SGF6024 StorageGRID设备可提供符合FIPS 140-2的加密磁盘选项。磁盘的加密密钥可以选择由外部KMIP服务器管理。
 | 支持安全存储系统数据、元数据和对象。此外、还提供基于StorageGRID软件的对象加密功能、可保护对象的存储和传输安全。 | SEC规则17a-4 (f) CTFC 1.31 (c)-（d)(FIRA)规则4511 (c) 
 
 

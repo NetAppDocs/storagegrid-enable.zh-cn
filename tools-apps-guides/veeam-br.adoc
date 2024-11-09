@@ -186,7 +186,7 @@ image:veeam-bp/tc_2.png["流量分类策略指标"]
 
 要了解有关本文档中所述信息的更多信息，请查看以下文档和 / 或网站：
 
-* link:https://docs.netapp.com/us-en/storagegrid-118/["NetApp StorageGRID 11.8产品文档"^]
+* link:https://docs.netapp.com/us-en/storagegrid-119/["NetApp StorageGRID 11.9产品文档"^]
 * link:https://www.veeam.com/documentation-guides-datasheets.html?productId=8&version=product%3A8%2F221["Veeam备份和复制"^]
 
 

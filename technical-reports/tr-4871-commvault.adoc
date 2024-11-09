@@ -258,7 +258,7 @@ StorageGRID可以通过为存储节点或运行负载平衡器和管理节点的
 
 [NOTE]
 ====
-有关扩展StorageGRID系统的详细信息、请参见 https://docs.netapp.com/us-en/storagegrid-118/landing-expand/index.html["《StorageGRID 11.8."]。
+有关扩展StorageGRID系统的详细信息，请参阅 https://docs.netapp.com/us-en/storagegrid-119/landing-expand/index.html["《StorageGRID 11.9."]。
 
 ====
 
@@ -577,8 +577,7 @@ CommVault MediaAgent是CommVault环境中的数据迁移程序。大多数情况
 
 要了解有关本文档中所述信息的更多信息，请查看以下文档和 / 或网站：
 
-* StorageGRID 1.18文档中心+
-https://docs.netapp.com/us-en/storagegrid-118/[]
+* StorageGRID 11．11文档中心+https://docs.netapp.com/us-en/storagegrid-119/[]
 * NetApp产品文档+
 https://docs.netapp.com[]
 * CommVault文档+

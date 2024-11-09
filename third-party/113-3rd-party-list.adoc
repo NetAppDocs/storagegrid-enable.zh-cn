@@ -46,8 +46,8 @@ summary: 已针对StorageGRID 11.3进行验证的第三方解决方案
 * Splunk智能存储
 * varnish Enterprise 6.0.4
 * Veeam 9.5.4
-* Veritas Enterprise Vault 11.
-* Veritas Enterprise Vault 12.
+* Veritas Enterprise Vault 11
+* Veritas Enterprise Vault 12
 * Veritas NetBackup 8.0
 * Viispine
 
