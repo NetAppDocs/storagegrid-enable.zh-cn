@@ -15,7 +15,7 @@ summary: 您可以在此处找到每个NetApp StorageGRID 版本的完整文档�
 您可以在此处找到每个NetApp StorageGRID 版本的完整文档：
 
 * https://docs.netapp.com/us-en/storagegrid-appliances/index.html["StorageGRID设备"]
-* https://docs.netapp.com/us-en/storagegrid-118/index.html["StorageGRID"^]
+* https://docs.netapp.com/us-en/storagegrid-119/index.html["StorageGRID"^]
 * https://docs.netapp.com/us-en/storagegrid-118/index.html["StorageGRID 11.8."^]
 * https://docs.netapp.com/us-en/storagegrid-117/index.html["StorageGRID 11.7"^]
 * https://docs.netapp.com/us-en/storagegrid-116/index.html["StorageGRID 11.6."^]
