@@ -12,7 +12,9 @@ summary: '通过StorageGRID 11.6系统日志转发功能、您可以配置外部
 
 
 [role="lead"]
-通过StorageGRID 11.6系统日志转发功能、您可以配置外部系统日志服务器来收集和分析StorageGRID 日志消息。ELK (Elasticsearch、Logstash、Kibana)已成为最受欢迎的日志分析解决方案之一。观看以查看示例的 https://media.netapp.com/video-detail/3d090a61-23d7-5ad7-9746-4cebbb7452fb/storagegrid-log-analysis-using-elk-stack["使用ELK视频进行StorageGRID 日志分析"^] 模拟配置、以及如何使用它来识别失败的S3请求并对其进行故障排除。本文提供了Logstash配置、Kibana查询、图表和信息板的示例文件、可帮助您快速开始StorageGRID 日志管理和分析。
+_作者：郑安杰_
+
+通过StorageGRID系统日志转发功能、您可以配置外部系统日志服务器来收集和分析StorageGRID日志消息。ELK (Elasticsearch、Logstash、Kibana)已成为最受欢迎的日志分析解决方案之一。观看以查看示例的 https://media.netapp.com/video-detail/3d090a61-23d7-5ad7-9746-4cebbb7452fb/storagegrid-log-analysis-using-elk-stack["使用ELK视频进行StorageGRID 日志分析"^] 模拟配置、以及如何使用它来识别失败的S3请求并对其进行故障排除。StorageGRID均衡器支持将负载平衡器端点访问日志导出到外部系统日志服务器。观看此视频 https://youtu.be/hnnT0QqLSgA?si=tDMPc4bdbqumYzFz["YouTube视频"^]、了解有关此新功能的更多信息。本文提供了Logstash配置、Kibana查询、图表和信息板的示例文件、可帮助您快速开始StorageGRID 日志管理和分析。
 
 
 
@@ -28,6 +30,7 @@ summary: '通过StorageGRID 11.6系统日志转发功能、您可以配置外部
 
 * link:../media/elk-config/elk7-sample.zip["下载Logstash 7.x示例文件包"] +* MD5 checksum* 148c23d0021d9a4bb4a6c0287464deab +* SHA256 checksum* f5ec9e2e3f842d5a7861566b167a561b4373038b4e7bb3b3d522adf2d6
 * link:../media/elk-config/elk8-sample.zip["下载Logstash 8.x示例文件包"] +* MD5 checksum* e11ba3a662f87c3ef363d0fe06835 +* SHA256 checksum* 5c670755742cfdf5aa723a596b087e0153a65bcaef3934afdb682f61cd278d
+* link:../media/elk-config/elk8-sample-for-sg119.zip["下载适用于StorageGRID 11.9的Logstash 8.x示例文件包"]+* md5校验和* 41272857c4a54600f95995f6ed74800d +* SHA256校验和* 77048ee86610527 19990851e1ad960d4902fe537a6e135e8600177188da677c9
 
 
 
@@ -108,7 +111,7 @@ image:elk-config/kibana-import-options.png["Kibana导入选项"]
 image:elk-config/kibana-import-conflict.png["Kibana冲突"]
 
 +
-导入以下Kibana对象： +*查询*+* audit-msg-s3rq-orlm +* byncast log S3相关消息+*日志级别警告或更高+*失败的安全事件+*图表*+* S3请求计数基于bycast.log +* HTTP状态代码+*审核消息类型细分+*平均S3响应 时间+*信息板*+* S3请求信息板使用上述图表。
+导入了以下基巴纳对象：+* Query*+* audy-msg-s3rq-orln +* bycast log S3相关消息+* loglevel WARNING或 以上+*失败的安全事件+* NGINS-GW端点访问日志(仅在elk8-sSample—for-sg119.zip中提供)+* Chart*+* S3请求计数(基于bycast.log +* HTTP状态)+*按审核类型分类)+ S3*信息板+审核请求的平均响应时间)*。
 
 
 
@@ -126,5 +129,3 @@ image:elk-config/kibana-import-conflict.png["Kibana冲突"]
 * https://www.elastic.co/guide/en/kibana/master/document-explorer.html["Kibana指南—浏览文档"]
 * https://docs.netapp.com/us-en/storagegrid-116/audit/index.html["StorageGRID 审核日志消息参考"]
 
-
-_作者：郑安杰_

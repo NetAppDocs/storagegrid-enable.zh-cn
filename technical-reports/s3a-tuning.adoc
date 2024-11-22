@@ -12,6 +12,8 @@ summary: 本报告介绍如何针对StorageGRID调整S3A。
 
 
 [role="lead"]
+_作者：郑安杰_
+
 Hadoop S3A连接器有助于在基于Hadoop的应用程序和S3对象存储之间实现无缝交互。在使用S3对象存储时、要优化性能、必须调整Hadoop S3A Connector。在深入介绍调整详细信息之前、我们先大致了解一下Hadoop及其组件。
 
 

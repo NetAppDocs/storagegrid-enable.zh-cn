@@ -12,6 +12,8 @@ summary: rclone是一种用于S3操作的免费命令行工具和客户端。您
 
 
 [role="lead"]
+作者：Siegfried Hepp和Aron Klein_
+
 rclone是一种用于S3操作的免费命令行工具和客户端。您可以使用rclone迁移、复制和删除StorageGRID 上的对象数据。rclone可以删除存储分段、即使不是空存储分段也可以使用"清除"功能、如以下示例所示。
 
 
@@ -456,5 +458,3 @@ rclone ls sgdemo：test01
  2023/04/14 09:40:51 Failed to ls: directory not found
 ====
 
-
-作者：Siegfried Hepp和Aron Klein_

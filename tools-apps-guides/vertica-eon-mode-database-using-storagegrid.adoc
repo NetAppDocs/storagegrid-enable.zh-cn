@@ -12,6 +12,8 @@ summary: 本指南介绍在NetApp StorageGRID 上使用公共存储创建Vertica
 
 
 [role="lead"]
+_作者：郑安杰_
+
 本指南介绍在NetApp StorageGRID 上使用公共存储创建Vertica Eon模式数据库的操作步骤。
 
 

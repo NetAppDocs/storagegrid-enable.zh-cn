@@ -12,7 +12,7 @@ summary: 本指南详细说明了如何使用Amazon OpenSearch服务或内部Ela
 
 
 [role="lead"]
-本指南详细说明了如何使用Amazon OpenSearch服务或内部Elasticsearch配置NetApp StorageGRID 11.6搜索集成服务。
+本指南详细说明了如何为NetApp StorageGRID搜索集成服务配置Amazon OpenSearch服务或内部El在任 一El在任 一情况下进行搜索。
 
 
 

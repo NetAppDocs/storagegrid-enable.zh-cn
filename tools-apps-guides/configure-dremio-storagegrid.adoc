@@ -12,6 +12,8 @@ summary: 使用StorageGRID配置d不良 数据源
 
 
 [role="lead"]
+_作者：郑安杰_
+
 多米奥支持多种数据源、包括基于云的或内部对象存储。  您可以将d不良 配置为使用StorageGRID作为对象存储数据源。
 
 
@@ -88,5 +90,3 @@ image:dremio/dremio-add-source-advanced.png["新源-高级选项"]
 image:dremio/dremio-source-added.png["已添加新数据源"]
 
 
-
-_作者：郑安杰_

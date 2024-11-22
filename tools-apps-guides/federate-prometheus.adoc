@@ -12,6 +12,8 @@ summary: 本技术报告详细说明了如何为NetApp StorageGRID 11.6配置外
 
 
 [role="lead"]
+_作者：Aron Klein_
+
 本技术报告详细说明了如何为NetApp StorageGRID 11.6配置外部Prometheus和Grafana服务。
 
 
@@ -384,5 +386,3 @@ image:prometheus/grafana_panel_edit.png["Grafana编辑面板"]
 === 结论
 
 现在、我们推出了一款具有可自定义数据保留和存储容量的Prometheus服务器。这样、我们就可以继续构建自己的信息板、其中包含与我们的运营最相关的指标。您可以获取有关在中收集的Prometheus指标的详细信息 https://docs.netapp.com/us-en/storagegrid-116/monitor/commonly-used-prometheus-metrics.html["StorageGRID 文档"^]。
-
-_作者：Aron Klein_

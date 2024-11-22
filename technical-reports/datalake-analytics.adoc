@@ -11,6 +11,9 @@ summary: 本报告涵盖StorageGRID上的大数据分析。
 :imagesdir: ../media/
 
 
+[role="lead"]
+_作者：郑安杰_
+
 
 
 == NetApp StorageGRID用例

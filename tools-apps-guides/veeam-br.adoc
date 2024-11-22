@@ -12,6 +12,8 @@ summary: 本指南重点介绍NetApp StorageGRID以及部分Veeam备份和复制
 
 
 [role="lead"]
+_作者：Oliver Haensel和Aron Klein_
+
 本指南重点介绍NetApp StorageGRID以及部分Veeam备份和复制的配置。本白皮书面向熟悉Linux系统并负责维护或实施NetApp StorageGRID系统与Veeam备份和复制的存储和网络管理员。
 
 
@@ -189,5 +191,3 @@ image:veeam-bp/tc_2.png["流量分类策略指标"]
 * link:https://docs.netapp.com/us-en/storagegrid-119/["NetApp StorageGRID 11.9产品文档"^]
 * link:https://www.veeam.com/documentation-guides-datasheets.html?productId=8&version=product%3A8%2F221["Veeam备份和复制"^]
 
-
-_作者：Oliver Haensel和Aron Klein_
