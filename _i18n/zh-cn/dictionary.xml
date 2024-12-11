@@ -1368,7 +1368,6 @@ DERMIO使用字节范围GET在查询期间同时从同一对象中提取不同�
   <block id="4dc7ef59b422ad6beec0dcf560a3fdf9" category="paragraph">*数据备份和灾难恢复：*企业可以使用StorageGRID S3作为可靠且经济高效的解决方案来备份关键数据并在发生灾难时进行恢复。</block>
   <block id="b05954e05454ab56e0d356cb4ad49d95" category="paragraph">*应用程序的数据存储：* StorageGRID S3可用作应用程序的存储后端，使开发人员能够轻松地存储和检索文件、图像、视频和其他类型的数据。</block>
   <block id="5623c900b98e0e5e17c60c75ded947b1" category="paragraph">*内容交付：* StorageGRID S3可用于存储静态网站内容、媒体文件和软件下载并提供给全球用户、利用StorageGRID的地区分布和全局命名空间实现快速可靠的内容交付。</block>
-  <block id="60b72d1ecbd87ac726a3dbb733456c59" category="paragraph">*数据分层：* NetApp客户使用ONTAP FabricPool功能在高性能本地层之间自动将数据移动到StorageGRID。在将冷数据从低成本对象存储中随时可用的同时、通过层化释放昂贵的闪存存储来存储热数据。这样可以最大限度地提高性能并节省成本。</block>
   <block id="454845c7ca306686c28f96a59487d70c" category="paragraph">*数据归档：* StorageGRID提供不同的存储类型、并支持分层到公共长期低成本存储选项、使其成为出于合规性或历史目的需要保留的数据归档和长期保留的理想解决方案。</block>
   <block id="a324e6c3bb7d6684738c923e7b52ea98" category="paragraph">*对象存储用例*</block>
   <block id="9f79f86c9a539a911125a876ef6a3c2e" category="inline-image-macro">StorageGRID用例图、宽度=396、高度=394</block>
@@ -3011,7 +3010,6 @@ StorageGRID可以通过为存储节点或运行负载平衡器和管理节点的
   <block id="077385462ac0cf8f7fe1ddb0b3983c42" category="cell">TPCDS 99查询+总分钟数(缓存已禁用)</block>
   <block id="34173cb38f07f89ddbebc2ac9128303f" category="cell">30</block>
   <block id="b6d767d2f8ed5d21a44b0e5886680cb9" category="cell">22</block>
-  <block id="95df7e4eb2568a2c428c70b695f7cac2" category="cell">TPCDS 99次查询+总分钟数(已启用缓存)</block>
   <block id="d81fdeb5a429e85d04118048e4b3485d" category="cell">21.5</block>
   <block id="b7ae258c3f8653133aa9c0c448f67516" category="cell">GET (缓存已禁用)</block>
   <block id="3bb0dd7ec24af388f7e49723482fb553" category="cell">2,154,747</block>
@@ -3167,4 +3165,6 @@ StorageGRID可以通过为存储节点或运行负载平衡器和管理节点的
   <block id="a3f1428e66932d96ff43f4bf4a938e38" category="inline-link-macro">下载适用于StorageGRID 11.9的Logstash 8.x示例文件包</block>
   <block id="92648c644fef59d092d8ebc7df369fd8" category="list-text"><block ref="69ef6b23b33f55d10cdea70d6bd19e3d" category="inline-link-macro-rx"></block>+* md5校验和* 41272857c4a54600f95995f6ed74800d +* SHA256校验和* 77048ee86610527 19990851e1ad960d4902fe537a6e135e8600177188da677c9</block>
   <block id="52f70839644ed308c4da8e45cf815a31" category="paragraph">导入了以下基巴纳对象：+* Query*+* audy-msg-s3rq-orln +* bycast log S3相关消息+* loglevel WARNING或 以上+*失败的安全事件+* NGINS-GW端点访问日志(仅在elk8-sSample—for-sg119.zip中提供)+* Chart*+* S3请求计数(基于bycast.log +* HTTP状态)+*按审核类型分类)+ S3*信息板+审核请求的平均响应时间)*。</block>
+  <block id="975915e0dc64af72667a293b87be5f66" category="cell">TPCDS 99次查询+总分钟数^2^(启用缓存)</block>
+  <block id="a447f0aa56d54d66cf89976cc810a113" category="paragraph">^2^ Trino/Starburst性能会因计算资源而出现瓶颈；向集群添加更多RAM可缩短总查询时间。</block>
 </blocks>
