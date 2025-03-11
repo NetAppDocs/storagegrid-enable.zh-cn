@@ -1393,34 +1393,27 @@ DERMIO使用字节范围GET在查询期间同时从同一对象中提取不同�
   <block id="35b5589d5690d7ef32acf311beb9bbea" category="cell">TPCDS 99查询+
 总分钟数</block>
   <block id="b53b3a3d6ab90ce0268229151c9bde11" category="cell">55</block>
-  <block id="67c6a1e7ce56d3d6fa748ab6d9af3fd7" category="cell">47.1.</block>
   <block id="7528035a93ee69cedb1dbddb2f0bfcc8" category="cell">获取</block>
   <block id="8db7bb1512ff25e1db67c5b9a53f897d" category="cell">1、117184</block>
   <block id="2569e54b8230d5c2746fa85c61dcf512" category="cell">2、074、610</block>
-  <block id="7cea2b87e7eb0c4d67994a7b9fa4f3d3" category="cell">4、414、227</block>
   <block id="6f53c4f40f0a0d7fefdb89564ac1c713" category="cell">观察：+
 所有范围GET</block>
   <block id="a9d41bf59f53e6160f0b13f571ea418a" category="cell">从32 MB对象中获取2 KB到2 MB的80%范围、每秒50到100个请求</block>
   <block id="e0b8bceb4cded5e4c1e2d73d9331f0f7" category="cell">73%的范围从32 MB对象开始低于100 KB、每秒1000到1400个请求</block>
-  <block id="bfe0f96dc7eb9140699f8fdd7568c553" category="cell">从256MB对象获取90% 1M字节范围、2000到2300个请求/秒</block>
   <block id="0f220d208874b104e26e73ec94b0e690" category="cell">列出对象</block>
   <block id="bfc2dfc2cb23058c08a7d12b5c3abb19" category="cell">312、053</block>
   <block id="0e706da47bd945de88f06af5c56e1e6a" category="cell">24、158</block>
-  <block id="335f5352088d7d9bf74191e006d8e24c" category="cell">240</block>
   <block id="c03e2ac569e5aac15b52493eef30e9e7" category="cell">头部+
 (不存在的对象)</block>
   <block id="b920dc6d7f4f2319e93bdcc850be6166" category="cell">156、027</block>
   <block id="8e43c25a28a92db67de364324cbdf9dd" category="cell">12、103</block>
-  <block id="58a2fc6ed39fd083f55d4182bf88826d" category="cell">192.</block>
   <block id="d241bb72f8484e8c12847a1c342893cc" category="cell">头部+
 (存在的对象)</block>
   <block id="791138a3078a87a630b0ddcc779f5365" category="cell">982、126</block>
   <block id="41157fd52202414d46b193aa0dc0e7ed" category="cell">922732</block>
-  <block id="4a12caac680acef61b9d5542d0bdd153" category="cell">1、845</block>
   <block id="645d67b4eb5a0d06bf14fe7a682ced76" category="cell">请求总数</block>
   <block id="a56d0d38d9846ac044442ecabae19902" category="cell">2.</block>
   <block id="6dfffbda5aeba01126df9439ffbc82a3" category="cell">3、033、603</block>
-  <block id="b0f186b9ad3639a900dc289160a9505b" category="cell">4、416、504</block>
   <block id="71860c77c6745379b0d44304d66b6a13" category="inline-link">页面。</block>
   <block id="c0c37f88f031a9b491d9a8bbea81dda7" category="paragraph">请访问以下链接、详细了解StorageGRID和德莱米奥如何协同工作来提供现代化且高效的数据湖基础架构、以及NetApp如何从Hive + HDFS迁移到德莱米奥+ StorageGRID来显著提高大数据分析效率。</block>
   <block id="79304bd05c48f486a8924e2c45f39311" category="inline-link">借助NetApp StorageGRID提升大数据的性能</block>
@@ -1450,17 +1443,11 @@ DERMIO使用字节范围GET在查询期间同时从同一对象中提取不同�
 <block ref="a48adf12485e7e1fabf51f229ceb57fd" category="inline-link-macro-rx"></block></block>
   <block id="a27c73113b9f8b1c8936231a5c6b72db" category="list-text">登录到主管理节点、使用change-ip进行网格IP更改、必须*暂存*更改、然后才能关闭节点进行重新定位。</block>
   <block id="e8ebed2710314532bd7421c291775f7a" category="list-text">选择2、然后选择1以更改网格IP</block>
-  <block id="f246621acb182eca202eb998d35a0a71" category="paragraph"><block ref="f246621acb182eca202eb998d35a0a71" category="inline-image-macro-rx" type="image"></block></block>
   <block id="0fc35f100f57d71f3d04d75f8e34db7a" category="list-text">选择5以显示更改</block>
-  <block id="51db02a440736bec001c7d690821ec49" category="paragraph"><block ref="51db02a440736bec001c7d690821ec49" category="inline-image-macro-rx" type="image"></block></block>
   <block id="0db10ef124f48bf74646e51d511e42e7" category="list-text">选择10以验证并应用更改。</block>
-  <block id="ecf8b3b84403afdd8f30ff4ca92df4d0" category="paragraph"><block ref="ecf8b3b84403afdd8f30ff4ca92df4d0" category="inline-image-macro-rx" type="image"></block></block>
   <block id="b535a2204d1cc298ac5c3b36cc8a9249" category="list-text">必须在此步骤中选择*阶段*。</block>
-  <block id="a8c78f88b73dcaf8b7082c7d8bab4356" category="paragraph"><block ref="a8c78f88b73dcaf8b7082c7d8bab4356" category="inline-image-macro-rx" type="image"></block></block>
   <block id="23e28a352f23f6051ecbe97b0516b42f" category="list-text">如果上述更改中包括主管理节点，请输入*'A'手动重新启动主管理节点*</block>
-  <block id="6cfd9d702fc475a31c16db4299ee31a0" category="paragraph"><block ref="6cfd9d702fc475a31c16db4299ee31a0" category="inline-image-macro-rx" type="image"></block></block>
   <block id="355ec7ab5ee5e52899a8a48528d82b93" category="list-text">按ENTER键返回上一菜单并退出change-ip界面。</block>
-  <block id="34efad53185ba8366fcb774fe4502175" category="paragraph"><block ref="34efad53185ba8366fcb774fe4502175" category="inline-image-macro-rx" type="image"></block></block>
   <block id="6a713acf175fd861bbb563ab540a06fe" category="list-text">从Grid Manager中下载新的恢复软件包。*网格管理器*&gt;*维护*&gt;*恢复包*</block>
   <block id="96557217b00ac75f863bec84c65347bf" category="list-text">如果StorageGRID设备需要更改VLAN、请参见一节 <block ref="f1c1d143229526a165bf49ac775d4ecd" category="inline-xref-macro-rx"></block>。</block>
   <block id="26afb12dd81518887c60c85ae47dab08" category="list-text">关闭站点上的所有节点和/或设备、根据需要标记/移除磁盘驱动器、然后卸载、打包和移动。</block>
@@ -2984,11 +2971,7 @@ StorageGRID可以通过为存储节点或运行负载平衡器和管理节点的
   <block id="7c648110d8b752889f98cd2d87517c0f" category="section-title">《使用S3对象存储对数据仓库和湖屋进行基准测试：比较研究》</block>
   <block id="3f7d606956bcb4f8b565d2799da4a4e3" category="paragraph">本文介绍了使用NetApp StorageGRID的各种数据仓库和温室生态系统的综合基准。其目标是确定哪个系统在使用S3对象存储时性能最佳。请参阅此内容<block ref="ca1f374596a7de7e13cf95753411f6e0" category="inline-link-rx"></block>、了解有关数据存储/数据库架构和表格格式(镶木地板和冰山一角)的更多信息。</block>
   <block id="39b5836a4532001dfbe7e05fb49461e4" category="list-text">VM集群、每个VM具有128 G RAM和24个vCPU、用于系统磁盘的SSD存储</block>
-  <block id="37e59045c327c8ae9b2d4f7b4f136217" category="list-text">多米奥V23 (1个协调员+ 5个执行者)</block>
-  <block id="1543c40ac4e68e60ea63a94bfab320ec" category="list-text">Trino v438 (1名协调员+ 5名员工)</block>
-  <block id="e9940dffc6cb8987f8ea2849d2c81a2c" category="list-text">Starburst v453 (1个协调员+ 5个员工)</block>
   <block id="e6626cf4bf50ce440a045708b2e1f1e5" category="list-text">NetApp^®^ StorageGRID^®^ 11.8(3 x SG6060+1x SG1000负载平衡器)</block>
-  <block id="20536af82697c291683798ab540160e0" category="list-text">对象保护-2个副本(结果与EC 2+1类似)</block>
   <block id="b9d35717430d39eef24c76f0c1796c11" category="list-text">对于使用镶木地板格式的每个查询测试、在所有生态系统中禁用了缓存。对于icerberg格式、我们比较了禁用缓存和启用缓存的情形之间的S3获取请求数量和总查询时间。</block>
   <block id="cdbfde1ab888a940af383c70c682b87a" category="paragraph">TPC-DS包括99个为基准测试而设计的复杂SQL查询。我们测量了执行所有99个查询所需的总时间、并通过检查S3请求的类型和数量进行了详细分析。我们的测试对两种常见的表格格式(镶木地板和冰山一角)的效率进行了比较。</block>
   <block id="96e14f82cc6500529b0c04afc6ebafa1" category="paragraph">*镶木地板表格式的TPC-DS查询结果*</block>
@@ -3008,24 +2991,17 @@ StorageGRID可以通过为存储节点或运行负载平衡器和管理节点的
   <block id="f1cab053650b93fe71331be2c4c9c40d" category="paragraph">^1^ Hive无法完成查询编号72</block>
   <block id="2e09f209b7749073d8732d856a6afe12" category="paragraph">*TPC-DS查询结果，带icerberg表格格式*</block>
   <block id="077385462ac0cf8f7fe1ddb0b3983c42" category="cell">TPCDS 99查询+总分钟数(缓存已禁用)</block>
-  <block id="34173cb38f07f89ddbebc2ac9128303f" category="cell">30</block>
   <block id="b6d767d2f8ed5d21a44b0e5886680cb9" category="cell">22</block>
   <block id="d81fdeb5a429e85d04118048e4b3485d" category="cell">21.5</block>
   <block id="b7ae258c3f8653133aa9c0c448f67516" category="cell">GET (缓存已禁用)</block>
-  <block id="3bb0dd7ec24af388f7e49723482fb553" category="cell">2,154,747</block>
   <block id="817c2a89c3531f80836a2db8d06d85b3" category="cell">938,639</block>
   <block id="5f4363558dd08c8d9c04d30802266c70" category="cell">931,582</block>
   <block id="18c14d7f109f020c287a26f7a8f428d4" category="cell">GET (已启用缓存)</block>
-  <block id="e3f91fa6ba87f03f3166a20beea1c344" category="cell">5,389</block>
   <block id="6b11f97cb60ca2cd6f46178c1e7cf4f3" category="cell">30,158</block>
   <block id="bc06fdbde6a0ac6d6d654b6614f9b5d7" category="cell">3,281</block>
-  <block id="76de71b9903e9b839668c173592c80be" category="cell">范围获取大小：67% 1MB、15% 100KB、10% 500KB、3000 - 4000次请求/秒</block>
   <block id="5819eb0ec4b00d343de26ea1746d62b0" category="cell">范围获取大小：100 KB以下42%、1 MB左右17%、33% 2 MB到9 MB、3500到4000次请求/秒</block>
   <block id="a6939d8de1e94d811eb67cb92270c822" category="cell">范围获取大小：100 KB以下43%、1 MB左右17%、33% 2 MB到9 MB、4000到5000个请求/秒</block>
-  <block id="46ba9f2a6976570b0353203ec4474217" category="cell">284</block>
-  <block id="e087b5b2372a325fbbc3eb02013bd513" category="cell">1,261</block>
   <block id="2d6a14455d72488e5e91089f0b50905c" category="cell">请求总数(缓存已禁用)</block>
-  <block id="2096b1864713f451954f320346ec801a" category="cell">2,156,578</block>
   <block id="bfd8a8a359e411cea773da89ea7b516e" category="cell">939,148</block>
   <block id="95368980785d6fcc2e447b3569f7e08e" category="cell">932,071</block>
   <block id="e7c4b70d9a61af19b7bb26b3656a04a7" category="paragraph">如第一个表所示、Hive的速度明显低于其他现代数据数据库生态系统。我们发现、Hive发送了大量S3列表对象请求、这些请求在所有对象存储平台上通常都很慢、尤其是在处理包含许多对象的分段时。这会显著增加整体查询持续时间。此外、现代的温室生态系统可以并行发送大量GET请求、每秒从2000到5、000个不等、而Hive的每秒请求数为50到100个。Hive和Hadoop S3A的标准文件系统模拟导致Hive在与S3对象存储交互时运行的很小。</block>
@@ -3167,4 +3143,33 @@ StorageGRID可以通过为存储节点或运行负载平衡器和管理节点的
   <block id="52f70839644ed308c4da8e45cf815a31" category="paragraph">导入了以下基巴纳对象：+* Query*+* audy-msg-s3rq-orln +* bycast log S3相关消息+* loglevel WARNING或 以上+*失败的安全事件+* NGINS-GW端点访问日志(仅在elk8-sSample—for-sg119.zip中提供)+* Chart*+* S3请求计数(基于bycast.log +* HTTP状态)+*按审核类型分类)+ S3*信息板+审核请求的平均响应时间)*。</block>
   <block id="975915e0dc64af72667a293b87be5f66" category="cell">TPCDS 99次查询+总分钟数^2^(启用缓存)</block>
   <block id="a447f0aa56d54d66cf89976cc810a113" category="paragraph">^2^ Trino/Starburst性能会因计算资源而出现瓶颈；向集群添加更多RAM可缩短总查询时间。</block>
+  <block id="bc2469224adc8a8ee41f7c9d2f89498e" category="inline-image-macro">change-ip编辑</block>
+  <block id="743a7af3c67be6e10fc77339961e23fb" category="paragraph"><block ref="743a7af3c67be6e10fc77339961e23fb" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="f9ab05454998236921a6b0e281fae632" category="inline-image-macro">验证</block>
+  <block id="6e6f4af6899b11671003020ac07a3a96" category="paragraph"><block ref="6e6f4af6899b11671003020ac07a3a96" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="3762c8020ba0ce4a7a389025eb72cf94" category="inline-image-macro">暂存变更</block>
+  <block id="fbd50b0647972077b13e74d396e8896e" category="paragraph"><block ref="fbd50b0647972077b13e74d396e8896e" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="a78f24ac183c3cb24df5f184a2e0b46d" category="inline-image-macro">手动重新启动管理员</block>
+  <block id="f8ce374542d0a27e4d8d96c0f7315dc3" category="paragraph"><block ref="f8ce374542d0a27e4d8d96c0f7315dc3" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="f34e35f25d10586d1af2b8d83719ee5f" category="inline-image-macro">上一个菜单</block>
+  <block id="c38ca150b2bcf962c0873899a514800e" category="paragraph"><block ref="c38ca150b2bcf962c0873899a514800e" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="a0bfb8e59e6c13fc8d990781f77694fe" category="inline-image-macro">继续</block>
+  <block id="3211aaa59b164a687021525248c48c20" category="paragraph"><block ref="3211aaa59b164a687021525248c48c20" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="122cfba1930d02037ab442d83e00ecfb" category="list-text">d不良 者v25.2 (1名协调员+ 5名执行者)</block>
+  <block id="ed539d33b6810957992d273d5fe36c89" category="list-text">Trino v438 (1名协调员+ 5名工作人员)</block>
+  <block id="8b03eab5bbec674c2055b88603e6b915" category="list-text">Starburst v453 (1名协调员+ 5名员工)</block>
+  <block id="150169d4934a641a9290023e45d8827c" category="list-text">对象保护-2个副本(结果与EC 2+1类似)</block>
+  <block id="19ca14e7ea6328a42e0eb13d585e4c22" category="cell">36</block>
+  <block id="71958970b7dcf9b9a9a0547a08451814" category="cell">3,939,690</block>
+  <block id="21d6b11365dd533455aef1380bc83463" category="cell">从256MB对象获取90% 1M字节范围、2500到3000个请求/秒</block>
+  <block id="da4fb5c6e93e74d3df8527599fa62642" category="cell">120</block>
+  <block id="26657d5ff9020d2abefe558796b99584" category="cell">96</block>
+  <block id="43460f9628a66a0085c583d8246d0d66" category="cell">3,939.906</block>
+  <block id="9b7ed7cdb52b5dffcfa7c7d3a1591cce" category="cell">1,985,922</block>
+  <block id="f0da24bce2825366359f84209912aad9" category="cell">611,347</block>
+  <block id="ffbb0c48a0c397085ed7e56cf32a94ff" category="cell">范围获取大小：67% 1MB、15% 100KB、10% 500KB、3500 - 4500次请求/秒</block>
+  <block id="372d3f309fef061977fb2f7ba36d74d2" category="cell">1465</block>
+  <block id="c913303f392ffc643f7240b180602652" category="cell">1464</block>
+  <block id="6cd2cdb0fa97e6793df3667997292b8a" category="cell">3,702</block>
+  <block id="93ee6d81759b8ae556ed02d6b52a3447" category="cell">1,992,553</block>
 </blocks>

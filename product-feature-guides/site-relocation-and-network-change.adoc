@@ -43,27 +43,27 @@ link:https://docs.netapp.com/us-en/storagegrid-118/expand/updating-subnets-for-g
 +
 .. 选择2、然后选择1以更改网格IP
 +
-image:site-relocation/ip-change-1.png[""]
+image:site-relocation/ip-change-1.png["change-ip编辑"]
 
 .. 选择5以显示更改
 +
-image:site-relocation/ip-change-2.png[""]
+image:site-relocation/ip-change-2.png["验证"]
 
 .. 选择10以验证并应用更改。
 +
-image:site-relocation/ip-change-3.png[""]
+image:site-relocation/ip-change-3.png["暂存变更"]
 
 .. 必须在此步骤中选择*阶段*。
 +
-image:site-relocation/ip-change-4.png[""]
+image:site-relocation/ip-change-4.png["手动重新启动管理员"]
 
 .. 如果上述更改中包括主管理节点，请输入*'A'手动重新启动主管理节点*
 +
-image:site-relocation/ip-change-5.png[""]
+image:site-relocation/ip-change-5.png["上一个菜单"]
 
 .. 按ENTER键返回上一菜单并退出change-ip界面。
 +
-image:site-relocation/ip-change-6.png[""]
+image:site-relocation/ip-change-6.png["继续"]
 
 
 

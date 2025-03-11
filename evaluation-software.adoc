@@ -8,7 +8,7 @@ summary: 为潜在客户访问StorageGRID评估软件的步骤。
 :hardbreaks:
 :allow-uri-read: 
 :icons: font
-:imagesdir: ../media/
+:imagesdir: ./media/
 
 
 [role="lead"]
