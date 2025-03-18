@@ -42,6 +42,5 @@ S3 API中的主要勒索软件保护机制是实施对象锁定。并非所有�
 
 * NetApp StorageGRID文档中心 https://docs.netapp.com/us-en/storagegrid-118/[]
 * NetApp StorageGRID支持 https://docs.netapp.com/us-en/storagegrid-enable/[]
-* StorageGRID文档资源页面 https://www.netapp.com/data-storage/storagegrid/documentation/[]
 * NetApp产品文档 https://www.netapp.com/support-and-training/documentation/[]
 

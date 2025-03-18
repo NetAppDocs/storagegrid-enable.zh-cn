@@ -41,7 +41,6 @@ StorageGRID提供了深入探讨监控主题的出色文档。本报告假设您
 
 * NetApp StorageGRID文档中心 https://docs.netapp.com/us-en/storagegrid-118/[]
 * NetApp StorageGRID支持 https://docs.netapp.com/us-en/storagegrid-enable/[]
-* StorageGRID文档资源页面 https://www.netapp.com/data-storage/storagegrid/documentation/[]
 * NetApp产品文档 https://www.netapp.com/support-and-training/documentation/[]
 * 适用于Splunk的NetApp StorageGRID应用程序 https://splunkbase.splunk.com/app/3898/#/details[]
 

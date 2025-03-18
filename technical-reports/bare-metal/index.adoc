@@ -32,6 +32,5 @@ TR-4882提供了一组实用的分步说明、用于生成可正常工作的NetA
 
 * NetApp StorageGRID文档中心 https://docs.netapp.com/us-en/storagegrid-118/[]
 * NetApp StorageGRID支持 https://docs.netapp.com/us-en/storagegrid-enable/[]
-* StorageGRID文档资源页面 https://www.netapp.com/data-storage/storagegrid/documentation/[]
 * NetApp产品文档 https://www.netapp.com/support-and-training/documentation/[]
 
