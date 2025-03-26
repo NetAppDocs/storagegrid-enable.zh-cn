@@ -1850,7 +1850,6 @@ StorageGRID可以通过为存储节点或运行负载平衡器和管理节点的
   <block id="e3581082ba2aa18febff247afdaf6344" category="paragraph">要详细了解本技术报告中介绍的信息、请查看以下文档资源：</block>
   <block id="d794ca6edf18a97bedb2ad1af37d0c71" category="list-text">NetApp StorageGRID文档中心 <block ref="47ea1c2d0f136bec8b3e66c2121bf70f" category="inline-link-rx"></block></block>
   <block id="f26db73036faf2fd4369e53f7b67c6e7" category="list-text">NetApp StorageGRID支持 <block ref="4d58579ecd86e7d907ec63f13f2199dd" category="inline-link-rx"></block></block>
-  <block id="a3fd6da95928caff4c3eee3c06fd7ad8" category="list-text">StorageGRID文档资源页面 <block ref="68d4d5362a15088f2ac3fa494c971af5" category="inline-link-rx"></block></block>
   <block id="8b8bc5296c7be638754abb2f408d2099" category="list-text">NetApp产品文档 <block ref="3cd8b5fe5ca94a9fdb5caaf96875ef7e" category="inline-link-rx"></block></block>
   <block id="fb0cb3928e42fcd12b5e4d384c0b36e1" category="summary">了解如何安装适用于StorageGRID的Docker。</block>
   <block id="4794aa13334c3a67cb956b8bb0b717cc" category="doc">安装适用于StorageGRID的Docker</block>
@@ -2739,12 +2738,9 @@ StorageGRID可以通过为存储节点或运行负载平衡器和管理节点的
   <block id="d45294caa04dc2a59a6a9779ecb261e1" category="section-title">注册帐户</block>
   <block id="8c41baf1ca98e1184f48c4721d44d431" category="inline-link">NetApp 支持站点</block>
   <block id="6b2e1d4820e2c64094628af51b07c4ae" category="list-text">使用您的业务电子邮件在上注册帐户<block ref="a49f41675f7c48eedf0647a0a62c5043" category="inline-link-rx"></block> 。</block>
-  <block id="c3864a0d9e7266b854aa1d673036710a" category="list-text">如果您已有帐户、请继续执行下一步。</block>
-  <block id="0fedb2e26434d49a94f9450ce477c3cc" category="list-text">使用创建的帐户登录。</block>
   <block id="0c6d9ab23098fd3e876c216fe1ca7ffc" category="inline-link">报告问题</block>
   <block id="8751d140672b36b77b265c8fe793befc" category="list-text">创建非技术支持案例、将访问级别提升到"潜在客户"。要执行此操作、请单击 <block ref="94c9ec214c60b057a12eaba547e0acae" category="inline-link-rx"></block>网站页脚中的""链接。</block>
   <block id="940ab06ee98cba17f3c21dea0e603eb5" category="list-text">选择"注册问题"作为反馈类别。</block>
-  <block id="c1d4a23af565c411cff6271ce577104f" category="list-text">在备注部分、写下："我希望获得潜在客户访问权限、以下载StorageGRID评估软件。"</block>
   <block id="ea7ab0148c9999f65837f6a1483f42ee" category="list-text">提及建议潜在客户访问请求的NetApp内部人员的姓名。</block>
   <block id="ed721060d54c51e35da28db6ea8337ef" category="section-title">下载StorageGRID</block>
   <block id="aed8ceb0f85821c90dc49c2c3bf1e494" category="list-text">在您的支持案例经过审核和批准后、NetApp支持部门将通过电子邮件通知您、您的帐户已获得潜在客户访问权限。</block>
@@ -3172,4 +3168,7 @@ StorageGRID可以通过为存储节点或运行负载平衡器和管理节点的
   <block id="c913303f392ffc643f7240b180602652" category="cell">1464</block>
   <block id="6cd2cdb0fa97e6793df3667997292b8a" category="cell">3,702</block>
   <block id="93ee6d81759b8ae556ed02d6b52a3447" category="cell">1,992,553</block>
+  <block id="45d98cb0c4dacd6be68da4095e1fa5f2" category="list-text">确保您未使用新创建的帐户登录。</block>
+  <block id="37ff5d731eafce0bad2c1bdfb0ed1f55" category="list-text">如果您已有帐户、请确保您未登录、然后继续下一步。</block>
+  <block id="21c24fa624a44fa1b3fc1c27be1061d5" category="list-text">在"注释"部分中、写下："我的帐户电子邮件地址是_您的电子邮件地址_。我希望获得潜在客户访问权限、以下载StorageGRID评估软件。"</block>
 </blocks>

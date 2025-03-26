@@ -20,13 +20,13 @@ summary: 为潜在客户访问StorageGRID评估软件的步骤。
 
 . 使用您的业务电子邮件在上注册帐户 https://mysupport.netapp.com/site/user/registration["NetApp 支持站点"] 。
 +
-.. 如果您已有帐户、请继续执行下一步。
+.. 确保您未使用新创建的帐户登录。
+.. 如果您已有帐户、请确保您未登录、然后继续下一步。
 
 
-. 使用创建的帐户登录。
 . 创建非技术支持案例、将访问级别提升到"潜在客户"。要执行此操作、请单击 "https://mysupport.netapp.com/site/help?relevanturl=%2Fuser%2Fregistration["报告问题"]网站页脚中的""链接。
 . 选择"注册问题"作为反馈类别。
-. 在备注部分、写下："我希望获得潜在客户访问权限、以下载StorageGRID评估软件。"
+. 在"注释"部分中、写下："我的帐户电子邮件地址是_您的电子邮件地址_。我希望获得潜在客户访问权限、以下载StorageGRID评估软件。"
 +
 .. 提及建议潜在客户访问请求的NetApp内部人员的姓名。
 
