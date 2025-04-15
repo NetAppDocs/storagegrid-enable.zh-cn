@@ -2,7 +2,7 @@
 permalink: examples/bucket-policy-examples.html 
 sidebar: sidebar 
 keywords: iam, bucket policy, group policy, policy 
-summary: '以下是存储分段策略和组策略(IAM策略)的示例。' 
+summary: 下面是StorageGRID S3中的策略和权限示例。 
 ---
 = 分段和组(IAM)策略示例
 :hardbreaks:
@@ -12,8 +12,183 @@ summary: '以下是存储分段策略和组策略(IAM策略)的示例。'
 
 
 [role="lead"]
-以下是存储分段策略和组策略(IAM策略)的示例。
+下面是StorageGRID S3中的策略和权限示例。
 
+
+
+== 策略的结构
+
+在StorageGRID中、组策略与AWS用户(IAM) S3服务策略相同。
+
+StorageGRID中需要使用组策略。具有S3访问密钥但未分配给用户组或分配给组但策略未授予某些权限的用户将无法访问任何数据。
+
+存储分段和组策略共享大多数相同的元素。策略以json格式构建、可使用生成 https://awspolicygen.s3.amazonaws.com/policygen.html["AWS策略生成器"]
+
+所有策略都将定义效果、操作和资源。存储分段策略还将定义主体。
+
+其*效果*是允许或拒绝请求。Principal*是指被授予或拒绝这些能力的帐户/用户。可以将其定义为通配符++*++"、存储分段所在租户中的本地或联合用户或组、或者网格中的其他租户。用户或组可通过名称或ID字符串进行标识。“*操作*”是授予或拒绝给用户的一组S3操作。
+
+
+NOTE: 用户需要执行S3：ListBucket"操作才能执行任何S3操作。
+
+资源*是指被授予或拒绝对其执行操作的主体的一个或多个分段。(可选)策略操作的有效时间可以是一个*条件*。
+
+JSON策略的格式如下所示：
+
+[source, json]
+----
+{
+  "Statement": [
+    {
+      "Sid": "Custom name for this permission",
+      "Effect": "Allow or Deny",
+      "Principal": {
+        "AWS": "arn:aws:iam::Tenant_ID:federated-group/Group_Name",
+        "AWS": "arn:aws:iam::Tenant_ID:group/Group_Name",
+        "AWS": "arn:aws:iam::Tenant_ID::federated-user/User_Name",
+        "AWS": "User_Name"
+      },
+      "Action": [
+        "s3:ListBucket",
+        "s3:Other_Action"
+      ],
+      "Resource": [
+        "arn:aws:s3:::Example_Bucket",
+        "arn:aws:s3:::Example_Bucket/*"
+      ],
+    }
+  ]
+}
+----
+
+
+== 使用AWS策略生成器
+
+AWS策略生成器是一个很好的工具、可帮助您获取具有正确格式的json代码以及您尝试实施的信息。
+
+要为StorageGRID组策略生成权限、请执行以下操作：*为策略类型选择IAM策略。*选择所需效果的按钮-允许或拒绝。最好先使用拒绝权限启动策略、然后在操作下拉列表中添加允许权限*单击要包含在此权限中的尽可能多的S3操作旁边的框或"所有操作"框。*在Amazon资源名称(ARN)框中键入存储分段路径。在存储分段名称前包括"arn：aws：s3：：：："。例如、"ARN：AWS：S3：：：：：explebket"
+
+image:policy/group-generic.png["生成组策略"]
+
+要为存储分段策略生成权限、请执行以下操作：*为策略类型选择S3存储分段策略。*选择所需效果的按钮-允许或拒绝。最好先使用拒绝权限启动策略、然后在主体的用户或组信息中添加允许权限*键入。*在操作下拉列表中、单击要包含在此权限中的S3操作旁边的框或"所有操作"框。*在Amazon资源名称(ARN)框中键入存储分段路径。在存储分段名称前包括"arn：aws：s3：：：："。例如、"ARN：AWS：S3：：：：：explebket"
+
+image:policy/bucket-generic.png["生成存储分段策略"]
+
+例如、如果要生成存储分段策略、以允许所有用户对存储分段中的所有对象执行GetObject操作、而仅允许指定帐户中属于组"Marketing"的用户进行完全访问。
+
+* 选择S3存储分段策略作为策略类型。
+* 选择允许效果
+* 输入Marketing组信息：arn：aws：iam：：95390887230002558202：联合组/营销
+* 单击"所有操作"框
+* 输入存储分段信息—arn：aws：s3：：：：examplebket,arn：aws：s3：：：：examplebket/*
+
+
+image:policy/example-bucket1.png["生成策略中的第一个权限"]
+
+* 单击"Add Statement"(添加诊断代码)按钮
+
+
+image:policy/permission1.png["已输入策略中的第一个权限"]
+
+* 选择允许效果
+* 为每个人输入星号++*++
+* 单击GetObject和ListBucket"旁边的框
+
+
+image:policy/getobject.png["选择GetObject"] image:policy/listbucket.png["选择ListBucket"]
+
+* 输入存储分段信息—arn：aws：s3：：：：examplebket,arn：aws：s3：：：：examplebket/*
+
+
+image:policy/example-bucket2.png["在策略中生成第二个权限"]
+
+* 单击"Add Statement"(添加诊断代码)按钮
+
+
+image:policy/permission3.png["策略中的第二个权限"]
+
+* 单击"生成策略"按钮、此时将显示一个弹出窗口、其中会显示您生成的策略。
+
+
+image:policy/example-output.png["最终输出"]
+
+* 复制完整的json文本、如下所示：
+
+
+[source, json]
+----
+{
+  "Id": "Policy1744399292233",
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "Stmt1744399152830",
+      "Action": "s3:*",
+      "Effect": "Allow",
+      "Resource": [
+        "arn:aws:s3:::examplebucket",
+        "arn:aws:s3:::examplebucket/*"
+      ],
+      "Principal": {
+        "AWS": [
+          "arn:aws:iam::95390887230002558202:federated-group/Marketing"
+        ]
+      }
+    },
+    {
+      "Sid": "Stmt1744399280838",
+      "Action": [
+        "s3:GetObject",
+        "s3:ListBucket"
+      ],
+      "Effect": "Allow",
+      "Resource": [
+        "arn:aws:s3:::examplebucket",
+        "arn:aws:s3:::examplebucket/*"
+      ],
+      "Principal": "*"
+    }
+  ]
+}
+----
+此json可以按原样使用、也可以删除"Statement"行上方的ID和版本行、您可以自定义每个权限的Sid、并为每个权限指定更有意义的标题、也可以删除这些内容。
+
+例如：
+
+[source, json]
+----
+{
+  "Statement": [
+    {
+      "Sid": "MarketingAllowFull",
+      "Action": "s3:*",
+      "Effect": "Allow",
+      "Resource": [
+        "arn:aws:s3:::examplebucket",
+        "arn:aws:s3:::examplebucket/*"
+      ],
+      "Principal": {
+        "AWS": [
+          "arn:aws:iam::95390887230002558202:federated-group/Marketing"
+        ]
+      }
+    },
+    {
+      "Sid": "EveryoneReadOnly",
+      "Action": [
+        "s3:GetObject",
+        "s3:ListBucket"
+      ],
+      "Effect": "Allow",
+      "Resource": [
+        "arn:aws:s3:::examplebucket",
+        "arn:aws:s3:::examplebucket/*"
+      ],
+      "Principal": "*"
+    }
+  ]
+}
+----
 
 
 == 组策略(IAM)
@@ -26,6 +201,7 @@ summary: '以下是存储分段策略和组策略(IAM策略)的示例。'
 
 [source, json]
 ----
+{
 "Statement": [
     {
       "Sid": "AllowListBucketOfASpecificUserPrefix",
@@ -133,6 +309,14 @@ summary: '以下是存储分段策略和组策略(IAM策略)的示例。'
     ]
 }
 ----
+
+
+== 存储分段策略
+
+
+
+=== 限制用户删除分段中受版本控制的对象
+
 此存储分段策略将限制用户(由用户ID "56622399308951294926"标识)按版本ID删除版本控制的对象
 
 [source, json]
@@ -178,29 +362,29 @@ summary: '以下是存储分段策略和组策略(IAM策略)的示例。'
             "Sid": "Deny non user1",
             "Effect": "Deny",
             "NotPrincipal": {
-                "AWS": "urn:sgws:identity::34921514133002833665:user/user1"
+                "AWS": "arn:aws:iam::34921514133002833665:user/user1"
             },
             "Action": [
                 "s3:*"
             ],
             "Resource": [
-                "urn:sgws:s3:::bucket1",
-                "urn:sgws:s3:::bucket1/*"
+                "arn:aws:s3:::bucket1",
+                "arn:aws:s3:::bucket1/*"
             ]
         },
         {
             "Sid": "Allow user1 read access to bucket bucket1",
             "Effect": "Allow",
             "Principal": {
-                "AWS": "urn:sgws:identity::34921514133002833665:user/user1"
+                "AWS": "arn:aws:iam::34921514133002833665:user/user1"
             },
             "Action": [
                 "s3:GetObject",
                 "s3:ListBucket"
             ],
             "Resource": [
-                "urn:sgws:s3:::bucket1",
-                "urn:sgws:s3:::bucket1/*"
+                "arn:aws:s3:::bucket1",
+                "arn:aws:s3:::bucket1/*"
             ]
         }
     ]

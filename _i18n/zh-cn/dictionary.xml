@@ -955,7 +955,6 @@
   <block id="383aea8468a529b339b755e27b1d4668" category="paragraph">7.5天</block>
   <block id="9ff416b798a88ec4bfb30f4f045aada5" category="paragraph">11天</block>
   <block id="ed01ec12331788a408398b059da47a39" category="paragraph">10.5天</block>
-  <block id="fc1e2d26b4330f83ecfffe3439410229" category="summary">以下是存储分段策略和组策略(IAM策略)的示例。</block>
   <block id="3f2327c90ede247dca9387ef500bf746" category="doc">分段和组(IAM)策略示例</block>
   <block id="640ca9533a2fd150e7d3ed390e2aae66" category="section-title">组策略(IAM)</block>
   <block id="06c73db3763c74cabb8ece8e96fe7c5d" category="section-title">主目录模式的存储分段访问</block>
@@ -3316,4 +3315,51 @@ StorageGRID可以通过为存储节点或运行负载平衡器和管理节点的
   <block id="7cc4c9a02b30d866b86394eea15b8948" category="paragraph">不会中断其余站点的运行、也不会丢失数据。</block>
   <block id="3b618de71a72589055ade96a425c83dc" category="paragraph">利用StorageGRID实现零恢复点目标(RPO)是在发生站点故障时确保数据持久性和可用性的关键目标。通过利用StorageGRID强大的复制策略(包括多站点同步复制和多网格异步复制)、企业可以保持客户端无中断运行、并确保多个位置之间的数据一致性。信息生命周期管理(ILM)策略的实施以及纯元数据节点的使用进一步增强了系统的弹性和性能。借助StorageGRID、企业可以信心十足地管理数据、因为企业知道、即使在复杂的故障情形下、数据仍可访问且保持一致。这种全面的数据管理和复制方法强调了细致规划和执行对实现零RPO和保护有价值信息的重要性。</block>
   <block id="0d97ce62a703399c3d60bf705d897f6e" category="sidebar">借助StorageGRID实现零RPO</block>
+  <block id="53f5b3a7f9ea1c9d994a0314cb5e64b3" category="summary">下面是StorageGRID S3中的策略和权限示例。</block>
+  <block id="90d9ad7d76b93b29c358b8b9ec19c123" category="section-title">策略的结构</block>
+  <block id="b898664de1cab751d4a02bb107b60657" category="paragraph">在StorageGRID中、组策略与AWS用户(IAM) S3服务策略相同。</block>
+  <block id="6031311f84eb0fc4006dba6fd47125b4" category="paragraph">StorageGRID中需要使用组策略。具有S3访问密钥但未分配给用户组或分配给组但策略未授予某些权限的用户将无法访问任何数据。</block>
+  <block id="8a4af1af804f24fc5095bcb2f05db9c4" category="inline-link">AWS策略生成器</block>
+  <block id="2bf2ec7dad10916c7d2bbb85d22b8113" category="paragraph">存储分段和组策略共享大多数相同的元素。策略以json格式构建、可使用生成<block ref="b825d77c880bca33764ff404def2b41e" category="inline-link-rx"></block></block>
+  <block id="8efdfc962f00530ec94e00c5411f744c" category="paragraph">所有策略都将定义效果、操作和资源。存储分段策略还将定义主体。</block>
+  <block id="036aeedca40738e98fb9980b5c2675af" category="paragraph">其*效果*是允许或拒绝请求。Principal*是指被授予或拒绝这些能力的帐户/用户。可以将其定义为通配符++*++"、存储分段所在租户中的本地或联合用户或组、或者网格中的其他租户。用户或组可通过名称或ID字符串进行标识。“*操作*”是授予或拒绝给用户的一组S3操作。</block>
+  <block id="dba9490f360197ade1689ea1d2889b5c" category="admonition">用户需要执行S3：ListBucket"操作才能执行任何S3操作。</block>
+  <block id="2dc7323af24c93e28f62e0e080730041" category="paragraph">资源*是指被授予或拒绝对其执行操作的主体的一个或多个分段。(可选)策略操作的有效时间可以是一个*条件*。</block>
+  <block id="36f00e8d3531c99084ca87022aa829d6" category="paragraph">JSON策略的格式如下所示：</block>
+  <block id="98d8787db8134942993742f28e6e638e" category="section-title">使用AWS策略生成器</block>
+  <block id="7fd5fa9d1e888f7d962c6930557d8e36" category="paragraph">AWS策略生成器是一个很好的工具、可帮助您获取具有正确格式的json代码以及您尝试实施的信息。</block>
+  <block id="f6491726dbf898b732add834a307f43b" category="paragraph">要为StorageGRID组策略生成权限、请执行以下操作：*为策略类型选择IAM策略。*选择所需效果的按钮-允许或拒绝。最好先使用拒绝权限启动策略、然后在操作下拉列表中添加允许权限*单击要包含在此权限中的尽可能多的S3操作旁边的框或"所有操作"框。*在Amazon资源名称(ARN)框中键入存储分段路径。在存储分段名称前包括"arn：aws：s3：：：："。例如、"ARN：AWS：S3：：：：：explebket"</block>
+  <block id="718e062190ebd2d06af9dd8203ed28f4" category="inline-image-macro">生成组策略</block>
+  <block id="64d59d8a48b54673b859830a17697b29" category="paragraph"><block ref="64d59d8a48b54673b859830a17697b29" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="256786720eb690c2f64e17c114bf17e5" category="paragraph">要为存储分段策略生成权限、请执行以下操作：*为策略类型选择S3存储分段策略。*选择所需效果的按钮-允许或拒绝。最好先使用拒绝权限启动策略、然后在主体的用户或组信息中添加允许权限*键入。*在操作下拉列表中、单击要包含在此权限中的S3操作旁边的框或"所有操作"框。*在Amazon资源名称(ARN)框中键入存储分段路径。在存储分段名称前包括"arn：aws：s3：：：："。例如、"ARN：AWS：S3：：：：：explebket"</block>
+  <block id="14171660abb4a2ee309b0743823a5c7f" category="inline-image-macro">生成存储分段策略</block>
+  <block id="425e44ca1ca39707f142a937d323dae6" category="paragraph"><block ref="425e44ca1ca39707f142a937d323dae6" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="29156a2c2150b23b84a632be436a5710" category="paragraph">例如、如果要生成存储分段策略、以允许所有用户对存储分段中的所有对象执行GetObject操作、而仅允许指定帐户中属于组"Marketing"的用户进行完全访问。</block>
+  <block id="921689b07a57b0fa31d2494fb915c7db" category="list-text">选择S3存储分段策略作为策略类型。</block>
+  <block id="d7b02e0e049ce24df9a935a2940a00fd" category="list-text">选择允许效果</block>
+  <block id="7d89c8a4838177ced1c356c2d37451e4" category="list-text">输入Marketing组信息：arn：aws：iam：：95390887230002558202：联合组/营销</block>
+  <block id="5898b8b3214a7eda5ec51139381547ae" category="list-text">单击"所有操作"框</block>
+  <block id="ad2ad35634584410ebee3433637beb6c" category="list-text">输入存储分段信息—arn：aws：s3：：：：examplebket,arn：aws：s3：：：：examplebket/*</block>
+  <block id="0a7accd63ee4c870264f02f6421d9617" category="inline-image-macro">生成策略中的第一个权限</block>
+  <block id="d4c1d59176aacf123e41161ce9410e96" category="paragraph"><block ref="d4c1d59176aacf123e41161ce9410e96" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="68fa75317bcfed78baa03e2f2b83ae57" category="list-text">单击"Add Statement"(添加诊断代码)按钮</block>
+  <block id="e84bfc2e06bae251ee72785686217d09" category="inline-image-macro">已输入策略中的第一个权限</block>
+  <block id="0fdd83c671ed9daf99837b0f66ac36ac" category="paragraph"><block ref="0fdd83c671ed9daf99837b0f66ac36ac" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="6f67c8afea582f827fdb41d346824621" category="list-text">为每个人输入星号++*++</block>
+  <block id="508f06df117d131b64366bd57ab0809f" category="list-text">单击GetObject和ListBucket"旁边的框</block>
+  <block id="cd765e1c8e5a8cff4030628217cd7d4f" category="inline-image-macro">选择GetObject</block>
+  <block id="0b0c29b07240928f597712c00b5a3e0c" category="inline-image-macro">选择ListBucket</block>
+  <block id="67d428b6bff04d6f87ceace10b541416" category="paragraph"><block ref="c0a2f1f69b7d072695552086af07ce87" category="inline-image-macro-rx" type="image"></block> <block ref="8f6a3aca157815e6a783d7df0e6c7e53" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="e89c16f348ca85be6f05423c0774d4c3" category="inline-image-macro">在策略中生成第二个权限</block>
+  <block id="b7a8526776c5f81f21272d11b295af28" category="paragraph"><block ref="b7a8526776c5f81f21272d11b295af28" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="87903e3b9c79fad007dafe94eb14cb05" category="inline-image-macro">策略中的第二个权限</block>
+  <block id="c88a8dc7af1013392a2653edd4bbca6d" category="paragraph"><block ref="c88a8dc7af1013392a2653edd4bbca6d" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="e246daeb2fe11601d2dbada8c86d9f38" category="list-text">单击"生成策略"按钮、此时将显示一个弹出窗口、其中会显示您生成的策略。</block>
+  <block id="a6172ef9c0c0d6ee2dd1c227d6eb5564" category="inline-image-macro">最终输出</block>
+  <block id="0bceb44ff1eb9e6a0e215b1553460c3a" category="paragraph"><block ref="0bceb44ff1eb9e6a0e215b1553460c3a" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="2ece48a423395028beafaafaa0b790df" category="list-text">复制完整的json文本、如下所示：</block>
+  <block id="077406f0693af9b51bc0c17399e1e41b" category="paragraph">此json可以按原样使用、也可以删除"Statement"行上方的ID和版本行、您可以自定义每个权限的Sid、并为每个权限指定更有意义的标题、也可以删除这些内容。</block>
+  <block id="506c2c0c7f5b70af3df68c45c46f45a7" category="paragraph">例如：</block>
+  <block id="5a804d2999d40df9fee58c79e96c4bc6" category="section-title">存储分段策略</block>
+  <block id="1dcc79570a2b49254ef9f7976da24e4d" category="section-title">限制用户删除分段中受版本控制的对象</block>
 </blocks>
