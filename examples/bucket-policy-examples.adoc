@@ -66,11 +66,11 @@ JSON策略的格式如下所示：
 
 AWS策略生成器是一个很好的工具、可帮助您获取具有正确格式的json代码以及您尝试实施的信息。
 
-要为StorageGRID组策略生成权限、请执行以下操作：*为策略类型选择IAM策略。*选择所需效果的按钮-允许或拒绝。最好先使用拒绝权限启动策略、然后在操作下拉列表中添加允许权限*单击要包含在此权限中的尽可能多的S3操作旁边的框或"所有操作"框。*在Amazon资源名称(ARN)框中键入存储分段路径。在存储分段名称前包括"arn：aws：s3：：：："。例如、"ARN：AWS：S3：：：：：explebket"
+要为StorageGRID组策略生成权限、请执行以下操作：*为策略类型选择IAM策略。*选择所需效果的按钮-允许或拒绝。最好先使用拒绝权限启动策略、然后在操作下拉列表中添加允许权限*单击要包含在此权限中的尽可能多的S3操作旁边的框或"所有操作"框。*在Amazon资源名称(ARN)框中键入存储分段路径。在存储分段名称前包括"arn：aws：s3：：：："。例如、"ARN：AWS：S3：：：：exple_bket"
 
 image:policy/group-generic.png["生成组策略"]
 
-要为存储分段策略生成权限、请执行以下操作：*为策略类型选择S3存储分段策略。*选择所需效果的按钮-允许或拒绝。最好先使用拒绝权限启动策略、然后在主体的用户或组信息中添加允许权限*键入。*在操作下拉列表中、单击要包含在此权限中的S3操作旁边的框或"所有操作"框。*在Amazon资源名称(ARN)框中键入存储分段路径。在存储分段名称前包括"arn：aws：s3：：：："。例如、"ARN：AWS：S3：：：：：explebket"
+要为存储分段策略生成权限、请执行以下操作：*为策略类型选择S3存储分段策略。*选择所需效果的按钮-允许或拒绝。最好先使用拒绝权限启动策略、然后在主体的用户或组信息中添加允许权限*键入。*在操作下拉列表中、单击要包含在此权限中的S3操作旁边的框或"所有操作"框。*在Amazon资源名称(ARN)框中键入存储分段路径。在存储分段名称前包括"arn：aws：s3：：：："。例如、"ARN：AWS：S3：：：：exple_bket"
 
 image:policy/bucket-generic.png["生成存储分段策略"]
 
@@ -80,7 +80,7 @@ image:policy/bucket-generic.png["生成存储分段策略"]
 * 选择允许效果
 * 输入Marketing组信息：arn：aws：iam：：95390887230002558202：联合组/营销
 * 单击"所有操作"框
-* 输入存储分段信息—arn：aws：s3：：：：examplebket,arn：aws：s3：：：：examplebket/*
+* 输入存储分段信息—arn：aws：s3：：：：exple_bket,arn：aws：s3：：：：exple_bket/*
 
 
 image:policy/example-bucket1.png["生成策略中的第一个权限"]
@@ -97,7 +97,7 @@ image:policy/permission1.png["已输入策略中的第一个权限"]
 
 image:policy/getobject.png["选择GetObject"] image:policy/listbucket.png["选择ListBucket"]
 
-* 输入存储分段信息—arn：aws：s3：：：：examplebket,arn：aws：s3：：：：examplebket/*
+* 输入存储分段信息—arn：aws：s3：：：：exple_bket,arn：aws：s3：：：：exple_bket/*
 
 
 image:policy/example-bucket2.png["在策略中生成第二个权限"]
@@ -105,7 +105,7 @@ image:policy/example-bucket2.png["在策略中生成第二个权限"]
 * 单击"Add Statement"(添加诊断代码)按钮
 
 
-image:policy/permission3.png["策略中的第二个权限"]
+image:policy/permission2.png["策略中的第二个权限"]
 
 * 单击"生成策略"按钮、此时将显示一个弹出窗口、其中会显示您生成的策略。
 
@@ -126,8 +126,8 @@ image:policy/example-output.png["最终输出"]
       "Action": "s3:*",
       "Effect": "Allow",
       "Resource": [
-        "arn:aws:s3:::examplebucket",
-        "arn:aws:s3:::examplebucket/*"
+        "arn:aws:s3:::example_bucket",
+        "arn:aws:s3:::example_bucket/*"
       ],
       "Principal": {
         "AWS": [
@@ -143,8 +143,8 @@ image:policy/example-output.png["最终输出"]
       ],
       "Effect": "Allow",
       "Resource": [
-        "arn:aws:s3:::examplebucket",
-        "arn:aws:s3:::examplebucket/*"
+        "arn:aws:s3:::example_bucket",
+        "arn:aws:s3:::example_bucket/*"
       ],
       "Principal": "*"
     }
@@ -164,8 +164,8 @@ image:policy/example-output.png["最终输出"]
       "Action": "s3:*",
       "Effect": "Allow",
       "Resource": [
-        "arn:aws:s3:::examplebucket",
-        "arn:aws:s3:::examplebucket/*"
+        "arn:aws:s3:::example_bucket",
+        "arn:aws:s3:::example_bucket/*"
       ],
       "Principal": {
         "AWS": [
@@ -181,8 +181,8 @@ image:policy/example-output.png["最终输出"]
       ],
       "Effect": "Allow",
       "Resource": [
-        "arn:aws:s3:::examplebucket",
-        "arn:aws:s3:::examplebucket/*"
+        "arn:aws:s3:::example_bucket",
+        "arn:aws:s3:::example_bucket/*"
       ],
       "Principal": "*"
     }
