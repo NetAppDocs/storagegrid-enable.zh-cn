@@ -1,6 +1,6 @@
 ---
 indexpage:
-  title: 如何在您的环境中启用StorageGRID
+  title: StorageGRID解决方案和资源
   summary: NetApp StorageGRID 是一款软件定义的对象存储套件，支持公有 ，私有云和混合多云环境中的各种用例。StorageGRID 利用自动化生命周期管理等行业领先的创新技术来存储，保护，保护和保留非结构化数据，以便在很长时间内用于多种用途。
   lead: NetApp StorageGRID 是一款软件定义的对象存储套件，支持公有 ，私有云和混合多云环境中的各种用例。StorageGRID 为Amazon
     S3 API提供本机支持、并提供行业领先的创新技术、例如自动化生命周期管理、以便长期经济高效地存储、保护和保留非结构化数据。

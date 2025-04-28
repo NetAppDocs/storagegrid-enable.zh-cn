@@ -72,7 +72,6 @@
   <block id="df245b9cfd302a8af7987f33f6ed60df" category="inline-link">立即成为联盟合作伙伴</block>
   <block id="98e55b10201a07cc0419d8c723a34cf1" category="paragraph">与NetApp携手合作、在您创建经过测试的同类最佳NetApp解决方案时、加快产品组合创新、提高市场知名度并提高销量。<block ref="c243ccaaa8a956e841065a878a76ac60" category="inline-link-rx"></block>。</block>
   <block id="a1224e8e1d42e54574d1b861a3df5f2f" category="summary">NetApp StorageGRID 是一款软件定义的对象存储套件，支持公有 ，私有云和混合多云环境中的各种用例。StorageGRID 利用自动化生命周期管理等行业领先的创新技术来存储，保护，保护和保留非结构化数据，以便在很长时间内用于多种用途。</block>
-  <block id="696ea9ebe2a9f57bb062aba5c1d58b10" category="doc">如何在您的环境中启用StorageGRID</block>
   <block id="932b23c9adc6de8aea5fed582f4afb76" category="summary">S3cmd是一个用于S3操作的免费命令行工具和客户端。您可以使用S3cmd在StorageGRID 上测试和演示S3访问。</block>
   <block id="450d1a071fcbc323ff4710aa7452fdd5" category="doc">使用S3cmd测试和演示StorageGRID 上的S3访问</block>
   <block id="1905fbd5d74fe86a969eaff7ff00f7fc" category="paragraph">S3cmd是一个用于S3操作的免费命令行工具和客户端。您可以使用s3cmd在StorageGRID 上测试和演示S3访问。</block>
@@ -587,7 +586,6 @@
   <block id="39c7ca89a1c72a8fd424c69cd35616bc" category="list-text">将对象复制到云存储池</block>
   <block id="d00aaeae3c5233d689ab6c1fa3391d6c" category="paragraph">确认保留示意图显示了存储在StorageGRID 本地和云存储池中用于备份的对象。</block>
   <block id="eccd0905bbb9877cfd0ba7f4cc26a3c6" category="paragraph">确认在触发ILM规则后、云存储池中存在副本、您可以在本地检索对象而无需执行对象还原。</block>
-  <block id="c27ce751e131719af380702f6711a49d" category="sidebar">如何启用StorageGRID</block>
   <block id="3778f3873debfe11e2ace6bb6af1e417" category="sidebar">StorageGRID 文档</block>
   <block id="7b99b0e0bb2f7f24ff67fbcc39f899f1" category="sidebar">经验证的第三方解决方案</block>
   <block id="3b878279a04dc47d60932cb294d96259" category="sidebar">概述</block>
@@ -955,7 +953,6 @@
   <block id="383aea8468a529b339b755e27b1d4668" category="paragraph">7.5天</block>
   <block id="9ff416b798a88ec4bfb30f4f045aada5" category="paragraph">11天</block>
   <block id="ed01ec12331788a408398b059da47a39" category="paragraph">10.5天</block>
-  <block id="3f2327c90ede247dca9387ef500bf746" category="doc">分段和组(IAM)策略示例</block>
   <block id="640ca9533a2fd150e7d3ed390e2aae66" category="section-title">组策略(IAM)</block>
   <block id="06c73db3763c74cabb8ece8e96fe7c5d" category="section-title">主目录模式的存储分段访问</block>
   <block id="8569c05df75ec9b148a67ed5998ad8b0" category="section-title">拒绝创建对象锁定分段</block>
@@ -3321,9 +3318,6 @@ StorageGRID可以通过为存储节点或运行负载平衡器和管理节点的
   <block id="6031311f84eb0fc4006dba6fd47125b4" category="paragraph">StorageGRID中需要使用组策略。具有S3访问密钥但未分配给用户组或分配给组但策略未授予某些权限的用户将无法访问任何数据。</block>
   <block id="8a4af1af804f24fc5095bcb2f05db9c4" category="inline-link">AWS策略生成器</block>
   <block id="2bf2ec7dad10916c7d2bbb85d22b8113" category="paragraph">存储分段和组策略共享大多数相同的元素。策略以json格式构建、可使用生成<block ref="b825d77c880bca33764ff404def2b41e" category="inline-link-rx"></block></block>
-  <block id="8efdfc962f00530ec94e00c5411f744c" category="paragraph">所有策略都将定义效果、操作和资源。存储分段策略还将定义主体。</block>
-  <block id="036aeedca40738e98fb9980b5c2675af" category="paragraph">其*效果*是允许或拒绝请求。Principal*是指被授予或拒绝这些能力的帐户/用户。可以将其定义为通配符++*++"、存储分段所在租户中的本地或联合用户或组、或者网格中的其他租户。用户或组可通过名称或ID字符串进行标识。“*操作*”是授予或拒绝给用户的一组S3操作。</block>
-  <block id="dba9490f360197ade1689ea1d2889b5c" category="admonition">用户需要执行S3：ListBucket"操作才能执行任何S3操作。</block>
   <block id="2dc7323af24c93e28f62e0e080730041" category="paragraph">资源*是指被授予或拒绝对其执行操作的主体的一个或多个分段。(可选)策略操作的有效时间可以是一个*条件*。</block>
   <block id="98d8787db8134942993742f28e6e638e" category="section-title">使用AWS策略生成器</block>
   <block id="7fd5fa9d1e888f7d962c6930557d8e36" category="paragraph">AWS策略生成器是一个很好的工具、可帮助您获取具有正确格式的json代码以及您尝试实施的信息。</block>
@@ -3362,4 +3356,20 @@ StorageGRID可以通过为存储节点或运行负载平衡器和管理节点的
   <block id="5e90956923e27ad94083a42655710d27" category="paragraph">要为存储分段策略生成权限、请执行以下操作：*为策略类型选择S3存储分段策略。*选择所需效果的按钮-允许或拒绝。最好先使用拒绝权限启动策略、然后在主体的用户或组信息中添加允许权限*键入。*在操作下拉列表中、单击要包含在此权限中的S3操作旁边的框或"所有操作"框。*在Amazon资源名称(ARN)框中键入存储分段路径。在存储分段名称前包括"arn：aws：s3：：：："。例如、"ARN：AWS：S3：：：：exple_bket"</block>
   <block id="6286b2654fd9f607da0c9a689ef54e7c" category="list-text">输入存储分段信息—arn：aws：s3：：：：exple_bket,arn：aws：s3：：：：exple_bket/*</block>
   <block id="8e42358c3df8a569be04cad92e8b7479" category="paragraph"><block ref="8e42358c3df8a569be04cad92e8b7479" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="bbecdd1fb824778996b46ad8016ff963" category="summary">StorageGRID中的策略和权限。</block>
+  <block id="0e2086a4669036b8a4cdc547c6b73dcf" category="doc">StorageGRID中的策略和权限</block>
+  <block id="71c2cd8c732de893ca91cb987baa1b5c" category="paragraph">所有策略都将定义效果、操作和资源。存储分段策略还将定义主体。</block>
+  <block id="e73b44d49494e2ac6f4ce555878eacec" category="paragraph">其*效果*是允许或拒绝请求。</block>
+  <block id="e3d361dfeb32442ba3887fb26cadd759" category="paragraph">*负责人*</block>
+  <block id="7c8bff59dd5d9771fc52f17ce6414420" category="list-text">仅适用于存储分段策略。</block>
+  <block id="4a47dee52461b2ce5adaefbba5fc57b0" category="list-text">主体是指被授予或拒绝权限的帐户/用户。</block>
+  <block id="7b0fef71a6a5b6046a79dcb31b7991ec" category="list-text">可以定义为：</block>
+  <block id="cdecd059c81b66125ab436ad5ba1f0db" category="list-text">通配符"++*++"</block>
+  <block id="171a87df01e0c7aab0969853c4d63f99" category="list-text">租户中所有用户的租户ID (相当于AWS帐户)</block>
+  <block id="15ab6cf4100c9219aec62139d8ecadc0" category="list-text">用户(存储分段所在租户的本地或联合用户、或网格中的其他租户)</block>
+  <block id="36bafc76e6f620a3ad8f1ff1389d5aeb" category="list-text">组(存储分段所在租户的本地或联合组、或网格中的其他租户)。</block>
+  <block id="1fb97d2f8d3ea337eb88de35459a8dfa" category="paragraph">“*操作*”是授予或拒绝给用户的一组S3操作。</block>
+  <block id="c4b3b18f1ab46adb439794c3e45b0a5a" category="admonition">对于组策略、用户需要执行S3：ListBucket"操作才能执行任何S3操作。</block>
+  <block id="21e1d6809aa3d238b83ad7b2536121ce" category="section-title">将存储分段限制为少数具有只读访问权限的用户。</block>
+  <block id="4acae57d3119f0b81d2bfd14c9585f13" category="sidebar">StorageGRID解决方案和资源</block>
 </blocks>

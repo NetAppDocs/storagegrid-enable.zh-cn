@@ -2,9 +2,9 @@
 permalink: examples/bucket-policy-examples.html 
 sidebar: sidebar 
 keywords: iam, bucket policy, group policy, policy 
-summary: 下面是StorageGRID S3中的策略和权限示例。 
+summary: StorageGRID中的策略和权限。 
 ---
-= 分段和组(IAM)策略示例
+= StorageGRID中的策略和权限
 :hardbreaks:
 :allow-uri-read: 
 :icons: font
@@ -26,10 +26,61 @@ StorageGRID中需要使用组策略。具有S3访问密钥但未分配给用户�
 
 所有策略都将定义效果、操作和资源。存储分段策略还将定义主体。
 
-其*效果*是允许或拒绝请求。Principal*是指被授予或拒绝这些能力的帐户/用户。可以将其定义为通配符++*++"、存储分段所在租户中的本地或联合用户或组、或者网格中的其他租户。用户或组可通过名称或ID字符串进行标识。“*操作*”是授予或拒绝给用户的一组S3操作。
+其*效果*是允许或拒绝请求。
+
+*负责人*
+
+* 仅适用于存储分段策略。
+* 主体是指被授予或拒绝权限的帐户/用户。
+* 可以定义为：
++
+** 通配符"++*++"
++
+[listing]
+----
+"Principal":"*"
+----
++
+[listing]
+----
+"Principal":{"AWS":"*"}
+----
+** 租户中所有用户的租户ID (相当于AWS帐户)
++
+[listing]
+----
+"Principal": { "AWS": "27233906934684427525" }
+----
+** 用户(存储分段所在租户的本地或联合用户、或网格中的其他租户)
++
+[listing]
+----
+"Principal": { "AWS": "arn:aws:iam::76233906934699427431:user/tenant1user1" }
+----
++
+[listing]
+----
+"Principal": { "AWS": "arn:aws:iam::27233906934684427525:federated-user/tenant2user1" }
+----
+** 组(存储分段所在租户的本地或联合组、或网格中的其他租户)。
++
+[listing]
+----
+"Principal": { "AWS": "arn:aws:iam::76233906934699427431:group/DevOps"  }
+----
++
+[listing]
+----
+"Principal": { "AWS": "arn:aws:iam::27233906934684427525:federated-group/Managers"  }
+----
 
 
-NOTE: 用户需要执行S3：ListBucket"操作才能执行任何S3操作。
+
+
+“*操作*”是授予或拒绝给用户的一组S3操作。
+
+
+NOTE: 对于组策略、用户需要执行S3：ListBucket"操作才能执行任何S3操作。
 
 资源*是指被授予或拒绝对其执行操作的主体的一个或多个分段。(可选)策略操作的有效时间可以是一个*条件*。
 
@@ -43,10 +94,13 @@ JSON策略的格式如下所示：
       "Sid": "Custom name for this permission",
       "Effect": "Allow or Deny",
       "Principal": {
-        "AWS": "arn:aws:iam::Tenant_ID:federated-group/Group_Name",
-        "AWS": "arn:aws:iam::Tenant_ID:group/Group_Name",
-        "AWS": "arn:aws:iam::Tenant_ID::federated-user/User_Name",
-        "AWS": "User_Name"
+        "AWS": [
+          "arn:aws:iam::tenant_ID::user/User_Name",
+          "arn:aws:iam::tenant_ID::federated-user/User_Name",
+          "arn:aws:iam::tenant_ID:group/Group_Name",
+          "arn:aws:iam::tenant_ID:federated-group/Group_Name",
+          "tenant_ID"
+        ]
       },
       "Action": [
         "s3:ListBucket",
@@ -311,87 +365,6 @@ image:policy/example-output.png["最终输出"]
 ----
 
 
-== 存储分段策略
-
-
-
-=== 限制用户删除分段中受版本控制的对象
-
-此存储分段策略将限制用户(由用户ID "56622399308951294926"标识)按版本ID删除版本控制的对象
-
-[source, json]
-----
-{
-  "Statement": [
-    {
-      "Action": [
-        "s3:DeleteObjectVersion"
-      ],
-      "Effect": "Deny",
-      "Resource": "arn:aws:s3:::verdeny/*",
-      "Principal": {
-        "AWS": [
-          "56622399308951294926"
-        ]
-      }
-    },
-    {
-      "Action": "s3:*",
-      "Effect": "Allow",
-      "Resource": "arn:aws:s3:::verdeny/*",
-      "Principal": {
-        "AWS": [
-          "56622399308951294926"
-        ]
-      }
-    }
-  ]
-}
-----
-
-
-=== 将存储分段限制为具有只读访问权限的单个用户
-
-此策略允许单个用户对某个存储分段拥有只读访问权限、并明确授予所有其他用户的访问权限。将deny语句分组在策略顶部是一种较好的做法、可以加快评估速度。
-
-[source, json]
-----
-{
-    "Statement": [
-        {
-            "Sid": "Deny non user1",
-            "Effect": "Deny",
-            "NotPrincipal": {
-                "AWS": "arn:aws:iam::34921514133002833665:user/user1"
-            },
-            "Action": [
-                "s3:*"
-            ],
-            "Resource": [
-                "arn:aws:s3:::bucket1",
-                "arn:aws:s3:::bucket1/*"
-            ]
-        },
-        {
-            "Sid": "Allow user1 read access to bucket bucket1",
-            "Effect": "Allow",
-            "Principal": {
-                "AWS": "arn:aws:iam::34921514133002833665:user/user1"
-            },
-            "Action": [
-                "s3:GetObject",
-                "s3:ListBucket"
-            ],
-            "Resource": [
-                "arn:aws:s3:::bucket1",
-                "arn:aws:s3:::bucket1/*"
-            ]
-        }
-    ]
-}
-----
-
-
 === 将组限制为具有只读访问权限的单个子目录(前缀)
 
 此策略允许组成员对分段中的子目录(前缀)具有只读访问权限。分段名称为"study"、子目录为"study01"。
@@ -459,5 +432,135 @@ image:policy/example-output.png["最终输出"]
             ]
         }
     ]
+}
+----
+
+
+== 存储分段策略
+
+
+
+=== 将存储分段限制为具有只读访问权限的单个用户
+
+此策略允许单个用户对某个存储分段拥有只读访问权限、并明确授予所有其他用户的访问权限。将deny语句分组在策略顶部是一种较好的做法、可以加快评估速度。
+
+[source, json]
+----
+{
+    "Statement": [
+        {
+            "Sid": "Deny non user1",
+            "Effect": "Deny",
+            "NotPrincipal": {
+                "AWS": "arn:aws:iam::34921514133002833665:user/user1"
+            },
+            "Action": [
+                "s3:*"
+            ],
+            "Resource": [
+                "arn:aws:s3:::bucket1",
+                "arn:aws:s3:::bucket1/*"
+            ]
+        },
+        {
+            "Sid": "Allow user1 read access to bucket bucket1",
+            "Effect": "Allow",
+            "Principal": {
+                "AWS": "arn:aws:iam::34921514133002833665:user/user1"
+            },
+            "Action": [
+                "s3:GetObject",
+                "s3:ListBucket"
+            ],
+            "Resource": [
+                "arn:aws:s3:::bucket1",
+                "arn:aws:s3:::bucket1/*"
+            ]
+        }
+    ]
+}
+----
+
+
+=== 将存储分段限制为少数具有只读访问权限的用户。
+
+[source, json]
+----
+{
+    "Statement": [
+      {
+        "Sid": "Deny all S3 actions to employees 002-005",
+        "Effect": "deny",
+        "Principal": {
+          "AWS": [
+            "arn:aws:iam::46521514133002703882:user/employee-002",
+            "arn:aws:iam::46521514133002703882:user/employee-003",
+            "arn:aws:iam::46521514133002703882:user/employee-004",
+            "arn:aws:iam::46521514133002703882:user/employee-005"
+          ]
+        },
+        "Action": "*",
+        "Resource": [
+          "arn:aws:s3:::databucket1",
+          "arn:aws:s3:::databucket1/*"
+        ]
+      },
+      {
+        "Sid": "Allow read-only access for employees 002-005",
+        "Effect": "Allow",
+        "Principal": {
+          "AWS": [
+            "arn:aws:iam::46521514133002703882:user/employee-002",
+            "arn:aws:iam::46521514133002703882:user/employee-003",
+            "arn:aws:iam::46521514133002703882:user/employee-004",
+            "arn:aws:iam::46521514133002703882:user/employee-005"
+          ]
+        },
+        "Action": [
+          "s3:GetObject",
+          "s3:GetObjectTagging",
+          "s3:GetObjectVersion"
+        ],
+        "Resource": [
+          "arn:aws:s3:::databucket1",
+          "arn:aws:s3:::databucket1/*"
+        ]
+      }
+    ]
+}
+----
+
+
+=== 限制用户删除分段中受版本控制的对象
+
+此存储分段策略将限制用户(由用户ID "56622399308951294926"标识)按版本ID删除版本控制的对象
+
+[source, json]
+----
+{
+  "Statement": [
+    {
+      "Action": [
+        "s3:DeleteObjectVersion"
+      ],
+      "Effect": "Deny",
+      "Resource": "arn:aws:s3:::verdeny/*",
+      "Principal": {
+        "AWS": [
+          "56622399308951294926"
+        ]
+      }
+    },
+    {
+      "Action": "s3:*",
+      "Effect": "Allow",
+      "Resource": "arn:aws:s3:::verdeny/*",
+      "Principal": {
+        "AWS": [
+          "56622399308951294926"
+        ]
+      }
+    }
+  ]
 }
 ----
