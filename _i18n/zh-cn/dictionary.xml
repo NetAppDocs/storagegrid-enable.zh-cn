@@ -3172,11 +3172,8 @@ StorageGRID可以通过为存储节点或运行负载平衡器和管理节点的
   <block id="ea76d032379d2a88d28b72edd9e36564" category="paragraph">本技术报告为实施StorageGRID复制策略以在站点发生故障时实现零恢复点目标(RPO)提供了全面的指南。本文档详细介绍了StorageGRID的各种部署选项、包括多站点同步复制和多网格异步复制。其中介绍了如何配置StorageGRID的信息生命周期管理(ILM)策略、以确保数据在多个位置之间的持久性和可用性。此外、本报告还介绍了保持客户端操作不中断所需的性能注意事项、故障情形和恢复过程。本文档的目标是、通过利用同步和异步复制技术、提供相关信息以确保数据始终可访问且一致、即使在站点完全瘫痪的情况下也是如此。</block>
   <block id="606eab719053286d71dc6722565f39cc" category="section-title">StorageGRID概述</block>
   <block id="c72cc4a7cc108f0e65b3b2234a5451f6" category="paragraph">NetApp StorageGRID是一个基于对象的存储系统、支持行业标准Amazon Simple Storage Service (Amazon S3) API。</block>
-  <block id="cbec9834e0bafd7c4eeaff92edea7bb1" category="paragraph">StorageGRID可跨多个位置提供一个命名空间、并根据信息生命周期管理策略(ILM)提供各种服务级别。借助这些生命周期策略、您可以优化数据在整个生命周期中的位置。</block>
-  <block id="92befe296d180941710b2c41a0009334" category="paragraph">借助StorageGRID、您可以在本地和地区分布的解决方案中配置数据的持久性和可用性。无论您的数据位于内部环境还是公有云中、集成混合云工作流都可以让您的企业利用Amazon Simple Notification Service (Amazon SNS)、Google Cloud、Microsoft Azure Blb、Amazon S3 Glacier"、EliSearch等云服务。</block>
   <block id="bbcde1e5e5d61a464205617230c533f9" category="section-title">StorageGRID规模</block>
   <block id="755c616499e794de29a6192f733ef343" category="paragraph">StorageGRID最多可部署3个存储节点、一个网格最多可扩展到200个节点。一个网格可以部署为一个站点、也可以扩展到16个站点。最小网格由一个站点中的一个管理节点和3个存储节点组成。管理节点包含管理界面、这是衡量指标和日志记录的中心点、并负责维护StorageGRID组件的配置。管理节点还包含一个用于S3 API访问的集成负载平衡器。StorageGRID可以部署为纯软件、VMware虚拟机设备或专用设备。</block>
-  <block id="32bb7324701636fba01565d26f666f9a" category="paragraph">StorageGRID节点可以部署为仅元数据节点、最大程度地增加对象数量、仅对象存储节点、最大程度地增加对象空间、或者同时添加对象数量和对象空间的元数据和对象存储节点。每个存储节点都可以扩展到数PB的对象存储容量、从而支持数百PB的单个命名空间。StorageGRID还为S3 API操作提供了一个称为网关节点的集成负载平衡器。</block>
   <block id="dd4a2f5270f8e48315da197dfb50c549" category="inline-image-macro">StorageGRID部署选项</block>
   <block id="85bd86baa435866d317d93d290b94825" category="paragraph"><block ref="85bd86baa435866d317d93d290b94825" category="inline-image-macro-rx" type="image"></block></block>
   <block id="0d98907e79de1d22666f11bfb3d2db3f" category="paragraph">StorageGRID由放置在站点拓扑中的一组节点组成。作为一种逻辑结构、StorageGRID中的站点可以是唯一的物理位置、也可以与网格中的其他站点一样驻留在共享物理位置。一个StorageGRID站点不应跨越多个物理位置。站点表示共享局域网(LAN)基础架构。</block>
@@ -3193,7 +3190,6 @@ StorageGRID可以通过为存储节点或运行负载平衡器和管理节点的
   <block id="fe6177858a7ffc8599a9d9a1a4ea2f1f" category="list-text">对象元数据是指描述对象的任何信息。</block>
   <block id="5744c4629d3afd78a5fdd52800e97f1c" category="paragraph">StorageGRID 使用对象元数据跟踪网格中所有对象的位置，并管理每个对象的生命周期。</block>
   <block id="63079dc7d4ba0f0950865fd53b883a11" category="paragraph">对象元数据包括以下信息：</block>
-  <block id="3d426a291fd747acbb0b7f735c152ca2" category="list-text">系统元数据、包括每个对象的唯一ID (UUID)、对象名称、S3存储分段的名称、租户帐户名称或ID、对象的逻辑大小、首次创建对象的日期和时间以及上次修改对象的日期和时间。</block>
   <block id="e5a918f437a7af27afdce3def49278bc" category="list-text">每个对象副本或经过清理编码的片段的当前存储位置。</block>
   <block id="91b08644ef3e50381478d7f42ab32f1d" category="list-text">与对象关联的任何自定义用户元数据键值对。</block>
   <block id="23f54b9b547ce8f5c783a1d802cf64a9" category="list-text">对于S3对象、是指与该对象关联的任何对象标记键值对</block>
@@ -3356,7 +3352,6 @@ StorageGRID可以通过为存储节点或运行负载平衡器和管理节点的
   <block id="5e90956923e27ad94083a42655710d27" category="paragraph">要为存储分段策略生成权限、请执行以下操作：*为策略类型选择S3存储分段策略。*选择所需效果的按钮-允许或拒绝。最好先使用拒绝权限启动策略、然后在主体的用户或组信息中添加允许权限*键入。*在操作下拉列表中、单击要包含在此权限中的S3操作旁边的框或"所有操作"框。*在Amazon资源名称(ARN)框中键入存储分段路径。在存储分段名称前包括"arn：aws：s3：：：："。例如、"ARN：AWS：S3：：：：exple_bket"</block>
   <block id="6286b2654fd9f607da0c9a689ef54e7c" category="list-text">输入存储分段信息—arn：aws：s3：：：：exple_bket,arn：aws：s3：：：：exple_bket/*</block>
   <block id="8e42358c3df8a569be04cad92e8b7479" category="paragraph"><block ref="8e42358c3df8a569be04cad92e8b7479" category="inline-image-macro-rx" type="image"></block></block>
-  <block id="bbecdd1fb824778996b46ad8016ff963" category="summary">StorageGRID中的策略和权限。</block>
   <block id="0e2086a4669036b8a4cdc547c6b73dcf" category="doc">StorageGRID中的策略和权限</block>
   <block id="71c2cd8c732de893ca91cb987baa1b5c" category="paragraph">所有策略都将定义效果、操作和资源。存储分段策略还将定义主体。</block>
   <block id="e73b44d49494e2ac6f4ce555878eacec" category="paragraph">其*效果*是允许或拒绝请求。</block>
@@ -3372,4 +3367,59 @@ StorageGRID可以通过为存储节点或运行负载平衡器和管理节点的
   <block id="c4b3b18f1ab46adb439794c3e45b0a5a" category="admonition">对于组策略、用户需要执行S3：ListBucket"操作才能执行任何S3操作。</block>
   <block id="21e1d6809aa3d238b83ad7b2536121ce" category="section-title">将存储分段限制为少数具有只读访问权限的用户。</block>
   <block id="4acae57d3119f0b81d2bfd14c9585f13" category="sidebar">StorageGRID解决方案和资源</block>
+  <block id="4e7c8010ebf23d4fb2423e144be51038" category="summary">StorageGRID 中的存储桶生命周期。</block>
+  <block id="58160f35095d353b329570226a65de25" category="doc">StorageGRID 中的存储桶生命周期</block>
+  <block id="4aacbdad7d81cd4fe0ad188b4e33394a" category="paragraph">您可以创建 S3 生命周期配置，以控制何时从 StorageGRID 系统中删除特定对象。</block>
+  <block id="1dae0e04caca31248eebeab84347dae4" category="section-title">什么是生命周期配置</block>
+  <block id="7237dbaae1efaf45679f5983bf89ecdb" category="paragraph">生命周期配置是一组应用于特定 S3 分段中的对象的规则。每个规则都指定受影响的对象以及这些对象的到期时间（在特定日期或一定天数后）。</block>
+  <block id="81808f9beff227e55b8eac9c911f81c1" category="paragraph">每个对象都遵循S3存储分段生命周期或ILM策略的保留设置。配置S3存储分段生命周期后、对于与存储分段生命周期筛选器匹配的对象、生命周期到期操作将覆盖ILM策略。与存储分段生命周期筛选器不匹配的对象将使用ILM策略的保留设置。如果某个对象与存储分段生命周期筛选器匹配、并且未明确指定到期操作、则不会使用ILM策略的保留设置、这意味着对象版本将永久保留。</block>
+  <block id="5abb5a8b4a6970cbd435389007814791" category="paragraph">因此，即使 ILM 规则中的放置说明仍适用于某个对象，该对象也可能会从网格中删除。或者，即使对象的任何 ILM 放置指令已经失效，对象仍可能保留在网格上</block>
+  <block id="f8ddf9feb35885470b54cc7bc6b0c913" category="paragraph">StorageGRID 在一个生命周期配置中最多支持 1 ， 000 条生命周期规则。每个规则可以包含以下 XML 元素：</block>
+  <block id="6778b95944fe51e4a619971577ef5ee9" category="list-text">到期日期：从对象载入开始，在达到指定日期或达到指定天数时删除对象。</block>
+  <block id="78f9560991f2641b0e0f5ce11d361273" category="list-text">NoncurrentVersionExpiration ：从对象变为非最新状态开始，在达到指定天数时删除对象。</block>
+  <block id="0422ebe572a6bb9b7e6d689e7fd6f1b7" category="list-text">筛选器（前缀，标记）</block>
+  <block id="1486479bc9924fe7efe63a3ddacb2a7b" category="list-text">状态 *ID</block>
+  <block id="663ef94c78c892b73cc57c0ecf2b8bc6" category="paragraph">StorageGRID 支持使用以下存储分段操作来管理生命周期配置：</block>
+  <block id="3a176974b22a72a5a81d4903f38c355d" category="list-text">DeleteBucketLifecycle</block>
+  <block id="2f3274ee98c595939f0a90e3b51f7c0d" category="list-text">GetBucketLifecycleConfiguration</block>
+  <block id="f8a8897d1208664862c2552a11f250ca" category="list-text">PutBucketLifecycleConfiguration</block>
+  <block id="da9d09dc4302766fe82a494820ea3018" category="section-title">生命周期策略的结构</block>
+  <block id="058711a626ab33171f020d2148a6ad18" category="paragraph">作为创建生命周期配置的第一步，您需要创建一个包含一个或多个规则的 JSON 文件。例如，此 JSON 文件包含三个规则，如下所示：</block>
+  <block id="9d3ce84a95c8d372e271b55abdeaf06d" category="list-text">*规则 1* 仅适用于与前缀 category1/ 匹配且 key2 值为 tag2 的对象。Expiration参数指定与该筛选条件匹配的对象将于 2020 年 8 月 22 日午夜到期。</block>
+  <block id="791076664e2f3e1afea280f5a504f6dc" category="list-text">*规则 2* 仅适用于与前缀 category2/ 匹配的对象。Expiration参数指定与过滤器匹配的对象将在被提取后 100 天过期。</block>
+  <block id="f2c02934edec79173be5544f20f8e6ca" category="admonition">指定天数的规则与对象的载入时间相关。如果当前日期超过载入日期加上天数，则在应用生命周期配置后，可能会立即从存储分段中删除某些对象。</block>
+  <block id="bf1abd41ac064b250b1363071b9a7195" category="list-text">*规则 3* 仅适用于与前缀 category3/ 匹配的对象。Expiration参数指定匹配对象的任何非当前版本将在变为非当前版本后 50 天过期。</block>
+  <block id="896cd69eb75c862798f9e986f848f272" category="section-title">将生命周期配置应用于存储分段</block>
+  <block id="991d6fd19e6b04aaab79f243f7231985" category="paragraph">创建生命周期配置文件后、您可以通过发出PutBucketLifecycleConfiguration请求将其应用于存储分段。</block>
+  <block id="7d231c64201330534bbc01fac1411591" category="paragraph">此请求将示例文件中的生命周期配置应用于名为的分段中的对象<block ref="323221a74abb3997f4141e6d754bf8dd" prefix=" " category="inline-code"></block>。</block>
+  <block id="ae6b965207cbb3195f9f18ff9567dac2" category="paragraph">要验证生命周期配置是否已成功应用于存储分段、请发送问题描述a GetBucketLifecycleConfiguration请求。例如：</block>
+  <block id="f0a61bf28629288e5dd914027e78d330" category="section-title">标准（非版本化）存储桶的生命周期策略示例</block>
+  <block id="9c839c4462147cd1a9a164b161c6df71" category="section-title">90 天后删除对象</block>
+  <block id="1c1edea5b5fb7017df6735caddb036c9" category="paragraph">用例：此策略非常适合管理仅在有限时间内相关的数据，例如临时文件、日志或中间处理数据。优势：降低存储成本并确保存储桶整洁有序。</block>
+  <block id="a4a5cea738d6da6085c0db896d047001" category="section-title">版本控制存储桶的生命周期策略示例</block>
+  <block id="5808fc2734abb0c3a63ccb7a2efcb814" category="section-title">10 天后删除非当前版本</block>
+  <block id="87fe92caedf00fb0d3b95bb0a8947552" category="paragraph">用例：此策略有助于管理非当前版本对象的存储，这些对象会随着时间的推移而累积并占用大量空间。优势：通过仅保留最新版本来优化存储空间利用率。</block>
+  <block id="01cd1b232ce05d49443051b40a2458d2" category="section-title">保留 5 个非当前版本</block>
+  <block id="f48f877559a5ab472b0c8399aa53ae43" category="paragraph">用例：当您想保留有限数量的先前版本以用于恢复或审计目的时很有用。好处：保留足够的非当前版本以确保足够的历史记录和恢复点。</block>
+  <block id="b36f0366fc8b2a644db0d58b9aec47e6" category="section-title">当不存在其他版本时移除删除标记</block>
+  <block id="5a07e328951f2e2665da45b3c8611e70" category="paragraph">用例：此策略有助于管理所有非当前版本删除后留下的删除标记，这些标记会随着时间的推移而累积。好处：减少不必要的混乱。</block>
+  <block id="e5c835f7c182458dbaf697d1620793b4" category="section-title">30 天后删除当前版本，60 天后删除非当前版本，一旦不存在其他版本，则删除当前版本创建的删除标记。</block>
+  <block id="d9b7c27b725dffa7cd5976689726fef1" category="paragraph">用例：为当前版本和非当前版本提供完整的生命周期，包括删除标记。优势：降低存储成本，确保存储桶整洁有序，同时保留足够的恢复点和历史记录。</block>
+  <block id="c9aa9a5dfb2480b364bb5845348ff940" category="section-title">删除没有其他版本并且已经存在 5 天的标记，为带有“accounts_ 前缀”的对象保留 4 个非当前版本和至少 30 天的历史记录，为所有其他对象版本保留 2 个版本和至少 10 天的历史记录。</block>
+  <block id="2c4d4631c1767753478366b0115cd168" category="paragraph">用例：为特定对象以及其他对象提供独特的规则，以管理当前版本和非当前版本（包括删除标记）的完整生命周期。优势：降低存储成本，确保存储桶整洁有序，同时保留足够的恢复点和历史记录，以满足各种客户需求。</block>
+  <block id="c662e9fbc7c08f1bf374548d49a19c49" category="list-text">定期审查和更新生命周期政策，并使其与 ILM 和数据管理目标保持一致。</block>
+  <block id="cc89ccf651eef2154a659615eba6bdf0" category="list-text">在广泛应用策略之前，先在非生产环境或存储桶中测试策略，以确保其按预期工作</block>
+  <block id="1472c6bd5c48d6572cc5d6c6830a71cb" category="list-text">使用描述性 ID 作为规则使其更直观，因为逻辑结构可能变得复杂</block>
+  <block id="9883679d6984fbcf5d5e1eb8a9841a7a" category="list-text">监控这些存储桶生命周期策略对存储使用情况和性能的影响，以做出必要的调整。</block>
+  <block id="f69309997a74d84dd39f53923232f102" category="summary">StorageGRID 中的策略和权限。</block>
+  <block id="61e1800dd7d03bc7509039ca51abaa94" category="paragraph">StorageGRID可跨多个位置提供一个命名空间、并根据信息生命周期管理策略(ILM)提供各种服务级别。通过这些生命周期策略，您可以优化数据在整个生命周期中的存储位置。</block>
+  <block id="ee46b302eeb000f796002cd99f7fccca" category="paragraph">借助StorageGRID、您可以在本地和地区分布的解决方案中配置数据的持久性和可用性。无论您的数据是在本地还是在公共云中，集成的混合云工作流都允许您的企业利用云服务，例如 Amazon Simple Notification Service (Amazon SNS)、Google Cloud、Microsoft Azure Blob、Amazon S3 Glacier、Elasticsearch 等。</block>
+  <block id="639932e1f3f1e48c7c66a3c0d26d7c95" category="paragraph">StorageGRID 节点可以部署为：</block>
+  <block id="2ef98a36e008b10819c92b90ab9fb134" category="list-text">仅元数据节点最大化对象数量</block>
+  <block id="314be57ec0bf12b0f7b8fad48b9e7d0d" category="list-text">仅存储对象的节点，最大化对象空间</block>
+  <block id="b67abdd7987281e93fb88e16a9dede52" category="list-text">组合元数据和对象存储节点，添加对象计数和对象空间</block>
+  <block id="c861ea75c2d08cb58cd0e94b6f5cb1d3" category="paragraph">每个存储节点都可以扩展到数PB的对象存储容量、从而支持数百PB的单个命名空间。StorageGRID还为S3 API操作提供了一个称为网关节点的集成负载平衡器。</block>
+  <block id="aae45e5681608077797f9b54c9787cc9" category="list-text">系统元数据，包括每个对象的唯一 ID、对象名称、S3 存储桶的名称、租户帐户名称或 ID、对象的逻辑大小、对象首次创建的日期和时间以及对象最后修改的日期和时间。</block>
+  <block id="cab3529168145fa0611750088f6b9294" category="sidebar">存储桶生命周期策略示例</block>
+  <block id="e506f81bec685a8d4212a723ed5e9d67" category="sidebar">存储桶生命周期策略示例</block>
 </blocks>

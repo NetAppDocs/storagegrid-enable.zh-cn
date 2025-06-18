@@ -2,7 +2,7 @@
 permalink: examples/bucket-policy-examples.html 
 sidebar: sidebar 
 keywords: iam, bucket policy, group policy, policy 
-summary: StorageGRID中的策略和权限。 
+summary: StorageGRID 中的策略和权限。 
 ---
 = StorageGRID中的策略和权限
 :hardbreaks:

@@ -97,6 +97,8 @@ indexpage:
       url: "/examples/test-demonstrate-S3-object-lock.html"
     - title: 存储分段和组策略示例
       url: "/examples/bucket-policy-examples.html"
+    - title: 存储桶生命周期策略示例
+      url: "/examples/bucket-lifecycle-examples.html"
   - title: 博客文章
     links:
     - title: StorageGRID 博客

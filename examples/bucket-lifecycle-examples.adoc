@@ -1,0 +1,296 @@
+---
+permalink: examples/bucket-lifecycle-examples.html 
+sidebar: sidebar 
+keywords: iam, bucket policy, lifecycle policy, policy, bucket 
+summary: StorageGRID 中的存储桶生命周期。 
+---
+= StorageGRID 中的存储桶生命周期
+:hardbreaks:
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+您可以创建 S3 生命周期配置，以控制何时从 StorageGRID 系统中删除特定对象。
+
+
+
+== 什么是生命周期配置
+
+生命周期配置是一组应用于特定 S3 分段中的对象的规则。每个规则都指定受影响的对象以及这些对象的到期时间（在特定日期或一定天数后）。
+
+每个对象都遵循S3存储分段生命周期或ILM策略的保留设置。配置S3存储分段生命周期后、对于与存储分段生命周期筛选器匹配的对象、生命周期到期操作将覆盖ILM策略。与存储分段生命周期筛选器不匹配的对象将使用ILM策略的保留设置。如果某个对象与存储分段生命周期筛选器匹配、并且未明确指定到期操作、则不会使用ILM策略的保留设置、这意味着对象版本将永久保留。
+
+因此，即使 ILM 规则中的放置说明仍适用于某个对象，该对象也可能会从网格中删除。或者，即使对象的任何 ILM 放置指令已经失效，对象仍可能保留在网格上
+
+StorageGRID 在一个生命周期配置中最多支持 1 ， 000 条生命周期规则。每个规则可以包含以下 XML 元素：
+
+* 到期日期：从对象载入开始，在达到指定日期或达到指定天数时删除对象。
+* NoncurrentVersionExpiration ：从对象变为非最新状态开始，在达到指定天数时删除对象。
+* 筛选器（前缀，标记）
+* 状态 *ID
+
+
+StorageGRID 支持使用以下存储分段操作来管理生命周期配置：
+
+* DeleteBucketLifecycle
+* GetBucketLifecycleConfiguration
+* PutBucketLifecycleConfiguration
+
+
+
+
+== 生命周期策略的结构
+
+作为创建生命周期配置的第一步，您需要创建一个包含一个或多个规则的 JSON 文件。例如，此 JSON 文件包含三个规则，如下所示：
+
+. *规则 1* 仅适用于与前缀 category1/ 匹配且 key2 值为 tag2 的对象。Expiration参数指定与该筛选条件匹配的对象将于 2020 年 8 月 22 日午夜到期。
+. *规则 2* 仅适用于与前缀 category2/ 匹配的对象。Expiration参数指定与过滤器匹配的对象将在被提取后 100 天过期。
++
+
+CAUTION: 指定天数的规则与对象的载入时间相关。如果当前日期超过载入日期加上天数，则在应用生命周期配置后，可能会立即从存储分段中删除某些对象。
+
+. *规则 3* 仅适用于与前缀 category3/ 匹配的对象。Expiration参数指定匹配对象的任何非当前版本将在变为非当前版本后 50 天过期。
+
+
+[source, json]
+----
+{
+	"Rules": [
+        {
+		    "ID": "rule1",
+			"Filter": {
+                "And": {
+                    "Prefix": "category1/",
+                    "Tags": [
+                        {
+                            "Key": "key2",
+							"Value": "tag2"
+                        }
+                    ]
+                }
+            },
+			"Expiration": {
+                "Date": "2020-08-22T00:00:00Z"
+            },
+            "Status": "Enabled"
+        },
+		{
+            "ID": "rule2",
+			"Filter": {
+                "Prefix": "category2/"
+            },
+			"Expiration": {
+                "Days": 100
+            },
+            "Status": "Enabled"
+        },
+		{
+            "ID": "rule3",
+			"Filter": {
+                "Prefix": "category3/"
+            },
+			"NoncurrentVersionExpiration": {
+                "NoncurrentDays": 50
+            },
+            "Status": "Enabled"
+        }
+    ]
+}
+----
+
+
+== 将生命周期配置应用于存储分段
+
+创建生命周期配置文件后、您可以通过发出PutBucketLifecycleConfiguration请求将其应用于存储分段。
+
+此请求将示例文件中的生命周期配置应用于名为的分段中的对象 `testbucket`。
+
+[listing]
+----
+aws s3api --endpoint-url <StorageGRID endpoint> put-bucket-lifecycle-configuration
+--bucket testbucket --lifecycle-configuration file://bktjson.json
+----
+要验证生命周期配置是否已成功应用于存储分段、请发送问题描述a GetBucketLifecycleConfiguration请求。例如：
+
+[listing]
+----
+aws s3api --endpoint-url <StorageGRID endpoint> get-bucket-lifecycle-configuration
+ --bucket testbucket
+----
+
+
+== 标准（非版本化）存储桶的生命周期策略示例
+
+
+
+=== 90 天后删除对象
+
+用例：此策略非常适合管理仅在有限时间内相关的数据，例如临时文件、日志或中间处理数据。优势：降低存储成本并确保存储桶整洁有序。
+
+[source, json]
+----
+{
+	"Rules": [
+	  {
+		"ID": "Delete after 90 day rule",
+		"Filter": {},
+		"Status": "Enabled"，
+		  "Expiration": {
+			  "Days": 90
+	    }
+	  }
+	]
+}
+----
+
+
+== 版本控制存储桶的生命周期策略示例
+
+
+
+=== 10 天后删除非当前版本
+
+用例：此策略有助于管理非当前版本对象的存储，这些对象会随着时间的推移而累积并占用大量空间。优势：通过仅保留最新版本来优化存储空间利用率。
+
+[source, json]
+----
+{
+	"Rules": [
+	        {
+		"ID": "NoncurrentVersionExpiration 10 day rule",
+		"Filter": {},
+		"Status": "Enabled"，
+		  "NoncurrentVersionExpiration": {
+			  "NoncurrentDays": 10
+	   	}
+    }
+	]
+}
+----
+
+
+=== 保留 5 个非当前版本
+
+用例：当您想保留有限数量的先前版本以用于恢复或审计目的时很有用。好处：保留足够的非当前版本以确保足够的历史记录和恢复点。
+
+[source, json]
+----
+{
+	"Rules": [
+	  {
+		"ID": "NewerNoncurrentVersions 5 version rule",
+		"Filter": {},
+		"Status": "Enabled"，
+		"NoncurrentVersionExpiration": {
+		  	"NewerNoncurrentVersions": 5
+	    }
+    }
+	]
+}
+----
+
+
+=== 当不存在其他版本时移除删除标记
+
+用例：此策略有助于管理所有非当前版本删除后留下的删除标记，这些标记会随着时间的推移而累积。好处：减少不必要的混乱。
+
+[source, json]
+----
+{
+	"Rules": [
+    {
+		"ID": "Delete marker cleanup rule",
+		"Filter": {},
+		"Status": "Enabled"，
+		"Expiration": {
+        "ExpiredObjectDeleteMarker": true
+	  	}
+    }
+	]
+}
+----
+
+
+=== 30 天后删除当前版本，60 天后删除非当前版本，一旦不存在其他版本，则删除当前版本创建的删除标记。
+
+用例：为当前版本和非当前版本提供完整的生命周期，包括删除标记。优势：降低存储成本，确保存储桶整洁有序，同时保留足够的恢复点和历史记录。
+
+[source, json]
+----
+{
+  "Rules": [
+    {
+      "ID": "Delete current version",
+      "Status": "Enabled",
+      "Expiration": {
+        "Days": 30
+      },
+    },
+    {
+      "ID": "noncurrent version retention",
+      "Status": "Enabled",
+      "NoncurrentVersionExpiration": {
+        "NoncurrentDays": 60
+      }
+    },
+    {
+      "ID": "Markers",
+      "Status": "Enabled",
+      "Expiration": {
+        "ExpiredObjectDeleteMarker": true
+      }
+    }
+  ]
+}
+----
+
+
+=== 删除没有其他版本并且已经存在 5 天的标记，为带有“accounts_ 前缀”的对象保留 4 个非当前版本和至少 30 天的历史记录，为所有其他对象版本保留 2 个版本和至少 10 天的历史记录。
+
+用例：为特定对象以及其他对象提供独特的规则，以管理当前版本和非当前版本（包括删除标记）的完整生命周期。优势：降低存储成本，确保存储桶整洁有序，同时保留足够的恢复点和历史记录，以满足各种客户需求。
+
+[source, json]
+----
+{
+  "Rules": [
+    {
+      "ID": "Markers",
+      "Status": "Enabled",
+      "Expiration": {
+        "Days": 5,
+        "ExpiredObjectDeleteMarker": true
+      },
+    },
+    {
+      "ID": "accounts version retention",
+      "Status": "Enabled",
+      "NoncurrentVersionExpiration": {
+        "NewerNoncurrentVersions": 4,
+        "NoncurrentDays": 30
+      },
+      "Filter": {
+          "Prefix":"account_"
+      }
+    },
+    {
+      "ID": "noncurrent version retention",
+      "Status": "Enabled",
+      "NoncurrentVersionExpiration": {
+        "NewerNoncurrentVersions": 2,
+        "NoncurrentDays": 10
+      }
+    }
+  ]
+}
+----
+
+
+== 结论
+
+* 定期审查和更新生命周期政策，并使其与 ILM 和数据管理目标保持一致。
+* 在广泛应用策略之前，先在非生产环境或存储桶中测试策略，以确保其按预期工作
+* 使用描述性 ID 作为规则使其更直观，因为逻辑结构可能变得复杂
+* 监控这些存储桶生命周期策略对存储使用情况和性能的影响，以做出必要的调整。
+
