@@ -41,7 +41,7 @@ summary: 第三方解决方案已通过StorageGRID 11.9.
 * 富士尼尔姆对象归档
 * GitHub企业服务器
 * IBM文件集
-* IBM Spectrum Protect Plus
+* IBM 存储保护
 * Interica
 * Komprise
 * Microsoft SQL Server大数据集群
@@ -88,6 +88,7 @@ summary: 第三方解决方案已通过StorageGRID 11.9.
 
 * Commvault 11功能版本26
 * IBM文件集
+* IBM 存储保护
 * OpenText文档21.4
 * Rubeck
 * Veeam 12.

@@ -3422,4 +3422,5 @@ StorageGRID可以通过为存储节点或运行负载平衡器和管理节点的
   <block id="aae45e5681608077797f9b54c9787cc9" category="list-text">系统元数据，包括每个对象的唯一 ID、对象名称、S3 存储桶的名称、租户帐户名称或 ID、对象的逻辑大小、对象首次创建的日期和时间以及对象最后修改的日期和时间。</block>
   <block id="cab3529168145fa0611750088f6b9294" category="sidebar">存储桶生命周期策略示例</block>
   <block id="e506f81bec685a8d4212a723ed5e9d67" category="sidebar">存储桶生命周期策略示例</block>
+  <block id="0be6d03a29c17471b0414e9b31482b15" category="list-text">IBM 存储保护</block>
 </blocks>
