@@ -1,0 +1,32 @@
+---
+permalink: technical-reports/monitor-grafana-dashboard.html 
+sidebar: sidebar 
+keywords: grafana dashboard, storagegrid 
+summary: 了解如何在NetApp StorageGRID中使用Grafana实现指标可视化、包括访问预构建的信息板进行监控和故障排除。 
+---
+= 使用StorageGRID中的Grafana信息板查看指标
+:hardbreaks:
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+了解如何使用Grafana界面可视化和监控StorageGRID数据。
+
+Grafana是一款用于度量可视化的开源软件。默认情况下、我们预先构建了信息板、可提供有关StorageGRID系统的有用而强大的信息。
+
+这些预先构建的信息板不仅可用于监控、还可用于对问题进行故障排除。有些供技术支持使用。例如、要查看存储节点的指标、请执行以下步骤。
+
+.步骤
+. 在GMI中、菜单：Support[Metrics ]。
+. 在Grafana部分下、选择Node信息板。
++
+image:monitor/monitor-node-dashboard.png["monitor-node信息板"]
+
+. 在Grafana中、将主机设置为要查看指标的任何节点。在这种情况下、将选择一个存储节点。提供的信息比以下屏幕截图所示的信息要多。
++
+image:monitor/monitor-grafana-metrics.png["monitor-grafana指标"]
+
+

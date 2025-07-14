@@ -1,0 +1,21 @@
+---
+sidebar: sidebar 
+permalink: technical-reports/bare-metal-upgrading-bare-metal-nodes-storagegrid.html 
+keywords: bare-metal, upgrade, storagegrid 
+summary: 了解StorageGRID中裸机节点的升级过程。 
+---
+= 在StorageGRID中升级裸机节点
+:allow-uri-read: 
+
+
+[role="lead"]
+了解StorageGRID中裸机节点的升级过程。
+
+裸机节点的升级过程与设备或VMware节点的升级过程不同。在执行裸机节点升级之前、您必须先升级所有主机上的RPM文件、然后再通过GUI运行升级。
+
+[listing]
+----
+[root@host1 rpms]# rpm -Uvh StorageGRID-Webscale-Images-*.rpm
+[root@host1 rpms]# rpm -Uvh StorageGRID-Webscale-Service-*.rpm
+----
+现在、您可以通过GUI继续进行软件升级。

@@ -1,0 +1,44 @@
+---
+permalink: technical-reports/monitor-traffic-classification-policies.html 
+sidebar: sidebar 
+keywords: traffic classification policies, storagegrid 
+summary: 了解如何在StorageGRID 11.4中设置和监控流量分类策略、以实现高效的流量管理和网络带宽优化。 
+---
+= 在StorageGRID中使用流量分类策略
+:hardbreaks:
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+了解如何设置和配置流量分类策略、以管理和优化StorageGRID中的网络流量。
+
+流量分类策略提供了一种根据特定租户、分段、IP子网或负载平衡器端点监控和/或限制流量的方法。网络连接和带宽是StorageGRID的特别重要的衡量指标。
+
+要配置流量分类策略、请执行以下步骤：
+
+.步骤
+. 在GMI上、导航到菜单：配置[系统设置>交通分类]。
+. 单击创建+
+. 输入策略的名称和说明。
+. 创建匹配规则。
++
+image:monitor/monitor-matching-rule.png["monitor-匹 配规则"]
+
+. 设置限制(可选)。
++
+image:monitor/monitor-limit.png["监视器限制"]
+
+. 保存策略
++
+image:monitor/monitor-traffic-policy.png["monitor-Traffic策略"]
+
++
+要查看与您的流量分类策略关联的指标、请选择您的策略、然后单击指标。此时将生成Grafana信息板、其中显示负载平衡器请求流量和平均请求持续时间等信息。
+
++
+image:monitor/monitor-dashboard-showing-metrics.png["monitor-metric-showing—指标"]
+
+

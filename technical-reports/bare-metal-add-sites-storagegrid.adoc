@@ -1,0 +1,30 @@
+---
+sidebar: sidebar 
+permalink: technical-reports/bare-metal-add-sites-storagegrid.html 
+keywords: add sites, storagegrid 
+summary: 了解如何将站点添加到StorageGRID以提高可靠性和存储容量。 
+---
+= 将站点添加到StorageGRID
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+了解如何将站点添加到StorageGRID以提高可靠性和存储容量。
+
+安装StorageGRID时、必须至少创建一个站点。您可以创建其他站点来提高 StorageGRID 系统的可靠性和存储容量。
+
+要添加站点、请完成以下步骤：
+
+.步骤
+. 在Sites页面上、输入站点名称。
+. 要添加其他站点、请单击最后一个站点条目旁边的加号、然后在新站点名称文本框中输入该名称。根据需要为网格拓扑添加尽可能多的其他站点。您最多可以添加 16 个站点。
++
+image:bare-metal/bare-metal-add-sites.png["裸机添加站点"]
+
+. 单击下一步。
+

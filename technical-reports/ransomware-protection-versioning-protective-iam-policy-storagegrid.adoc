@@ -1,0 +1,105 @@
+---
+sidebar: sidebar 
+permalink: technical-reports/ransomware-protection-versioning-protective-iam-policy-storagegrid.html 
+keywords: versioning, iam policy, storagegrid 
+summary: 了解如何通过在StorageGRID中对存储分段启用版本控制并对用户安全组实施IAM策略来保护您的数据。 
+---
+= 使用版本控制和保护性IAM策略进行勒索软件防御
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+了解如何通过在StorageGRID中对存储分段启用版本控制并对用户安全组实施IAM策略来保护您的数据。
+
+在不使用对象锁定或复制的情况下保护数据的一种方法是、在存储分段上启用版本控制、并在用户安全组上实施IAM策略、以限制用户管理对象版本的能力。在发生攻击时、系统会创建新的错误数据版本作为当前版本、而最新的非最新版本是安全清理数据。为获得数据访问权限而泄露的帐户无权删除或以其他方式更改用于保护数据以供日后还原操作的非最新版本。与上一种情形一样、ILM规则可在您选择的持续时间内管理非最新版本的保留。缺点是、仍然可能存在针对恶意攻击者攻击的特权帐户、但必须为所有应用程序服务帐户和用户配置限制性更强的访问。限制性组策略必须明确允许您希望用户或应用程序能够执行的每个操作、并明确拒绝您不希望用户或应用程序能够执行的任何操作。NetApp建议不要使用通配符allow、因为将来可能会引入新的操作、您需要控制是允许还是拒绝该操作。对于此解决方案、拒绝列表必须包括DeleteObjectVersion、PutBucketPolicy、DeleteBucketPolicy、PutLifecycleConfiguration和PutketVersioning、以防止用户或编程更改分段和对象版本的版本控制配置。
+
+在StorageGRID 11.7中、引入了一个新的S3组策略选项"Ransmans要 缓解"、以便于实施此解决方案。在租户中创建用户组时、在选择组权限后、您可以看到此新的可选策略。
+
+image:ransomware/ransomware-protection-create-group.png["勒索软件保护创建组"]
+
+下面是组策略的内容、其中包括显式允许的大多数可用操作以及所需的最小拒绝值。
+
+[listing]
+----
+{
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": [
+                "s3:CreateBucket",
+                "s3:DeleteBucket",
+                "s3:DeleteReplicationConfiguration",
+"s3:DeleteBucketMetadataNotification",
+                "s3:GetBucketAcl",
+                "s3:GetBucketCompliance",
+                "s3:GetBucketConsistency",
+                "s3:GetBucketLastAccessTime",
+                "s3:GetBucketLocation",
+                "s3:GetBucketNotification"
+"s3:GetBucketObjectLockConfiguration",
+                "s3:GetBucketPolicy",
+                "s3:GetBucketMetadataNotification",
+                "s3:GetReplicationConfiguration",
+                "s3:GetBucketCORS",
+                "s3:GetBucketVersioning",
+                "s3:GetBucketTagging",
+                "s3:GetEncryptionConfiguration",
+                "s3:GetLifecycleConfiguration",
+                "s3:ListBucket",
+                "s3:ListBucketVersions",
+                "s3:ListAllMyBuckets",
+                "s3:ListBucketMultipartUploads",
+                "s3:PutBucketConsistency",
+                "s3:PutBucketLastAccessTime",
+                "s3:PutBucketNotification",
+"s3:PutBucketObjectLockConfiguration",
+                "s3:PutReplicationConfiguration",
+                "s3:PutBucketCORS",
+                "s3:PutBucketMetadataNotification",
+                "s3:PutBucketTagging",
+                "s3:PutEncryptionConfiguration",
+                "s3:AbortMultipartUpload",
+                "s3:DeleteObject",
+                "s3:DeleteObjectTagging",
+                "s3:DeleteObjectVersionTagging",
+                "s3:GetObject",
+                "s3:GetObjectAcl",
+                "s3:GetObjectLegalHold",
+                "s3:GetObjectRetention",
+                "s3:GetObjectTagging",
+                "s3:GetObjectVersion",
+                "s3:GetObjectVersionAcl",
+                "s3:GetObjectVersionTagging",
+                "s3:ListMultipartUploadParts",
+                "s3:PutObject",
+                "s3:PutObjectAcl",
+                "s3:PutObjectLegalHold",
+                "s3:PutObjectRetention",
+                "s3:PutObjectTagging",
+                "s3:PutObjectVersionTagging",
+                "s3:RestoreObject",
+                "s3:ValidateObject",
+                "s3:PutBucketCompliance",
+                "s3:PutObjectVersionAcl"
+            ],
+            "Resource": "arn:aws:s3:::*"
+        },
+        {
+            "Effect": "Deny",
+            "Action": [
+                "s3:DeleteObjectVersion",
+                "s3:DeleteBucketPolicy",
+                "s3:PutBucketPolicy",
+                "s3:PutLifecycleConfiguration",
+                "s3:PutBucketVersioning"
+            ],
+            "Resource": "arn:aws:s3:::*"
+        }
+    ]
+}
+----

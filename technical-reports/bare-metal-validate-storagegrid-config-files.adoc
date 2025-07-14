@@ -1,0 +1,33 @@
+---
+sidebar: sidebar 
+permalink: technical-reports/bare-metal-validate-storagegrid-config-files.html 
+keywords: config files, storagegrid 
+summary: 了解如何验证StorageGRID的配置文件内容。 
+---
+= 验证StorageGRID配置文件
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+了解如何验证StorageGRID的配置文件内容。
+
+在中为每个StorageGRID节点创建配置文件后 `/etc/storagegrid/nodes` 、必须验证这些文件的内容。
+
+要验证配置文件的内容，请在每个主机上运行以下命令：
+
+[listing]
+----
+sudo storagegrid node validate all
+----
+如果这些文件正确无误、则输出将显示每个配置文件均已通过：
+
+image:bare-metal/bare-metal-output-shows-passed.png["base-metal输出-shows-passed"]
+
+如果配置文件不正确、问题将显示为警告和错误。如果发现任何配置错误，则必须先更正这些错误，然后再继续安装。
+
+image:bare-metal/bare-metal-output-shows-warning-error.png["base-metal输出显示警告错误"]

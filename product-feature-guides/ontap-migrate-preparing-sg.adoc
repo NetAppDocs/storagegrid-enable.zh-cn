@@ -1,0 +1,126 @@
+---
+permalink: product-feature-guides/ontap-migrate-preparing-sg.html 
+sidebar: sidebar 
+keywords: S3, ONTAP S3, ONTAP, StorageGRID, migration 
+summary: 从ONTAP S3迁移到StorageGRID。 
+---
+= 通过将基于对象的存储从ONTAP S3无缝迁移到StorageGRID来实现企业级S3
+:hardbreaks:
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+通过将基于对象的存储从ONTAP S3无缝迁移到StorageGRID来实现企业级S3
+
+
+
+== 正在准备 StorageGRID
+
+继续配置此演示、我们将创建租户、用户、安全组、组策略和存储分段。
+
+
+
+==== 创建租户
+
+导航到"租 户"选项卡、然后单击"创建"按钮
+
+image:ontap-migrate/sg-tenant-create-01.png["添加租户按钮"]
+
+填写提供租户名称的租户的详细信息、选择S3作为客户端类型、不需要配额。无需选择平台服务或允许S3选择。如果选择、您可以选择使用自己的身份源。设置root密码、然后单击完成按钮。
+
+单击租户名称可查看租户详细信息。*稍后您将需要租户ID、因此请将其复制*。单击登录按钮。此操作将转到租户门户登录页面。保存此URL以供将来使用。
+
+image:ontap-migrate/sg-tenant-select.png["选择租户"]
+
+此操作将转到租户门户登录页面。保存此URL以供将来使用、然后输入root用户凭据。
+
+image:ontap-migrate/sg-tenant-login.png["租户登录"]
+
+
+
+==== 创建用户
+
+导航到用户选项卡并创建新用户。
+
+image:ontap-migrate/sg-user-create-01.png["导航到用户"]
+
+image:ontap-migrate/sg-user-create-02.png["创建新用户"]
+
+创建新用户后、单击用户名以打开该用户的详细信息。
+
+复制URL中的用户ID、以供日后使用。
+
+image:ontap-migrate/sg-user-id.png["复制新ID"]
+
+要创建S3密钥、请单击用户名。
+
+image:ontap-migrate/sg-user-keys-create-01.png["创建S3密钥"]
+
+选择"Access keys"(访问密钥)选项卡、然后单击"Create Key"(创建密钥)按钮。无需设置到期时间。下载S3密钥、因为关闭窗口后将无法再次检索这些密钥。
+
+image:ontap-migrate/sg-user-keys-create-02.png["下载密钥"]
+
+
+
+==== 创建安全组
+
+现在转到组页面并创建新组。
+
+image:ontap-migrate/sg-group-create.png["创建新组"]
+
+将组权限设置为只读。这是租户UI权限、而不是S3权限。
+
+image:ontap-migrate/sg-group-permissions.png["设置组权限"]
+
+S3权限通过组策略(IAM策略)进行控制。将组策略设置为自定义、然后将json策略粘贴到框中。此策略将允许此组的用户列出租户的分段、并在名为"分段"的分段中执行任何S3操作、或者在名为"分段"的分段中执行子文件夹。
+
+[source, json]
+----
+{
+    "Statement": [
+      {
+        "Effect": "Allow",
+        "Action": "s3:ListAllMyBuckets",
+        "Resource": "arn:aws:s3:::*"
+      },
+      {
+         "Effect": "Allow",
+        "Action": "s3:*",
+        "Resource": ["arn:aws:s3:::bucket","arn:aws:s3:::bucket/*"]
+      }
+    ]
+}
+----
+image:ontap-migrate/sg-group-policy.png["定义组策略"]
+
+最后、将用户添加到组中并完成操作。
+
+image:ontap-migrate/sg-group-add-user.png["将用户添加到组"]
+
+
+
+==== 创建两个存储分段
+
+导航到存储分段选项卡、然后单击创建存储分段按钮。
+
+image:ontap-migrate/sg-create-buckets.png["创建分段页面"]
+
+定义分段名称和区域。
+
+image:ontap-migrate/sg-create-bucket1-01.png["创建分段页面"]
+
+在第一个存储分段上启用版本控制。
+
+image:ontap-migrate/sg-bucket1-vers.png["设置版本控制"]
+
+现在、在未启用版本控制的情况下创建第二个存储分段。
+
+image:ontap-migrate/sg-create-bucket2.png["创建第二个存储分段"]
+
+请勿在此第二个存储分段上启用版本控制。
+
+image:ontap-migrate/sg-create-bucket2-nver.png["请勿设置版本控制"]
+
+作者：拉斐尔·吉德斯和阿伦·克莱因

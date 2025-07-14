@@ -1,0 +1,222 @@
+---
+sidebar: sidebar 
+permalink: technical-reports/commvault-solution-overview.html 
+keywords: Backup, on-premises, commvault, storagegrid, object, S3, WORM 
+summary: 了解客户和NetApp IT实施的StorageGRID配置的少数用例。 
+---
+= 经过测试的解决方案概述
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+经过测试的解决方案将NetApp解决方案相结合、打造出功能强大的联合解决方案。
+
+
+
+== 解决方案设置
+
+在实验室设置中、StorageGRID环境包含四个NetApp StorageGRID SG5712设备、一个虚拟主管理节点和一个虚拟网关节点。SG5712设备是入门级选项—一种基线配置。选择NetApp StorageGRID SG5760或SG6060等性能更高的设备选项可以显著提高性能。请咨询NetApp StorageGRID 解决方案 架构师以获得规模估算帮助。
+
+对于其数据保护策略、StorageGRID使用集成生命周期管理(ILM)策略来管理和保护数据。在策略中自上而下评估ILM规则。我们实施了下表所示的ILM策略：
+
+[cols="1a,1a,1a"]
+|===
+| ILM规则 | 限定符 | 载入行为 
+
+
+ a| 
+纠删编码2+1
+ a| 
+超过200 KB的对象
+ a| 
+平衡
+
+
+
+ a| 
+2副本
+ a| 
+所有对象
+ a| 
+双提交
+
+|===
+默认规则为ILM 2复制规则。在此测试中、对任何200 KB或更大的对象应用了纠删编码2+1规则。默认规则应用于小于200 KB的对象。以这种方式应用规则是StorageGRID的最佳实践。
+
+有关此测试环境的技术详细信息、请阅读中的解决方案设计和最佳实践一节 https://www.netapp.com/us/media/tr-4831.pdf["借助Commvault,实现NetApp横向扩展数据保护"] 技术报告。
+
+
+
+== StorageGRID硬件规格
+
+下表介绍了此测试中使用的NetApp StorageGRID硬件。采用10Gbps网络连接的StorageGRID SG5712设备是入门级选项、代表了一种基线配置。也可以为SG5712配置25 Gbps网络连接。
+
+[cols="1a,1a,1a,1a,1a"]
+|===
+| 硬件 | 数量 | Disk | 可用容量 | 网络 
+
+
+ a| 
+StorageGRID SG5712设备
+ a| 
+4.
+ a| 
+48个4 TB (近线SAS HDD)
+ a| 
+136 TB
+ a| 
+10 Gbps
+
+|===
+选择NetApp StorageGRID SG5760、SG6060或全闪存SGF6112设备等性能更高的设备选项可以显著提升性能。请咨询NetApp StorageGRID 解决方案 架构师以获得规模估算帮助。
+
+
+
+== Commvault"和StorageGRID软件要求
+
+下表列出了在我们的测试中安装在VMware软件上的Commvell和NetApp StorageGRID软件的软件要求。安装了四个MediaAgent数据传输管理器和一个CommServe服务器。在测试中、我们为VMware基础架构实施了10 Gbps网络连接。下表
+
+下表列出了Commvaults软件的总体系统要求：
+
+[cols="1a,1a,1a,1a,1a,1a"]
+|===
+| 组件 | 数量 | 数据存储库 | Size | 总计 | 所需的总IOPS 
+
+
+ a| 
+CommServe服务器
+ a| 
+1.
+ a| 
+os
+ a| 
+500 GB
+ a| 
+500 GB
+ a| 
+不适用
+
+
+
+ a| 
+ a| 
+ a| 
+SQL/
+ a| 
+500 GB
+ a| 
+500 GB
+ a| 
+不适用
+
+
+
+ a| 
+MediaAgent
+ a| 
+4.
+ a| 
+虚拟CPU (vCPU)
+ a| 
+16.
+ a| 
+64
+ a| 
+不适用
+
+
+
+ a| 
+ a| 
+ a| 
+RAM
+ a| 
+128 GB
+ a| 
+512
+ a| 
+不适用
+
+
+
+ a| 
+ a| 
+ a| 
+os
+ a| 
+500 GB
+ a| 
+2 TB
+ a| 
+不适用
+
+
+
+ a| 
+ a| 
+ a| 
+索引缓存
+ a| 
+2 TB
+ a| 
+8 TB
+ a| 
+200多个
+
+
+
+ a| 
+ a| 
+ a| 
+DDB
+ a| 
+2 TB
+ a| 
+8 TB
+ a| 
+200-80000 K
+
+|===
+在测试环境中、VMware上的NetApp E系列E2812存储阵列上部署了一个虚拟主管理节点和一个虚拟网关节点。每个节点都位于一台单独的服务器上、具有下表所述的最低生产环境要求：
+
+下表列出了StorageGRID虚拟管理节点和网关节点的要求：
+
+[cols="1a,1a,1a,1a,1a"]
+|===
+| 节点类型 | 数量 | vCPU | RAM | 存储 
+
+
+ a| 
+网关节点
+ a| 
+1.
+ a| 
+8.
+ a| 
+24 GB
+ a| 
+100 GB LUN、用于操作系统
+
+
+
+ a| 
+管理节点
+ a| 
+1.
+ a| 
+8.
+ a| 
+24 GB
+ a| 
+100 GB LUN、用于操作系统
+
+200 GB LUN、用于管理节点表
+
+200 GB LUN、用于管理节点审核日志
+
+|===

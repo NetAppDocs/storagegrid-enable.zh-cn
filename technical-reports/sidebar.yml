@@ -12,126 +12,126 @@ entries:
   pdf-filename: StorageGRID备份和恢复—使用Commvault"存储和恢复数据
   entries:
   - title: 使用StorageGRID和Commvault.备份和恢复数据
-    url: "/technical-reports/commvault/index.html"
+    url: "/technical-reports/commvault-index.html"
   - title: 经过测试的解决方案概述
-    url: "/technical-reports/commvault/solution-overview.html"
+    url: "/technical-reports/commvault-solution-overview.html"
   - title: StorageGRID规模估算指南
-    url: "/technical-reports/commvault/sizing.html"
+    url: "/technical-reports/commvault-sizing.html"
   - title: 运行数据保护作业
-    url: "/technical-reports/commvault/data-protection-jobs.html"
+    url: "/technical-reports/commvault-data-protection-jobs.html"
   - title: 查看基线性能测试
-    url: "/technical-reports/commvault/baseline-performance-tests.html"
+    url: "/technical-reports/commvault-baseline-performance-tests.html"
   - title: 存储分段一致性级别建议
-    url: "/technical-reports/commvault/s3-consistency-levels.html"
+    url: "/technical-reports/commvault-s3-consistency-levels.html"
 - title: TR-4626：负载平衡器
   pdf-filename: StorageGRID负载平衡器-第三方和全局负载平衡器
   entries:
   - title: 将第三方负载平衡器与StorageGRID结合使用
-    url: "/technical-reports/load-balancer/index.html"
+    url: "/technical-reports/load-balancer-index.html"
   - title: 了解如何在StorageGRID中为HTTPS实施SSL证书
-    url: "/technical-reports/load-balancer/ssl-certificates-storagegrid.html"
+    url: "/technical-reports/load-balancer-ssl-certificates-storagegrid.html"
   - title: 在StorageGRID中配置受信任的第三方负载平衡器
-    url: "/technical-reports/load-balancer/third-party-load-balancer-configuration.html"
+    url: "/technical-reports/load-balancer-third-party-load-balancer-configuration.html"
   - title: 了解本地流量管理器负载平衡器
-    url: "/technical-reports/load-balancer/local-traffic-manager-load-balancer.html"
+    url: "/technical-reports/load-balancer-local-traffic-manager-load-balancer.html"
   - title: 了解StorageGRID配置的几个用例
-    url: "/technical-reports/load-balancer/example-configuration-storagegrid.html"
+    url: "/technical-reports/load-balancer-example-configuration-storagegrid.html"
   - title: 验证StorageGRID中的SSL连接
-    url: "/technical-reports/load-balancer/validate-ssl-connection-storagegrid.html"
+    url: "/technical-reports/load-balancer-validate-ssl-connection-storagegrid.html"
   - title: 了解StorageGRID的全局负载平衡要求
-    url: "/technical-reports/load-balancer/global-load-balancing-design.html"
+    url: "/technical-reports/load-balancer-global-load-balancing-design.html"
 - title: TR-4645：安全功能
-  pdf-filename: StorageGRID 11.7中的安全功能—保护对象存储中的数据和元数据的安全
+  pdf-filename: StorageGRID中的安全功能 - 保护对象存储中的数据和元数据
   entries:
   - title: 保护对象存储中的StorageGRID数据和元数据的安全
-    url: "/technical-reports/data-security/index.html"
+    url: "/technical-reports/data-security-index.html"
   - title: 数据访问安全功能
-    url: "/technical-reports/data-security/data-access-security.html"
+    url: "/technical-reports/data-security-data-access-security.html"
   - title: 对象和元数据安全性
-    url: "/technical-reports/data-security/object-metadata-security.html"
+    url: "/technical-reports/data-security-object-metadata-security.html"
   - title: 管理安全性功能
-    url: "/technical-reports/data-security/administration-security.html"
+    url: "/technical-reports/data-security-administration-security.html"
   - title: 平台安全功能
-    url: "/technical-reports/data-security/platform-security.html"
+    url: "/technical-reports/data-security-platform-security.html"
   - title: 云集成
-    url: "/technical-reports/data-security/cloud-integration-storagegrid.html"
+    url: "/technical-reports/data-security-cloud-integration-storagegrid.html"
 - title: TR-4921：勒索软件防御
   pdf-filename: 使用StorageGRID进行勒索软件防护—保护S3对象
   entries:
   - title: 保护StorageGRID S3对象免遭勒索软件的攻击
-    url: "/technical-reports/ransomware-protection/index.html"
+    url: "/technical-reports/ransomware-protection-index.html"
   - title: 使用对象锁定进行勒索软件防护
-    url: "/technical-reports/ransomware-protection/understand-object-lock-storagegrid.html"
+    url: "/technical-reports/ransomware-protection-understand-object-lock-storagegrid.html"
   - title: 使用具有版本控制的复制存储分段进行勒索软件防护
-    url: "/technical-reports/ransomware-protection/replicate-bucket-versioning-storagegrid.html"
+    url: "/technical-reports/ransomware-protection-replicate-bucket-versioning-storagegrid.html"
   - title: 使用版本控制和保护性IAM策略进行勒索软件防御
-    url: "/technical-reports/ransomware-protection/versioning-protective-iam-policy-storagegrid.html"
+    url: "/technical-reports/ransomware-protection-versioning-protective-iam-policy-storagegrid.html"
 - title: TR-4765：《监控StorageGRID》
   pdf-filename: 使用外部应用程序监控StorageGRID
   entries:
   - title: StorageGRID监控简介
-    url: "/technical-reports/monitor/index.html"
+    url: "/technical-reports/monitor-index.html"
   - title: 使用GMI信息板监控StorageGRID
-    url: "/technical-reports/monitor/getting-started.html"
+    url: "/technical-reports/monitor-getting-started.html"
   - title: 使用警报监控StorageGRID
-    url: "/technical-reports/monitor/alerts-monitoring.html"
+    url: "/technical-reports/monitor-alerts-monitoring.html"
   - title: StorageGRID中的高级监控
-    url: "/technical-reports/monitor/advanced-monitor-storagegrid.html"
+    url: "/technical-reports/monitor-advanced-monitor-storagegrid.html"
   - title: 在StorageGRID中使用CURL访问指标
-    url: "/technical-reports/monitor/access-metrics-curl.html"
+    url: "/technical-reports/monitor-access-metrics-curl.html"
   - title: 在StorageGRID中使用Grafana查看指标
-    url: "/technical-reports/monitor/grafana-dashboard.html"
+    url: "/technical-reports/monitor-grafana-dashboard.html"
   - title: 在StorageGRID中使用流量分类策略
-    url: "/technical-reports/monitor/traffic-classification-policies.html"
+    url: "/technical-reports/monitor-traffic-classification-policies.html"
   - title: 使用审核日志监控StorageGRID
-    url: "/technical-reports/monitor/audit-log-monitoring.html"
+    url: "/technical-reports/monitor-audit-log-monitoring.html"
   - title: 使用适用于Splunk的StorageGRID应用程序
-    url: "/technical-reports/monitor/storagegrid-app-splunk.html"
+    url: "/technical-reports/monitor-storagegrid-app-splunk.html"
 - title: TR-4882：安装StorageGRID裸机网格
   pdf-filename: 在裸机主机上安装StorageGRID
   entries:
   - title: StorageGRID安装简介
-    url: "/technical-reports/bare-metal/index.html"
+    url: "/technical-reports/bare-metal-index.html"
   - title: 安装StorageGRID的前提条件
-    url: "/technical-reports/bare-metal/prerequisites-install-storagegrid.html"
+    url: "/technical-reports/bare-metal-prerequisites-install-storagegrid.html"
   - title: 安装适用于StorageGRID的Docker
-    url: "/technical-reports/bare-metal/install-docker-storagegrid.html"
+    url: "/technical-reports/bare-metal-install-docker-storagegrid.html"
   - title: 为StorageGRID准备节点配置文件
-    url: "/technical-reports/bare-metal/node-config-file-storagegrid.html"
+    url: "/technical-reports/bare-metal-node-config-file-storagegrid.html"
   - title: 安装StorageGRID依赖关系和软件包
-    url: "/technical-reports/bare-metal/install-storagegrid-dependencies.html"
+    url: "/technical-reports/bare-metal-install-storagegrid-dependencies.html"
   - title: 验证StorageGRID配置文件
-    url: "/technical-reports/bare-metal/validate-storagegrid-config-files.html"
+    url: "/technical-reports/bare-metal-validate-storagegrid-config-files.html"
   - title: 启动 StorageGRID 主机服务
-    url: "/technical-reports/bare-metal/start-storagegrid-host-service.html"
+    url: "/technical-reports/bare-metal-start-storagegrid-host-service.html"
   - title: 在StorageGRID中配置网格管理器
-    url: "/technical-reports/bare-metal/configure-grid-manager-storagegrid.html"
+    url: "/technical-reports/bare-metal-configure-grid-manager-storagegrid.html"
   - title: 添加StorageGRID许可证详细信息
-    url: "/technical-reports/bare-metal/storagegrid-license.html"
+    url: "/technical-reports/bare-metal-storagegrid-license.html"
   - title: 将站点添加到StorageGRID
-    url: "/technical-reports/bare-metal/add-sites-storagegrid.html"
+    url: "/technical-reports/bare-metal-add-sites-storagegrid.html"
   - title: 为StorageGRID指定网格网络子网
-    url: "/technical-reports/bare-metal/grid-network-subnets-storagegrid.html"
+    url: "/technical-reports/bare-metal-grid-network-subnets-storagegrid.html"
   - title: 批准StorageGRID的网格节点
-    url: "/technical-reports/bare-metal/approve-grid-nodes-storagegrid.html"
+    url: "/technical-reports/bare-metal-approve-grid-nodes-storagegrid.html"
   - title: 指定StorageGRID的NTP服务器详细信息
-    url: "/technical-reports/bare-metal/ntp-server-storagegrid.html"
+    url: "/technical-reports/bare-metal-ntp-server-storagegrid.html"
   - title: 指定StorageGRID的DNS服务器详细信息
-    url: "/technical-reports/bare-metal/dns-server-storagegrid.html"
+    url: "/technical-reports/bare-metal-dns-server-storagegrid.html"
   - title: 指定StorageGRID的系统密码
-    url: "/technical-reports/bare-metal/system-passwords-storagegrid.html"
+    url: "/technical-reports/bare-metal-system-passwords-storagegrid.html"
   - title: 检查配置并完成StorageGRID安装
-    url: "/technical-reports/bare-metal/review-config-complete-storagegrid-install.html"
+    url: "/technical-reports/bare-metal-review-config-complete-storagegrid-install.html"
   - title: 在StorageGRID中升级裸机节点
-    url: "/technical-reports/bare-metal/upgrading-bare-metal-nodes-storagegrid.html"
+    url: "/technical-reports/bare-metal-upgrading-bare-metal-nodes-storagegrid.html"
 - title: TR-4904：《使用Veritas Enterprise Vault配置StorageGRID》
-  pdf-filename: StorageGRID灾难恢复—使用Veritas Enterprise Vault配置StorageGRID以实现站点故障转移
+  pdf-filename: StorageGRID灾难恢复 - 使用 Veritas Enterprise Vault 配置StorageGRID进行站点故障转移
   entries:
   - title: 为站点故障转移配置StorageGRID简介
-    url: "/technical-reports/veritas/index.html"
+    url: "/technical-reports/veritas-index.html"
   - title: 配置StorageGRID和Veritas Enterprise Vault
-    url: "/technical-reports/veritas/configure-storagegrid-enterprise-vault.html"
+    url: "/technical-reports/veritas-configure-storagegrid-enterprise-vault.html"
   - title: 为WORM存储配置StorageGRID
-    url: "/technical-reports/veritas/configure-storagegrid-s3-object-lock.html"
+    url: "/technical-reports/veritas-configure-storagegrid-s3-object-lock.html"
   - title: 配置StorageGRID以实现灾难恢复
-    url: "/technical-reports/veritas/configure-storagegrid-site-failover.html"
+    url: "/technical-reports/veritas-configure-storagegrid-site-failover.html"

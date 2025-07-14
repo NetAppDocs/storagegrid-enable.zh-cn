@@ -1,0 +1,112 @@
+---
+permalink: product-feature-guides/ontap-migrate-populate-replicate.html 
+sidebar: sidebar 
+keywords: S3, ONTAP S3, ONTAP, StorageGRID, migration 
+summary: 从ONTAP S3迁移到StorageGRID。 
+---
+= 通过将基于对象的存储从ONTAP S3无缝迁移到StorageGRID来实现企业级S3
+:hardbreaks:
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+通过将基于对象的存储从ONTAP S3无缝迁移到StorageGRID来实现企业级S3
+
+
+
+== 填充源存储分段
+
+让我们将一些对象放在源ONTAP分段中。我们将使用S3Browser进行此演示、但您可以使用您熟悉的任何工具。
+
+使用上面创建的ONTAP用户S3密钥、将S3Browser配置为连接到ONTAP系统。
+
+image:ontap-migrate/ontap-s3browser-conf.png["S3Browser-config"]
+
+现在、我们将一些文件上传到启用了版本控制的存储分段。
+
+image:ontap-migrate/ontap-s3browser-upload-01.png["单击上传"]
+
+image:ontap-migrate/ontap-s3browser-upload-02.png["选择要上传的文件"]
+
+image:ontap-migrate/ontap-s3browser-upload-03.png["已上传文件"]
+
+现在、让我们在分段中创建一些对象版本。
+
+删除文件。
+
+image:ontap-migrate/ontap-s3browser-delete.png["删除文件"]
+
+上传存储分段中已存在的文件以复制该文件并创建其新版本。
+
+image:ontap-migrate/ontap-s3browser-overwrite.png["上传已存在的文件"]
+
+在S3Browser中、我们可以查看刚刚创建的对象的版本。
+
+image:ontap-migrate/ontap-s3browser-versions.png["查看版本"]
+
+
+
+=== 建立复制关系
+
+让我们开始将数据从ONTAP发送到StorageGRID。
+
+在ONTAP系统管理器中、导航到"保护/概述"。向下滚动到"Cloud object stores"(云对象存储)、然后单击"Add"(添加)按钮并选择StorageGRID (添加)。
+
+image:ontap-migrate/ontap-protection-add-01.png["ONTAP保护"]
+
+通过提供名称和URL样式来输入StorageGRID信息(在此演示中、我们将使用Path-styleURL)。将对象存储范围设置为"Storage VM"。
+
+image:ontap-migrate/ontap-protection-configure-01.png["输入StorageGRID信息"]
+
+如果您使用的是SSL、请设置负载平衡器端点端口并在此处复制StorageGRID端点证书。否则、请取消选中"SSP"框并在此处输入HTTP端点端口。
+
+为目标输入上述StorageGRID配置中的StorageGRID用户S3密钥和存储分段名称。
+
+image:ontap-migrate/ontap-protection-configure-02.png["输入StorageGRID信息"]
+
+现在、我们已配置目标、可以为此目标配置策略设置。展开"本地策略设置"、然后选择"持续"。
+
+image:ontap-migrate/ontap-local-setting.png["本地策略设置"]
+
+编辑持续策略并将"恢复点目标"从"1小时"更改为"3秒"。
+
+image:ontap-migrate/ontap-local-edit-01.png["本地策略设置编辑"]
+
+现在、我们可以将SnapMirror配置为复制存储分段。
+
+[]
+====
+SnapMirror create -ssource-path sv_demo：/bket/bket-target-path sgws_demo：/objstore -policy continuous
+
+====
+image:ontap-migrate/ontap-snapmirror-create.png["创建SnapMirror关系"]
+
+此时、存储分段将在受保护的存储分段列表中显示一个云符号。
+
+image:ontap-migrate/ontap-bucket-protected.png["存储分段受云目标保护"]
+
+如果我们选择存储分段并转到SnapMirror (ONTAP或云)选项卡、我们将看到SnapMirror repationship状态。
+
+image:ontap-migrate/ontap-snapmirror-status.png["检查SnapMirror关系"]
+
+
+
+=== 复制详细信息
+
+现在、我们已成功将存储分段从ONTAP复制到StorageGRID。但实际上复制的是什么？我们的源和目标都是分版本分段。先前版本是否也会复制到目标？如果我们使用S3Browser查看StorageGRID存储分段、我们会发现现有版本未复制、删除的对象不存在、该对象的删除标记也不存在。我们的复制对象在StorageGRID存储分段中只有1个版本。
+
+image:ontap-migrate/sg-s3browser-initial.png["初始同步后StorageGRID存储分段的S3浏览器视图"]
+
+在ONTAP分段中、让我们向先前使用的同一对象添加一个新版本、并了解其复制方式。
+
+image:ontap-migrate/ontap-s3browser-new-rep.png["上传新版本后ONTAP存储分段的S3浏览器视图"]
+
+从StorageGRID的角度来看、我们会发现此存储分段中也创建了一个新版本、但缺少SnapMirror关系之前的初始版本。
+
+image:ontap-migrate/sg-s3browser-rep-ver.png["上传新版本后ONTAP存储分段的S3浏览器视图"]
+
+这是因为ONTAP SnapMirror S3进程仅复制对象的当前版本。这就是我们在StorageGRID端创建分版本存储分段作为目标的原因。这样、StorageGRID就可以维护对象的版本历史记录。
+
+作者：拉斐尔·吉德斯和阿伦·克莱因

@@ -1,0 +1,34 @@
+---
+sidebar: sidebar 
+permalink: technical-reports/bare-metal-grid-network-subnets-storagegrid.html 
+keywords: grid network, subnets ,storagegrid 
+summary: 了解如何为StorageGRID配置网格网络子网。 
+---
+= 为StorageGRID指定网格网络子网
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+了解如何为StorageGRID配置网格网络子网。
+
+您必须指定网格网络上使用的子网。
+
+子网条目包括StorageGRID系统中每个站点的网格网络子网以及必须通过网格网络访问的任何子网(例如托管NTP服务器的子网)。
+
+如果有多个网格子网、则需要网格网络网关。指定的所有网格子网都必须可通过此网关访问。
+
+要指定网格网络子网、请完成以下步骤：
+
+.步骤
+. 在子网1文本框中、至少为一个网格网络指定CIDR网络地址。
+. 单击最后一个条目旁边的加号以添加其他网络条目。如果已部署至少一个节点、请单击发现网格网络子网以使用已向网格管理器注册的网格节点报告的子网自动填充网格网络子网列表。
++
+image:bare-metal/bare-metal-subnets-grid-network.png["裸机-子网-网格-网络"]
+
+. 单击下一步。
+

@@ -1,0 +1,36 @@
+---
+sidebar: sidebar 
+permalink: technical-reports/bare-metal-index.html 
+keywords: install, storagegrid, deploy, bare metal 
+summary: 了解如何在裸机网格上安装StorageGRID。 
+---
+= StorageGRID安装简介
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+了解如何在裸机主机上安装StorageGRID。
+
+TR-4882提供了一组实用的分步说明、用于生成可正常工作的NetApp StorageGRID安装。此安装可以安装在裸机上、也可以安装在运行Red Hat Enterprise Linux (RHEL)的虚拟机(VM)上。该方法是、在三台物理(或虚拟)计算机上以建议的布局和存储配置执行六个StorageGRID容器化服务的"确定性"安装。一些客户可能会发现按照本技术报告中的示例部署更容易理解部署过程。
+
+有关StorageGRID和安装过程的更深入的了解、请参见 https://docs.netapp.com/us-en/storagegrid-118/landing-install-upgrade/index.html[] 产品文档中的[安装、升级和修补程序StorageGRID ]。
+
+在开始部署之前、让我们先了解一下NetApp StorageGRID软件的计算、存储和网络连接要求。StorageGRID在Podman或Docker中作为容器化服务运行。在此模型中、某些要求是指主机操作系统(托管Docker且运行StorageGRID软件的操作系统)。某些资源会直接分配给每个主机中运行的Docker容器。在此部署中、为了最大程度地提高硬件利用率、我们会为每个物理主机部署两项服务。有关详细信息，请继续下一节， link:prerequisites-install-storagegrid.html["安装StorageGRID的前提条件"]。
+
+本技术报告中概述的步骤可在六个裸机主机上正常安装StorageGRID。现在、您已拥有一个工作网格和客户端网络、这在大多数测试场景中都很有用。
+
+
+
+== 从何处查找追加信息
+
+要详细了解本技术报告中介绍的信息、请查看以下文档资源：
+
+* NetApp StorageGRID文档中心 https://docs.netapp.com/us-en/storagegrid-118/[]
+* NetApp StorageGRID支持 https://docs.netapp.com/us-en/storagegrid-enable/[]
+* NetApp产品文档 https://www.netapp.com/support-and-training/documentation/[]
+

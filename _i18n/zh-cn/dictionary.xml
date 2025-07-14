@@ -1498,16 +1498,10 @@ DERMIO使用字节范围GET在查询期间同时从同一对象中提取不同�
   <block id="8ba2b9229934ee6fc64c293ea55c00cf" category="paragraph"><block ref="8ba2b9229934ee6fc64c293ea55c00cf" category="inline-image-macro-rx" type="image"></block></block>
   <block id="51416623000162278c6405b1b5cd833d" category="paragraph"><block ref="51416623000162278c6405b1b5cd833d" category="inline-image-macro-rx" type="image"></block></block>
   <block id="2a60f08787dc9ecba98a9ffc064b7ed8" category="paragraph"><block ref="2a60f08787dc9ecba98a9ffc064b7ed8" category="inline-image-macro-rx" type="image"></block></block>
-  <block id="5a184c0363bb58450e6d7433581fd471" category="summary">本报告介绍解决方案Commvault/Commvault/Commvault/Commvault/Commvault/Commvault/Commv NetApp</block>
-  <block id="354a23ac01ef93911cb9256f86e06159" category="doc">TR-4871 - Commvault"完整备份和恢复以及NetApp StorageGRID</block>
-  <block id="cb2418c01859c7704da751aa5a7d2421" category="section-title">解决方案概述</block>
-  <block id="80a3f83141a9faa5b2c7cd8fe9d282e0" category="paragraph">Commvault/Commvault/Commvault/Commvault/Commvault/Commvault/Commvault/Commvault/Commvault/Recovery for NetApp软件与NetApp NetApp StorageGRID云存储软件相结合、共同创建了一个联合数据保护解决方案许多企业希望将存储迁移到云、扩展系统并自动执行长期保留数据的策略。Commvault"完整备份和恢复"和NetApp StorageGRID提供独特且易于使用的解决方案、这些解决方案可以协同工作、帮助您满足全球数据快速增长和法规不断增长的需求。基于云的对象存储因其弹性、扩展能力以及运营和成本效益而闻名、这使其成为备份目标的自然选择。Commvault/Commvault/Commvault/Commvault/Commvault/Commvault/Commvault/Commvault/Commvault/Commvault/Commv NetApp解决方案全球所有类型的客户都采用了Commvault完 整备份和恢复以及StorageGRID组合解决方案。</block>
   <block id="03b34745d3c972ba9412e4898f60977d" category="paragraph">在云存储上实施CommvaultComplete Backup and Recovery软件时、您有两种备份选项：</block>
   <block id="9eb0111fcb9b869313a8890a31fbe9aa" category="list-text">备份到主磁盘目标、同时将辅助副本备份到云存储。</block>
   <block id="f2236ba3bffef9cf2f2a7237c4487c29" category="list-text">将备份到云存储作为主要目标。</block>
   <block id="80457ca0c9c707a381ea0dbbf13a97f8" category="paragraph">过去、人们认为云或对象存储的性能太低、无法用于主备份。使用主磁盘目标可以加快备份和还原过程、并将辅助副本作为冷备份保留在云上。StorageGRID代表下一代对象存储。StorageGRID的高性能、海量吞吐量以及性能和灵活性远超其他对象存储供应商。</block>
-  <block id="3764fc2dfa1c37293e979fb84f4d57e2" category="paragraph">表1列出了StorageGRID中每个备份选项的优势。</block>
-  <block id="b8487d84bdeead48dbf45470a4e20888" category="section-title">表1)主备份到磁盘加上一个辅助副本、而主备份到StorageGRID。</block>
   <block id="0677b3ba1c3af4912992b290e34bede8" category="cell">主备份到磁盘和辅助副本到StorageGRID</block>
   <block id="f0545f8a5027b3947229082e2363e36e" category="cell">主备份到StorageGRID</block>
   <block id="9446a98ad14416153cc4d45ab8b531bf" category="paragraph">性能</block>
@@ -1519,9 +1513,6 @@ DERMIO使用字节范围GET在查询期间同时从同一对象中提取不同�
   <block id="95493dca7eed37cfb9bfd6cc90ef1959" category="paragraph">高级功能(实时还原)</block>
   <block id="eaa4dc5078017a5c5bebf383ab6f5124" category="paragraph">supported</block>
   <block id="aa7f77e663b832d5b0e544c5511e680c" category="paragraph">不支持</block>
-  <block id="bf8dd94f74c5878ba969abeeef0286d1" category="section-title">目标受众</block>
-  <block id="749f48d6360a1ae4fb9b6967d682f7ab" category="paragraph">本文档面向使用StorageGRID备份和恢复解决方案的数据管理员和架构师。</block>
-  <block id="8f4c7939e8a42e023939df947aba54f6" category="section-title">解决方案技术</block>
   <block id="4e50e1ccf2606dc28761309b196f635e" category="paragraph">经过测试的解决方案将NetApp解决方案相结合、打造出功能强大的联合解决方案。</block>
   <block id="8de8885619770caac462899bd9ad1a3c" category="paragraph">Commvault"完整备份和恢复"软件是一款企业级集成数据和信息管理解决方案、在单一平台上从头构建、并具有统一的代码库。它的所有功能都共享后端技术、从而在保护、管理和访问数据方面提供完全集成的方法所带来的无与伦比的优势和优势。该软件包含用于保护、归档、分析、复制和搜索数据的模块。这些模块共享一组通用的后端服务和高级功能、这些服务和功能可以彼此无缝交互。解决方案可解决企业中数据管理的所有方面、同时提供无限可扩展性以及前所未有的数据和信息控制。</block>
   <block id="d578ff088a7606a2f2f8b20f068b5b62" category="paragraph">CommVault软件平台的主要功能包括：</block>
@@ -1535,17 +1526,13 @@ DERMIO使用字节范围GET在查询期间同时从同一对象中提取不同�
   <block id="7631df1a16e7c86a241133ce56a5626e" category="list-text">基于策略的数据管理、支持您根据业务需求(而不是物理位置)管理数据。</block>
   <block id="dbd89d5407a94aa887d7f9793148af24" category="list-text">提供最先进的最终用户体验、让您的用户能够保护、查找和恢复自己的数据。</block>
   <block id="c71c3c5075c3ae71dfa4cd9ad0c8f690" category="list-text">API驱动的自动化、支持您使用第三方工具(如vReise Automation或Service Now)来管理数据保护和恢复操作。</block>
-  <block id="56cc4502e343e76ad448ffe3a05fc18c" category="paragraph">有关支持的工作负载的详细信息、请访问<block ref="6c465f42cde4c9569daed31dc24f517e" category="inline-link-rx"></block>。</block>
   <block id="585473463b3cb51e50ec6023b5b51685" category="paragraph">NetApp StorageGRID作为Commvault云层 是一种企业级混合云对象存储解决方案。您可以将其部署在多个站点上、无论是专用设备还是软件定义的部署。通过StorageGRID、您可以建立数据管理策略、以确定如何存储和保护数据。StorageGRID会收集您制定和实施策略所需的信息。它分析了广泛的特性和需求、包括性能、持久性、可用性、地理位置、 寿命和成本。随着数据在不同位置之间移动以及数据老化、数据将得到全面维护和保护。</block>
   <block id="f99347a4e5e36d0e5ba4bffb0d1598ab" category="paragraph">StorageGRID智能策略引擎可帮助您选择以下选项之一：</block>
   <block id="ed1c9e59475f7c0dfda1df3a7da27812" category="list-text">使用纠删编码跨多个站点备份数据、以提高故障恢复能力。</block>
   <block id="d470af9a0291f968f65b28b830fc86cd" category="list-text">将对象复制到远程站点、以最大程度地降低WAN延迟和成本。</block>
   <block id="7bd9a8aa8ea326b44f2bcde2f3609ff5" category="paragraph">当StorageGRID存储对象时、无论该对象位于何处或存在多少副本、您都可以将其作为一个对象进行访问。这种行为对于灾难恢复至关重要、因为借助这种行为、即使数据的一个备份副本损坏、StorageGRID也能够还原数据。</block>
   <block id="118e6fb1b88f8c0f0cfd7dee3bf51a37" category="paragraph">将备份数据保留在主存储中的成本可能很高。使用NetApp StorageGRID时、您可以通过将非活动备份数据迁移到StorageGRID来释放主存储上的空间、同时还可以从StorageGRID的众多功能中受益。备份数据的价值会随着时间的推移而变化、存储成本也会随之变化。StorageGRID可以最大限度地降低主存储的成本、同时提高数据的持久性。</block>
-  <block id="b82ecf69498cda86864f62d82c7ccb6b" category="section-title">解决方案设置</block>
   <block id="a3ad938334ebe31fa6bd5526fdde0c2d" category="paragraph">在实验室设置中、StorageGRID环境包含四个NetApp StorageGRID SG5712设备、一个虚拟主管理节点和一个虚拟网关节点。SG5712设备是入门级选项—一种基线配置。选择NetApp StorageGRID SG5760或SG6060等性能更高的设备选项可以显著提高性能。请咨询NetApp StorageGRID 解决方案 架构师以获得规模估算帮助。</block>
-  <block id="2502d49022714233caf9bb360eed1259" category="paragraph">对于其数据保护策略、StorageGRID使用集成生命周期管理(ILM)策略来管理和保护数据。在策略中自上而下评估ILM规则。我们实施了表2中所示的ILM策略。</block>
-  <block id="03b71896a803d1674387b9ace5509c97" category="section-title">表2) StorageGRID ILM策略。</block>
   <block id="9bae64ff51701a09557836797ee3739f" category="cell">ILM规则</block>
   <block id="619dd4db8171a8f1bf978f44c9cf10c4" category="cell">限定符</block>
   <block id="80cb0c66c0080d1e4c291f66705ba62d" category="cell">载入行为</block>
@@ -1558,9 +1545,7 @@ DERMIO使用字节范围GET在查询期间同时从同一对象中提取不同�
   <block id="f2382f08b2b3ae5b16fd3e6a7f6fe40c" category="paragraph">默认规则为ILM 2复制规则。在此测试中、对任何200 KB或更大的对象应用了纠删编码2+1规则。默认规则应用于小于200 KB的对象。以这种方式应用规则是StorageGRID的最佳实践。</block>
   <block id="9fd2a44a56a109ab7ff40317cdd4cc9b" category="inline-link">借助Commvault,实现NetApp横向扩展数据保护</block>
   <block id="f7d7cdf329bd5cf1893317ad3732d1f7" category="paragraph">有关此测试环境的技术详细信息、请阅读中的解决方案设计和最佳实践一节<block ref="03ce17f8b5e1206a493f3bd56ef5953d" category="inline-link-rx"></block> 技术报告。</block>
-  <block id="92672a7a2b909945fbfa9f44f057c7a1" category="section-title">规模估算</block>
   <block id="de6340e74a7b4b37632d447d082a219e" category="paragraph">有关适用于您环境的特定规模估算、请咨询NetApp数据保护专家。NetApp数据保护专家可以使用CommvaultTotal Backup Storage Calculator工具来估计备份基础架构需求。该工具需要CommvaultPartner Portal访问权限。如果需要、请注册访问权限。</block>
-  <block id="850723af1b528eaff214961e1477f7f2" category="section-title">CommvaultSizing Inputs.</block>
   <block id="e3b0761b4b3dd1b0a93403608c54ca50" category="paragraph">可以使用以下任务来执行发现以调整数据保护解决方案的大小：</block>
   <block id="3cf303266a00ea5459dd889344aed185" category="list-text">确定需要保护的系统或应用程序/数据库工作负载以及相应的前端容量(以TB为单位)。</block>
   <block id="a6fc6119f758a2807e997797f666329c" category="list-text">确定需要保护的虚拟机/文件工作负载和类似前端容量(TB)。</block>
@@ -1569,7 +1554,6 @@ DERMIO使用字节范围GET在查询期间同时从同一对象中提取不同�
   <block id="e20a5b161f3a78a8aa8b41995cb1056f" category="list-text">确定未来12、24和36个月的预计数据增长。</block>
   <block id="546f4bb0db4eb4c0474451ef4087425b" category="list-text">根据业务需求定义用于数据保护/恢复的RTO和RPO。</block>
   <block id="b9b087f8be7670b2ba95f7b2ee0e66c0" category="paragraph">获得此信息后、便可完成备份基础架构规模估算、从而细分所需的存储容量。</block>
-  <block id="2d782d1c787a750e5ae7cdfbf33e0b65" category="section-title">StorageGRID大小指导</block>
   <block id="293d59d0c1b3635b7390405d92fee965" category="paragraph">在执行NetApp StorageGRID规模估算之前、请考虑工作负载的以下方面：</block>
   <block id="b3e1f4c67ee07a73dcdaff1cf34f2640" category="list-text">可用容量</block>
   <block id="dcd71c3bab40cab965c2424166b5b11d" category="list-text">WORm模式</block>
@@ -1579,8 +1563,6 @@ DERMIO使用字节范围GET在查询期间同时从同一对象中提取不同�
   <block id="c6e6b34f0e5e37e48be00e166f7bd2cb" category="paragraph">可用容量需要满足您已分层到StorageGRID的备份工作负载的大小以及保留计划。</block>
   <block id="3e5b0f346efbe49d36a724d923e318ba" category="paragraph">WORM模式是否启用？在Commvault"中启用WORM后、此操作将在StorageGRID上配置对象锁定。这将增加所需的对象存储容量。所需的容量因保留期限和每次备份的对象更改数而异。</block>
   <block id="74c32df19b25aa02e414011c18db023d" category="paragraph">平均对象大小是一个输入参数、用于帮助估算StorageGRID环境中的性能规模。Commvault"工作负载使用的平均对象大小取决于备份类型。</block>
-  <block id="a0e738d4eef6a816ac737bf34e54a942" category="paragraph">表3按备份类型列出了平均对象大小、并介绍了还原过程从对象存储中读取的内容。</block>
-  <block id="2333f85cd072d4d90857e142fd494184" category="section-title">表3) Commvault"工作负载对象大小和还原行为"。</block>
   <block id="a09aa546b6aa449c6baf91e8d0ebb636" category="cell">备份类型</block>
   <block id="f95891c0ab9af9cf4d2eb297027c954d" category="cell">平均对象大小</block>
   <block id="6dfea787ea9494eca4a1491e9a9cd7e7" category="cell">还原行为</block>
@@ -1609,10 +1591,7 @@ DERMIO使用字节范围GET在查询期间同时从同一对象中提取不同�
   <block id="bc967dc2d57e6eff184a821bf7577a80" category="section-title">扩展</block>
   <block id="900c557ee6849406e1e6f451f65bdde1" category="paragraph">您可以通过向存储节点添加存储、向现有站点添加新网格节点或添加新数据中心站点来扩展NetApp StorageGRID系统。您可以在不中断当前系统运行的情况下执行扩展。
 StorageGRID可以通过为存储节点或运行负载平衡器和管理节点的物理设备使用性能更高的节点来扩展性能、也可以通过简单地添加更多节点来扩展性能。</block>
-  <block id="39e0647405a456dbe0f327581e422077" category="section-title">StorageGRID硬件规格</block>
-  <block id="7ac8ba0d8d9d0dbf967afc44eebecee4" category="paragraph">表4介绍了此测试中使用的NetApp StorageGRID硬件。采用10Gbps网络连接的StorageGRID SG5712设备是入门级选项、代表了一种基线配置。也可以为SG5712配置25 Gbps网络连接。</block>
   <block id="380be67f84564c575abe95593c0c96c3" category="paragraph">选择NetApp StorageGRID SG5760、SG6060或全闪存SGF6112设备等性能更高的设备选项可以显著提升性能。请咨询NetApp StorageGRID 解决方案 架构师以获得规模估算帮助。</block>
-  <block id="1c0a4a363a35650f52d2788c8c1e3340" category="section-title">表4) SG5712硬件规格。</block>
   <block id="3c02a379965ab0dfcd77b1c484450433" category="cell">硬件</block>
   <block id="694e8d1f2ee056f98ee488bdc4982d73" category="cell">数量</block>
   <block id="380dbc8d9d2c8a17f6ebb0b2c62d3e85" category="cell">Disk</block>
@@ -1623,9 +1602,6 @@ StorageGRID可以通过为存储节点或运行负载平衡器和管理节点的
   <block id="a5983f5b9038e27d7801178f702c8ca0" category="paragraph">48个4 TB (近线SAS HDD)</block>
   <block id="7f070e79f8fb5c07df2dcdedad1d7981" category="paragraph">136 TB</block>
   <block id="11e8c7c9ca2479f825be4a5b2207c2e4" category="paragraph">10 Gbps</block>
-  <block id="cbf13ee4de3e188484a6f9e54ec774d4" category="section-title">Commvault"和StorageGRID软件要求</block>
-  <block id="9f06e1bbda93a5691f767c9a6bd5d5cc" category="paragraph">表5和表6列出了在我们的测试中安装在VMware软件上的Commvaults和NetApp StorageGRID软件的软件要求。安装了四个MediaAgent数据传输管理器和一个CommServe服务器。在测试中、我们为VMware基础架构实施了10 Gbps网络连接。</block>
-  <block id="24ab73c686b5112b49ce6f98750612b7" category="section-title">表5) CommVault软件的系统总要求。</block>
   <block id="2cb05e4bb7830be982f0922fed86b4cd" category="cell">组件</block>
   <block id="8a5227cc82d14862956938caffc1acf2" category="cell">数据存储库</block>
   <block id="6f6cb72d544962fa333e2e34ce64f719" category="cell">Size</block>
@@ -1650,8 +1626,6 @@ StorageGRID可以通过为存储节点或运行负载平衡器和管理节点的
   <block id="4c5da6b5ca9d093be38b4da1035de5ca" category="paragraph">200多个</block>
   <block id="d02340dc3ba5e6755a60283779457ac6" category="paragraph">DDB</block>
   <block id="4b68c01a22855e38e3082b749de02ba5" category="paragraph">200-80000 K</block>
-  <block id="fd5ab623109855762f689a3b63d50d9d" category="paragraph">在测试环境中、VMware上的NetApp E系列E2812存储阵列上部署了一个虚拟主管理节点和一个虚拟网关节点。每个节点都位于一台单独的服务器上、具有表6中所述的最低生产环境要求：</block>
-  <block id="edfcb8c8756d94a5053287cc7c5bb985" category="section-title">表6) StorageGRID虚拟管理节点和网关节点的要求。</block>
   <block id="95363aa90e372ebfaf3970380516572f" category="cell">节点类型</block>
   <block id="5d56dbd20d9ee1ab8a722ff12e331953" category="cell">vCPU</block>
   <block id="8c4aa541ee911e8d80451ef8cc304806" category="cell">存储</block>
@@ -1662,9 +1636,6 @@ StorageGRID可以通过为存储节点或运行负载平衡器和管理节点的
   <block id="4c80ce09ddde27d3fd5c0bb436bc85b9" category="paragraph">管理节点</block>
   <block id="c6ab7905f828c85832f97995c1de53c9" category="paragraph">200 GB LUN、用于管理节点表</block>
   <block id="69108e14aa48ab2bba84a59654aed432" category="paragraph">200 GB LUN、用于管理节点审核日志</block>
-  <block id="55d6f03ef9d28326ab829ca5d2678109" category="section-title">使用Commvault完 整备份和恢复以及NetApp StorageGRID运行数据保护作业</block>
-  <block id="624726d5ed2d940147c46600099b1b20" category="paragraph">要为NetApp StorageGRID配置适用于NetApp的Commvault完 整备份和恢复、请执行以下步骤、以便在Commvault软件 中将StorageGRID添加为云库。</block>
-  <block id="98e8e1a08dff2be7e31ea4273d1252cf" category="section-title">使用NetApp StorageGRID配置Commvault</block>
   <block id="3f139c400a23226143fbb4c472b54b04" category="list-text">登录到CommvaultCommand Center。在左侧面板上、单击"存储"&gt;"云"&gt;"添加"以查看并响应"添加云"对话框：</block>
   <block id="b9693cedb91ba2290fa1e958a43307a7" category="inline-image-macro">添加云</block>
   <block id="d7b2bbcbec44a75a29e4d684f80fbed1" category="paragraph"><block ref="d7b2bbcbec44a75a29e4d684f80fbed1" category="inline-image-macro-rx" type="image"></block></block>
@@ -1675,15 +1646,12 @@ StorageGRID可以通过为存储节点或运行负载平衡器和管理节点的
   <block id="a3636f86ff974c19fd6fff205c8e5614" category="paragraph">按照上的StorageGRID文档中的步骤进行操作<block ref="1100cc5690fec9e9d1b69376de24b8a1" category="inline-link-rx"></block>。确保您有一个HTTPS端口、其中包含自签名证书以及StorageGRID端点的IP地址或域名。</block>
   <block id="03797fee0986db2f87c5cac8fcdb1dde" category="list-text">如果要使用重复数据删除、请启用此选项并提供指向重复数据删除数据库位置的路径。</block>
   <block id="7557bd62e953fb4d48f07977151ea94f" category="list-text">单击保存。</block>
-  <block id="43f16fcba150904a7bc15439308479cb" category="section-title">创建以NetApp StorageGRID为主要目标的备份计划</block>
   <block id="ce43cd7410027d345f9c6f5c79d39d2d" category="list-text">在左侧面板上、选择Manage &gt; Plans以查看并响应Create Server Backup Plan对话框。</block>
   <block id="8280fcbd09b67e4a2a2180030f18ee89" category="inline-image-macro">创建服务器备份计划</block>
   <block id="e6e155a2825afd1e66e915eba6056af0" category="paragraph"><block ref="e6e155a2825afd1e66e915eba6056af0" category="inline-image-macro-rx" type="image"></block></block>
   <block id="35cef3079f40303a520fe4fb98509a28" category="list-text">输入计划名称。</block>
   <block id="ed9638b797083e4574c1bda37d24d0fc" category="list-text">选择先前创建的StorageGRID简单存储服务(S3)存储备份目标。</block>
   <block id="cc10fccab84b1a6fe5a3b014f2ac16fe" category="list-text">输入所需的备份保留期限和恢复点目标(RPO)。</block>
-  <block id="317c3634f6ad30cd0bc9e98a4725d400" category="section-title">启动备份作业以使用CommvaultSoftware和StorageGRID保护工作负载</block>
-  <block id="ba57deab107afb6c3808fe3a667bb7b5" category="paragraph">要启动从CommvaultComplete Backup and Recovery到StorageGRID的备份作业、请执行以下步骤：</block>
   <block id="1e6c34e7c31e91ec0533fdb6b4825478" category="list-text">在CommVault Command Center上、导航到"Protect"&gt;"Virtualization (保护&gt;虚拟化)"。</block>
   <block id="33a281881beebd42edbba1170de6ebdb" category="list-text">添加VMware vCenter Server虚拟机管理程序。</block>
   <block id="0582da82b14c1d127296cc0e0c1e593f" category="list-text">单击刚刚添加的虚拟机管理程序。</block>
@@ -1702,9 +1670,6 @@ StorageGRID可以通过为存储节点或运行负载平衡器和管理节点的
   <block id="f180b371d83592db209e4e7f07bd7f96" category="list-text">导航到作业摘要页面以查看作业指标：</block>
   <block id="bc2966582cc91a73dfce86d847e8e569" category="inline-image-macro">作业摘要</block>
   <block id="ce8f9b25ff69c679a10481c883fed679" category="paragraph"><block ref="ce8f9b25ff69c679a10481c883fed679" category="inline-image-macro-rx" type="image"></block></block>
-  <block id="23571a6157715a68dbc83017094ddb4f" category="section-title">基线性能测试</block>
-  <block id="225de55f95e8814ef869602a34589cd7" category="paragraph">测试涉及100个VM和1000个VM、这两个测试都包含50/50的Windows和CentOS VM。</block>
-  <block id="229f4b7ae2ae04662d95b14f93a7ebe0" category="section-title">表7)基线性能测试。</block>
   <block id="2a78ed76450c3cb42320882b3e055b31" category="cell">操作</block>
   <block id="7e1474aa3c4832c1061cf4839e5d5d40" category="cell">备份速度</block>
   <block id="d9cb8f643ee1e5634cee0a2f4dc3dcde" category="cell">恢复速度</block>
@@ -1715,18 +1680,14 @@ StorageGRID可以通过为存储节点或运行负载平衡器和管理节点的
   <block id="e8d76835d2ff06b926aad0a1a3abc063" category="paragraph">2.2 TB/小时</block>
   <block id="4cd450a475fe3ee9b59eb120652eeaa9" category="paragraph">1.22 TB/小时</block>
   <block id="6c24655e80561dbbf463d7c411594029" category="paragraph">为了测试过期性能、删除了250万个对象。如图2和图3所示、删除操作在3小时内完成、并释放了80 TB以上的空间。删除运行于上午10：30开始。</block>
-  <block id="4c1a9a798859a7662d448a099c8f19c2" category="section-title">图1)在3小时内删除250万(80 TB)个对象。</block>
   <block id="05e3d90010c26e3ef8176b0d49eabdb3" category="inline-image-macro">对象</block>
   <block id="c09d8cd9b39a4736f34838dd7cf3f7a5" category="paragraph"><block ref="c09d8cd9b39a4736f34838dd7cf3f7a5" category="inline-image-macro-rx" type="image"></block></block>
-  <block id="18967e6af4f60b163c3348f6c5e180f0" category="section-title">图2)在3小时内释放80 TB的存储。</block>
   <block id="6d2b9f3277e042907d537d8a6101be35" category="inline-image-macro">存储随时间变化</block>
   <block id="4fc5dae0e8a159f3d86289050bbd7311" category="paragraph"><block ref="4fc5dae0e8a159f3d86289050bbd7311" category="inline-image-macro-rx" type="image"></block></block>
-  <block id="a0b40e1fd7ca1cc5d222d54ea1d246cc" category="section-title">存储分段一致性级别建议</block>
   <block id="8230e2a5dfbb7d3dc9d7837f464a94f4" category="paragraph">通过NetApp StorageGRID、最终用户可以为对简单存储服务(S3)分段中的对象执行的操作选择一致性级别。</block>
   <block id="eb668bdb2b4d4ac34c6ad7523c133230" category="paragraph">CommVault MediaAgent是CommVault环境中的数据迁移程序。大多数情况下，MediaAgent配置为在本地写入主StorageGRID站点。因此、建议在本地主站点中使用高一致性级别。在StorageGRID中创建的Commvault"分段上设置一致性级别时、请遵循以下准则。</block>
   <block id="3ceaa99fe3628c0d4ddb470789b9212d" category="list-text">Commvault11.0.0之前的版本- Service Pack 16.*在11.0.0之前的版本- Service Pack 16中，Commvault"会在还原和删减过程中对不存在的对象执行S3 head和GET操作。将存储分段一致性级别设置为强站点、以便为Commvaultvault"备份到StorageGRID实现最佳一致性级别。</block>
   <block id="9a76294cf4d43d5686590bb6c98a280b" category="list-text">Commvault11.0.0版- Service Pack 16及更高版本。*在11.0.0版- Service Pack 16及更高版本中、对不存在的对象执行S3机头和GET操作的数量将降至最低。将默认分段一致性级别设置为read-after-new-write、以确保StorageGRID环境中的高一致性级别。</block>
-  <block id="3887d417240a72ab69f6d0301efd3b2b" category="section-title">从何处查找追加信息</block>
   <block id="a1b241b7e61d12e641e864fa7e3c7a8e" category="list-text">NetApp产品文档+
 <block ref="fa4af55c3fdbce23e96d2cf73261fa5b" category="inline-link-rx"></block></block>
   <block id="748e9574a05efa0e0738de58c2ff670b" category="list-text">CommVault文档+
@@ -2700,7 +2661,6 @@ StorageGRID可以通过为存储节点或运行负载平衡器和管理节点的
   <block id="bce176eca00db60493e95c59f7b3f0e4" category="sidebar">StorageGRID备份和恢复—使用Commvault"存储和恢复数据</block>
   <block id="ef4f50cfdab78eaa027ccf2feec613db" category="sidebar">TR-4626：负载平衡器</block>
   <block id="9353b972c4e72ec79456feca60f654bd" category="sidebar">StorageGRID负载平衡器-第三方和全局负载平衡器</block>
-  <block id="9d652cf4eda8c8ac6073f606de32d361" category="sidebar">StorageGRID 11.7中的安全功能—保护对象存储中的数据和元数据的安全</block>
   <block id="03a7b4c156470d8fc2b690c3a1de4583" category="sidebar">使用StorageGRID进行勒索软件防护—保护S3对象</block>
   <block id="5d2c0bd1227536451d2080f49e26d77a" category="sidebar">使用外部应用程序监控StorageGRID</block>
   <block id="70ca7442b81ada7ae57803224dad0c83" category="sidebar">在StorageGRID中使用Grafana查看指标</block>
@@ -2747,8 +2707,6 @@ StorageGRID可以通过为存储节点或运行负载平衡器和管理节点的
   <block id="c4adfd76b7112414ec7a702816418613" category="paragraph">我们提供StorageGRID的"生产就绪"版本、它不是开源版本或替代版本。需要注意的是，除非潜在客户升级到生产许可证，否则不提供*支持*。</block>
   <block id="f20e94f5bb986812208034209609d5f1" category="paragraph">如在上述步骤中遇到任何问题、请联系StorageGRID.Feedback@netapp.com。</block>
   <block id="2988dc07d3c7f2675b337739e6a81ff7" category="sidebar">试用StorageGRID</block>
-  <block id="af628eae5a4bda33fe7f98b90dfd07ad" category="paragraph">有关此测试环境的技术详细信息、请阅读技术报告中的"解决方案设计和最佳实践"一节<block ref="42208ea06469332a89cb87f688663202" category="inline-link-rx"></block> 。</block>
-  <block id="d448077c68c161f782d3bf423a865381" category="paragraph">表7显示了基线性能测试的结果。在辅助副本操作中、四个CommvaultMediaAgent将数据备份到NetApp AFF A300系统、并在NetApp StorageGRID上创建了一个辅助副本。有关测试设置环境的详细信息、请阅读技术报告中的"解决方案设计和最佳实践"一节<block ref="42208ea06469332a89cb87f688663202" category="inline-link-rx"></block> 。</block>
   <block id="6254689add36612cde2207c4eeb003c9" category="inline-link">StorageGRID S3对象锁定已通过Veritas NetBackup的验证</block>
   <block id="a712bd63fac80e1aca62c3ed8e924142" category="list-text">2023年1月18日：<block ref="6179dfb2fcec0a08c60e48740241db0a" category="inline-link-rx"></block></block>
   <block id="14f977b97d7dbd181f04d50ec1ed468e" category="summary">从ONTAP S3迁移到StorageGRID。</block>
@@ -3094,7 +3052,6 @@ StorageGRID可以通过为存储节点或运行负载平衡器和管理节点的
   <block id="c4661d92ec5bfd72a43733aea8dc23dd" category="sidebar">从ONTAP S3迁移到StorageGRID</block>
   <block id="d3aa740f8e2398fe1df8b4f9eb4d398c" category="sidebar">填充并复制存储分段</block>
   <block id="083e747ac97fd71c385f2c89f8eefdb7" category="sidebar">迁移用户和密钥、然后进行转换</block>
-  <block id="81022eb5da399c3a2fd9f2b07db1afd3" category="sidebar">StorageGRID灾难恢复—使用Veritas Enterprise Vault配置StorageGRID以实现站点故障转移</block>
   <block id="454255deb718c7d2b26df2342f80d3d3" category="list-text">2024年2月2日： <block ref="890e1ea9b3a6310b9da56310b581c035" category="inline-link-rx"></block></block>
   <block id="038f39e88db40cdb4f2702538c9f7cac" category="inline-link">StorageGRID</block>
   <block id="c0ffd7598ab1538e87530f78e30ee7a5" category="list-text">StorageGRID 11．11文档中心+<block ref="8cd5d43b808eac3380916fd8a7010bbf" category="inline-link-rx"></block></block>
@@ -3423,4 +3380,6 @@ StorageGRID可以通过为存储节点或运行负载平衡器和管理节点的
   <block id="cab3529168145fa0611750088f6b9294" category="sidebar">存储桶生命周期策略示例</block>
   <block id="e506f81bec685a8d4212a723ed5e9d67" category="sidebar">存储桶生命周期策略示例</block>
   <block id="0be6d03a29c17471b0414e9b31482b15" category="list-text">IBM 存储保护</block>
+  <block id="0987bb97934aa3a8ea668bd0c91ce52d" category="sidebar">StorageGRID中的安全功能 - 保护对象存储中的数据和元数据</block>
+  <block id="243c98f4ed7a2d56d634e9cc955fda88" category="sidebar">StorageGRID灾难恢复 - 使用 Veritas Enterprise Vault 配置StorageGRID进行站点故障转移</block>
 </blocks>

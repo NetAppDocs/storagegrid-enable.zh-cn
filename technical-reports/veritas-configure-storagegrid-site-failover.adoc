@@ -1,0 +1,73 @@
+---
+permalink: technical-reports/veritas-configure-storagegrid-site-failover.html 
+sidebar: sidebar 
+keywords: site failover, configure, storagegrid 
+summary: 了解如何在灾难恢复场景中配置StorageGRID站点故障转移。 
+---
+= 配置StorageGRID站点故障转移以实现灾难恢复
+:hardbreaks:
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+了解如何在灾难恢复场景中配置StorageGRID站点故障转移。
+
+StorageGRID架构部署通常采用多站点模式。站点可以是主动-主动站点、也可以是主动-被动站点、用于灾难恢复。在灾难恢复场景中、请确保Veritas Enterprise Vault能够保持与其主存储(StorageGRID)的连接、并在站点发生故障期间继续导入和检索数据。本节简要介绍了双站点主动-被动部署的配置指导。 有关这些准则的详细信息、请参见 link:https://docs.netapp.com/us-en/storagegrid-118/["StorageGRID 文档"] 页面或联系StorageGRID专家。
+
+
+
+== 使用Veritas Enterprise Vault配置StorageGRID的前提条件
+
+在配置StorageGRID站点故障转移之前、请验证以下前提条件：
+
+* 有一个双站点StorageGRID部署；例如、Site1和Site2。
+* 已在每个站点上创建一个运行负载平衡器服务的管理节点或一个网关节点来实现负载平衡。
+* 已创建StorageGRID负载平衡器端点。
+
+
+
+
+== 配置StorageGRID站点故障转移
+
+要配置StorageGRID站点故障转移、请完成以下步骤：
+
+.步骤
+. 要确保在站点出现故障期间连接到StorageGRID、请配置高可用性(HA)组。在StorageGRID网格管理器界面(GMI)中、单击配置、高可用性组和+创建。
++
+image:vertias/veritas-create-high-availability-group.png["veritas/veritas-cree-high-availability组"]
+
+. 输入所需信息。单击Select Interfaces"(选择接口)、并包括Site1和Site2的网络接口、其中Site1 (主站点)是首选主站点。在同一子网中分配一个虚拟IP地址。单击保存。
++
+image:veritas/veritas-edit-high-availability-group.png["veritas/veritas-edit-high-availability组"]
+
+. 此虚拟IP (VIP)地址应与Veritas Enterprise Vault分区配置期间使用的S3主机名相关联。VIP地址将流量解析为Site1、在Site1发生故障期间、VIP地址会将流量透明地重新路由到Site2。
+. 确保将数据复制到站点1和站点2。这样、如果Site1发生故障、则仍可从Site2访问对象数据。这是通过首先配置存储池来实现的。
++
+在StorageGRID GMI中、单击"ILM、Storage Pools"(ILM、存储池)、然后单击+"Cree"(创建)。按照向导创建两个存储池：一个用于Site1、另一个用于Site2。
+
++
+存储池是节点的逻辑分组、用于定义对象放置
+
++
+image:veritas/veritas-storage-pool-details-site-1.png["veritas/veritas-storage-pool-细节-site-1"]
+
++
+image:veritas/veritas-storage-pool-details-site-2.png["veritas/veritas-storage-pool-细节-site-2"]
+
+. 在StorageGRID GMI中、单击"ILM、规则"、然后单击+创建。按照向导中的说明创建ILM规则、为每个站点指定一个要存储的副本、并将其导出行为设置为平衡。
++
+image:veritas/veritas-storage-pool-details-site-3.png["veritas/veritas-storage-pool-细节-site-3"]
+
+. 将ILM规则添加到ILM策略中并激活此策略。
+
+
+此配置会产生以下结果：
+
+* 一种虚拟S3端点IP、其中Site1为主端点、Site2为二级端点。如果Site1发生故障、VIP将故障转移到Site2。
+* 从Veritas Enterprise Vault发送归档数据时、StorageGRID可确保一个副本存储在Site1中、另一个DR副本存储在Site2中。如果站点1发生故障、Enterprise Vault将继续从站点2进行加网和检索。
+
+
+
+NOTE: 这两种配置对于Veritas Enterprise Vault是透明的。S3端点、存储分段名称、访问密钥等均相同。无需在Veritas Enterprise Vault分区上重新配置S3连接设置。

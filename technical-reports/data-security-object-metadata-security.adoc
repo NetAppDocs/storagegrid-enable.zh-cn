@@ -1,0 +1,57 @@
+---
+sidebar: sidebar 
+permalink: technical-reports/data-security-object-metadata-security.html 
+keywords: object metadata security, storagegrid 
+summary: 了解StorageGRID中的对象和元数据安全功能。 
+---
+= 对象和元数据安全性
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+了解StorageGRID中的对象和元数据安全功能。
+
+[cols="20,30a,30,20"]
+|===
+| 功能 | 功能 | 影响 | 合规性 
+
+
+| 高级加密标准(Advanced Encryption Standard、AES)服务器端对象加密  a| 
+StorageGRID可为对象提供基于AES 128和AES 256的服务器端加密。网格管理员可以启用加密作为全局默认设置。StorageGRID还支持S3 x-AMZ-server-side加密标头、以允许按对象启用或禁用加密。启用后、对象在存储时或在网格节点之间传输时会进行加密。
+| 有助于保护对象的存储和传输、不受底层存储硬件的限制。 | SEC规则17a-4 (f) CTFC 1.31 (c)-（d)(FIRA)规则4511 (c) 
+
+
+| 内置密钥管理  a| 
+启用加密后、每个对象都会使用随机生成的唯一对称密钥进行加密、该密钥存储在StorageGRID中、无需外部访问。
+| 无需外部密钥管理即可启用对象加密。 |  
+
+
+| 符合联邦信息处理标准(Federal Information Processing Standard、FIPS) 140-2的加密磁盘  a| 
+SG5812、SG5860、SG6160和SGF6024 StorageGRID设备可提供符合FIPS 140-2的加密磁盘选项。磁盘的加密密钥可以选择由外部KMIP服务器管理。
+| 支持安全存储系统数据、元数据和对象。此外、还提供基于StorageGRID软件的对象加密功能、可保护对象的存储和传输安全。 | SEC规则17a-4 (f) CTFC 1.31 (c)-（d)(FIRA)规则4511 (c) 
+
+
+| 后台完整性扫描和自我修复  a| 
+StorageGRID在对象和子对象级别使用哈希、校验和和和循环冗余校验(CrC)的互斥机制、以防止在对象存储和传输过程中出现数据不一致、篡改或修改。StorageGRID会自动检测损坏和被篡改的对象并进行替换、同时隔离更改后的数据并向管理员发出警报。
+| 支持网格管理员满足SLA、法规和其他有关数据持久性的义务。帮助客户检测尝试加密、篡改或修改数据的勒索软件或病毒。 | SEC规则17a-4 (f) CTFC 1.31 (c)-（d)(FIRA)规则4511 (c) 
+
+
+| 基于策略的对象放置和保留  a| 
+StorageGRID支持网格管理员配置ILM规则、用于指定对象保留、放置、保护、过渡和到期时间。网格管理员可以将StorageGRID配置为按对象的元数据筛选对象、并在各种粒度级别应用规则、包括网格范围、租户、存储分段、密钥前缀、 和用户定义的元数据键值对。StorageGRID有助于确保在对象的整个生命周期内根据ILM规则存储对象、除非客户端明确删除这些对象。
+| 有助于强制实施数据放置、保护和保留。帮助客户在持久性、可用性和性能方面实现SLA。 | SEC规则17a-4 (f) CTFC 1.31 (c)-（d)(FIRA)规则4511 (c) 
+
+
+| 后台元数据扫描  a| 
+StorageGRID会定期扫描后台的对象元数据、以应用ILM指定的对象数据放置或保护更改。
+| 帮助发现损坏的对象。 |  
+
+
+| 可调一致性  a| 
+租户可以在存储分段级别选择一致性级别、以确保多站点连接等资源可用。
+| 仅当提供所需数量的可用站点或资源时、才可选择向网格提交写入。 |  
+|===
