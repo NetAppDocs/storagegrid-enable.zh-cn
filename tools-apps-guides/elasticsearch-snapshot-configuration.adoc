@@ -1,0 +1,121 @@
+---
+permalink: tools-apps-guides/elasticsearch-snapshot-configuration.html 
+sidebar: sidebar 
+keywords: Elastic, Elasticsearch, snapshot, repository, StorageGRID, object storage 
+summary: 创建 Elasticsearch 快照存储库以使用StorageGRID对象存储的说明。 
+---
+= Elasticsearch 快照存储库配置
+:hardbreaks:
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+_作者：郑安杰_
+
+Elasticsearch 支持使用与 AWS S3 兼容的对象存储作为快照存储库。本文提供了有关如何使用StorageGRID作为后端对象存储创建 Elasticsearch S3 快照存储库的分步说明。
+
+
+
+== 要求
+
+* StorageGRID 11.8 或更高版本
+* Elasticsearch 8.x 或更高版本
+
+
+
+
+== 假设
+
+读者熟悉StorageGRID和 Elasticsearch 术语和操作。
+
+
+
+== 说明
+
+* 步骤 *
+
+. 创建一个StorageGRID桶以用于 Elasticsearch 快照存储库。必须启用存储桶版本控制。每个存储库使用一个存储桶。不要在多个存储库或 Elasticsearch 集群之间共享一个存储桶。
+. 将StorageGRID租户访问密钥和密钥添加到 Elasticsearch 密钥库。登录 Elasticsearch 主节点，导航至 `<elasticsearch>/bin/`目录，并使用 `elasticsearch-keystore`添加访问密钥和密钥。
++
+示例命令：
+
++
+[NOTE]
+====
+ In older Elasticsearch versions, the key names are `access.key` and `secret.key` instead of using underscores.
+====
++
+[listing]
+----
+/usr/share/elasticsearch/bin/elasticsearch-keystore add s3.client.sgdemo.access_key
+Enter value for s3.client.sgdemo.access_key: <paste the access key here, it will not be displayed>
+
+/usr/share/elasticsearch/bin/elasticsearch-keystore add s3.client.sgdemo.secret_key
+Enter value for s3.client.sgdemo.secret_key: <paste the secret key here, it will not be displayed>
+----
++
+要显示密钥，请使用“elasticsearch-keystore show <key-name>”命令。
+
+. 对于多节点 Elasticsearch 集群，在每个节点中重复步骤 2 或查阅 Elasticsearch 文档。
+. 从 Kibana Web GUI 导航到 Dev Tools Console 页面并使用 `POST _nodes/reload_secure_settings`API 将更改应用到每个节点。
++
+image:es-snapshot/es-reload-api.png["reload_secure_settings 示例截图"]
+
+. 使用 `PUT _snapshot`用于创建新快照存储库的 API。
++
+在此示例中，存储库名称是 `sg_snapshot_repository`，缓冲区大小与 S3 分段上传的部分大小相对应。
+
++
+默认协议是 HTTPS。要将 HTTP 与StorageGRID S3 端点一起使用，请添加 `"protocol": "http"`到设置。
+
++
+使用步骤1中创建的bucket名称和步骤2中配置的客户端名称。
+
++
+[listing]
+----
+PUT _snapshot/sg_snapshot_repository
+{
+  "type": "s3",
+  "settings": {
+    "bucket": "elk-snapshot",
+    "client": "sgdemo",
+    "path_style_access": "true",
+    "endpoint": "sgdemo.netapp.com",
+    "buffer_size": "512mb"
+  }
+}
+----
++
+image:es-snapshot/es-create-repository-api.png["Elasticsearch API 示例屏幕截图"]
+
+. 从 Kibana Web GUI 导航到 Stack Management > Snapshot and Restore 页面，选择 Repositories 选项卡。
++
+单击存储库名称可查看详细信息或修改某些设置，例如每秒最大快照字节数（默认为每个 Elasticsearch 节点 40 MB/s）。
+
++
+对于此页面上不可见的设置，请使用 `PUT _snapshot`开发者工具控制台中的 API 进行更改。
+
++
+image:es-snapshot/es-snapshot-repository.png["快照存储库示例截图"]
+
+. 设置存储桶生命周期策略来管理快照存储桶中的非当前版本对象。例如，90 天后删除非当前版本。
+. Elastic 要求客户端在使用非 AWS S3 存储来存储快照之前对其进行验证。
++
+按照 Elastic 说明验证设置：
+
++
+https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-snapshot-repository-analyze[]
+
+. 验证后，按照 Elasticsearch 指南创建存储夜间快照的策略。
+
+
+
+
+== 其他资源
+
+* https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-snapshot["Elasticsearch s3 存储库"]
+* https://docs.netapp.com/us-en/storagegrid/ilm/how-objects-are-deleted.html#delete-s3-versioned-objects["如何删除 S3 版本控制对象"]
+
