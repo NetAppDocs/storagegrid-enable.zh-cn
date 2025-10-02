@@ -5,6 +5,8 @@ entries:
 - title: 概述
   pdf-filename: 经验证的第三方解决方案—概述
   url: "/third-party/index.html"
+- title: StorageGRID 12.0
+  url: "/third-party/120-3rd-party-list.html"
 - title: StorageGRID
   url: "/third-party/119-3rd-party-list.html"
 - title: StorageGRID 11.8.
