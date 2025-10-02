@@ -1,7 +1,7 @@
 ---
 permalink: tools-apps-guides/veeam-br.html 
 sidebar: sidebar 
-keywords: veeam,backup,veeam12,veeam11, 
+keywords: veeam,backup,veeam13,veeam12,veeam11 
 summary: 本指南重点介绍NetApp StorageGRID以及部分Veeam备份和复制的配置。本白皮书面向熟悉Linux系统并负责维护或实施NetApp StorageGRID系统与Veeam备份和复制的存储和网络管理员。 
 ---
 = 使用Veeam备份和复制进行部署的StorageGRID最佳实践
@@ -26,7 +26,7 @@ Veeam和NetApp StorageGRID提供了一个易于使用的解决方案、可协同
 
 Veeam的对象工作负载会为小型对象创建大量并发放置、删除和列表操作。启用不可迁移性将增加对对象存储的请求数量、以设置保留和列出版本。备份作业的过程包括为每日更改写入对象、新写入完成后、该作业将根据备份的保留策略删除任何对象。备份作业的计划几乎总是重叠的。这种重叠将导致备份窗口的很大一部分在对象存储上包含50/50的放置/删除工作负载。在Veeam中调整任务插槽设置的并发操作数、通过增加备份作业块大小来增加对象大小、减少多对象删除请求中的对象数量、 选择完成作业的最长时间窗口将优化解决方案的性能和成本。
 
-请务必阅读的产品文档 https://www.veeam.com/documentation-guides-datasheets.html?productId=8&version=product%3A8%2F221["Veeam备份和复制"^] 和 https://docs.netapp.com/us-en/storagegrid-117/["StorageGRID"^] 开始之前。Veeam提供了一些计算器、用于了解Veeam基础架构的规模估算以及在调整StorageGRID 解决方案 规模之前应使用的容量要求。请始终访问Veeam Ready计划网站查看经Veeam-NetApp验证的配置 https://www.veeam.com/alliance-partner-technical-programs.html?alliancePartner=netapp1&page=1["Veeam Ready对象、对象不可变性和存储库"^]。
+请务必阅读产品文档 https://www.veeam.com/documentation-guides-datasheets.html?productId=8&version=product%3A8%2F221["Veeam备份和复制"^]和 https://docs.netapp.com/us-en/storagegrid/["StorageGRID"^]在你开始之前。 Veeam 提供了计算器，用于了解 Veeam 基础架构的大小和容量要求，这些计算器应在确定StorageGRID解决方案的大小之前使用。请始终在 Veeam Ready Program 网站上查看 Veeam- NetApp验证的配置，以了解 https://www.veeam.com/alliance-partner-technical-programs.html?alliancePartner=netapp1&page=1["Veeam Ready对象、对象不可变性和存储库"^]。
 
 
 
@@ -87,7 +87,7 @@ Veeam备份作业可以使用不同的块大小选项进行配置、应仔细考
 
 === 建议版本
 
-对于Veeam部署、建议使用带有最新修补程序的NetApp StorageGRID 11.7或11.8.建议始终保持最新、并为StorageGRID系统应用最新的修补程序。
+对于 Veeam 部署，建议使用带有最新修补程序的NetApp StorageGRID 11.9 或 12.0 版本。始终建议保持最新状态并为StorageGRID系统应用最新的修补程序。
 
 
 
@@ -99,13 +99,64 @@ Veeam仅要求通过HTTPS连接端点。Veeam不支持非加密连接。SSL证�
 
 === S3 存储分段
 
-StorageGRID是一种安全多租户存储系统。建议为Veeam工作负载创建一个专用租户。可以选择分配存储配额。作为最佳实践、请启用"使用自己的身份源"。使用适当的密码保护租户root管理用户的安全。Veeam Backup 12要求S3存储分段具有强大的一致性。StorageGRID提供了在存储分段级别配置的多个一致性选项。对于使用Veeam从多个位置访问数据的多站点部署、请选择"strong-globation"。如果Veeam备份和还原仅在单个站点上进行、则一致性级别应设置为"strong-site"。有关存储分段一致性级别的详细信息、请查看 https://docs.netapp.com/us-en/storagegrid-117/s3/consistency-controls.html["文档。"]。要使用StorageGRID进行Veeam不可变备份、必须在创建存储分段期间全局启用S3对象锁定并在存储分段上进行配置。
+StorageGRID是一个安全的多租户存储系统。建议为 Veeam 工作负载创建专用租户。可以选择分配存储配额。作为最佳实践，启用“使用自己的身份源”。使用适当的密码保护租户根管理用户。  Veeam Backup 12 要求 S3 存储桶具有强一致性。 StorageGRID提供在存储桶级别配置的多个一致性选项。对于 Veeam 从多个位置访问数据的多站点部署，请选择“strong-global”。如果 Veeam 备份和恢复仅在单个站点进行，则一致性级别应设置为“strong-site”。有关存储桶一致性级别的更多信息，请查看 https://docs.netapp.com/us-en/storagegrid/s3/consistency-controls.html["文档。"]。要使用StorageGRID进行 Veeam 不变性备份，必须在全局启用 S3 对象锁，并在存储桶创建期间在存储桶上进行配置。
 
 
 
 === 生命周期管理
 
 StorageGRID支持在StorageGRID节点和站点之间进行复制和纠删编码、以实现对象级保护。纠删编码至少需要200 KB的对象大小。Veeam的默认块大小为1 MB、所产生的对象大小通常会低于Veeam存储效率后建议的200 KB最小大小。为了提高解决方案的性能、建议不要使用跨越多个站点的纠删编码配置文件、除非这些站点之间的连接足以避免增加延迟或限制StorageGRID系统的带宽。在多站点StorageGRID系统中、可以将ILM规则配置为在每个站点存储一个副本。为了获得最佳持久性、可以配置一条规则、以便在每个站点上存储一个经过删除的编码副本。对于此工作负载、最建议使用Veeam备份服务器本地的两个副本。
+
+
+
+=== 删除性能
+
+Veeam 提供删除请求率调整和备份删除过程的调度。为了进一步调整删除性能，您可以禁用同步删除并让 ILM 扫描器管理对象的最终删除。
+
+禁用同步删除的步骤
+
+. 打开StorageGRID网格管理器。
+. 在右上角，选择问号，然后选择 API 文档。
+. 在右上角，单击私有 API 文档页面链接。
+. 扩展 ilm-advanced。
+. 选择 GET ilm-advanced。
+. 选择“试用”，然后“执行”。
+. 查看响应结果。
++
+.. 如果值为空，则表示正在使用默认的 ilm-advanced 值。
+.. 如果值不为空，则表示自定义 ILM 高级值正在使用中。复制“数据”之后的所有输出：，从 { 开始直到倒数第二个 }。
++
+... 将其保存在某些文本编辑器中。
++
+响应示例：
+
++
+image:veeam-bp/get_ilm_adv_before.png["获取 ILM-Advanced 输出"]
+
+
+
+
+
+. 选择 PUT ilm-advanced。
+. 选择“试用”开始编辑 API 主体。
++
+.. 默认情况下，API 主体将包含默认值，而不包含任何先前配置的自定义值。这就是执行步骤 5-7 非常重要的原因。
+
+
+. 如果在步骤 5-7 中发现非默认值，则用步骤 7 中保存的输出替换 API 主体。。否则，如果步骤 5-7 中的值为空，则保留 API 主体不变。
+. 在API主体框中调整以下参数：
++
+.. 将同步值设置为false。
++
+API 正文示例：
+
++
+image:veeam-bp/put_ilm_adv.png["PUT ILM-高级输入"]
+
+
+
+. 完成后，选择执行
+
 
 
 
@@ -188,6 +239,6 @@ image:veeam-bp/tc_2.png["流量分类策略指标"]
 
 要了解有关本文档中所述信息的更多信息，请查看以下文档和 / 或网站：
 
-* link:https://docs.netapp.com/us-en/storagegrid-119/["NetApp StorageGRID 11.9产品文档"^]
+* link:https://docs.netapp.com/us-en/storagegrid/["NetApp StorageGRID产品文档"^]
 * link:https://www.veeam.com/documentation-guides-datasheets.html?productId=8&version=product%3A8%2F221["Veeam备份和复制"^]
 

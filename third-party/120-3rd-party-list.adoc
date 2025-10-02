@@ -2,9 +2,9 @@
 permalink: third-party/119-3rd-party-list.html 
 sidebar: sidebar 
 keywords: 11.9, third-party applications, storagegrid, ISV 
-summary: 第三方解决方案已通过StorageGRID 11.9. 
+summary: 经过StorageGRID 12.0 验证的第三方解决方案 
 ---
-= StorageGRID 11.9经验证的第三方解决方案
+= StorageGRID 12.0 经过验证的第三方解决方案
 :hardbreaks:
 :allow-uri-read: 
 :icons: font
@@ -12,7 +12,7 @@ summary: 第三方解决方案已通过StorageGRID 11.9.
 
 
 [role="lead"]
-以下第三方解决方案已通过验证、可用于StorageGRID 11.9.+如果未列出您要查找的解决方案 、请联系您的NetApp客户代表。
+以下第三方解决方案已验证可与StorageGRID 12.0 一起使用。  + 如果您要查找的解决方案未列出，请联系您的NetApp客户代表。
 
 
 
@@ -131,20 +131,6 @@ summary: 第三方解决方案已通过StorageGRID 11.9.
 
 * Entrust 加密安全平台 v10.4.5
 * Entrust KeyControl 10.2
-* Hashitorp Vault 1.15.0.
-* 《Terles CipherTrust Manager 2.0》
-* 《Terles CipherTrust Manager 2.1》
-* 《Terles CipherTrust Manager 2.2》
-* Terles CipherTrust Manager 2.3
-* Terles CipherTrust Manager 2.4
-* Terles CipherTrust Manager 2.8
-* Terles CipherTrust Manager 2.9
-* Terles CipherTrust Manager 2.10
-* 《Terles CipherTrust Manager 2.11》
-* Terles CipherTrust Manager 2.12
-* Terles CipherTrust Manager 2.13
-* Terles CipherTrust Manager 2.14
-* Thales CipherTrust Manager 2.15
-* Thales CipherTrust Manager 2.16
+* Hashicorp Vault 1.20.2
 * 泰雷兹密码信任管理器 2.20
 

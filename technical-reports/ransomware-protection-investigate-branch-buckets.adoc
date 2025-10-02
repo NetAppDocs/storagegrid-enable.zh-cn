@@ -1,0 +1,36 @@
+---
+sidebar: sidebar 
+permalink: technical-reports/ransomware-protection-investigate-branch-buckets.html 
+keywords: object lock, storagegrid 
+summary: 探索如何使用分支存储桶来调查和补救勒索软件攻击。 
+---
+= 勒索软件调查和补救
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+了解如何使用StorageGRID在可能发生勒索软件攻击后调查和修复存储桶。
+
+在StorageGRID 12.0 中，添加了新的分支存储桶功能，以扩展版本控制对于勒索软件防御的实用性。分支存储桶提供对存储桶中对象的访问，因为这些对象在某个时间存在，但前提是它们仍然存在于存储桶中。只能为启用版本控制的基本存储桶创建分支存储桶。
+
+这意味着如果您怀疑发生了勒索软件攻击，您可以创建一个读/写或只读分支存储桶，其中包含初始攻击之前存在的所有对象和版本。您可以使用此分支存储桶与基本存储桶内容进行比较，以确定哪些对象发生了变化以及该变化是否是攻击的一部分。您还可以使用分支存储桶，在调查攻击的同时使用干净的分支继续客户端操作。
+
+
+
+== 创建分支存储桶
+
+* 导航到基本存储桶详细信息页面和分支选项卡以创建分支存储桶。
+
+
+image:ransomware/ransomware-protection-branch-create.png["勒索软件保护分支创建"]
+
+* 单击“创建分支存储桶”按钮后，将打开一个弹出窗口，其中预先填写了与基本存储桶关联的区域的详情。
+* 在时间之前提供分支存储桶名称，并选择要创建的分支存储桶类型。
+
+
+image:ransomware/ransomware-protection-branch-define.png["勒索软件保护分支定义"]

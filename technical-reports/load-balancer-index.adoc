@@ -46,32 +46,11 @@ image:load-balancer/load-balancer-local-traffic-manager-load-balancer.png["本�
 
 
 
-=== StorageGRID网关节点负载平衡器与第三方负载平衡器
-
-在与S3兼容的对象存储供应商中、StorageGRID是独一无二的、因为它提供了一个本机负载平衡器、可用作专用设备、VM或容器。StorageGRID提供的负载平衡器也称为网关节点。
-
-对于尚未拥有F5、Citrix等负载平衡器的客户、实施第三方负载平衡器可能非常复杂。StorageGRID负载平衡器可显著简化负载平衡器操作。
-
-网关节点是一种高可用性、高性能的企业级负载平衡器。客户可以选择在同一网格中实施网关节点、第三方负载平衡器甚至两者。网关节点是本地流量管理器、而不是GSLB。
-
-StorageGRID负载平衡器具有以下优势：
-
-* *精简性*。自动配置资源池、运行状况检查、修补和维护、所有这些都由StorageGRID进行管理。
-* *性能*。StorageGRID负载平衡器专用于StorageGRID、您不会与其他应用程序争用带宽。
-* *成本*。虚拟机(VM)和容器版本免费提供。
-* *交通分类*。高级流量分类功能支持StorageGRID专用的QoS规则以及工作负载分析。
-* *未来的StorageGRID特定功能*。在即将发布的版本中、StorageGRID将继续优化负载平衡器并为其添加创新功能。
-
-
-有关部署StorageGRID网关节点的详细信息，请参见 https://docs.netapp.com/us-en/storagegrid-117/["StorageGRID 文档"^]。
-
-
-
 == 从何处查找追加信息
 
 要了解有关本文档中所述信息的更多信息，请查看以下文档和 / 或网站：
 
-* NetApp StorageGRID文档中心 https://docs.netapp.com/us-en/storagegrid-118/[]
+* NetApp StorageGRID文档中心https://docs.netapp.com/us-en/storagegrid/[]
 * NetApp StorageGRID支持 https://docs.netapp.com/us-en/storagegrid-enable/[]
 * StorageGRID F5负载平衡器设计注意事项 https://www.netapp.com/blog/storagegrid-f5-load-balancer-design-considerations/[]
 * Loadbalancer.org—Load平衡NetApp StorageGRID https://www.loadbalancer.org/applications/load-balancing-netapp-storagegrid/[]

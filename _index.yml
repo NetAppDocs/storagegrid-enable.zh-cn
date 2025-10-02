@@ -43,8 +43,6 @@ indexpage:
       url: "/product-feature-guides/storagegrid-search-integration-service.html"
     - title: 节点克隆注意事项和性能
       url: "/product-feature-guides/node-clone.html"
-    - title: 如何使用端口重新映射
-      url: "/product-feature-guides/port-remap.html"
     - title: 如何重新定位站点和更改网络
       url: "/product-feature-guides/site-relocation-and-network-change.html"
     - title: 将基于对象的存储从ONTAP S3迁移到StorageGRID

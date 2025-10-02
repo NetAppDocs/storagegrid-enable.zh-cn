@@ -1,0 +1,44 @@
+---
+sidebar: sidebar 
+permalink: technical-reports/load-balancer-storagegrid.html 
+keywords: object storage, load balancer 
+summary: 了解StorageGRID负载均衡器的作用。 
+---
+= 使用StorageGRID负载均衡器
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+了解StorageGRID网关节点负载均衡器的作用。
+
+实施NetApp® StorageGRID® 网关节点的一般指南。
+
+
+
+== StorageGRID网关节点负载平衡器与第三方负载平衡器
+
+在与S3兼容的对象存储供应商中、StorageGRID是独一无二的、因为它提供了一个本机负载平衡器、可用作专用设备、VM或容器。StorageGRID提供的负载平衡器也称为网关节点。
+
+对于尚未拥有F5、Citrix等负载平衡器的客户、实施第三方负载平衡器可能非常复杂。StorageGRID负载平衡器可显著简化负载平衡器操作。
+
+网关节点是一种高可用性、高性能的企业级负载平衡器。客户可以选择在同一网格中实施网关节点、第三方负载平衡器甚至两者。网关节点是本地流量管理器、而不是GSLB。
+
+StorageGRID负载平衡器具有以下优势：
+
+* *精简性*。自动配置资源池、运行状况检查、修补和维护、所有这些都由StorageGRID进行管理。
+* *表现*。  StorageGRID负载均衡器专用于StorageGRID，可以提供高性能缓存，并且您不会与其他应用程序争夺带宽。
+* *成本*。虚拟机(VM)和容器版本免费提供。
+* *交通分类*。高级流量分类功能支持StorageGRID专用的QoS规则以及工作负载分析。
+* *未来的StorageGRID特定功能*。在即将发布的版本中、StorageGRID将继续优化负载平衡器并为其添加创新功能。
+
+
+作为StorageGRID的集成节点，本地流量管理器能够使用高级健康检查根据存储节点健康状况、负载和资源可用性来分配请求。此外，当站点之间的StorageGRID链接成本设置为“0”时，它还能够在多个站点之间分配负载。如果存储节点不可用但网关节点在站点中可用，则负载将自动定向到网格中的另一个站点。
+
+网关节点的负载均衡器缓存功能旨在为某些工作负载（例如 AI 训练）提供显著的性能改进，这些工作负载在处理数据的过程中会多次重新读取数据集。缓存网关节点还可以部署在与网格其余部分物理远离的位置，从而在某些工作负载下实现更好的性能并降低 WAN 网络利用率。缓存以读回模式运行，其中写入不会被缓存，也不会修改缓存的状态。每个缓存网关节点独立于任何其他缓存网关节点运行。
+
+有关部署StorageGRID网关节点的详细信息，请参阅 https://docs.netapp.com/us-en/storagegrid/["StorageGRID 文档"^]。
