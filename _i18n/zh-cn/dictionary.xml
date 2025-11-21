@@ -381,15 +381,10 @@
   <block id="d55a0f29052225dac98466ee9b92f4a1" category="doc">NetApp StorageGRID 文档</block>
   <block id="22c5de521c44ad2015e5ce711b46bebf" category="paragraph">您可以在此处找到每个NetApp StorageGRID 版本的完整文档：</block>
   <block id="dc2c61abf0171b5abd61211f37552e18" category="inline-link">StorageGRID 11.6.</block>
-  <block id="1f24789c68b06d446e0ebee3e2b81c66" category="list-text"><block ref="1f24789c68b06d446e0ebee3e2b81c66" category="inline-link-rx"></block></block>
   <block id="c7bb2251d54b13e3891aea37cdb54cd1" category="inline-link">StorageGRID 11.5</block>
-  <block id="1a433578de1b07641fbd7e4fa310d058" category="list-text"><block ref="1a433578de1b07641fbd7e4fa310d058" category="inline-link-rx"></block></block>
   <block id="32e750dc43168f85f193ec7b20f6e5c4" category="inline-link">StorageGRID 11.4.</block>
-  <block id="ab11b93693987b00bd58948f5b72c34a" category="list-text"><block ref="ab11b93693987b00bd58948f5b72c34a" category="inline-link-rx"></block></block>
   <block id="37ef4cafeb8ccc9607db85cd3fab57f8" category="inline-link">StorageGRID 11.3</block>
-  <block id="c18e44cb0cb6bc2f462d1e006c443b06" category="list-text"><block ref="c18e44cb0cb6bc2f462d1e006c443b06" category="inline-link-rx"></block></block>
   <block id="13947b810d54d07e62ef2873b8620fe7" category="inline-link">StorageGRID 11.2</block>
-  <block id="fa96f2375d9c1354445489d7c5ab86dc" category="list-text"><block ref="fa96f2375d9c1354445489d7c5ab86dc" category="inline-link-rx"></block></block>
   <block id="7c9bea5c137c35be356406479a949aef" category="summary">对象锁定提供了一个WORM模型、用于防止删除或覆盖对象。对StorageGRID 对象锁定实施情况进行了评估、以帮助满足法规要求、支持对象保留的合法保留和合规模式以及默认存储分段保留策略。</block>
   <block id="33978f74a8897c3da7935e1ac3118552" category="doc">测试并演示StorageGRID 上的S3对象锁定</block>
   <block id="1d1d2f802d9cc6b6eb57739286faf4b3" category="paragraph">对象锁定提供了一个WORM模型、用于防止删除或覆盖对象。对StorageGRID 对象锁定实施情况进行了评估、以帮助满足法规要求、支持对象保留的合法保留和合规模式以及默认存储分段保留策略。</block>
@@ -1080,8 +1075,6 @@ DERMIO使用字节范围GET在查询期间同时从同一对象中提取不同�
   <block id="9283e244bcd98f1bdd350c1b4f2da148" category="inline-link">StorageGRID设备</block>
   <block id="eff26b146dbf07b93a3af4954ea77c6d" category="list-text"><block ref="eff26b146dbf07b93a3af4954ea77c6d" category="inline-link-rx"></block></block>
   <block id="0c116dd1f4daf14c460a0c77a9e0e674" category="inline-link">StorageGRID 11.8.</block>
-  <block id="6a9dbde708e64ed0ece8a4d0b0dc1d32" category="list-text"><block ref="6a9dbde708e64ed0ece8a4d0b0dc1d32" category="inline-link-rx"></block></block>
-  <block id="fca3b43498fce810dfcc0f52e38e42a6" category="list-text"><block ref="fca3b43498fce810dfcc0f52e38e42a6" category="inline-link-rx"></block></block>
   <block id="e9868d7697657696cac82d1e0b5159e2" category="paragraph">_作者：Aron Klein_</block>
   <block id="f1b702f1ec8f237dcd7b5c954b6d27b8" category="paragraph">_作者：郑安杰_</block>
   <block id="3ffee984625220881b57c95936a54d55" category="paragraph">作者：Siegfried Hepp和Aron Klein_</block>
@@ -2945,7 +2938,6 @@ StorageGRID可以通过为存储节点或运行负载平衡器和管理节点的
   <block id="1fd1f9584361048bdbc61a65caa8c999" category="paragraph">* 12天*</block>
   <block id="973aefb7cd4fa1181692b6c7dab8336d" category="paragraph">* 12.5天*</block>
   <block id="19c95a26acdda408cd23f4a3d3816d3a" category="paragraph">* 17天*</block>
-  <block id="83f15d0c42eec3db2e4b64cc94344c40" category="list-text"><block ref="83f15d0c42eec3db2e4b64cc94344c40" category="inline-link-rx"></block></block>
   <block id="79f8aaf5f753858807e5b593351a00c9" category="paragraph">本指南详细说明了如何为NetApp StorageGRID搜索集成服务配置Amazon OpenSearch服务或内部El在任 一El在任 一情况下进行搜索。</block>
   <block id="1ec648377638e043bfb89eccc1053188" category="inline-link">YouTube视频</block>
   <block id="a5e3fa36313df10d074a9fd1034514d3" category="paragraph">通过StorageGRID系统日志转发功能、您可以配置外部系统日志服务器来收集和分析StorageGRID日志消息。ELK (Elasticsearch、Logstash、Kibana)已成为最受欢迎的日志分析解决方案之一。观看以查看示例的<block ref="a42387db058ee8ea3a8dcc51c8812963" category="inline-link-rx"></block> 模拟配置、以及如何使用它来识别失败的S3请求并对其进行故障排除。StorageGRID均衡器支持将负载平衡器端点访问日志导出到外部系统日志服务器。观看此视频<block ref="76980d5900b8bc5b66d872ad50141cf3" category="inline-link-rx"></block>、了解有关此新功能的更多信息。本文提供了Logstash配置、Kibana查询、图表和信息板的示例文件、可帮助您快速开始StorageGRID 日志管理和分析。</block>
@@ -2988,7 +2980,6 @@ StorageGRID可以通过为存储节点或运行负载平衡器和管理节点的
   <block id="21c24fa624a44fa1b3fc1c27be1061d5" category="list-text">在"注释"部分中、写下："我的帐户电子邮件地址是_您的电子邮件地址_。我希望获得潜在客户访问权限、以下载StorageGRID评估软件。"</block>
   <block id="39d3f037c74b725c5adc98d16fbec2f8" category="summary">本技术报告概述了在发生站点故障时实现恢复点目标(RPO)为0的StorageGRID复制策略的实施情况。</block>
   <block id="810a30cfe50c0f270cee71b650ceffd6" category="doc">借助StorageGRID实现零RPO—多站点复制综合指南</block>
-  <block id="ea76d032379d2a88d28b72edd9e36564" category="paragraph">本技术报告为实施StorageGRID复制策略以在站点发生故障时实现零恢复点目标(RPO)提供了全面的指南。本文档详细介绍了StorageGRID的各种部署选项、包括多站点同步复制和多网格异步复制。其中介绍了如何配置StorageGRID的信息生命周期管理(ILM)策略、以确保数据在多个位置之间的持久性和可用性。此外、本报告还介绍了保持客户端操作不中断所需的性能注意事项、故障情形和恢复过程。本文档的目标是、通过利用同步和异步复制技术、提供相关信息以确保数据始终可访问且一致、即使在站点完全瘫痪的情况下也是如此。</block>
   <block id="606eab719053286d71dc6722565f39cc" category="section-title">StorageGRID概述</block>
   <block id="c72cc4a7cc108f0e65b3b2234a5451f6" category="paragraph">NetApp StorageGRID是一个基于对象的存储系统、支持行业标准Amazon Simple Storage Service (Amazon S3) API。</block>
   <block id="bbcde1e5e5d61a464205617230c533f9" category="section-title">StorageGRID规模</block>
@@ -3003,14 +2994,11 @@ StorageGRID可以通过为存储节点或运行负载平衡器和管理节点的
   <block id="9b5561f349b0418797ca7104c00c80b4" category="section-title">对象数据和元数据</block>
   <block id="fb56e39711fbf97f3cff481cefe05b4f" category="paragraph">对于对象存储，存储单元是对象，而不是文件或块。与文件系统或块存储的树状层次结构不同，对象存储以非结构化的平面布局对数据进行组织。对象存储可将数据的物理位置与用于存储和检索数据的方法分离。</block>
   <block id="0f2657877abfd62c76270fc9fefa04e5" category="paragraph">基于对象的存储系统中的每个对象都有两部分：对象数据和对象元数据。</block>
-  <block id="3e02806edf9cf9fe11e3ce2756d6b716" category="list-text">对象数据表示实际的基础数据、例如照片、电影或病历。</block>
   <block id="fe6177858a7ffc8599a9d9a1a4ea2f1f" category="list-text">对象元数据是指描述对象的任何信息。</block>
   <block id="5744c4629d3afd78a5fdd52800e97f1c" category="paragraph">StorageGRID 使用对象元数据跟踪网格中所有对象的位置，并管理每个对象的生命周期。</block>
   <block id="63079dc7d4ba0f0950865fd53b883a11" category="paragraph">对象元数据包括以下信息：</block>
-  <block id="e5a918f437a7af27afdce3def49278bc" category="list-text">每个对象副本或经过清理编码的片段的当前存储位置。</block>
   <block id="91b08644ef3e50381478d7f42ab32f1d" category="list-text">与对象关联的任何自定义用户元数据键值对。</block>
   <block id="23f54b9b547ce8f5c783a1d802cf64a9" category="list-text">对于S3对象、是指与该对象关联的任何对象标记键值对</block>
-  <block id="3dbdb43407d55e92a14a85f1d6388c70" category="list-text">对于分段对象和多部分对象，分段标识符和数据大小。</block>
   <block id="e6ae6f0a4a18ef27ea21dbe9449108a4" category="inline-link">管理对象元数据存储</block>
   <block id="a60b56c4fc355f3dd23a1f66e3cc0b5f" category="paragraph">对象元数据可自定义并可扩展，因此应用程序可以灵活地使用。有关StorageGRID存储对象元数据的方式和位置的详细信息，请访问<block ref="7d35d2baf4d39208e4f52175d4b30104" category="inline-link-rx"></block>。</block>
   <block id="2fd9637c3fe0d3bb7ddefe22d29b5161" category="paragraph">StorageGRID的信息生命周期管理(ILM)系统用于编排StorageGRID系统中所有对象数据的放置、持续时间和加载行为。ILM规则可确定StorageGRID如何使用对象副本或跨节点和站点对对象进行纠删编码来存储对象。此ILM系统负责确保网格内的对象数据一致性。</block>
@@ -3022,23 +3010,17 @@ StorageGRID可以通过为存储节点或运行负载平衡器和管理节点的
   <block id="7f96c68c60ab5bbabacca964ae3b8ed1" category="paragraph">默认一致性是在网格范围级别定义的。用户可以随时更改存储分段级别的一致性。</block>
   <block id="201f092d3f717ae191dd3f1a8fbfe160" category="paragraph">StorageGRID中提供的存储分段一致性选项包括：</block>
   <block id="34d51dd8353a96472efa22d6a61f77ac" category="list-text">*全部*：提供最高级别的一致性。网格中的所有节点都会立即接收数据、否则请求将失败。</block>
-  <block id="23cf7178bab8a1e4584c67dbdc4d19df" category="list-text">*强-全局*：保证所有站点中所有客户端请求的写入后读一致性。</block>
   <block id="9b2e1b371e348127ef43740bbc2f852d" category="list-text">*强站点*：保证站点内所有客户端请求的写入后读一致性。</block>
   <block id="75d41ce194701530c0861e0d0a3cd8f5" category="list-text">*read-after-new-write*(默认)：为新对象提供写入后读取一致性、并为对象更新提供最终一致性。提供高可用性和数据保护保证。建议用于大多数情况。</block>
   <block id="c0a48852ac050900e86f2edb977893ac" category="list-text">*可用*：为新对象和对象更新提供最终一致性。对于S3存储分段、请仅在需要时使用(例如、对于包含很少读取的日志值的存储分段、或者对于不存在的密钥执行HEAD或GET操作)。S3 FabricPool 存储分段不支持。</block>
   <block id="2656a89324be33e667f0895f0c93e2fb" category="section-title">对象数据一致性</block>
   <block id="1f49fb5ccaeb19371716c5dcf6ebba64" category="paragraph">虽然元数据会在站点内和站点间自动复制、但对象数据存储放置决策由您自行决定。对象数据可以存储在站点内和站点间的副本中、也可以在站点内或站点间进行编码、或者可以组合使用副本和经过编码的存储方案。ILM规则可以应用于所有对象、也可以通过筛选仅应用于特定对象、分段或租户。ILM规则定义了对象的存储方式、副本和/或纠删编码方式、对象在这些位置的存储时间长度、副本数量或纠删编码方案是否应更改、或者位置是否应随时间而更改。</block>
   <block id="6f3609d6439df769d705e58886d0a612" category="paragraph">每个ILM规则都将配置以下三种用于保护对象的加注行为之一：双重提交、平衡或严格。</block>
-  <block id="936750596dd5725d654d59c663df965a" category="paragraph">双提交选项将立即在网格中的任意两个不同存储节点上创建两个副本、并将请求成功返回给客户端。节点选择将在请求的站点内尝试、但在某些情况下可能会使用其他站点的节点。对象将添加到ILM队列中、以便根据ILM规则进行评估和放置。</block>
-  <block id="1ab2be0a3696e2c2b0b8bd09470e4fd1" category="paragraph">Balanced选项会立即根据ILM策略评估对象、并在成功向客户端返回请求之前同步放置对象。如果由于中断或存储不足而无法满足放置要求、从而无法立即满足ILM规则、则会改用双提交。问题解决后、ILM将根据定义的规则自动放置对象。</block>
-  <block id="2215555fc86a611cd3e2dd4bc4066aff" category="paragraph">"strict"选项会立即根据ILM策略评估对象、并同步放置对象、然后将请求成功返回给客户端。如果由于发生中断或存储不足以满足放置要求而无法立即满足ILM规则、则此请求将失败、客户端需要重试。</block>
   <block id="1c72ef556b5fc669fadc14ae383d37cf" category="section-title">负载平衡</block>
   <block id="babc08c413a52242b7d338a9958eddf7" category="paragraph">可以通过集成网关节点、外部第三^方^负载平衡器、DNS轮叫或直接部署StorageGRID来访问客户端。可以在一个站点中部署多个网关节点、并在高可用性组中配置这些节点、以便在发生网关节点中断时自动进行故障转移和故障恢复。您可以在一个解决方案中结合使用负载平衡方法、为一个解决方案中的所有站点提供单一访问点。</block>
-  <block id="0c1ba34ce07cdb4dcf9dfb6117dce295" category="paragraph">默认情况下、网关节点将平衡网关节点所在站点中存储节点之间的负载。可以对StorageGRID进行配置、使网关节点能够使用多个站点的节点平衡负载。此配置会将这些站点之间的延迟与客户端请求的响应延迟增加。只有在客户端可以接受总延迟时、才应配置此选项。</block>
   <block id="434ca8d9b2383ed26fb519f93dc2bb36" category="paragraph">要在对象存储系统中实现零恢复点目标(RPO)、在发生故障时务必：</block>
   <block id="e01ab96fbda93c5ece52f522eb9e97ee" category="list-text">元数据和对象内容是同步的、并被视为一致的</block>
   <block id="855d870be57ab487bc6c3c7dd6177ade" category="list-text">即使出现故障、对象内容仍可访问。</block>
-  <block id="3144181f53a9b5a1f7faaa68687ce053" category="paragraph">存储系统中的对象根据信息生命周期管理(ILM)规则进行存储、这些规则决定了数据在整个生命周期中的存储方式和位置。对于同步复制、可以考虑在严格执行或平衡执行之间进行复制。</block>
   <block id="ba76eb24bf3904a1670b5bea1f9b483c" category="list-text">为了实现零RPO、必须严格执行这些ILM规则、因为它可以确保将对象放置在定义的位置、而不会出现任何延迟或回退、从而保持数据可用性和一致性。</block>
   <block id="d30ec037efde149da7fc42696aac2a3a" category="list-text">StorageGRID的ILM平衡加载行为在高可用性和故障恢复能力之间实现了平衡、即使在站点发生故障时、用户也可以继续加载数据。</block>
   <block id="3e1fd95f52676bdecea3672d3961028d" category="inline-link">StorageGRID负载平衡器技术报告</block>
@@ -3049,16 +3031,12 @@ StorageGRID可以通过为存储节点或运行负载平衡器和管理节点的
   <block id="b0ce1d579493e334271a3fd059b9fee8" category="list-text">网格内复制包括同步和异步复制、可使用ILM加载行为和元数据一致性控制进行配置。</block>
   <block id="1011324ed3564a620bc5485d84c2022b" category="list-text">网格间复制仅为异步复制。</block>
   <block id="3eb3b2b49a459eec5258a23b3937ec50" category="section-title">单网格多站点部署</block>
-  <block id="18b742c71481166d728314dedbf8266d" category="paragraph">在双站点StorageGRID解决方案中、每个对象至少有两个副本或3个EC区块、所有元数据至少有6个副本。故障恢复后、中断后的更新将自动同步到已恢复的站点/节点。如果只有2个站点、则在故障情形下、除了整个站点丢失之外、不可能实现零RPO。</block>
   <block id="ea45bf8dbcdbd39284bd9bf6e419d8c1" category="inline-image-macro">双站点StorageGRID系统</block>
   <block id="3d6a8c14b8eb946f5a4a31a10e28d011" category="paragraph"><block ref="3d6a8c14b8eb946f5a4a31a10e28d011" category="inline-image-macro-rx" type="image"></block></block>
-  <block id="f510bd2ad54651fe5fdf2ba313fa7e94" category="paragraph">在包含三个或更多站点的StorageGRID解决方案中、每个对象至少有3个副本或3个EC区块、所有元数据至少有9个副本。故障恢复后、中断后的更新将自动同步到已恢复的站点/节点。如果有三个或更多站点、则可以实现零RPO。</block>
   <block id="5fe817ef605904371e41e6113fe6648d" category="inline-image-macro">三站点StorageGRID系统</block>
   <block id="9a4f522f8b89c72d7c30c89d4a032d91" category="paragraph"><block ref="9a4f522f8b89c72d7c30c89d4a032d91" category="inline-image-macro-rx" type="image"></block></block>
   <block id="a7037a59646209bbbc4c7d0db625f106" category="paragraph">多站点故障情形</block>
   <block id="e139a585510a502bbf1841cf589f5086" category="cell">失败</block>
-  <block id="afd872554f9681235471a2c5883b0d6c" category="cell">双站点结果</block>
-  <block id="58dff619f0bd9804be1692a0d0966f7e" category="cell">3个或更多站点的结果</block>
   <block id="64b99653800cfbabb38664b747ab2e15" category="cell">单节点驱动器故障</block>
   <block id="55e72c5da46cbe937d4e50af7f3af3fb" category="cell">每个设备使用多个磁盘组、并且每个组至少可以承受1个驱动器发生故障、而不会造成中断或数据丢失。</block>
   <block id="dd83dd9b74267310c6c462ca4b20837d" category="cell">一个站点出现单节点故障</block>
@@ -3069,25 +3047,15 @@ StorageGRID可以通过为存储节点或运行负载平衡器和管理节点的
   <block id="869217d84c1d082654dddf1286388adf" category="cell">操作将定向到所有其他站点、并且不会中断、也不会丢失任何数据。</block>
   <block id="23d194cbaea547a93ca3ed3bf8ff8c2d" category="cell">多个站点出现单节点故障</block>
   <block id="982425d0b8d4c79df7b4e61bc8f0908c" category="paragraph">在以下情况下、不会造成中断或数据丢失：</block>
-  <block id="ec173baf3623010a67af1cb0befd6e44" category="list-text">网格中至少存在一个副本</block>
   <block id="9636cc5c20fef7cd2a97760c5bfb72e5" category="list-text">网格中存在足够的EC数据块</block>
   <block id="5fafe5331ccf1a9f240018258ab857f4" category="paragraph">在以下情况下、操作中断并存在数据丢失的风险：</block>
-  <block id="8508c1de63d092545ea7ac8b64f188a3" category="list-text">不存在副本</block>
   <block id="d8d38aa1b3bfeb8de5a355a0e159518b" category="list-text">EC盘头不足</block>
   <block id="002796052352c300893e7cea45483eee" category="list-text">EC读取器不足以检索对象</block>
   <block id="197a78fa8f3bc319da86384db97d8b45" category="cell">单站点故障</block>
-  <block id="6502d7867cfa9f73685c72f1ab1a97f3" category="cell">客户端操作将中断、直到故障得到解决、或者存储分段一致性降至强站点或强站点或低站点、以便操作成功、但不会丢失数据。</block>
   <block id="6dd78db15f76edcd689c5f34b1a044ac" category="cell">单站点加单节点故障</block>
-  <block id="4ae6253dd23ad200eac56c1ae66c57ce" category="cell">客户端操作将中断、直到故障得到解决、或者存储分段一致性降低到新写后读取或更低、以便操作成功并可能丢失数据。</block>
   <block id="d7daa36acb9042a724041fb6a618e414" category="cell">单个站点加上其余每个站点的一个节点</block>
-  <block id="606a4088cd9679be9ab9565a53f94f98" category="cell">如果无法满足元数据副本仲裁并可能丢失数据、则操作将中断。</block>
   <block id="f11f682e7973cb21186b5b560ca1ae7e" category="cell">多站点故障</block>
-  <block id="fce0d087275e60042477aa5199ce1011" category="cell">如果至少有一个站点无法完整恢复、则不会丢失任何操作站点的数据。</block>
-  <block id="4a80a85cf7dcccd203aa17cad8b32f61" category="cell">如果无法满足元数据副本仲裁、操作将中断。只要至少保留1个站点、就不会丢失数据。</block>
   <block id="a2fc7edce2b8d377a5db40f745cd186e" category="cell">站点的网络隔离</block>
-  <block id="6ce70a008903356746c99f083916cf62" category="cell">客户端操作将中断、直到故障得到解决、或者存储分段一致性降至强站点或强站点或低站点、以便操作成功、但不会丢失数据</block>
-  <block id="a832d31461ba76ddc892c57841a52f92" category="paragraph">隔离站点的操作将中断、但不会丢失任何数据</block>
-  <block id="7e285c7404a1098df2068ce3cd5b70db" category="paragraph">不会中断其余站点的运行、也不会丢失数据</block>
   <block id="15fd08e71edb235c1f3886027abe22b0" category="section-title">多站点多网格部署</block>
   <block id="96045b1c0304cef753cc8d0ef8b0f5d4" category="paragraph">该解决方案将使用四个位置、这些位置平均分为两个区域。区域1将包含网格1的2个存储站点作为区域的主网格、并包含网格2的元数据站点。区域2将包含网格2的2个存储站点作为区域的主网格、并包含网格1的元数据站点。在每个区域中、同一位置可以容纳该区域主网格的存储站点以及其他区域网格的纯元数据站点。仅使用元数据节点作为第三个站点将提供元数据所需的一致性、而不会复制该位置中的对象存储。</block>
   <block id="54c747b99263ca48f4db2b58d9d3ecee" category="inline-image-macro">四站点多网格解决方案</block>
@@ -3221,7 +3189,6 @@ StorageGRID可以通过为存储节点或运行负载平衡器和管理节点的
   <block id="f69309997a74d84dd39f53923232f102" category="summary">StorageGRID 中的策略和权限。</block>
   <block id="61e1800dd7d03bc7509039ca51abaa94" category="paragraph">StorageGRID可跨多个位置提供一个命名空间、并根据信息生命周期管理策略(ILM)提供各种服务级别。通过这些生命周期策略，您可以优化数据在整个生命周期中的存储位置。</block>
   <block id="ee46b302eeb000f796002cd99f7fccca" category="paragraph">借助StorageGRID、您可以在本地和地区分布的解决方案中配置数据的持久性和可用性。无论您的数据是在本地还是在公共云中，集成的混合云工作流都允许您的企业利用云服务，例如 Amazon Simple Notification Service (Amazon SNS)、Google Cloud、Microsoft Azure Blob、Amazon S3 Glacier、Elasticsearch 等。</block>
-  <block id="639932e1f3f1e48c7c66a3c0d26d7c95" category="paragraph">StorageGRID 节点可以部署为：</block>
   <block id="2ef98a36e008b10819c92b90ab9fb134" category="list-text">仅元数据节点最大化对象数量</block>
   <block id="314be57ec0bf12b0f7b8fad48b9e7d0d" category="list-text">仅存储对象的节点，最大化对象空间</block>
   <block id="b67abdd7987281e93fb88e16a9dede52" category="list-text">组合元数据和对象存储节点，添加对象计数和对象空间</block>
@@ -3232,22 +3199,18 @@ StorageGRID可以通过为存储节点或运行负载平衡器和管理节点的
   <block id="0987bb97934aa3a8ea668bd0c91ce52d" category="sidebar">StorageGRID中的安全功能 - 保护对象存储中的数据和元数据</block>
   <block id="243c98f4ed7a2d56d634e9cc955fda88" category="sidebar">StorageGRID灾难恢复 - 使用 Veritas Enterprise Vault 配置StorageGRID进行站点故障转移</block>
   <block id="6296eecae5fd6a7ad4c379ebb94e6ecf" category="section-title">删除没有其他版本的删除标记，为带有“accounts_ 前缀”的对象保留 4 个非当前版本和至少 30 天的历史记录，为所有其他对象版本保留 2 个版本和至少 10 天的历史记录。</block>
-  <block id="3c8cdd15a6a530650da7bd29f3a5558a" category="paragraph">最小StorageGRID部署由单个站点中的一个管理节点和 3 个存储节点组成。单个网格最多可以增长到 220 个节点。  StorageGRID可以部署为单个站点，也可以扩展到 16 个站点。</block>
   <block id="fc7ef6488361c9c97f3d756ad91297b1" category="paragraph">管理节点包含管理界面、指标和日志记录的中心点，并维护StorageGRID组件的配置。管理节点还包含用于 S3 API 访问的集成负载均衡器。</block>
   <block id="e75c00df26f576c96bb2702f9c563c20" category="paragraph">StorageGRID可以部署为纯软件、VMware 虚拟机设备或专用设备。</block>
   <block id="ef0ee1bddd52d01db041108f1228135e" category="paragraph">每个存储节点都可以扩展到多 PB 容量，用于对象存储，从而允许单个命名空间拥有数百 PB 的容量。  StorageGRID还为 S3 API 操作提供了一个称为网关节点的集成负载均衡器。</block>
   <block id="c79c68e59ac4365a8f57819778c2d079" category="paragraph">StorageGRID由放置在站点拓扑中的节点集合组成。  StorageGRID中的站点可以是唯一的物理位置，也可以作为逻辑结构与网格中的其他站点位于共享的物理位置。 StorageGRID站点不应跨越多个物理位置。站点代表共享的局域网 (LAN) 基础设施和故障域。</block>
   <block id="d0351f8bc75f9766fc04d15d94a8bd0b" category="paragraph">StorageGRID提供在节点级别和驱动器级别擦除代码数据的能力。使用StorageGRID设备，我们对每个节点上存储在该节点内所有驱动器上的数据进行擦除编码，从而提供本地保护，防止多个磁盘故障导致数据丢失或中断。驱动器故障的重建在节点本地进行，不需要通过网络复制数据。</block>
   <block id="111ff3048a18a746f2160bb022a17ec3" category="paragraph">此外， StorageGRID设备使用擦除编码方案将对象数据存储在站点内的节点上，或分布在StorageGRID系统中的 3 个或更多站点上，尽管 StorageGRID 的 ILM 规则可防止节点故障。</block>
-  <block id="6538e063b9a1941823d45adc0387aa3f" category="paragraph">擦除编码提供了一种能够以较低的开销抵御节点和站点故障的存储布局，而复制可以做同样的事情，但开销较大。只要满足存储数据块所需的最小节点数，所有StorageGRID擦除编码方案都可以部署在单个站点中。这意味着对于 4+2 的 EC 方案，至少需要 6 个节点可用于接收数据。</block>
   <block id="9be7d4cba47d08188ba121bdcfbf06f8" category="list-text">*Quorum Strong-global*：保证所有站点上所有客户端请求的读写一致性。如果可以实现元数据副本仲裁，则可以为多个节点甚至站点故障提供一致性。</block>
   <block id="c56dabcab7c66e3a31beb8e5ec75bc45" category="list-text">QUORUM 一致性定义为存储节点元数据副本的仲裁，其中每个站点有 3 个元数据副本。计算方法如下：1+((N*3)/2)，其中 N 是站点总数</block>
   <block id="d063e8f08673adc8df1fe6cec7b7a7bc" category="list-text">例如，3 站点网格必须至少制作 5 个副本，每个站点最多可制作 3 个副本。</block>
-  <block id="f8dd54c357440b879a762147dcc0262d" category="paragraph">通过结合本地和全局负载平衡，可以确保实现零 RTO。确保客户端访问不间断需要对客户端请求进行负载平衡。 StorageGRID解决方案可以在每个站点包含许多网关节点和高可用性组。为了即使在站点发生故障时也能为任何站点中的客户端提供不间断的访问，您应该结合StorageGRID网关节点配置外部负载平衡解决方案。配置管理每个站点内负载的网关节点高可用性组，并使用外部负载平衡器在高可用性组之间平衡负载。必须配置外部负载均衡器来执行健康检查，以确保请求仅发送到操作站点。有关使用StorageGRID进行负载平衡的更多信息，请参阅<block ref="587298665ed077e05405d60ca7617c92" category="inline-link-rx"></block>。</block>
   <block id="08b7575fdd3926665d85a59b0d1eb1e5" category="section-title">StorageGRID的零 RPO 要求</block>
   <block id="2cc7dacd3d9a578262f5166ed6f8429b" category="paragraph">对于多站点部署，Quorum Strong Global 是首选的一致性模型，可确保元数据在所有站点之间同步，这对于满足零 RPO 要求至关重要。</block>
   <block id="4340156e4c2f48db5faf8fe946b7b76c" category="paragraph">*多站点解决方案：* StorageGRID允许您在网格内的多个站点之间同步复制对象。通过设置具有平衡或严格行为的信息生命周期管理 (ILM) 规则，对象会立即放置在指定位置。将存储桶一致性级别配置为 Quorum Strong Global 也将确保同步元数据复制。 StorageGRID使用单个全局命名空间，将对象放置位置存储为元数据，因此每个节点都知道所有副本或擦除编码片段的位置。如果无法从发出请求的站点检索对象，则将自动从远程站点检索该对象，而无需故障转移过程。</block>
-  <block id="47c37215042d2824804cb9bd9bd0b409" category="paragraph">在以下场景中， StorageGRID解决方案配置了一个可选的外部负载均衡器，用于管理对集成负载均衡器高可用性组的请求。这样，除了 RPO 为零之外，RTO 也将为零。 ILM 配置了平衡摄取保护以实现同步放置。对于 3 个或更多站点的网格，每个存储桶都配置有 Quorum Strong Global 一致性模型，对于少于 3 个站点的网格，则配置有强 Global 一致性。</block>
   <block id="8865f9fe613497bf0177e03d609c23d2" category="paragraph">为了添加额外的冗余层，此场景将采用两个StorageGRID集群并使用跨网格复制来保持它们同步。对于此解决方案，每个StorageGRID集群将有三个站点。两个站点将用于对象存储和元数据，而第三个站点将仅用于元数据。两个系统都将配置平衡的 ILM 规则，以使用擦除编码在两个数据站点中同步存储对象。存储桶将采用 Quorum Strong Global 一致性模型进行配置。每个网格将在每个存储桶上配置双向跨网格复制。这提供了区域之间的异步复制。可以选择实施全局负载均衡器来管理对两个StorageGRID系统的集成负载均衡器高可用性组的请求，以实现零 RPO。</block>
   <block id="80f1c748a0e0ce55abcb6571bb430d38" category="paragraph">审计日志可以通过 syslog 导出，从而允许 Splunk 和 ELK 等工具挖掘审计消息。审计消息有四种类型：</block>
   <block id="34da6679711f958e925f9b135997bbba" category="paragraph">审计日志可以存储在 S3 存储桶中，以便长期保留和应用程序访问。</block>
@@ -3344,4 +3307,43 @@ StorageGRID可以通过为存储节点或运行负载平衡器和管理节点的
   <block id="f7dcf34d77dc4c11838f7765c7dcd650" category="sidebar">了解StorageGRID负载均衡器的作用</block>
   <block id="afe2571f5b9a6df9bd38c515313c5337" category="sidebar">使用分支存储桶进行勒索软件防御调查</block>
   <block id="1b0f701303c9287515b1ad814889dfbb" category="sidebar">StorageGRID 12.0</block>
+  <block id="1477486e7b73a50110a7e1174a0a9e63" category="paragraph">本技术报告全面指导如何实施StorageGRID复制策略，以在站点发生故障时实现恢复点目标 (RPO) 为零。该文档详细介绍了StorageGRID的各种部署选项，包括多站点同步复制和多网格异步复制。它解释了如何配置StorageGRID信息生命周期管理 (ILM) 策略，以确保跨多个位置的数据持久性和可用性。此外，该报告还涵盖了性能考虑因素、故障场景和恢复流程，以维持不间断的客户运营。本文档的目标是提供相关信息，以确保即使在站点完全发生故障的情况下，数据仍然可访问且一致，方法是利用同步和异步复制技术。</block>
+  <block id="beae719565120c3029e58b8cc07ab0bd" category="paragraph">最小的StorageGRID部署包括一个管理节点和 3 个存储节点，位于同一个站点内。单个网格最多可以发展到 220 个节点。StorageGRID可以部署为单个站点，也可以扩展到 16 个站点。</block>
+  <block id="7cc586f564adeb8c0359665929373f00" category="paragraph">存储节点可以部署为：</block>
+  <block id="ba32bedc804e7bb6a5923493262a3ade" category="list-text">对象数据代表实际的基础数据，例如照片、电影或医疗记录。</block>
+  <block id="5137a04d33fb42650e67ff12f6a52d8e" category="list-text">每个对象的副本或纠删码片段的当前存储位置。</block>
+  <block id="d0736e890c24259e81073f666695f227" category="list-text">对于分段对象和多部分对象，段标识符和数据大小。</block>
+  <block id="1bef005b9a6c5e01ff03054f34bc5beb" category="paragraph">纠删码提供了一种存储布局，该布局能够抵御节点和站点故障，并且开销比复制更低。只要满足存储数据块所需的最小节点数，所有StorageGRID纠删码方案都可以在单个站点中部署。这意味着对于 4+2 的 EC 方案，至少需要 6 个节点来接收数据。</block>
+  <block id="d5766766c59e3d9af63d1473c5ce1b5f" category="list-text">*强全球化*：</block>
+  <block id="6f4a5fbbb3a2d6cc42df99ed00253a1e" category="list-text">*Legacy Strong Global*：保证所有站点上所有客户端请求的读写一致性。</block>
+  <block id="8190cb8fa846c6397a4098016aae607b" category="list-text">对于所有从 11.9 或更早版本升级到 12.0 且未手动更改为新的 Quorum Strong Global 的系统，这是默认行为。</block>
+  <block id="333bd85e6baadc6b1c15e6e34746ceab" category="list-text">这是所有新安装的 12.0 或更高版本系统的默认行为。</block>
+  <block id="cef7f629c1a1cd896339f424fa22bb83" category="paragraph">双提交选项会立即在网格中的任意两个不同的存储节点上创建两个副本，并将请求成功返回给客户端。节点选择将首先在请求站点内进行，但在某些情况下可能会使用其他站点的节点。该对象被添加到 ILM 队列中，以便根据 ILM 规则进行评估和放置。</block>
+  <block id="26c7ee8e48bb07eea6962a93bcc2320a" category="paragraph">平衡选项会立即根据 ILM 策略评估对象，并在向客户端返回请求成功之前同步放置对象。如果由于故障或存储空间不足而无法立即满足放置要求，则将改用双重提交。问题解决后，ILM 将根据定义的规则自动放置对象。</block>
+  <block id="0364e24f1eb145592ee0b598b8005735" category="paragraph">严格选项会立即根据 ILM 策略评估对象，并在向客户端返回请求成功之前同步放置对象。如果由于中断或存储空间不足而无法立即满足 ILM 规则，则请求将失败，客户端需要重试。</block>
+  <block id="7eaf1a666369158296b99d1bae924fb9" category="paragraph">默认情况下，网关节点将平衡其所在站点内各个存储节点之间的负载。StorageGRID可以配置为允许网关节点使用来自多个站点的节点来平衡负载。这种配置会将这些站点之间的延迟添加到客户端请求的响应延迟中。只有当客户可以接受总延迟时，才应进行此配置。</block>
+  <block id="b88fa163d4922e884e42d91e1ba6ae64" category="paragraph">通过本地和全局负载均衡相结合，可以确保 RTO 为零。确保客户端不间断访问需要对客户端请求进行负载均衡。StorageGRID解决方案可以在每个站点包含多个网关节点和高可用性组。为了确保即使在站点发生故障的情况下，客户端也能在任何站点获得不间断的访问，您应该配置外部负载均衡解决方案，并将其与StorageGRID网关节点结合使用。配置网关节点高可用性组，以管理每个站点内的负载，并使用外部负载均衡器在高可用性组之间平衡负载。必须配置外部负载均衡器以执行健康检查，以确保请求仅发送到运行中的站点。有关使用StorageGRID进行负载均衡的更多信息，请参阅<block ref="587298665ed077e05405d60ca7617c92" category="inline-link-rx"></block>。</block>
+  <block id="aeaea368f9c7df971b29e4e113b40910" category="paragraph">存储系统中的对象是根据信息生命周期管理 (ILM) 规则进行存储的，这些规则规定了数据在其整个生命周期中如何以及在哪里存储。对于同步复制，可以考虑严格执行或平衡执行。</block>
+  <block id="e90289fd7decc74e13e03b1552c30be4" category="paragraph">在以下场景中， StorageGRID解决方案配置了一个可选的外部负载均衡器，用于管理对集成负载均衡器高可用性组的请求。这将实现零 RTO 和零 RPO。ILM 配置了平衡摄取保护，用于同步放置。每个存储桶都配置了适用于 3 个或更多站点的网格的 Quorum 版本的强全局一致性模型，以及适用于 2 个站点的 Legacy 版本的强全局一致性模型。</block>
+  <block id="3fa7a1aaa876241f03f99e54b9155fea" category="paragraph">*情景一：*</block>
+  <block id="18a1bb675a43c43a3dfde79cc13f84b7" category="paragraph">在双站点StorageGRID解决方案中，每个对象至少有两个副本，所有元数据至少有 6 个副本。故障恢复后，中断期间的更新将自动同步到已恢复的站点/节点。只有 2 个站点，在站点完全丢失以外的故障情况下，不太可能实现零 RPO。</block>
+  <block id="5ab17dee3d885984e1cdcd607277ac4e" category="paragraph">*情景二：*</block>
+  <block id="cd26f9cc5a308ec85764b3e36bb2f272" category="paragraph">在拥有三个或更多站点的StorageGRID解决方案中，每个对象至少有 3 个副本或 3 个 EC 块，所有元数据至少有 9 个副本。故障恢复后，中断期间的更新将自动同步到已恢复的站点/节点。如果拥有三个或更多站点，则有可能实现零 RPO。</block>
+  <block id="9ab046a736c89c63a7db90494ae7ec75" category="cell">双站点成果 + 传承强大的全球</block>
+  <block id="26c449ea48832ca48a6548bc31d96fd0" category="cell">3 个或更多站点结果 + 法定人数强全球</block>
+  <block id="1c78a7597bcf74fe02547feb0063affe" category="list-text">网格中至少存在一个副本。</block>
+  <block id="00316d3bc04dc064cd3719dd912d32a4" category="list-text">没有副本</block>
+  <block id="452168b286824cfe8e53ad1f5dda59bd" category="list-text">网格中至少存在一个副本。</block>
+  <block id="7d9747ca777716a4392358b7427ff5c6" category="cell">部分客户端操作将会中断，直到故障解决。GET 和 HEAD 操作将继续进行，不会中断。在此故障状态下，将存储桶一致性降低到新写后读取或更低，以继续不间断地执行操作。</block>
+  <block id="36746a7eba38843cafcb9e3af5dea3db" category="cell">部分客户端操作将会中断，直到故障解决为止。HEAD 的运行将持续进行，不会中断。如果存在副本或足够的 EC 数据块，GET 操作将继续进行，不会中断。在此故障状态下，将存储桶一致性降低到新写后读取或更低，以继续不间断地执行操作。</block>
+  <block id="82ce0367a6b3a5de26a62e29a5365b42" category="cell">运营未中断，数据未丢失。根据副本数量，可能出现数据丢失。局部纠删码可以防止数据丢失。</block>
+  <block id="c28323ab18ce37f5ece09594b9447122" category="cell">只有两个网站。参见：单站点加单节点。</block>
+  <block id="7b51ff758c223274f7c344f394bdeda8" category="cell">如果元数据副本法定人数无法满足要求，则运营将会中断。在此故障状态下，将存储桶一致性降低到新写后读取或更低，以继续不间断地执行操作。根据副本数量，永久性故障可能导致数据丢失。局部纠删码可以防止数据丢失。</block>
+  <block id="e94aef628672e9a1bcce72cde6e78e6a" category="cell">所有运营场所均已关闭。如果至少一个站点无法完全恢复，则数据将会丢失。</block>
+  <block id="27feead84299db9e58532f6d84c4af73" category="cell">如果元数据副本法定人数无法满足要求，则运营将会中断。在此故障状态下，将存储桶一致性降低到新写后读取或更低，以继续不间断地执行操作。如果剩余的纠删码块不足，则可能导致永久性故障，造成数据丢失。本地纠删码或数据复制可以防止数据丢失。</block>
+  <block id="d7292a790103a969be501696ea11a6e3" category="cell">客户端操作将中断，直到故障解决为止。在此故障状态下，将存储桶一致性降低到新写后读取或更低，以继续不间断地执行操作。无数据丢失</block>
+  <block id="ae95111240ddd68d1051a50fed4ad211" category="cell">该孤立站点的运营将受到影响，但不会出现数据丢失。在此故障状态下，将存储桶一致性降低到新写后读取或更低，以继续不间断地执行操作。其余站点的运营未受影响，数据也未丢失。</block>
+  <block id="fbca66120bd7d47e4ed9cae5a0bde635" category="inline-link">StorageGRID软件 11.5 - 12.0</block>
+  <block id="5934c3c1836e9997b4dabf8595c341fc" category="list-text"><block ref="5934c3c1836e9997b4dabf8595c341fc" category="inline-link-rx"></block></block>
+  <block id="79770fd4c42ac1be271a3e3ea7399421" category="sidebar">StorageGRID 11.5-12.0</block>
 </blocks>
