@@ -661,7 +661,6 @@
   <block id="e6a211de1fc20ed87589cd9c30f29ac3" category="list-text">Virtalica StorageFabric</block>
   <block id="e2b1887bff53094ff4de31a5b6be8203" category="sidebar">使用Elasticsearch、Logstash和Kibana进行日志分析</block>
   <block id="958e51c613c42a5edd4e8f06fad6128b" category="sidebar">使用ELK堆栈进行StorageGRID 日志分析| NetApp TV</block>
-  <block id="a55559222587bd5f2986759b8e95387a" category="summary">本技术报告详细说明了如何为NetApp StorageGRID 11.6配置外部Prometheus和Grafana服务。</block>
   <block id="ec88743b2ce92a6f481315232bded2cc" category="doc">使用Prometheus和Grafana延长指标保留期限</block>
   <block id="19e3e1c7497754486f9fce5eaded999d" category="paragraph">StorageGRID 使用Prometheus存储指标、并通过内置的Grafana信息板对这些指标进行可视化。通过配置客户端访问证书并为指定客户端启用Prometheus访问、可以从StorageGRID 安全地访问Prometheus指标。目前、此指标数据的保留受管理节点存储容量的限制。为了获得更长的持续时间并能够创建这些指标的自定义可视化效果、我们将部署一个新的Prometheus和Grafana服务器、配置我们的新服务器以从StorageGRID实例中擦除这些指标、并使用对我们重要的指标构建一个信息板。您可以获取有关在中收集的Prometheus指标的详细信息<block ref="b4322fd604ba4ce3b6c052facca6761f" category="inline-link-rx"></block>。</block>
   <block id="4ea04e03e09a38c155d3e71e1fb7de4c" category="section-title">联合Prometheus</block>
@@ -3346,4 +3345,107 @@ StorageGRID可以通过为存储节点或运行负载平衡器和管理节点的
   <block id="fbca66120bd7d47e4ed9cae5a0bde635" category="inline-link">StorageGRID软件 11.5 - 12.0</block>
   <block id="5934c3c1836e9997b4dabf8595c341fc" category="list-text"><block ref="5934c3c1836e9997b4dabf8595c341fc" category="inline-link-rx"></block></block>
   <block id="79770fd4c42ac1be271a3e3ea7399421" category="sidebar">StorageGRID 11.5-12.0</block>
+  <block id="6bfd39db7a053f857099cf1a052f2da8" category="summary">本技术报告提供了配置NetApp StorageGRID与 F5 DNS 服务以实现全球负载均衡的详细说明。</block>
+  <block id="0a85c80ddabdd4b885e188ec34f9987f" category="doc">使用 F5 DNS 实现StorageGRID 的全局负载均衡</block>
+  <block id="c5e896adbac2e813197f1f3a5b2a8402" category="paragraph">作者：史蒂夫·戈尔曼 (F5)</block>
+  <block id="8d87324917b06dc1422d13462480c8a9" category="paragraph">本技术报告提供了详细的说明，指导如何配置NetApp StorageGRID与 F5 DNS 服务，以实现全局负载均衡，从而在网格分布于多个站点和/或 HA 组时，提供更好的数据可用性、更高的数据一致性并优化 S3 事务路由。</block>
+  <block id="676da2bcee46b7496dc892b83b4c33fc" category="paragraph">F5 BIG-IP DNS 解决方案以前称为 BIG-IP GTM（全球流量管理器），非正式名称为 GSLB（全球服务器负载均衡），它允许跨多个主动-主动 HA 组和主动-主动多站点StorageGRID解决方案实现无缝访问。</block>
+  <block id="16f76924bcfbda72f939a7418eba1452" category="section-title">F5 BIG-IP 多站点StorageGRID配置</block>
+  <block id="7406a64e7bcd1aad204a3f213fe16216" category="paragraph">无论要支持多少个StorageGRID站点，至少需要两个 BIG-IP 设备（物理或虚拟）启用并设置 BIG-IP DNS 模块。DNS 设备越多，企业获得的冗余程度就越高。</block>
+  <block id="6286f29591f7e1d300b91ab6816ef161" category="section-title">BIG-IP DNS - 初始设置入门指南</block>
+  <block id="577c9f99f5b76da96a710d4264242273" category="paragraph">BIG-IP 设备完成至少初始配置后，使用 Web 浏览器登录到 TMUI（BIG-IP GUI）界面，然后选择“系统”-&gt;“资源配置”。如前所述，请确保“全球流量（DNS）”模块已勾选并显示已获得许可。请注意，如图所示，“本地流量 (LTM)”通常可以配置在同一设备上。</block>
+  <block id="e4779aca192d812e495b0dfef746c501" category="inline-image-macro">已启用全局流量（DNS）服务</block>
+  <block id="04e2e67f9286ec1afd312a9818475d7f" category="paragraph"><block ref="04e2e67f9286ec1afd312a9818475d7f" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="1fa284670acf2d2c29022aad618fc995" category="section-title">配置 DNS 协议基础元素</block>
+  <block id="d422bc95ffad1963e8da4b66f5f21176" category="paragraph">StorageGRID站点的全局流量管理的第一步是选择 DNS 选项卡，几乎所有全局流量控制都将在此配置，然后选择设置-&gt; GLSB。启用这两个同步选项，并选择一个将在参与的 BIG-IP 设备之间共享的 DNS 组名称。</block>
+  <block id="1fa1aa51e8284689c5e876e007193873" category="inline-image-macro">DNS组名称</block>
+  <block id="860b80a75f4b69a5b564d9cfc141fcee" category="paragraph"><block ref="860b80a75f4b69a5b564d9cfc141fcee" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="52eaa76db2ccf6ce2bbe23bf95e4e330" category="paragraph">接下来，导航至 DNS &gt; 交付 &gt; 配置文件 &gt; DNS：创建并创建一个配置文件，该配置文件将控制您希望启用或禁用的 DNS 功能。如果您对生成特定 DNS 日志感兴趣，请参阅前面的 DNS 课堂指南链接。以下是一个可用的 DNS 配置文件示例，请注意四个高亮部分，它们代表重要的设置值。为了便于理解，每种可能的设置都在以下 F5 知识库 (KB) 文章中进行了解释。<block ref="72b06322551d3c6119f21213eb826fc3" category="inline-link-rx"></block>。</block>
+  <block id="e4b4283d6307475f479422e98866af1d" category="inline-image-macro">DNS配置文件设置</block>
+  <block id="0afd8f91a245d557f202e883c9522f69" category="paragraph"><block ref="0afd8f91a245d557f202e883c9522f69" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="80bd300d8259205fcb66bfbf4cd22136" category="paragraph">此时，我们可以通过创建的“配置文件”来调整 UDP 和 TCP 协议的特性，这两个协议都可以承载涉及 BIG-IP 的 DNS 流量。只需为 UDP 和 TCP 创建一个新的配置文件即可。假设 DNS 流量将跨越 WAN 链路，一个好的做法是直接继承在 WAN 环境中性能良好的 UDP 和 TCP 特性。要添加每个协议，只需单击每个协议旁边的“+”图标，并将父配置文件设置为以下内容：</block>
+  <block id="0a68af09b236bbd7aea70371f79ac8b7" category="paragraph">UDP -&gt; 使用“父”配置文件“udp_gtm_dns”</block>
+  <block id="80ea47fb6ee9e38a4440c76a0244a653" category="paragraph">TCP -&gt; 使用“父”配置文件“f5-tcp-wan”</block>
+  <block id="c4addb91ef725a52ee0cff137cc09e12" category="inline-image-macro">DNS 协议</block>
+  <block id="0470acafe9d595dd79a17b9259a5af01" category="paragraph"><block ref="0470acafe9d595dd79a17b9259a5af01" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="960faf575314738e9f61370860958e47" category="paragraph">现在，我们只需要为涉及 BIG-IP DNS 的 UDP 和 TCP 流量分配一个 IP 地址即可。对于熟悉 BIG-IP LTM 的人来说，这本质上是创建 DNS 虚拟服务器，而虚拟服务器需要“监听器”IP 地址。如图所示，按照箭头指示创建 DNS/UDP 和 DNS/TCP 的监听器/虚拟服务器。</block>
+  <block id="33883e8ff8f3629602cc6c27b848f75a" category="inline-image-macro">添加监听器 IP</block>
+  <block id="b3d0577f2fbab0d6fab203dc0d874b53" category="paragraph"><block ref="b3d0577f2fbab0d6fab203dc0d874b53" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="d30b2e50c00b5cbfd289289e55a06aba" category="paragraph">以下是来自实时 BIG-IP DNS 的一个示例，其中我们可以看到 TCP 虚拟服务器监听器设置，并可以看到它是如何将许多先前的步骤联系起来的。这包括引用 DNS 配置文件和协议 (TCP) 配置文件，以及配置 DNS 要使用的有效 IP 地址。与使用 BIG-IP 创建的所有对象一样，使用有意义的名称有助于识别对象是什么，例如示例名称中的 dns/siteb/TCP53。</block>
+  <block id="663964914d9d63dc7136d921f70bbe29" category="inline-image-macro">添加监听器信息</block>
+  <block id="baf56b7446ba9ec03732ccd090ff893a" category="paragraph"><block ref="baf56b7446ba9ec03732ccd090ff893a" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="450c20dadd28881da23e2715fa94d566" category="paragraph">至此，启用 DNS 模块的 BIG-IP 设备的初步设置步骤（通常是“一次性”设置步骤）就完成了。目前，我们已准备好过渡到使用我们的设备建立全球流量管理解决方案的具体细节，这当然将与StorageGRID站点的特性相关联。</block>
+  <block id="73fe74f2dd3fbc7318e02ce907436452" category="section-title">分四步完成数据中心站点搭建和BIG-IP间通信建立</block>
+  <block id="3a0e108a5499698f4a2fb97bcf508cf5" category="section-title">第一步：创建数据中心</block>
+  <block id="0e57b0075abc05b06adf92f5da38b474" category="paragraph">每个将容纳由 BIG-IP LTM 进行本地负载均衡的节点集群的站点都应该输入到 BIG-IP DNS 中。这只需要在一个 BIG-IP DNS 上完成，因为我们正在创建一个 DNS 同步组来支持流量管理，因此该配置将在组的 DNS 成员之间共享。</block>
+  <block id="87d794d7da25bb734be5114f93ac375e" category="paragraph">通过 TMUI GUI，选择 DNS &gt; GSLB &gt; 数据中心 &gt; 数据中心列表，并为每个StorageGRID站点创建一个条目。如果使用与图 1 一致的网络设置，DNS 设备位于其他非StorageGRID站点，除了存储站点之外，还要为这些站点添加数据中心。在本例中，站点 a 和 b 分别创建在俄亥俄州和俄勒冈州，BIG-IP 是双 DNS 和 LTM 设备。</block>
+  <block id="85a21f9f206a9f1c084018e2482a19c2" category="inline-image-macro">创建数据中心</block>
+  <block id="15f4be92f68841a3d0947161fe1dd9ae" category="paragraph"><block ref="15f4be92f68841a3d0947161fe1dd9ae" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="0da434344ae5dc25d11088e681ba8e78" category="section-title">第二步：创建服务器（解决方案中所有 BIG-IP 设备列表）</block>
+  <block id="7b89eab4892973dcfb5316f1cef24524" category="paragraph">现在我们已准备好将各个StorageGRID站点集群连接到 BIG-IP DNS 设置。回想一下，每个站点的 BIG-IP 设备将通过配置虚拟服务器来实际进行 S3 流量的负载均衡，这些虚拟服务器将“前端”可达 IP 地址/端口绑定到一组后端存储节点设备的“池”，使用“后端”IP 地址/端口。</block>
+  <block id="b930773b5d91ba7418074dfde7db0f04" category="paragraph">例如，如果池中的所有存储节点因管理原因（例如站点停用）或因实时健康检查失败而意外离线，则流量将通过更改 DNS 查询响应定向到其他站点。</block>
+  <block id="e0c3688a2df4c1eeb16be901e54bf50a" category="paragraph">要将 StorageGrid 站点（特别是本地虚拟服务器）与每个设备上的 BIG-IP DNS 配置关联起来，只需设置一次即可。接下来，所有 BIG-IP DNS 设备都将进行同步设置。</block>
+  <block id="c2e0cf1272757c524ebdd92ebbcc0feb" category="paragraph">简单来说，我们将创建一个列表，称为服务器列表，其中包含我们所有的 BIG-IP 设备，无论它们是否获得了 DNS、LTM 或 DNS 和 LTM 的许可。列表完成后，该主列表将与所有 BIG-IP DNS 设备同步。</block>
+  <block id="e50c735ffc06cdea626a4eeeccc7c91c" category="paragraph">在一台已获得 BIG-IP DNS 许可的设备上，选择 DNS &gt; GSLB &gt; 服务器 &gt; 服务器列表，然后选择添加按钮 (+)。</block>
+  <block id="17dafdf2e8bf930665781c84bee93f22" category="inline-image-macro">创建服务器</block>
+  <block id="fe9f8b62065db3f2131ea244df95cace" category="paragraph"><block ref="fe9f8b62065db3f2131ea244df95cace" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="b9f2d0ddc541c9fd36c5c2b4d280af7e" category="paragraph">添加每个 BIG-IP 时，四个关键要素包括：* 从产品下拉菜单中选择 BIG-IP，虽然也可以使用其他负载均衡器，但通常缺乏在每个站点后端节点健康状况恶化时的实时可见性和响应能力。* 添加 BIG-IP DNS 设备的 IP 地址。通常情况下，首次添加 BIG-IP DNS 设备时，地址将是当前可通过 GUI 访问的设备，以后添加的设备将是解决方案中的其他设备。* 选择健康监视器，当添加的负载均衡器是 BIG-IP 设备时，始终使用“BIG-IP”，以便考虑后端StorageGRID节点的健康状况。* 如果设备是双 DNS/LTM 设备，则可以选择请求虚拟服务器自动发现。</block>
+  <block id="2c71b2bde87d16203c7d4f74d0686348" category="inline-image-macro">设置新服务器</block>
+  <block id="346f2fcca62d4e2d12800005dde298ff" category="paragraph"><block ref="346f2fcca62d4e2d12800005dde298ff" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="06a1dd04336837d2a20b569f832ef84b" category="paragraph">在某些情况下，例如瞬态网络问题或网络位置之间的防火墙 ACL 规则，在此阶段添加远程设备时，虚拟服务器发现可能不会显示已配置 LTM 的远程设备的条目。在这种情况下，添加新设备（“服务器”）后，可以按照以下指示手动添加虚拟服务器。如果添加的是仅用于 DNS 的 BIG-IP 设备，则不会发现或向该设备添加任何虚拟服务器。</block>
+  <block id="7f1d4e1d4d82ac51c294201ab5cfb318" category="inline-image-macro">添加服务器</block>
+  <block id="5cc087519c91018800406c403d1ffeec" category="paragraph"><block ref="5cc087519c91018800406c403d1ffeec" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="adb881fbb956917d9a9fe265a4764e80" category="paragraph">我们需要在所有站点为解决方案中的每个设备添加这些服务器条目，包括 BIG-IP DNS 设备、BIG-IP LTM 设备以及任何同时承担 DNS 和 LTM 双重角色的设备。</block>
+  <block id="1ca168476d23d8245bec70e7ae297d71" category="section-title">第三步：在所有BIG-IP设备之间建立信任</block>
+  <block id="b859a05bd0ec03f7323993d9bd6b6015" category="paragraph">在以下示例中，添加了四台设备作为服务器，它们分布在两个站点。请注意，每个站点都有专用的 BIG-IP DNS 和 BIG-IP LTM。但是，除了当前登录的设备之外，所有其他设备的“状态”列中都显示蓝色图标。这意味着尚未与其他 BIG-IP 设备建立信任关系。</block>
+  <block id="065c64259ab52ed613286cb593bd57eb" category="inline-image-macro">建立证书信任</block>
+  <block id="dfd855891b6e95c7fc4862097e32644f" category="paragraph"><block ref="dfd855891b6e95c7fc4862097e32644f" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="564aa9d8a0097eb0dc3e44dc62d015a5" category="paragraph">要添加信任，请使用 SSH 连接到刚刚通过 GUI 输入配置详细信息的 BIG-IP，并使用“root”帐户访问 BIG-IP 命令行界面。在提示符下发出以下单个命令：_bigip_add_</block>
+  <block id="88fa62616d1dd4574fe897acdd2c848d" category="paragraph">“bigip_add”命令从目标BIGIP设备拉取管理证书，用于在集群中的GSLB服务器之间建立加密的“iQuery”通道。默认情况下，iQuery使用TCP端口4353运行，它是一种心跳机制，使BOG-IP DNS成员保持同步状态。它在加密通道中使用了 xml 和 gzip。当不带任何选项运行“bigip_add”时，该命令将使用当前用户名连接到端点，对 GSLB 服务器列表中的所有 BIGIP 设备运行。为了快速检查是否成功，只需返回 BIG-IP GUI 并确认所有服务器的证书现在都列在显示的下拉菜单中即可。</block>
+  <block id="5fa9c3c4b9e586426b59c981b16a21b5" category="inline-image-macro">验证证书信任</block>
+  <block id="29abb8dc6ad7b23e32bcd26f14a90811" category="paragraph"><block ref="29abb8dc6ad7b23e32bcd26f14a90811" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="38efb23e1dca4e2f74675e64a29423d3" category="section-title">第四步：将所有 BIG-IP DNS 设备同步到 DNS 组</block>
+  <block id="7ecb9a61d4ebda8e41c636152222de15" category="paragraph">最后一步将允许仅使用单个设备的 TMUI GUI 即可完全配置所有 BIG-IP DNS 设备。例如，如果有两个StorageGRID站点，这意味着现在需要使用 SSH 访问另一个站点的 BIG-IP DNS 的命令行。以 root 用户身份连接后，并确保防火墙策略/ACL 允许两个 BIG-IP DNS 设备通过 TCP 端口 22 (SSH)、443 (HTTPS) 和 4354 (F5 iQuery 协议) 进行通信，然后在提示符下执行以下命令：_gtm_add &lt;之前完成所有 GUI 步骤的第一个站点 BIG-IP DNS 的 IP 地址&gt;_</block>
+  <block id="c99dc74f8448cd6325930ed597fb45a7" category="paragraph">此时，所有进一步的 DNS 配置工作都可以在已添加到该组的任何 BIG-IP DNS 设备上执行。对于仅支持 LTM 的设备成员，无需应用上述命令 gtm_add。只有支持 DNS 的设备才需要此命令才能加入同步 DNS 组。</block>
+  <block id="f1d95248db2b4a59e6fffc12b3d2c4cd" category="section-title">建立数据中心站点和建立BIG-IP间通信</block>
+  <block id="f6e06d522b6fa3bdd4cd0192224b68d3" category="paragraph">至此，创建底层、健康的 BIG-IP DNS 设备组的所有步骤均已完成。现在我们可以继续创建指向我们在每个StorageGRID数据中心公开的分布式 Web/S3 服务的名称、FQDN。</block>
+  <block id="815a9f0e526777c2e0f39789f762ca76" category="paragraph">这些名称被称为“广域 IP 地址”，简称 WIP，它们是具有 DNS A 资源记录的普通 DNS FQDN。然而，它们并不像传统的 A 资源记录那样指向服务器，而是在内部指向 BIG-IP 虚拟服务器池。每个池都可以单独由一个或多个虚拟服务器组成。请求 IP 地址进行名称解析的 S3 客户端将收到策略选择的最佳StorageGRID站点上的 S3 虚拟服务器的地址。</block>
+  <block id="c0873623dd5240326a5887e1519d370d" category="section-title">广域IP、IP池和虚拟服务器简述</block>
+  <block id="a9ce641506b4eee1a44a87960885c7e0" category="paragraph">举一个简单的虚构例子，名称 *storage.quantumvault.com* 的 WIP 可能会将 BIG-IP DNS 解决方案与两个潜在的虚拟服务器池连接起来。第一个池子可能由北美的 4 个地点组成；第二个池子可能由欧洲的 3 个地点组成。</block>
+  <block id="c93d2ddd5c9d8bd6ef280e45d56124fd" category="paragraph">选定的池子可能是通过一系列政策决定得出的，也许可以使用 5:1 的简单比例，将大部分流量导向北美StorageGRID站点。更有可能的是，基于拓扑结构的选择，例如，将所有来自欧洲的 S3 流量定向到欧洲站点，而将世界其余的 S3 流量定向到北美数据中心。</block>
+  <block id="e4f29eec5c04c85582cf3b4e55bd419a" category="paragraph">一旦 BIG-IP DNS 确定了池，假设选择了北美池，则返回用于解析 storage.quantumvault.com 的实际 DNS A 资源记录可以是 BIG-IP LTM 在北美 4 个站点中支持的 4 个虚拟服务器中的任何一个。同样，具体选择取决于策略，存在简单的“静态”方法，例如轮询；而更高级的“动态”选择，例如使用性能探针来测量每个站点从本地 DNS 解析器的延迟，则被保留并用作站点选择的标准。</block>
+  <block id="08f0424acfdc8aa14c882db957633671" category="paragraph">要在 BIG-IP DNS 上设置虚拟服务器池，请按照菜单路径 *DNS &gt; GSLB &gt; Pools &gt; Pool List &gt; Add (+)* 进行操作。在这个例子中，我们可以看到各种北美虚拟服务器被添加到池中，并且选择此池时，首选的负载均衡方法是分层选择的。</block>
+  <block id="3f0f3272f6b2c6d89afb547dbdf8f057" category="inline-image-macro">新泳池</block>
+  <block id="37d426499beffc7463cce8f594414302" category="paragraph"><block ref="37d426499beffc7463cce8f594414302" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="45366571ea38f63bdf9c5d1a59291edf" category="paragraph">我们将 WIP（广域 IP），即我们的服务名称（将通过 DNS 解析），按照 DNS &gt; GSLB &gt; 广域 IP &gt; 广域 IP 列表 &gt; 创建 (+) 的步骤添加到部署中。在下面的示例中，我们提供了一个支持 S3 的存储服务的示例 WIP。</block>
+  <block id="6048d26635a2165901e40650ef1e28dd" category="inline-image-macro">配置 WIP</block>
+  <block id="4a5a5fa3acf11bb9750a18f2d16d44f9" category="paragraph"><block ref="4a5a5fa3acf11bb9750a18f2d16d44f9" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="f4080c569b0a2c671a7398bc9b0497d7" category="section-title">调整 DNS 以支持全球流量管理</block>
+  <block id="fb9fa855c707f7b556a3c42f7b4805a3" category="paragraph">目前，我们所有的底层 BIG-IP 设备都已准备好执行 GSLB（全局服务器负载均衡）。我们只需要调整并分配用于 S3 流量的名称，即可利用该解决方案。一般做法是将企业现有 DNS 域的一部分委托给 BIG-IP DNS 控制。也就是说，要“划分”出一部分名称空间，即一个子域，并将该子域的控制权委托给 BIG-IP DNS 设备。从技术上讲，这是通过确保 BIG-IP DNS 设备在企业 DNS 中具有 A DNS 资源记录 (RR)，然后将这些名称/地址设置为委派域的名称服务器 (NS) DNS 资源记录来实现的。</block>
+  <block id="a8ea94a8c08917e34bfb2d6b882be7c8" category="paragraph">如今企业维护 DNS 的方式有很多种，其中一种方法是完全托管的解决方案。例如，通过 Windows Server 2025 运行和管理 DNS 就是这种情况。企业还可以采用另一种方法，即利用 AWS Route53 或 Squarespace 等云 DNS 提供商。</block>
+  <block id="68cf2cd8fb98c2f97e6101cf2bd0f82d" category="paragraph">以下示例纯属虚构，仅供参考。我们有StorageGRID支持通过 S3 协议对对象进行读取和写入，现有域由 AWS Route53 管理，现有示例域为 f5demo.net。</block>
+  <block id="c6bfb9a407772814319ed481c2bf49bf" category="paragraph">我们希望将子域名 engineering.f5demo.net 分配给 BIG-IP DNS 设备，以实现全球流量管理。为此，我们为 engineering.f5demo.net 创建一个新的 NS（名称服务器）资源记录，并将其指向 BIG-IP DNS 设备名称列表。在我们的示例中，我们有两个 BIG-IP DNS 设备，因此我们为它们创建了两条 A 资源记录。</block>
+  <block id="3e5bd0982b14a0113efd2cf118ff1cca" category="inline-image-macro">资源 A 记录</block>
+  <block id="9eaddcaec1c417ab1906c8b966c804c6" category="paragraph"><block ref="9eaddcaec1c417ab1906c8b966c804c6" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="ba3fec940db881bdbefb8be1a227467c" category="paragraph">现在，我们以 BIG-IP DNS 为例，设置一个广域 IP (WIP)。由于 DNS 使用组同步，我们只需要使用一台设备的 GUI 进行调整。在 BIG-IP DNS GUI 中，转到 *DNS &gt; GSLB &gt; 广域 IP &gt; 广域 IP 列表 (+)*。回想一下，在传统的 DNS FQDN 设置中，需要输入一个或多个 IPv4 地址，而在我们的例子中，我们只需指向一个或多个StorageGRID虚拟服务器池。</block>
+  <block id="d4ccf00e051c3ff35dca7770530638d3" category="inline-image-macro">广域 IP 列表</block>
+  <block id="b627dc0be5a3317938ae451fd089adc3" category="paragraph"><block ref="b627dc0be5a3317938ae451fd089adc3" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="cb5422c955062f118ef2a09613aa7fd6" category="paragraph">在我们的示例中，我们在俄亥俄州和俄勒冈州站点都设有通用的 Web HTTPS 服务器。通过简单的“轮询”方法，我们应该能够看到全局 DNS 响应对 _www.wip.engineering.f5demo.net_ 的 A 资源记录映射的查询，其中包含两个虚拟服务器 IP。</block>
+  <block id="34622e4e6935eab8bc2b0f2a0e86d906" category="inline-image-macro">交通轮询</block>
+  <block id="942561e73fd3dfd8f5626cfea3a68425" category="paragraph"><block ref="942561e73fd3dfd8f5626cfea3a68425" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="93e132bcf2082234edadfc51370c4c0f" category="paragraph">可以使用网页浏览器进行简单的测试，或者，对于使用StorageGRID 的S3，可以使用 S3Browser 等图形工具进行测试。由于我们在池内选择了轮询调度，因此每次 DNS 查询都会将池中的下一个数据中心站点用作后续流量的目标。</block>
+  <block id="93f85e171c655a3006c19a9ecc3dd553" category="paragraph">在我们的示例设置中，我们可以使用 dig 或 nslookup 快速生成一系列两个 DNS 查询，以确保 BIG-IP DNS 确实在进行轮询负载均衡，从而使两个站点都能随着时间的推移接收流量。</block>
+  <block id="320a4460cdf4995036e17665e38876bb" category="inline-image-macro">nslookup 示例</block>
+  <block id="ec61c159205297807534a26456c6b54f" category="paragraph"><block ref="ec61c159205297807534a26456c6b54f" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="c6ba26665eb9629c84c80e77ae33b8f8" category="section-title">建议探索更高级的技术</block>
+  <block id="7205d330490a946755619947f79087fc" category="paragraph">众多可行方法之一，是使用“全局可用性”模式，而不是上面给出的简单“轮询”示例。通过全局可用性，可以将流量定向到池的顺序，或者单个池中的虚拟服务器。这样一来，所有 S3 流量默认都可以定向到例如纽约市的站点。</block>
+  <block id="86415271fddb151fe3fa91d5e33d428c" category="paragraph">如果健康检查表明此站点的StorageGRID节点可用性存在问题，则流量届时可能会被定向到圣路易斯。如果圣路易斯出现健康问题，法兰克福的站点可以转而开始接收 S3 读取或写入交易。因此，全球可用性是提高 S3 StorageGRID整体解决方案弹性的一种方法。另一种方法是混合搭配负载均衡方法，采用分层方法。</block>
+  <block id="c327d996fe4c7fd1f3f2897100b7cf5c" category="inline-image-macro">负载均衡方法</block>
+  <block id="bf8b98e948c41ea01d95d114c298cbe0" category="paragraph"><block ref="bf8b98e948c41ea01d95d114c298cbe0" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="d5faa2fbbb4006acf82f1077e76fb5f6" category="paragraph">在这个例子中，“动态”选项是已配置池中站点的首选负载均衡方式。在所示的示例中，持续测量方法采用主动探测本地 DNS 解析器性能的方法，这是站点选择的催化剂。如果这种方法不可行，则可以根据分配给每个站点的比例来选择各个站点。按比例计算，规模更大、带宽更高的StorageGRID站点可以接收比规模较小的站点更多的 S3 事务。最后，作为一种灾难恢复方案，如果池中的所有站点都出现故障，则指定的备用 IP 将用作最后的备选站点。BIG-IP DNS 中比较有趣的负载均衡方法之一是“拓扑”，它观察 DNS 查询的传入源（即 S3 用户的本地 DNS 解析器），并利用互联网拓扑信息从池中选择看似“最近”的站点。</block>
+  <block id="5eb1b6251885a00f5fc3d95cc947f344" category="paragraph">最后，如果站点遍布全球，则值得考虑使用 F5 BIG-IP DNS 手册中详细讨论的动态“探测”技术。通过探测，可以监控频繁的 DNS 查询来源，例如，流量通常使用同一本地 DNS 解析器的企业对企业合作伙伴。可以从全球每个站点的 BIG-IP LTM 启动 BIG-IP DNS 探测，以大致确定哪个潜在站点可能为 S3 交易提供最低延迟。因此，来自亚洲的流量可能由亚洲的StorageGRID站点提供比位于北美或欧洲的站点更好的服务。</block>
+  <block id="be2844e8d6106b90c47eb19bef825697" category="paragraph">F5 BIG-IP 与NetApp StorageGRID的集成解决了与跨多个站点的数据可用性和一致性相关的技术挑战，并优化了 S3 事务路由。部署此解决方案可增强存储弹性、性能和可靠性，使其成为寻求强大、可扩展和灵活的存储基础架构的企业的理想选择。</block>
+  <block id="2a304a1348456ccd2234cd71a81bd338" category="inline-link">链接</block>
+  <block id="e7231390c57dc37d5702b1a1f744ae19" category="paragraph">如需了解更多信息，请访问此处查看 F5 官方的 BIG-IP DNS 文档。<block ref="98041f95ee22116ad4e8461c85d3aab4" category="inline-link-rx"></block>。还可以找到一份课堂风格的指导手册，其中包含示例设置的分步说明。<block ref="93a629078016876f75dc8c57122e621c" category="inline-link-rx"></block>。</block>
+  <block id="3589fb6a3746ade58489c4cf348140dc" category="summary">本技术报告提供了配置NetApp StorageGRID与外部 Prometheus 和 Grafana 服务的详细说明。</block>
 </blocks>

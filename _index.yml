@@ -61,6 +61,8 @@ indexpage:
       url: "/tools-apps-guides/elk-instructions.html"
     - title: 使用Prometheus和Grafana延长指标保留期限
       url: "/tools-apps-guides/federate-prometheus.html"
+    - title: 使用 F5 DNS 实现StorageGRID 的全局负载均衡
+      url: "/tools-apps-guides/f5-dns.html"
     - title: 配置Datadog以收集StorageGRID SNMP指标和陷阱
       url: "/tools-apps-guides/use-datadog-snmp.html"
     - title: 使用rclone在StorageGRID 上迁移、放置和删除对象
