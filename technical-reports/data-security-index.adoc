@@ -42,6 +42,9 @@ NetApp StorageGRID可为要求苛刻的企业对象存储用例提供高级安�
 要了解有关本文档中所述信息的更多信息，请查看以下文档和 / 或网站：
 
 * NetApp StorageGRID：SEC 17a-4 (f)、FIRA 4511 (c)和CFTC 1.31 (c)-(d)合规性评估 https://www.netapp.com/media/9041-ar-cohasset-netapp-storagegrid-sec-assessment.pdf[]
+* NetApp StorageGRID NIST FIPS 140-3 内核加密认证 https://csrc.nist.gov/projects/cryptographic-module-validation-program/certificate/5097[]
+* NetApp StorageGRID NIST SP 800-90B 熵认证 https://csrc.nist.gov/projects/cryptographic-module-validation-program/entropy-validations/certificate/223[]
+* NetApp StorageGRID加拿大网络安全中心通用准则认证 https://www.commoncriteriaportal.org/nfs/ccpfiles/files/epfiles/565-LSS%20CT%20v1.0.pdf[]
 * StorageGRID文档页面https://docs.netapp.com/us-en/storagegrid/[]
 * NetApp产品文档 https://www.netapp.com/support-and-training/documentation/[]
 

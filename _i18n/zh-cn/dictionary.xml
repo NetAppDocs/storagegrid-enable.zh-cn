@@ -3448,4 +3448,7 @@ StorageGRID可以通过为存储节点或运行负载平衡器和管理节点的
   <block id="2a304a1348456ccd2234cd71a81bd338" category="inline-link">链接</block>
   <block id="e7231390c57dc37d5702b1a1f744ae19" category="paragraph">如需了解更多信息，请访问此处查看 F5 官方的 BIG-IP DNS 文档。<block ref="98041f95ee22116ad4e8461c85d3aab4" category="inline-link-rx"></block>。还可以找到一份课堂风格的指导手册，其中包含示例设置的分步说明。<block ref="93a629078016876f75dc8c57122e621c" category="inline-link-rx"></block>。</block>
   <block id="3589fb6a3746ade58489c4cf348140dc" category="summary">本技术报告提供了配置NetApp StorageGRID与外部 Prometheus 和 Grafana 服务的详细说明。</block>
+  <block id="c3cbbc5200045db15e74e5cd91bc3f5c" category="list-text">NetApp StorageGRID NIST FIPS 140-3 内核加密认证 <block ref="07269b03af49e81fce537f0040aa007d" category="inline-link-rx"></block></block>
+  <block id="170420c360dbd78303a11b0a7cbdbe0f" category="list-text">NetApp StorageGRID NIST SP 800-90B 熵认证 <block ref="459857fb7709b7e2d73edb78f17869ea" category="inline-link-rx"></block></block>
+  <block id="c7a996558a05f3b352c4ed7d96e209f6" category="list-text">NetApp StorageGRID加拿大网络安全中心通用准则认证 <block ref="af4723441da5d2d8888b51d6ccd71fe3" category="inline-link-rx"></block></block>
 </blocks>
