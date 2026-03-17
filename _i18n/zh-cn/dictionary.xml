@@ -3174,7 +3174,6 @@ StorageGRID可以通过为存储节点或运行负载平衡器和管理节点的
   <block id="a4a5cea738d6da6085c0db896d047001" category="section-title">版本控制存储桶的生命周期策略示例</block>
   <block id="5808fc2734abb0c3a63ccb7a2efcb814" category="section-title">10 天后删除非当前版本</block>
   <block id="87fe92caedf00fb0d3b95bb0a8947552" category="paragraph">用例：此策略有助于管理非当前版本对象的存储，这些对象会随着时间的推移而累积并占用大量空间。优势：通过仅保留最新版本来优化存储空间利用率。</block>
-  <block id="01cd1b232ce05d49443051b40a2458d2" category="section-title">保留 5 个非当前版本</block>
   <block id="f48f877559a5ab472b0c8399aa53ae43" category="paragraph">用例：当您想保留有限数量的先前版本以用于恢复或审计目的时很有用。好处：保留足够的非当前版本以确保足够的历史记录和恢复点。</block>
   <block id="b36f0366fc8b2a644db0d58b9aec47e6" category="section-title">当不存在其他版本时移除删除标记</block>
   <block id="5a07e328951f2e2665da45b3c8611e70" category="paragraph">用例：此策略有助于管理所有非当前版本删除后留下的删除标记，这些标记会随着时间的推移而累积。好处：减少不必要的混乱。</block>
@@ -3451,4 +3450,6 @@ StorageGRID可以通过为存储节点或运行负载平衡器和管理节点的
   <block id="c3cbbc5200045db15e74e5cd91bc3f5c" category="list-text">NetApp StorageGRID NIST FIPS 140-3 内核加密认证 <block ref="07269b03af49e81fce537f0040aa007d" category="inline-link-rx"></block></block>
   <block id="170420c360dbd78303a11b0a7cbdbe0f" category="list-text">NetApp StorageGRID NIST SP 800-90B 熵认证 <block ref="459857fb7709b7e2d73edb78f17869ea" category="inline-link-rx"></block></block>
   <block id="c7a996558a05f3b352c4ed7d96e209f6" category="list-text">NetApp StorageGRID加拿大网络安全中心通用准则认证 <block ref="af4723441da5d2d8888b51d6ccd71fe3" category="inline-link-rx"></block></block>
+  <block id="61826214d6f329493990f2d79416585b" category="section-title">保留 5 个非当前版本，并在 90 天后删除</block>
+  <block id="d05c8031e45ddabc741886852f07058f" category="admonition">您必须使用 *NoncurrentDays* 与 *NewerNoncurrentVersions*。</block>
 </blocks>
