@@ -20,6 +20,7 @@ Commvault/Commvault/Commvault/Commvault/Commvault/Commvault/Commvault/Commvault/
 
 
 
+[[about-commvault-and-storagegrid]]
 == 关于Commvault和StorageGRID
 
 Commvault"完整备份和恢复"软件是一款企业级集成数据和信息管理解决方案、在单一平台上从头构建、并具有统一的代码库。它的所有功能都共享后端技术、从而在保护、管理和访问数据方面提供完全集成的方法所带来的无与伦比的优势和优势。该软件包含用于保护、归档、分析、复制和搜索数据的模块。这些模块共享一组通用的后端服务和高级功能、这些服务和功能可以彼此无缝交互。解决方案可解决企业中数据管理的所有方面、同时提供无限可扩展性以及前所未有的数据和信息控制。
@@ -38,6 +39,7 @@ StorageGRID智能策略引擎可帮助您选择以下选项之一：
 
 
 
+[[key-features]]
 == 主要功能：
 
 CommVault软件平台的主要功能包括：
@@ -58,6 +60,7 @@ CommVault软件平台的主要功能包括：
 
 
 
+[[backup-options]]
 == 备份选项
 
 在云存储上实施CommvaultComplete Backup and Recovery软件时、您有两种备份选项：
@@ -103,13 +106,13 @@ supported
 |===
 
 
+[[where-to-find-additional-information]]
 == 从何处查找追加信息
 
 要了解有关本文档中所述信息的更多信息，请查看以下文档和 / 或网站：
 
-* StorageGRID 11．11文档中心+https://docs.netapp.com/us-en/storagegrid-119/[]
+* StorageGRID 11.9 文档中心 + https://docs.netapp.com/us-en/storagegrid/[]
 * NetApp产品文档+
 https://docs.netapp.com[]
-* CommVault文档+
-https://documentation.commvault.com/2024/essential/index.html[]
+* Commvault 文档 + https://documentation.commvault.com/2024e/software/index.html[]
 

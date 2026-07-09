@@ -18,6 +18,7 @@ summary: 了解部署StorageGRID所需的计算、存储、网络、Docker和节
 
 
 
+[[compute-requirements]]
 == 计算要求
 
 下表列出了每种类型的StorageGRID节点支持的最低资源要求。这是StorageGRID节点所需的最低资源。
@@ -43,6 +44,7 @@ summary: 了解部署StorageGRID所需的计算、存储、网络、Docker和节
 
 
 
+[[networking-requirements]]
 == 网络要求
 
 三种类型的StorageGRID流量包括：
@@ -60,6 +62,7 @@ summary: 了解部署StorageGRID所需的计算、存储、网络、Docker和节
 
 
 
+[[note-on-docker-networking]]
 === 有关Docker网络连接的说明
 
 StorageGRID使用网络的方式与某些Docker容器实施方式不同。它不使用Docker (或Kubnetes或Swarm)提供的网络。相反、StorageGRID实际上会将容器生成为--net=none、这样、Docker就不会对容器执行任何网络连接操作。StorageGRID服务生成容器后、将从节点配置文件中定义的接口创建一个新的macvlan设备。该设备具有一个新的MAC地址、并作为一个单独的网络设备、可以从物理接口接收数据包。然后、macvlan设备将移至容器命名空间、并重命名为容器中的eth0、eth1或eth2之一。此时、此网络设备将在主机操作系统中不再可见。在本示例中、Docker容器中的网格网络设备为eth0、客户端网络为eth2。如果我们有一个管理网络、则此设备在容器中将为eth1。
@@ -69,12 +72,13 @@ NOTE: 在某些网络和虚拟环境中、容器网络设备的新MAC地址可�
 
 
 
+[[storage-requirements]]
 == 存储要求
 
 每个节点都需要下表所示大小的基于SAN的磁盘设备或本地磁盘设备。
 
 
-NOTE: 表中的数字适用于每种StorageGRID服务类型、而不适用于整个网格或每个物理主机。根据部署选项，我们将在本文档后面的中计算每个物理主机的数量 link:prerequisites-install-storagegrid.html#physical-host-layout-and-requirements["物理主机布局和要求"]。++++安装程序将在StorageGRID容器中创建标有星号的路径或文件系统。管理员不需要手动配置或创建文件系统、但主机需要块设备来满足这些要求。换言之、块设备应使用命令显示 `lsblk` 、但不能在主机操作系统中进行格式化或挂载。++++
+NOTE: 表中的数字适用于每个 StorageGRID 服务类型，而不适用于整个网格或每个物理主机。根据部署选择，我们将在本文档的后面部分link:bare-metal-prerequisites-install-storagegrid.html#physical-host-layout-and-requirements["物理主机布局和要求"]计算每个物理主机的数量。++ ++ 标有星号的路径或文件系统将由安装程序在 StorageGRID 容器中创建。管理员不需要手动配置或创建文件系统，但主机需要块设备来满足这些要求。换句话说，块设备应通过使用命令 `lsblk`显示，但不应在主机操作系统内进行格式化或挂载。++ ++
 
 [cols="15,20,15,15,15,20"]
 |===
@@ -101,14 +105,16 @@ NOTE: 表中的数字适用于每种StorageGRID服务类型、而不适用于整
 BLOCK_DEVICE_RANGEDB_001 = /dev/mapper/SN-Db01
 BLOCK_DEVICE_RANGEDB_002 = /dev/mapper/SN-Db02` 
 |===
-在此示例中、每种容器类型都需要下表中显示的磁盘大小。每个物理主机的要求将在本文档后面的中进行介绍 link:prerequisites-install-storagegrid.html#physical-host-layout-and-requirements["物理主机布局和要求"]。
+在此示例中，每个容器类型都需要下表中显示的磁盘大小。每个物理主机的要求在本文档后面的 link:bare-metal-prerequisites-install-storagegrid.html#physical-host-layout-and-requirements["物理主机布局和要求"] 中进行了说明。
 
 
 
+[[disk-sizes-per-container-type]]
 == 每个容器类型的磁盘大小
 
 
 
+[[admin-container]]
 === 管理容器
 
 [cols="50,50"]
@@ -129,6 +135,7 @@ BLOCK_DEVICE_RANGEDB_002 = /dev/mapper/SN-Db02`
 |===
 
 
+[[storage-container]]
 === 存储容器
 
 [cols="50,50"]
@@ -152,6 +159,7 @@ BLOCK_DEVICE_RANGEDB_002 = /dev/mapper/SN-Db02`
 |===
 
 
+[[gateway-container]]
 === 网关容器
 
 [cols="50,50"]
@@ -166,6 +174,7 @@ BLOCK_DEVICE_RANGEDB_002 = /dev/mapper/SN-Db02`
 |===
 
 
+[[physical-host-layout-and-requirements]]
 == 物理主机布局和要求
 
 通过将上表所示的计算和网络要求相结合、您可以获得此安装所需的一组基本硬件、其中包括三个物理(或虚拟)服务器、16核、64 GB RAM和两个网络接口。如果需要更高的吞吐量、可以在网格或客户端网络上绑定两个或更多接口、并在节点配置文件中使用带VLAN标记的接口、例如bond0.520。如果您希望工作负载更密集、则为主机和容器提供更多内存会更好。
@@ -298,6 +307,7 @@ Docker存储的计算方法是、每个/var/local (每个容器)允许100 GB x�
 
 
 
+[[preparing-the-nodes]]
 == 准备节点
 
 要为StorageGRID的初始安装做准备、请先安装RHEL 9.2版并启用SSH。根据最佳实践设置网络接口、网络时间协议(NTP)、DNS和主机名。您需要在网格网络上至少启用一个网络接口、而在客户端网络上至少启用另一个网络接口。如果您使用的是带VLAN标记的接口、请按照以下示例进行配置。否则、只需简单的标准网络接口配置即可。
@@ -326,9 +336,10 @@ ONBOOT=yes
 
 
 
+[[optional-storage-setup-with-iscsi]]
 == 使用iSCSI设置可选存储
 
-如果不使用iSCSI存储、则必须确保host1、host2和host3包含足够大的块设备、以满足其要求。有关host1、host2和host3的存储要求、请参见 link:prerequisites-install-storagegrid.html#disk-sizes-per-container-type["每个容器类型的磁盘大小"] 。
+如果您不使用 iSCSI 存储，则必须确保 host1、host2 和 host3 包含足够大小的块设备以满足其要求。有关 host1、host2 和 host3 的存储要求，请参阅 link:bare-metal-prerequisites-install-storagegrid.html#disk-sizes-per-container-type["每个容器类型的磁盘大小"]。
 
 要使用iSCSI设置存储、请完成以下步骤：
 
@@ -347,7 +358,7 @@ sudo yum install device-mapper-multipath
 # cat /etc/iscsi/initiatorname.iscsi
 InitiatorName=iqn.2006-04.com.example.node1
 ----
-. 使用步骤2中的启动程序名称、将存储设备上的LUN (即表中所示的数量和大小)映射到每个存储 link:prerequisites-install-storagegrid.html#storage-requirements["存储要求"] 节点。
+. 使用步骤 2 中的启动器名称，将存储设备上的 LUN（数量和大小如 link:bare-metal-prerequisites-install-storagegrid.html#storage-requirements["存储要求"] 表中所示）映射到每个存储节点。
 . 使用发现并登录到新创建的LUN `iscsiadm` 。
 +
 [listing]
@@ -437,6 +448,7 @@ alias GW-OS
 ----
 
 
+[[preparing-for-docker-installation]]
 == 准备安装Docker
 
 要准备Docker安装、请完成以下步骤：

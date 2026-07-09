@@ -16,6 +16,7 @@ summary: 从ONTAP S3迁移到StorageGRID。
 
 
 
+[[preparing-storagegrid]]
 == 正在准备 StorageGRID
 
 继续配置此演示、我们将创建租户、用户、安全组、组策略和存储分段。

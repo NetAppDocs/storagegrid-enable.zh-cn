@@ -18,6 +18,7 @@ summary: 了解客户和NetApp IT实施的StorageGRID配置的少数用例。
 
 
 
+[[commvault-sizing-inputs]]
 == Commvaults规模估算输入
 
 可以使用以下任务来执行发现以调整数据保护解决方案的大小：
@@ -34,6 +35,7 @@ summary: 了解客户和NetApp IT实施的StorageGRID配置的少数用例。
 
 
 
+[[storagegrid-sizing-guidance]]
 == StorageGRID规模估算指南
 
 在执行NetApp StorageGRID规模估算之前、请考虑工作负载的以下方面：
@@ -115,6 +117,7 @@ StorageGRID通常部署在两个或更多站点中、并采用数据保护策略
 
 
 
+[[scaling]]
 == 扩展
 
 您可以通过向存储节点添加存储、向现有站点添加新网格节点或添加新数据中心站点来扩展NetApp StorageGRID系统。您可以在不中断当前系统运行的情况下执行扩展。

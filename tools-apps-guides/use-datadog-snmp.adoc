@@ -18,12 +18,14 @@ _作者：Aron Klein_
 
 
 
+[[configure-datadog]]
 == 配置Datadog
 
 Datadog是一种监控解决方案 、可提供指标、可视化和警报功能。以下配置是在StorageGRID 系统本地部署的Ubuntu 22.04.1主机上使用Linux代理版本7.43.1实施的。
 
 
 
+[[datadog-profile-and-trap-files-generated-from-storagegrid-mib-file]]
 === 从StorageGRID MIB文件生成的数据日志配置文件和陷阱文件
 
 Datadog提供了一种将产品MIB文件转换为映射SNMP消息所需的数据日志参考文件的方法。
@@ -50,6 +52,7 @@ Datadog提供了一种将产品MIB文件转换为映射SNMP消息所需的数据
 
 
 
+[[snmp-datadog-configuration-for-metrics]]
 === 用于衡量指标的SNMP Datadog配置
 
 可以通过两种方式管理为指标配置SNMP。您可以通过提供包含StorageGRID 系统的网络地址范围来配置自动发现、也可以定义各个设备的IP。根据所做的决定、配置位置会有所不同。自动发现在数据日志代理YAML文件中定义。在SNMP配置YAML文件中配置显式设备定义。以下是同一StorageGRID 系统中的每个示例。
@@ -103,6 +106,7 @@ instances:
 ----
 
 
+[[snmp-configuration-for-traps]]
 === 陷阱的SNMP配置
 
 SNMP陷阱的配置在datadog配置yaml文件/etc/datadog-agent/datadog.yaml中定义
@@ -119,6 +123,7 @@ network_devices:
 ----
 
 
+[[example-storagegrid-snmp-configuration]]
 === StorageGRID SNMP配置示例
 
 StorageGRID 系统中的SNMP代理位于配置选项卡的监控列下。启用SNMP并输入所需信息。如果要配置陷阱、请选择"陷阱目标"并为包含陷阱配置的Datadog代理主机创建一个目标。

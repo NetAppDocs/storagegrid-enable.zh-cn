@@ -16,6 +16,7 @@ summary: 为潜在客户访问StorageGRID评估软件的步骤。
 
 
 
+[[register-for-an-account]]
 == 注册帐户
 
 . 使用您的业务电子邮件在上注册帐户 https://mysupport.netapp.com/site/user/registration["NetApp 支持站点"] 。
@@ -35,6 +36,7 @@ summary: 为潜在客户访问StorageGRID评估软件的步骤。
 
 
 
+[[download-storagegrid]]
 == 下载StorageGRID
 
 . 在您的支持案例经过审核和批准后、NetApp支持部门将通过电子邮件通知您、您的帐户已获得潜在客户访问权限。

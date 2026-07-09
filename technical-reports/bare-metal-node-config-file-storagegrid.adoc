@@ -49,6 +49,7 @@ NOTE: 文件名用于定义实际的安装节点名称。例如， `dc1-adm1.con
 
 
 
+[[preparing-the-node-config-files]]
 == 正在准备节点配置文件
 
 以下示例使用 `/dev/disk/by-path` 格式。您可以运行以下命令来验证路径是否正确：
@@ -94,6 +95,7 @@ lrwxrwxrwx 1 root root 9 Dec 21 16:42 pci-0000:03:00.0-scsi-0:0:9:0 -> ../../sdi
 ----
 
 
+[[example-for-primary-admin-node]]
 == 主管理节点示例
 
 示例文件名：
@@ -127,6 +129,7 @@ CLIENT_NETWORK_GATEWAY = 10.193.205.1
 ----
 
 
+[[example-for-a-storage-node]]
 == 存储节点示例
 
 示例文件名：
@@ -154,6 +157,7 @@ GRID_NETWORK_GATEWAY = 10.193.204.1
 ----
 
 
+[[example-for-gateway-node]]
 == 网关节点示例
 
 示例文件名：

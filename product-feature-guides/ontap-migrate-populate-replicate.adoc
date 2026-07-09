@@ -16,6 +16,7 @@ summary: 从ONTAP S3迁移到StorageGRID。
 
 
 
+[[populate-the-source-bucket]]
 == 填充源存储分段
 
 让我们将一些对象放在源ONTAP分段中。我们将使用S3Browser进行此演示、但您可以使用您熟悉的任何工具。
@@ -48,6 +49,7 @@ image:ontap-migrate/ontap-s3browser-versions.png["查看版本"]
 
 
 
+[[establish-the-replication-relationship]]
 === 建立复制关系
 
 让我们开始将数据从ONTAP发送到StorageGRID。
@@ -93,6 +95,7 @@ image:ontap-migrate/ontap-snapmirror-status.png["检查SnapMirror关系"]
 
 
 
+[[the-replication-details]]
 === 复制详细信息
 
 现在、我们已成功将存储分段从ONTAP复制到StorageGRID。但实际上复制的是什么？我们的源和目标都是分版本分段。先前版本是否也会复制到目标？如果我们使用S3Browser查看StorageGRID存储分段、我们会发现现有版本未复制、删除的对象不存在、该对象的删除标记也不存在。我们的复制对象在StorageGRID存储分段中只有1个版本。

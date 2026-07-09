@@ -21,6 +21,7 @@ summary: 浏览有关本地流量管理器负载平衡器的指导、并确定�
 
 
 
+[[create-a-resource-group-of-storage-nodes]]
 == 创建存储节点的资源组
 
 将StorageGRID存储节点分组到资源池或服务组中(术语可能因特定负载平衡器而异)。StorageGRID存储节点会在以下端口上提供S3 API：
@@ -36,6 +37,7 @@ NOTE: 每个StorageGRID站点默认需要三个存储节点、其中两个节点
 
 
 
+[[health-check]]
 == 运行状况检查
 
 第三方负载平衡器需要一种方法来确定每个节点的运行状况及其接收流量的资格。NetApp建议使用HTTP `OPTIONS` 方法执行运行状况检查。负载平衡器会向每个存储节点发出HTTP `OPTIONS` 请求、并需要 `200` 状态响应。
@@ -48,6 +50,7 @@ NOTE: 每个StorageGRID站点默认需要三个存储节点、其中两个节点
 
 
 
+[[s3-health-check-example]]
 === S3运行状况检查示例
 
 在以下示例中，我们会发送 `OPTIONS` 并检查 `200 OK`。我们使用 `OPTIONS` 、因为Amazon S3)不支持未经授权的请求。
@@ -76,6 +79,7 @@ NOTE: 每个StorageGRID站点默认需要三个存储节点、其中两个节点
 ----
 
 
+[[file-or-content-based-health-checks]]
 === 基于文件或内容的运行状况检查
 
 通常、NetApp不建议执行基于文件的运行状况检查。例如，通常在具有只读策略的存储分段中创建一个小文件 —`healthcheck.htm`。然后、负载平衡器会提取并评估此文件。这种方法有几个缺点：
@@ -90,12 +94,14 @@ NOTE: 每个StorageGRID站点默认需要三个存储节点、其中两个节点
 
 
 
+[[session-persistence]]
 === 会话持久性
 
 会话持久性(即、保持性)是指允许给定HTTP会话持续的时间。默认情况下、存储节点会在10分钟后丢弃会话。持久性越长、性能越好、因为应用程序不必为每个操作重新建立会话；但是、保持这些会话处于打开状态会占用资源。如果您确定工作负载将受益、则可以减少第三方负载平衡器上的会话持久性。
 
 
 
+[[virtual-hosted-style-addressing]]
 == 虚拟托管模式寻址
 
 现在、虚拟托管模式已成为AWS S3的默认方法、虽然StorageGRID和许多应用程序仍支持路径模式、但最佳做法是实施虚拟托管模式支持。虚拟托管模式请求的主机名包含分段。
@@ -108,6 +114,7 @@ NOTE: 每个StorageGRID站点默认需要三个存储节点、其中两个节点
 
 
 
+[[ssl-termination]]
 == SSL终止
 
 第三方负载平衡器上的SSL终止具有安全优势。如果负载平衡器受损、网格将被分割。
@@ -121,12 +128,14 @@ NOTE: 每个StorageGRID站点默认需要三个存储节点、其中两个节点
 
 
 
+[[pass-through-configuration]]
 == 直通配置
 
 如果您要为负载平衡器配置直通、则必须在StorageGRID上安装证书。转到菜单：配置[服务器证书>对象存储API服务端点服务器证书]。
 
 
 
+[[source-client-ip-visibility]]
 == 源客户端IP可见性
 
 StorageGRID 11.4引入了可信第三方负载平衡器的概念。要将客户端应用程序IP转发到StorageGRID、必须配置此功能。有关详细信息、请参见 https://kb.netapp.com/Advice_and_Troubleshooting/Hybrid_Cloud_Infrastructure/StorageGRID/How_to_configure_StorageGRID_to_work_with_third-party_Layer_7_load_balancers["如何配置StorageGRID以使用第三方第7层负载平衡器。"^]
@@ -140,6 +149,7 @@ StorageGRID 11.4引入了可信第三方负载平衡器的概念。要将客户�
 
 
 
+[[load-balancing-strategies]]
 === 负载平衡策略
 
 大多数负载平衡解决方案都提供多种负载平衡策略。以下是常见策略：
@@ -152,6 +162,7 @@ StorageGRID 11.4引入了可信第三方负载平衡器的概念。要将客户�
 
 
 
+[[data-path]]
 === 数据路径
 
 所有数据流经本地流量管理器负载平衡器。StorageGRID不支持直接服务器路由(DSR)。

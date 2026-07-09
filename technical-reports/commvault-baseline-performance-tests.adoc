@@ -14,7 +14,7 @@ summary: 了解客户和NetApp IT实施的StorageGRID配置的少数用例。
 
 
 [role="lead"]
-在辅助副本操作中、四个CommvaultMediaAgent将数据备份到NetApp AFF A300系统、并在NetApp StorageGRID上创建了一个辅助副本。有关测试设置环境的详细信息、请阅读技术报告中的"解决方案设计和最佳实践"一节 https://www.netapp.com/us/media/tr-4831.pdf["借助Commvault,实现NetApp横向扩展数据保护"] 。
+在辅助复制操作中，四个 Commvault MediaAgents 将数据备份至 NetApp AFF A300 系统，并在 NetApp StorageGRID 上创建了辅助副本。
 
 测试涉及100个VM和1000个VM、这两个测试都包含50/50的Windows和CentOS VM。下表显示了基线性能测试的结果：
 

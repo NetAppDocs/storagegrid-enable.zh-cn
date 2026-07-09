@@ -18,6 +18,7 @@ _作者：郑安杰_
 
 
 
+[[why-use-s3a-for-hadoop-workflows]]
 == 为什么要使用S3A执行Hadoop工作流？
 
 随着数据量的不断增长、使用自己的计算和存储添加新计算机的方法变得效率低下。线性扩展为高效使用资源和管理基础架构带来了挑战。
@@ -26,10 +27,12 @@ _作者：郑安杰_
 
 
 
+[[configure-s3a-connector-to-use-storagegrid]]
 == 将S3A连接器配置为使用StorageGRID
 
 
 
+[[prerequisites]]
 === 前提条件
 
 * 用于Hadoop S3A连接测试的StorageGRID S3端点URL、租户S3访问密钥和机密密钥。
@@ -40,9 +43,10 @@ _作者：郑安杰_
 
 
 
+[[install-java-package]]
 === 安装Java软件包
 
-. 检查 https://docs.cloudera.com/cdp-private-cloud-upgrade/latest/release-guide/topics/cdpdc-java-requirements.html["Cloudera支持表"^] 支持的JDK版本。
+. 请查看 https://docs.cloudera.com/cdp-private-cloud-upgrade/latest/upgrade/topics/cdpdc-java-requirements.html["Cloudera支持表"^]以了解支持的 JDK 版本。
 . 下载 https://www.oracle.com/java/technologies/downloads/["Java 11.x软件包"^] 与Cloudera集群操作系统匹配。将此软件包复制到集群中的每个主机。在此示例中、rpm软件包用于CentOS。
 . 以root身份或使用具有sudo权限的帐户登录到每个主机。在每个主机上执行以下步骤：
 +
@@ -85,6 +89,7 @@ source /etc/profile
 
 
 
+[[cloudera-hdfs-s3a-configuration]]
 === Cloudera HDFS S3A配置
 
 * 步骤 *
@@ -153,10 +158,12 @@ image:hadoop-s3a/hadoop-restart-stale-service-icon.png["重新启动Hadoop的陈
 
 
 
+[[test-s3a-connection-to-storagegrid]]
 == 测试与StorageGRID 的S3A连接
 
 
 
+[[perform-basic-connection-test]]
 === 执行基本连接测试
 
 登录到Cloudera集群中的一个主机、然后输入`Hadoop FS -ls S3a：//<bucket-name>_/`。
@@ -178,6 +185,7 @@ Found 1 items
 ----
 
 
+[[troubleshooting]]
 === 故障排除
 
 

@@ -16,12 +16,14 @@ summary: 了解如何使用S3对象锁定为WORM存储配置StorageGRID。
 
 
 
+[[prerequisites-to-configure-storagegrid-for-worm-storage]]
 == 为WORM存储配置StorageGRID的前提条件
 
 对于WORM存储、StorageGRID使用S3对象锁定来保留对象以满足合规性要求。这需要使用StorageGRID 11.5或更高版本、其中引入了S3对象锁定默认分段保留功能。Enterprise Vault还需要14.2.2或更高版本。
 
 
 
+[[configure-storagegrid-s3-object-lock-default-bucket-retention]]
 == 配置StorageGRID S3对象锁定默认分段保留
 
 要配置StorageGRID S3对象锁定默认分段保留、请完成以下步骤：
@@ -29,19 +31,19 @@ summary: 了解如何使用S3对象锁定为WORM存储配置StorageGRID。
 .步骤
 . 在StorageGRID租户管理器中、创建存储分段、然后单击继续
 +
-image:veritas/veritas-create-bucket.png["网址：veritas-create-bucket.png"]
+image:veritas/veritas-create-bucket.png["veritas/veritas-create-bucket.png"]
 
 . 选择Enable S3 Object Lock选项、然后单击Create Bucket.
 +
-image:veritas/veritas-create-bucket-2.png["网址：veritas-create-bucket-2.png"]
+image:veritas/veritas-create-bucket-2.png["veritas/veritas-create-bucket-2.png"]
 
 . 创建存储分段后、选择存储分段以查看存储分段选项。展开"S3 Object Lock"(S3对象锁定)下拉选项。
 +
-image:veritas/veritas-overview.png["网址：veritas-overview.png"]
+image:veritas/veritas-overview.png["veritas/veritas-overview.png"]
 
 . 在默认保留下、选择启用并设置默认保留期限1天。单击 Save Changes 。
 +
-image:veritas/veritas-s3-object-lock.png["Veritas/Veritas-s3-object-lock"]
+image:veritas/veritas-s3-object-lock.png["veritas/veritas-s3-object-lock"]
 
 +
 存储分段现已准备就绪、可供Enterprise Vault用来存储WORM数据。
@@ -50,14 +52,15 @@ image:veritas/veritas-s3-object-lock.png["Veritas/Veritas-s3-object-lock"]
 
 
 
+[[configure-enterprise-vault]]
 == 配置Enterprise Vault
 
 要配置Enterprise Vault、请完成以下步骤：
 
 .步骤
-. 重复部分中的步骤1-3 link:configure-storagegrid-s3-object-lock.html#configure-storagegrid-s3-object-lock-default-bucket-retention["基本配置"] 、但这次选择使用S3对象锁定在WORM模式下存储数据选项。单击下一步。
+. 在 link:veritas-configure-storagegrid-s3-object-lock.html#configure-storagegrid-s3-object-lock-default-bucket-retention["基本配置"] 部分中重复步骤 1-3，但这次选择"使用 S3 Object Lock 在 WORM 模式下存储数据"选项。单击"下一步"。
 +
-image:veritas/veritas-new-partition-8.png["veritas/veritas-new-partition－8"]
+image:veritas/veritas-new-partition-8.png["veritas/veritas-new-partition-8"]
 
 . 输入S3存储分段连接设置时、请确保输入的S3存储分段的名称已启用S3对象锁定默认保留。
 . 测试连接以验证设置。

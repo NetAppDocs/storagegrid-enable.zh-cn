@@ -16,6 +16,7 @@ summary: 本指南详细说明了如何使用Amazon OpenSearch服务或内部Ela
 
 
 
+[[introduction]]
 == 简介
 
 StorageGRID 支持三种类型的平台服务。
@@ -33,6 +34,7 @@ S3租户可通过租户管理器UI配置平台服务。有关详细信息，请�
 
 
 
+[[create-tenant-and-enable-platform-services]]
 == 创建租户并启用平台服务
 
 . 使用Grid Manager创建S3租户、输入显示名称并选择S3协议。
@@ -50,10 +52,12 @@ image:storagegrid-search-integration-service/sg-sis-select-permissions.png["选�
 
 
 
+[[search-integration-services-with-amazon-opensearch]]
 == 使用Amazon OpenSearch搜索集成服务
 
 
 
+[[amazon-opensearch-formerly-elasticsearch-service-setup]]
 === Amazon OpenSearch (以前称为Elasticsearch)服务设置
 
 使用此操作步骤 可以快速简单地设置OpenSearch服务、但仅用于测试/演示。如果您使用内部Elasticsearch搜索集成服务、请参见一节 xref:search-integration-services-with-on-premises-elasticsearch[使用内部Elasticsearch搜索集成服务]。
@@ -126,6 +130,7 @@ image:storagegrid-search-integration-service/sg-sis-verifying-the-index.png["正
 
 
 
+[[platform-services-endpoint-configuration]]
 == 平台服务端点配置
 
 要配置平台服务端点、请执行以下步骤：
@@ -156,10 +161,12 @@ image:storagegrid-search-integration-service/sg-sis-platform-service-endpoints.p
 
 
 
+[[search-integration-services-with-on-premises-elasticsearch]]
 == 使用内部Elasticsearch搜索集成服务
 
 
 
+[[on-premises-elasticsearch-setup]]
 === 内部Elasticsearch设置
 
 此操作步骤 仅用于使用Docker快速设置内部Elasticsearch和Kibana、以便用于测试目的。如果Elasticsearch和Kibana服务器已存在、请转至步骤5。
@@ -211,6 +218,7 @@ image:storagegrid-search-integration-service/sg-sis-execute-put-command.png["执
 
 
 
+[[platform-services-endpoint-configuration]]
 == 平台服务端点配置
 
 要为平台服务配置端点、请执行以下步骤：
@@ -238,6 +246,7 @@ image:storagegrid-search-integration-service/sg-sis-successfully-verified-endpoi
 
 
 
+[[bucket-search-integration-service-configuration]]
 == 存储分段搜索集成服务配置
 
 创建平台服务端点后、下一步是在存储分段级别配置此服务、以便在创建、删除对象或更新其元数据或标记时将对象元数据发送到定义的端点。
@@ -318,6 +327,7 @@ image:storagegrid-search-integration-service/sg-sis-query-two-sample.png["查询
 
 
 
+[[where-to-find-additional-information]]
 == 从何处查找追加信息
 
 要了解有关本文档中所述信息的更多信息，请查看以下文档和 / 或网站：

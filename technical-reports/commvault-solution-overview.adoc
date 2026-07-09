@@ -18,6 +18,7 @@ summary: 了解客户和NetApp IT实施的StorageGRID配置的少数用例。
 
 
 
+[[solution-setup]]
 == 解决方案设置
 
 在实验室设置中、StorageGRID环境包含四个NetApp StorageGRID SG5712设备、一个虚拟主管理节点和一个虚拟网关节点。SG5712设备是入门级选项—一种基线配置。选择NetApp StorageGRID SG5760或SG6060等性能更高的设备选项可以显著提高性能。请咨询NetApp StorageGRID 解决方案 架构师以获得规模估算帮助。
@@ -48,10 +49,9 @@ summary: 了解客户和NetApp IT实施的StorageGRID配置的少数用例。
 |===
 默认规则为ILM 2复制规则。在此测试中、对任何200 KB或更大的对象应用了纠删编码2+1规则。默认规则应用于小于200 KB的对象。以这种方式应用规则是StorageGRID的最佳实践。
 
-有关此测试环境的技术详细信息、请阅读中的解决方案设计和最佳实践一节 https://www.netapp.com/us/media/tr-4831.pdf["借助Commvault,实现NetApp横向扩展数据保护"] 技术报告。
 
 
-
+[[storagegrid-hardware-specifications]]
 == StorageGRID硬件规格
 
 下表介绍了此测试中使用的NetApp StorageGRID硬件。采用10Gbps网络连接的StorageGRID SG5712设备是入门级选项、代表了一种基线配置。也可以为SG5712配置25 Gbps网络连接。
@@ -77,6 +77,7 @@ StorageGRID SG5712设备
 
 
 
+[[commvault-and-storagegrid-software-requirements]]
 == Commvault"和StorageGRID软件要求
 
 下表列出了在我们的测试中安装在VMware软件上的Commvell和NetApp StorageGRID软件的软件要求。安装了四个MediaAgent数据传输管理器和一个CommServe服务器。在测试中、我们为VMware基础架构实施了10 Gbps网络连接。下表

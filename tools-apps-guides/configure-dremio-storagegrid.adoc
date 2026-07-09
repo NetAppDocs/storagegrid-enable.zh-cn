@@ -18,10 +18,12 @@ _作者：郑安杰_
 
 
 
+[[configure-dremio-data-source]]
 == 配置d不良 数据源
 
 
 
+[[prerequisites]]
 === 前提条件
 
 * StorageGRID S3端点URL、租户S3访问密钥ID和机密访问密钥。
@@ -31,12 +33,14 @@ DERMIO使用字节范围GET在查询期间同时从同一对象中提取不同�
 
 
 
+[[dremio-guide]]
 === d不良 指南
 
 https://docs.dremio.com/current/sonar/data-sources/object/s3/["连接到Amazon S3 -配置S3兼容存储"^]。
 
 
 
+[[instruction]]
 == 说明
 
 . 在"Desmio数据集"页面上、单击+符号以添加源、然后选择"Amazon S3"。

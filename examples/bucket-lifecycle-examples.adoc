@@ -16,6 +16,7 @@ summary: StorageGRID 中的存储桶生命周期。
 
 
 
+[[what-is-a-lifecycle-configuration]]
 == 什么是生命周期配置
 
 生命周期配置是一组应用于特定 S3 分段中的对象的规则。每个规则都指定受影响的对象以及这些对象的到期时间（在特定日期或一定天数后）。
@@ -41,6 +42,7 @@ StorageGRID 支持使用以下存储分段操作来管理生命周期配置：
 
 
 
+[[structure-of-a-lifecycle-policy]]
 == 生命周期策略的结构
 
 作为创建生命周期配置的第一步，您需要创建一个包含一个或多个规则的 JSON 文件。例如，此 JSON 文件包含三个规则，如下所示：
@@ -101,6 +103,7 @@ CAUTION: 指定天数的规则与对象的载入时间相关。如果当前日�
 ----
 
 
+[[apply-lifecycle-configuration-to-bucket]]
 == 将生命周期配置应用于存储分段
 
 创建生命周期配置文件后、您可以通过发出PutBucketLifecycleConfiguration请求将其应用于存储分段。
@@ -121,10 +124,12 @@ aws s3api --endpoint-url <StorageGRID endpoint> get-bucket-lifecycle-configurati
 ----
 
 
+[[example-lifecycle-policies-for-standard-non-versioned-buckets]]
 == 标准（非版本化）存储桶的生命周期策略示例
 
 
 
+[[delete-objects-after-90-days]]
 === 90 天后删除对象
 
 用例：此策略非常适合管理仅在有限时间内相关的数据，例如临时文件、日志或中间处理数据。优势：降低存储成本并确保存储桶整洁有序。
@@ -146,10 +151,12 @@ aws s3api --endpoint-url <StorageGRID endpoint> get-bucket-lifecycle-configurati
 ----
 
 
+[[example-lifecycle-policies-for-versioned-buckets]]
 == 版本控制存储桶的生命周期策略示例
 
 
 
+[[delete-noncurrent-versions-after-10-days]]
 === 10 天后删除非当前版本
 
 用例：此策略有助于管理非当前版本对象的存储，这些对象会随着时间的推移而累积并占用大量空间。优势：通过仅保留最新版本来优化存储空间利用率。
@@ -171,6 +178,7 @@ aws s3api --endpoint-url <StorageGRID endpoint> get-bucket-lifecycle-configurati
 ----
 
 
+[[keep-5-noncurrent-versions-and-delete-after-90-days]]
 === 保留 5 个非当前版本，并在 90 天后删除
 
 用例：当您想保留有限数量的先前版本以用于恢复或审计目的时很有用。好处：保留足够的非当前版本以确保足够的历史记录和恢复点。
@@ -196,6 +204,7 @@ NOTE: 您必须使用 *NoncurrentDays* 与 *NewerNoncurrentVersions*。
 
 
 
+[[remove-delete-markers-when-no-other-versions-exist]]
 === 当不存在其他版本时移除删除标记
 
 用例：此策略有助于管理所有非当前版本删除后留下的删除标记，这些标记会随着时间的推移而累积。好处：减少不必要的混乱。
@@ -217,6 +226,7 @@ NOTE: 您必须使用 *NoncurrentDays* 与 *NewerNoncurrentVersions*。
 ----
 
 
+[[delete-current-versions-after-30-days-delete-non-current-versions-after-60-days-and-remove-the-delete-markers-created-by-the-current-version-delete-once-no-other-versions-exist]]
 === 30 天后删除当前版本，60 天后删除非当前版本，一旦不存在其他版本，则删除当前版本创建的删除标记。
 
 用例：为当前版本和非当前版本提供完整的生命周期，包括删除标记。优势：降低存储成本，确保存储桶整洁有序，同时保留足够的恢复点和历史记录。
@@ -254,6 +264,7 @@ NOTE: 您必须使用 *NoncurrentDays* 与 *NewerNoncurrentVersions*。
 ----
 
 
+[[remove-delete-markers-that-have-no-other-versions-retain-4-non-current-versions-and-at-least-30-days-worth-of-history-for-objects-with-the-accounts-prefix-and-keep-2-versions-and-at-least-10-days-worth-of-history-for-all-other-object-versions]]
 === 删除没有其他版本的删除标记，为带有“accounts_ 前缀”的对象保留 4 个非当前版本和至少 30 天的历史记录，为所有其他对象版本保留 2 个版本和至少 10 天的历史记录。
 
 用例：为特定对象以及其他对象提供独特的规则，以管理当前版本和非当前版本（包括删除标记）的完整生命周期。优势：降低存储成本，确保存储桶整洁有序，同时保留足够的恢复点和历史记录，以满足各种客户需求。
@@ -293,6 +304,7 @@ NOTE: 您必须使用 *NoncurrentDays* 与 *NewerNoncurrentVersions*。
 ----
 
 
+[[conclusion]]
 == 结论
 
 * 定期审查和更新生命周期政策，并使其与 ILM 和数据管理目标保持一致。

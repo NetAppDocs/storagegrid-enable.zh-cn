@@ -18,18 +18,21 @@ summary: 本技术报告提供了配置NetApp StorageGRID与 F5 DNS 服务以实
 
 
 
+[[introduction]]
 == 简介
 
 F5 BIG-IP DNS 解决方案以前称为 BIG-IP GTM（全球流量管理器），非正式名称为 GSLB（全球服务器负载均衡），它允许跨多个主动-主动 HA 组和主动-主动多站点StorageGRID解决方案实现无缝访问。
 
 
 
+[[f5-big-ip-multi-site-storagegrid-configuration]]
 == F5 BIG-IP 多站点StorageGRID配置
 
 无论要支持多少个StorageGRID站点，至少需要两个 BIG-IP 设备（物理或虚拟）启用并设置 BIG-IP DNS 模块。DNS 设备越多，企业获得的冗余程度就越高。
 
 
 
+[[big-ip-dns-first-steps-in-initial-set-up]]
 === BIG-IP DNS - 初始设置入门指南
 
 BIG-IP 设备完成至少初始配置后，使用 Web 浏览器登录到 TMUI（BIG-IP GUI）界面，然后选择“系统”->“资源配置”。如前所述，请确保“全球流量（DNS）”模块已勾选并显示已获得许可。请注意，如图所示，“本地流量 (LTM)”通常可以配置在同一设备上。
@@ -38,6 +41,7 @@ image:f5-dns/global-traffic.png["已启用全局流量（DNS）服务"]
 
 
 
+[[configure-dns-protocol-foundational-elements]]
 === 配置 DNS 协议基础元素
 
 StorageGRID站点的全局流量管理的第一步是选择 DNS 选项卡，几乎所有全局流量控制都将在此配置，然后选择设置-> GLSB。启用这两个同步选项，并选择一个将在参与的 BIG-IP 设备之间共享的 DNS 组名称。
@@ -68,6 +72,7 @@ image:f5-dns/listener-list2.png["添加监听器信息"]
 
 
 
+[[setting-up-data-center-sites-and-establishing-inter-big-ip-communications-in-four-steps]]
 === 分四步完成数据中心站点搭建和BIG-IP间通信建立
 
 
@@ -130,6 +135,7 @@ image:f5-dns/big-ip-add.png["验证证书信任"]
 
 
 
+[[setting-up-data-center-sites-and-establishing-inter-big-ip-communications]]
 === 建立数据中心站点和建立BIG-IP间通信
 
 至此，创建底层、健康的 BIG-IP DNS 设备组的所有步骤均已完成。现在我们可以继续创建指向我们在每个StorageGRID数据中心公开的分布式 Web/S3 服务的名称、FQDN。
@@ -156,6 +162,7 @@ image:f5-dns/wip-config.png["配置 WIP"]
 
 
 
+[[adjust-dns-to-support-global-traffic-management]]
 === 调整 DNS 以支持全球流量管理
 
 目前，我们所有的底层 BIG-IP 设备都已准备好执行 GSLB（全局服务器负载均衡）。我们只需要调整并分配用于 S3 流量的名称，即可利用该解决方案。一般做法是将企业现有 DNS 域的一部分委托给 BIG-IP DNS 控制。也就是说，要“划分”出一部分名称空间，即一个子域，并将该子域的控制权委托给 BIG-IP DNS 设备。从技术上讲，这是通过确保 BIG-IP DNS 设备在企业 DNS 中具有 A DNS 资源记录 (RR)，然后将这些名称/地址设置为委派域的名称服务器 (NS) DNS 资源记录来实现的。
@@ -198,6 +205,7 @@ image:f5-dns/lb-method.png["负载均衡方法"]
 
 
 
+[[conclusion]]
 == 结论
 
 F5 BIG-IP 与NetApp StorageGRID的集成解决了与跨多个站点的数据可用性和一致性相关的技术挑战，并优化了 S3 事务路由。部署此解决方案可增强存储弹性、性能和可靠性，使其成为寻求强大、可扩展和灵活的存储基础架构的企业的理想选择。

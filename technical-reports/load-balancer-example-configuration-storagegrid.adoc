@@ -20,6 +20,7 @@ summary: 了解客户和NetApp IT实施的StorageGRID配置的少数用例。
 
 
 
+[[f5-big-ip-local-traffic-manager-health-check-monitor-for-s3-bucket]]
 == 用于S3存储分段的F5 BIG-IP本地流量管理器运行状况检查监控器
 
 要配置F5 BIG-IP本地流量管理器运行状况检查监控器、请执行以下步骤：
@@ -48,6 +49,7 @@ image:load-balancer/load-balancer-monitor-configuration-page.png["监控器配�
 
 
 
+[[citrix-netscaler]]
 == Citrix NetScaler
 
 Citrix NetScaler为存储端点创建一个虚拟服务器，并将StorageGRID存储节点称为应用程序服务器，然后将其分组到“服务”中。
@@ -62,18 +64,21 @@ image:load-balancer/load-balancer-configure-monitor.png["Configure-monitor.png"]
 
 
 
+[[loadbalancer-org]]
 == Loadbalancer.org
 
 Loadbalancer.org已对StorageGRID进行了自己的集成测试，并提供了大量的配置指南： https://pdfs.loadbalancer.org/NetApp_StorageGRID_Deployment_Guide.pdf[]。
 
 
 
+[[kemp]]
 == 凯普
 
 KEMP已对StorageGRID进行了自己的集成测试，并提供了大量的配置指南： https://kemptechnologies.com/solutions/netapp/[]。
 
 
 
+[[haproxy]]
 == HA 代理
 
 将HAProxy配置为使用options request、并在haproxy.cfg中检查运行状况检查的200状态响应。您可以将前端的绑定端口更改为其他端口、例如443。

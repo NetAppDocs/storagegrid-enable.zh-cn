@@ -20,6 +20,7 @@ summary: 了解StorageGRID负载均衡器的作用。
 
 
 
+[[storagegrid-gateway-node-load-balancer-versus-third-party-load-balancer]]
 == StorageGRID网关节点负载平衡器与第三方负载平衡器
 
 在与S3兼容的对象存储供应商中、StorageGRID是独一无二的、因为它提供了一个本机负载平衡器、可用作专用设备、VM或容器。StorageGRID提供的负载平衡器也称为网关节点。

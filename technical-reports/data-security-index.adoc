@@ -37,6 +37,7 @@ NetApp StorageGRID可为要求苛刻的企业对象存储用例提供高级安�
 
 
 
+[[where-to-find-additional-information]]
 == 从何处查找追加信息
 
 要了解有关本文档中所述信息的更多信息，请查看以下文档和 / 或网站：
@@ -51,6 +52,7 @@ NetApp StorageGRID可为要求苛刻的企业对象存储用例提供高级安�
 
 
 
+[[terms-and-acronyms]]
 == 术语和首字母缩略语
 
 本节提供了文档中所用术语的定义。

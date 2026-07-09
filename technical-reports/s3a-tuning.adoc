@@ -18,6 +18,7 @@ Hadoop S3A连接器有助于在基于Hadoop的应用程序和S3对象存储之�
 
 
 
+[[what-is-hadoop]]
 == 什么是Hadoop？
 
 *Hadoop* 是一个功能强大的开源框架，专为处理大规模数据处理和存储而设计。它支持跨多个计算机集群进行分布式存储和并行处理。
@@ -31,6 +32,7 @@ Hadoop的三个核心组件是：
 
 
 
+[[hadoop-hdfs-and-s3a-connector]]
 == Hadoop HDFS和S3A连接器
 
 HDFS是Hadoop生态系统的重要组成部分、在高效处理大数据方面发挥着关键作用。HDFS可实现可靠的存储和管理。它可确保并行处理和优化数据存储、从而加快数据访问和分析速度。
@@ -43,6 +45,7 @@ HDFS是Hadoop生态系统的重要组成部分、在高效处理大数据方面�
 
 
 
+[[hadoop-s3a-connector-tuning]]
 == Hadoop S3A连接器调整
 
 S3的行为与HDFS不同、某些尝试保留文件系统外观的行为也明显欠佳。要最高效地利用S3资源、必须仔细调整/测试/试验。

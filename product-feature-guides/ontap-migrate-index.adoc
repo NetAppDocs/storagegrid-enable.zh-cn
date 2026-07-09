@@ -16,6 +16,7 @@ summary: 从ONTAP S3迁移到StorageGRID。
 
 
 
+[[migration-demo]]
 == 迁移演示
 
 本演示将用户和分段从ONTAP S3迁移到StorageGRID。

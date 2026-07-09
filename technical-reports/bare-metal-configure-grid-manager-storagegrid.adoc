@@ -20,24 +20,26 @@ summary: 了解如何在主管理节点上的StorageGRID中配置网格管理器
 
 
 
+[[high-level-steps]]
 == 高级步骤
 
 配置网格并完成安装涉及以下任务：
 
 .步骤
 . <<导航到网格管理器>>
-. link:storagegrid-license.html["指定 StorageGRID 许可证信息"]
-. link:add-sites-storagegrid.html["将站点添加到StorageGRID"]
-. link:grid-network-subnets-storagegrid.html["指定网格网络子网"]
-. link:approve-grid-nodes-storagegrid.html["批准待定网格节点"]
-. link:ntp-server-storagegrid.html["指定NTP服务器信息"]
-. link:dns-server-storagegrid.html["指定域名系统服务器信息"]
-. link:system-passwords-storagegrid.html["指定 StorageGRID 系统密码"]
-. link:review-config-complete-storagegrid-install.html["查看您的配置并完成安装"]
+. link:bare-metal-storagegrid-license.html["指定 StorageGRID 许可证信息"]
+. link:bare-metal-add-sites-storagegrid.html["将站点添加到StorageGRID"]
+. link:bare-metal-grid-network-subnets-storagegrid.html["指定网格网络子网"]
+. link:bare-metal-approve-grid-nodes-storagegrid.html["批准待定网格节点"]
+. link:bare-metal-ntp-server-storagegrid.html["指定NTP服务器信息"]
+. link:bare-metal-dns-server-storagegrid.html["指定域名系统服务器信息"]
+. link:bare-metal-system-passwords-storagegrid.html["指定 StorageGRID 系统密码"]
+. link:bare-metal-review-config-complete-storagegrid-install.html["查看您的配置并完成安装"]
 
 
 
 
+[[navigate-to-grid-manager]]
 == 导航到网格管理器
 
 使用网格管理器定义配置StorageGRID系统所需的所有信息。

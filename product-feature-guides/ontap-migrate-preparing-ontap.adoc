@@ -16,6 +16,7 @@ summary: 从ONTAP S3迁移到StorageGRID。
 
 
 
+[[preparing-ontap]]
 == 正在准备ONTAP
 
 为了便于演示、我们将创建SVM对象存储服务器、用户、组、组策略和分段。

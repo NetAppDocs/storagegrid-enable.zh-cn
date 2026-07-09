@@ -16,6 +16,7 @@ summary: 已针对StorageGRID 11.6进行验证的第三方解决方案
 
 
 
+[[third-party-solutions-validated-on-storagegrid]]
 == 已在StorageGRID 上验证的第三方解决方案
 
 这些解决方案已与相应的合作伙伴合作进行了测试。
@@ -78,6 +79,7 @@ summary: 已针对StorageGRID 11.6进行验证的第三方解决方案
 
 
 
+[[third-party-solutions-validated-on-storagegrid-with-object-lock]]
 == 第三方解决方案已在具有对象锁定的StorageGRID 上进行验证
 
 这些解决方案已与相应的合作伙伴合作进行了测试。
@@ -92,6 +94,7 @@ summary: 已针对StorageGRID 11.6进行验证的第三方解决方案
 
 
 
+[[third-party-solutions-supported-on-storagegrid]]
 == StorageGRID支持的第三方解决方案
 
 这些解决方案已经过测试。

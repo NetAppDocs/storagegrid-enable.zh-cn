@@ -18,6 +18,7 @@ _作者：Oliver Haensel和Aron Klein_
 
 
 
+[[overview]]
 == 概述
 
 存储管理员希望通过满足可用性、快速恢复目标、可扩展以满足其需求以及自动执行长期数据保留策略的解决方案来管理数据增长。这些解决方案还应提供保护、防止丢失或恶意攻击。Veeam和NetApp合作创建了一个将Veeam备份和恢复与NetApp StorageGRID相结合的数据保护解决方案、用于内部对象存储。
@@ -30,16 +31,19 @@ Veeam的对象工作负载会为小型对象创建大量并发放置、删除和
 
 
 
+[[veeam-configuration]]
 == Veeam配置
 
 
 
+[[recommended-version]]
 === 建议版本
 
 建议始终保持最新、并为Veeam Backup & Replication 12或12.1系统应用最新的修补程序。目前、我们建议至少安装Veeam 12修补程序P20230718。
 
 
 
+[[s3-repository-configuration]]
 === S3存储库配置
 
 横向扩展备份存储库(SOBR)是S3对象存储的容量层。容量层是主存储库的扩展、可提供更长的数据保留期限和更低的存储解决方案成本。Veeam能够通过S3对象锁定API提供不可变功能。Veeam 12可以在一个横向扩展存储库中使用多个分段。StorageGRID对单个存储分段中的对象数量或容量没有限制。使用多个分段可以提高备份非常大的数据集时的性能、在这些数据集中、对象中的备份数据可能会达到PB级。
@@ -48,6 +52,7 @@ Veeam的对象工作负载会为小型对象创建大量并发放置、删除和
 
 
 
+[[backup-job-configuration]]
 === 备份作业配置
 
 Veeam备份作业可以使用不同的块大小选项进行配置、应仔细考虑这些选项。默认块大小为1 MB、而Veeam具有数据压缩和重复数据删除功能、可为初始完整备份创建大约500 KB的对象大小、为增量作业创建100-200 KB的对象大小。通过选择更大的备份块大小、我们可以大幅提高性能并降低对象存储的要求。尽管较大的块大小可以显著提高对象存储的性能、但由于存储效率性能降低、可能会增加主存储容量需求。建议为备份作业配置4 MB的块大小、以便为完整备份创建大约2 MB的对象、并为增量备份创建大约700 kB-1 MB的对象大小。客户甚至可以考虑使用8 MB块大小配置备份作业、此功能可在Veeam支持人员的协助下启用。
@@ -81,34 +86,40 @@ Veeam备份作业可以使用不同的块大小选项进行配置、应仔细考
 ====
 
 
+[[storagegrid-configuration]]
 == StorageGRID配置
 
 
 
+[[recommended-version]]
 === 建议版本
 
 对于 Veeam 部署，建议使用带有最新修补程序的NetApp StorageGRID 11.9 或 12.0 版本。始终建议保持最新状态并为StorageGRID系统应用最新的修补程序。
 
 
 
+[[load-balancer-and-s3-endpoint-configuration]]
 === 负载平衡器和S3端点配置
 
 Veeam仅要求通过HTTPS连接端点。Veeam不支持非加密连接。SSL证书可以是自签名证书、专用可信证书颁发机构或公共可信证书颁发机构。为了确保持续访问S3存储库、建议在HA配置中至少使用两个负载平衡器。负载平衡器可以是位于每个管理节点和网关节点上的StorageGRID提供的集成负载平衡器服务、也可以是位于F5、Kemp、HAProxy、Loadbalancer.org等第三方解决方案上的集成负载平衡器服务 通过使用StorageGRID负载平衡器、可以设置流量划分器(QoS规则)、以便确定Veeam工作负载的优先级、或者限制Veeam、使其不会影响StorageGRID系统上优先级较高的工作负载。
 
 
 
+[[s3-bucket]]
 === S3 存储分段
 
 StorageGRID是一个安全的多租户存储系统。建议为 Veeam 工作负载创建专用租户。可以选择分配存储配额。作为最佳实践，启用“使用自己的身份源”。使用适当的密码保护租户根管理用户。  Veeam Backup 12 要求 S3 存储桶具有强一致性。 StorageGRID提供在存储桶级别配置的多个一致性选项。对于 Veeam 从多个位置访问数据的多站点部署，请选择“strong-global”。如果 Veeam 备份和恢复仅在单个站点进行，则一致性级别应设置为“strong-site”。有关存储桶一致性级别的更多信息，请查看 https://docs.netapp.com/us-en/storagegrid/s3/consistency-controls.html["文档。"]。要使用StorageGRID进行 Veeam 不变性备份，必须在全局启用 S3 对象锁，并在存储桶创建期间在存储桶上进行配置。
 
 
 
+[[lifecycle-management]]
 === 生命周期管理
 
 StorageGRID支持在StorageGRID节点和站点之间进行复制和纠删编码、以实现对象级保护。纠删编码至少需要200 KB的对象大小。Veeam的默认块大小为1 MB、所产生的对象大小通常会低于Veeam存储效率后建议的200 KB最小大小。为了提高解决方案的性能、建议不要使用跨越多个站点的纠删编码配置文件、除非这些站点之间的连接足以避免增加延迟或限制StorageGRID系统的带宽。在多站点StorageGRID系统中、可以将ILM规则配置为在每个站点存储一个副本。为了获得最佳持久性、可以配置一条规则、以便在每个站点上存储一个经过删除的编码副本。对于此工作负载、最建议使用Veeam备份服务器本地的两个副本。
 
 
 
+[[delete-performance]]
 === 删除性能
 
 Veeam 提供删除请求率调整和备份删除过程的调度。为了进一步调整删除性能，您可以禁用同步删除并让 ILM 扫描器管理对象的最终删除。
@@ -160,10 +171,12 @@ image:veeam-bp/put_ilm_adv.png["PUT ILM-高级输入"]
 
 
 
+[[implementation-key-points]]
 == 实施要点
 
 
 
+[[storagegrid]]
 === StorageGRID
 
 如果需要不可破坏性、请确保在StorageGRID系统上启用对象锁定。在管理UI中的"Configuration/S3 Object Lock"(配置/S3对象锁定)下找到相应选项。
@@ -190,6 +203,7 @@ image:veeam-bp/tc_policy.png["创建TC策略"]
 
 
 
+[[veeam]]
 === Veeam
 
 根据StorageGRID设备的型号和数量、可能需要选择并配置对存储分段上的并发操作数的限制。
@@ -206,6 +220,7 @@ image:veeam-bp/veeam_blk_sz.png["自动生成的计算机问题描述的屏幕�
 
 
 
+[[monitoring-storagegrid]]
 == 监控StorageGRID
 
 要全面了解Veeam和StorageGRID的协同运行情况、您需要等待第一个备份的保留时间到期。到目前为止、Veeam工作负载主要由Put操作组成、尚未执行任何删除操作。备份数据过期并进行清理后、您现在可以在对象存储中看到完全一致的使用情况、并根据需要调整Veeam中的设置。
@@ -235,6 +250,7 @@ image:veeam-bp/tc_2.png["流量分类策略指标"]
 
 
 
+[[where-to-find-additional-information]]
 == 从何处查找追加信息
 
 要了解有关本文档中所述信息的更多信息，请查看以下文档和 / 或网站：

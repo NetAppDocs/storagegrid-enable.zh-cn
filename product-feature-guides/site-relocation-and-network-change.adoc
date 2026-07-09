@@ -19,6 +19,7 @@ link:https://docs.netapp.com/us-en/storagegrid-118/maintain/changing-nodes-netwo
 
 
 
+[[considerations-before-site-relocation]]
 == 站点重新定位前的注意事项
 
 * 应在15天内完成站点移动并使所有节点联机、以避免重建cassandrebuild数据库。
@@ -34,11 +35,11 @@ image:site-relocation/s3-completed-request.png["S3概述Grafana图表示例"]
 
 
 
+[[procedure-to-change-grid-ip-address-before-site-relocation]]
 === 操作步骤以在站点重新定位之前更改网格IP地址
 
 .步骤
-. 如果新位置要使用新的网格网络子网、
-link:https://docs.netapp.com/us-en/storagegrid-118/expand/updating-subnets-for-grid-network.htmll["将子网添加到网格网络子网列表"^]
+. 如果在新位置使用新的网格网络子网， link:https://docs.netapp.com/us-en/storagegrid/expand/updating-subnets-for-grid-network.html["将子网添加到网格网络子网列表"^]
 . 登录到主管理节点、使用change-ip进行网格IP更改、必须*暂存*更改、然后才能关闭节点进行重新定位。
 +
 .. 选择2、然后选择1以更改网格IP
@@ -75,6 +76,7 @@ image:site-relocation/ip-change-6.png["继续"]
 
 
 
+[[appliance-vlan-change]]
 === 设备VLAN更改
 
 以下操作步骤假定您可以远程访问StorageGRID设备的管理或客户端网络以远程执行更改。

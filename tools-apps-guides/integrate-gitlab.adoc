@@ -18,6 +18,7 @@ NetApp已使用GitLab对StorageGRID进行了测试。请参见下面的GitLab配
 
 
 
+[[object-storage-connection-example]]
 == 对象存储连接示例
 
 对于Linux软件包安装、这是的一个示例 `connection` 在合并表单中设置。编辑 `/etc/gitlab/gitlab.rb` 并添加以下行、替换所需的值：

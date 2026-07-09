@@ -18,6 +18,7 @@ _作者：郑安杰_
 
 
 
+[[introduction]]
 == 简介
 
 Vertica是一款分析数据库管理软件。它是一个柱形存储平台、专为处理大量数据而设计、可在传统密集型情形下实现非常快速的查询性能。Vertica数据库以两种模式之一运行：Eon或Enterprise。您可以在内部或云中部署这两种模式。
@@ -30,6 +31,7 @@ Eon和企业模式在数据存储位置方面主要不同：
 
 
 
+[[eon-mode-architecture]]
 === Eon模式架构
 
 Eon模式可将计算资源与数据库的公用存储层分离、从而使计算和存储可以单独进行扩展。Eon模式下的Vertica经过优化、可处理各种工作负载、并通过使用单独的计算和存储资源彼此隔离。
@@ -40,6 +42,7 @@ image:vertica-eon/sg-vertica-eon-mode-cluster-with-communal-storage.png["使用�
 
 
 
+[[communal-storage]]
 === 公用存储
 
 Eon模式不会在本地存储数据、而是对所有数据和目录(元数据)使用一个公共存储位置。公共存储是数据库的集中存储位置、在数据库节点之间共享。
@@ -54,12 +57,14 @@ Eon模式不会在本地存储数据、而是对所有数据和目录(元数据)
 
 
 
+[[the-depot]]
 === 仓库
 
 公共存储的一个缺点是速度。从共享云位置访问数据比从本地磁盘读取数据要慢。此外、如果许多节点同时从公共存储读取数据、则与该存储的连接可能会成为瓶颈。为了提高数据访问速度、Eon模式数据库中的节点会维护一个名为存储库的本地数据磁盘缓存。执行查询时、节点会首先检查所需数据是否位于仓库中。如果是、则它将使用数据的本地副本完成查询。如果数据不在存储库中、则节点将从公共存储中提取数据、并在存储库中保存一份副本。
 
 
 
+[[netapp-storagegrid-recommendations]]
 == NetApp StorageGRID 建议
 
 Vertica将数据库数据存储在对象存储中、即数千(或数百万)个压缩对象(观察到的大小为每个对象200到500 MB)。当用户运行数据库查询时、Vertica会使用byte-range get调用并行从这些压缩对象检索选定的数据范围。每个字节范围GET大约为8 KB。
@@ -86,6 +91,7 @@ Vertica配置的建议包括：
 
 
 
+[[installing-eon-mode-on-premises-with-communal-storage-on-storagegrid]]
 == 在StorageGRID 上使用公用存储在内部安装Eon模式
 
 以下各节介绍了在StorageGRID 上使用公共存储在内部安装Eon模式的顺序操作步骤。用于配置内部简单存储服务(S3)兼容对象存储的操作步骤 类似于Vertica指南中的操作步骤。 link:https://www.vertica.com/docs/10.1.x/HTML/Content/Authoring/InstallationGuide/EonOnPrem/InstallingEonOnPremiseWithMinio.htm?tocpath=Installing%20Vertica%7CInstalling%20Vertica%20For%20Eon%20Mode%20on-Premises%7C_____2["在内部安装Eon模式数据库"^]。
@@ -101,6 +107,7 @@ Vertica配置的建议包括：
 
 
 
+[[information-required-from-netapp-storagegrid]]
 === NetApp StorageGRID 需要提供的信息
 
 要在StorageGRID 上使用公共存储在内部安装Eon模式、您必须具备以下前提条件信息。
@@ -112,6 +119,8 @@ Vertica配置的建议包括：
 
 
 
+[[creating-an-authorization-file-to-access-the-s3-endpoint]]
+[[createauthorization]]
 === 创建授权文件以访问S3端点
 
 在创建授权文件以访问S3端点时、需要满足以下前提条件：
@@ -159,6 +168,7 @@ NOTE: 在生产环境中、客户应在StorageGRID S3负载平衡器端点上实
 
 
 
+[[choosing-a-depot-path-on-all-vertica-nodes]]
 === 在所有Vertica节点上选择存储库路径
 
 在每个节点上为存储库存储路径选择或创建一个目录。为depot storage path参数提供的目录必须具有以下内容：
@@ -176,6 +186,7 @@ NOTE: 在生产环境中、客户应在StorageGRID S3负载平衡器端点上实
 
 
 
+[[creating-the-eon-on-premises-database]]
 === 创建Eon内部数据库
 
 要创建Eon内部数据库、请执行以下步骤：
@@ -638,6 +649,8 @@ Database creation SQL tasks completed successfully. Database vmart created succe
 |===
 
 
+[[disabling-streaming-limitations]]
+[[Streamlimitations]]
 === 禁用流限制
 
 此操作步骤 基于适用于其他内部对象存储的Vertica指南、应适用于StorageGRID。
@@ -659,6 +672,7 @@ dbadmin=> \q
 ----
 
 
+[[verifying-depot-settings]]
 === 验证返厂设置
 
 已为读写操作启用Vertica数据库默认存储库设置(值= 1)。NetApp强烈建议保持启用这些仓库设置以提高性能。
@@ -671,6 +685,7 @@ DATABASE | UseDepotForWrites | 1
 ----
 
 
+[[loading-sample-data-optional]]
 === 加载示例数据(可选)
 
 如果此数据库用于测试并将被删除、您可以将样本数据加载到此数据库以进行测试。Vertica随附了示例数据集VMart、位于每个Vertica/node/opt/Vertica/Examples/VMart_Schema/``下。有关此示例数据集的详细信息、请参见 link:https://www.vertica.com/docs/10.1.x/HTML/Content/Authoring/GettingStartedGuide/IntroducingVMart/IntroducingVMart.htm?zoom_highlight=VMart["此处"^]。
@@ -691,6 +706,7 @@ DATABASE | UseDepotForWrites | 1
 
 
 
+[[where-to-find-additional-information]]
 == 从何处查找追加信息
 
 要了解有关本文档中所述信息的更多信息，请查看以下文档和 / 或网站：
@@ -702,6 +718,7 @@ DATABASE | UseDepotForWrites | 1
 
 
 
+[[version-history]]
 == 版本历史记录
 
 [cols="1a,1a,2a"]

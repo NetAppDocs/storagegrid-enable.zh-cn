@@ -19,6 +19,7 @@ summary: 了解如何实施StorageGRID 11.5和Veritas Enterprise Vault 14.1的�
 
 
 
+[[prerequisites-to-configure-storagegrid-and-veritas-enterprise-vault]]
 == 配置StorageGRID和Veritas Enterprise Vault的前提条件
 
 * 在使用Veritas Enterprise Vault配置StorageGRID之前、请验证以下前提条件：
@@ -42,6 +43,7 @@ NOTE: 对于WORM存储(对象锁定)、需要Enterprise Vault 14.2.2或更高版
 
 
 
+[[configure-storagegrid-with-veritas-enterprise-vault]]
 == 使用Veritas Enterprise Vault配置StorageGRID
 
 要使用Veritas Enterprise Vault配置StorageGRID、请完成以下步骤：

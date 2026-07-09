@@ -16,6 +16,7 @@ summary: 从ONTAP S3迁移到StorageGRID。
 
 
 
+[[migrate-s3-keys]]
 == 迁移S3密钥
 
 对于迁移、大多数情况下您都需要迁移用户的凭据、而不是在目标端生成新的凭据。StorageGRID提供API以允许将S3密钥导入到用户。
@@ -44,6 +45,7 @@ image:ontap-migrate/sg-user-keys.png["用户密钥"]
 
 
 
+[[the-final-cut-over]]
 === 最终转换
 
 如果打算永久将存储分段从ONTAP复制到StorageGRID、您可以到此结束。如果是从ONTAP S3迁移到StorageGRID、则需要结束迁移并进行转换。

@@ -13,6 +13,7 @@ summary: 本报告涵盖StorageGRID上的大数据分析。
 
 
 
+[[netapp-storagegrid-use-cases]]
 == NetApp StorageGRID用例
 
 NetApp StorageGRID对象存储解决方案可提供可扩展性、数据可用性、安全性和高性能。各种规模和各行各业的组织都在广泛的使用情形中使用StorageGRID S3。让我们来了解一些典型场景：
@@ -37,6 +38,7 @@ image:datalake-analytics/image1.png["StorageGRID用例图、宽度=396、高度=
 
 
 
+[[why-storagegrid-for-data-lakes]]
 == 为什么选择StorageGRID解决数据湖问题？
 
 * 增强协作—利用行业标准API访问实现大规模共享多站点、多租户
@@ -52,9 +54,10 @@ image:datalake-analytics/image2.png["StorageGRID数据报时示例、宽度=不�
 
 
 
+[[benchmarking-data-warehouses-and-lakehouses-with-s3-object-storage-a-comparative-study]]
 == 《使用S3对象存储对数据仓库和湖屋进行基准测试：比较研究》
 
-本文介绍了使用NetApp StorageGRID的各种数据仓库和温室生态系统的综合基准。其目标是确定哪个系统在使用S3对象存储时性能最佳。请参阅此内容https://www.dremio.com/wp-content/uploads/2023/02/apache-Iceberg-TDG_ER1.pdf?aliId=eyJpIjoieDRUYjFKN2ZMbXhTRnFRWCIsInQiOiJIUUw0djJsWnlJa21iNUsyQURRalNnPT0ifQ%253D%253D["Apache iceberg：权威指南"]、了解有关数据存储/数据库架构和表格格式(镶木地板和冰山一角)的更多信息。
+本文使用 NetApp StorageGRID 对各种数据仓库和湖仓生态系统进行了全面的基准测试。目标是确定哪个系统在 S3 对象存储方面表现最佳。请参阅此https://hello.dremio.com/wp-apache-iceberg-the-definitive-guide-reg.html["Apache iceberg：权威指南"]以了解有关数据仓库/湖仓架构和表格格式（Parquet 和 Iceberg）的更多信息。
 
 * 基准测试工具- TPC-DS - https://www.tpc.org/tpcds/[]
 * 大数据生态系统

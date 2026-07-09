@@ -42,7 +42,7 @@ NOTE: 如果您的GMI密码包含特殊字符、请记得使用\转义特殊字�
 {"responseTime":"2020-06-03T00:12:17.031Z","status":"success","apiVersion":"3.2","data":"8a1e528d-18a7-4283-9a5e-b2e6d731e0b2"}
 ----
 +
-现在、您可以使用授权令牌字符串通过CURL访问指标。访问度量指标的过程与第节中的步骤类似 link:advanced-monitor-storagegrid.html#export-metrics-through-the-api["StorageGRID中的高级监控"]。但是、出于演示目的、我们显示了一个示例、其中在"指标"类别中选择了GET /grid /metric-labels/｛label"｝/values。
+现在，您可以使用授权令牌字符串通过 cURL 访问指标。访问指标的流程类似于 link:monitoradvanced-monitor-storagegrid.html#export-metrics-through-the-api["StorageGRID中的高级监控"] 节中的步骤。但是，出于演示目的，我们展示了在"指标"类别中选择 GET /grid/metric-labels/{label}/values 的示例。
 
 . 例如、以下带有上述授权令牌的URL命令将在StorageGRID中列出站点名称。
 +

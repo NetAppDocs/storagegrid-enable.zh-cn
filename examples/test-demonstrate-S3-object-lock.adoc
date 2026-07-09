@@ -20,6 +20,7 @@ _作者：Aron Klein_
 
 
 
+[[legal-hold]]
 == 合法保留
 
 * 对象锁定合法保持是应用于对象的简单开/关状态。
@@ -68,6 +69,7 @@ aws s3api get-object-legal-hold --bucket <bucket> --key <file> --endpoint-url ht
 
 
 
+[[compliance-mode]]
 == 合规模式
 
 * 对象保留是使用"保留到"时间戳完成的。
@@ -97,6 +99,7 @@ aws s3api get-object-retention --bucket <bucket> --key <file> --endpoint-url htt
 
 
 
+[[default-retention]]
 == 默认保留
 
 * 将保留期限设置为天数和年数以及使用每个对象API定义的保留截止日期。
@@ -152,6 +155,7 @@ aws s3api get-object-retention --bucket <bucket> --key <file> --endpoint-url htt
 
 
 
+[[test-deleting-an-object-with-a-defined-retention]]
 == 测试删除已定义保留的对象
 
 对象锁定基于版本控制构建。保留是在对象的某个版本上定义的。如果尝试删除定义了保留的对象、但未指定版本、则会创建一个删除标记作为对象的当前版本。

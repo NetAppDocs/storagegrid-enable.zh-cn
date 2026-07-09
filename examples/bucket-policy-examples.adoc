@@ -16,6 +16,7 @@ summary: StorageGRID 中的策略和权限。
 
 
 
+[[the-structure-of-a-policy]]
 == 策略的结构
 
 在StorageGRID中、组策略与AWS用户(IAM) S3服务策略相同。
@@ -116,6 +117,7 @@ JSON策略的格式如下所示：
 ----
 
 
+[[using-the-aws-policy-generator]]
 == 使用AWS策略生成器
 
 AWS策略生成器是一个很好的工具、可帮助您获取具有正确格式的json代码以及您尝试实施的信息。
@@ -245,10 +247,12 @@ image:policy/example-output.png["最终输出"]
 ----
 
 
+[[group-policies-iam]]
 == 组策略(IAM)
 
 
 
+[[home-directory-style-bucket-access]]
 === 主目录模式的存储分段访问
 
 此组策略仅允许用户访问名为Users username的分段中的对象。
@@ -280,6 +284,7 @@ image:policy/example-output.png["最终输出"]
 ----
 
 
+[[deny-object-lock-bucket-creation]]
 === 拒绝创建对象锁定分段
 
 此组策略将限制用户创建在存储分段上启用了对象锁定的存储分段。
@@ -311,6 +316,7 @@ image:policy/example-output.png["最终输出"]
 ----
 
 
+[[object-lock-retention-limit]]
 === 对象锁定保留限制
 
 此存储分段策略会将对象锁定保留期限限制为10天或更短
@@ -340,6 +346,7 @@ image:policy/example-output.png["最终输出"]
 ----
 
 
+[[restrict-users-from-deleting-objects-by-versionid]]
 === 按版本ID限制用户删除对象
 
 此组策略将限制用户按版本ID删除受版本控制的对象
@@ -365,6 +372,7 @@ image:policy/example-output.png["最终输出"]
 ----
 
 
+[[restrict-a-group-to-single-subdirectory-prefix-with-read-only-access]]
 === 将组限制为具有只读访问权限的单个子目录(前缀)
 
 此策略允许组成员对分段中的子目录(前缀)具有只读访问权限。分段名称为"study"、子目录为"study01"。
@@ -436,10 +444,12 @@ image:policy/example-output.png["最终输出"]
 ----
 
 
+[[bucket-policies]]
 == 存储分段策略
 
 
 
+[[restrict-bucket-to-single-user-with-read-only-access]]
 === 将存储分段限制为具有只读访问权限的单个用户
 
 此策略允许单个用户对某个存储分段拥有只读访问权限、并明确授予所有其他用户的访问权限。将deny语句分组在策略顶部是一种较好的做法、可以加快评估速度。
@@ -482,6 +492,7 @@ image:policy/example-output.png["最终输出"]
 ----
 
 
+[[restrict-a-bucket-to-a-few-users-with-read-only-access]]
 === 将存储分段限制为少数具有只读访问权限的用户。
 
 [source, json]
@@ -531,6 +542,7 @@ image:policy/example-output.png["最终输出"]
 ----
 
 
+[[restrict-user-deletes-of-versioned-objects-in-a-bucket]]
 === 限制用户删除分段中受版本控制的对象
 
 此存储分段策略将限制用户(由用户ID "56622399308951294926"标识)按版本ID删除版本控制的对象

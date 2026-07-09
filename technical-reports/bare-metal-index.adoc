@@ -20,12 +20,13 @@ TR-4882提供了一组实用的分步说明、用于生成可正常工作的NetA
 
 有关StorageGRID和安装过程的更深入的了解、请参见 https://docs.netapp.com/us-en/storagegrid-118/landing-install-upgrade/index.html[] 产品文档中的[安装、升级和修补程序StorageGRID ]。
 
-在开始部署之前、让我们先了解一下NetApp StorageGRID软件的计算、存储和网络连接要求。StorageGRID在Podman或Docker中作为容器化服务运行。在此模型中、某些要求是指主机操作系统(托管Docker且运行StorageGRID软件的操作系统)。某些资源会直接分配给每个主机中运行的Docker容器。在此部署中、为了最大程度地提高硬件利用率、我们会为每个物理主机部署两项服务。有关详细信息，请继续下一节， link:prerequisites-install-storagegrid.html["安装StorageGRID的前提条件"]。
+在开始部署之前，让我们检查一下 NetApp StorageGRID 软件的计算、存储和网络要求。StorageGRID 作为容器化服务在 Podman 或 Docker 中运行。在此模型中，某些要求是指主机操作系统（托管 Docker 的操作系统，用于运行 StorageGRID 软件）。某些资源直接分配给每个主机内运行的 Docker 容器。在此部署中，为了最大限度地提高硬件使用率，我们为每个物理主机部署了两项服务。有关详细信息，请继续阅读下一节 link:bare-metal-prerequisites-install-storagegrid.html["安装StorageGRID的前提条件"]。
 
 本技术报告中概述的步骤可在六个裸机主机上正常安装StorageGRID。现在、您已拥有一个工作网格和客户端网络、这在大多数测试场景中都很有用。
 
 
 
+[[where-to-find-additional-information]]
 == 从何处查找追加信息
 
 要详细了解本技术报告中介绍的信息、请查看以下文档资源：

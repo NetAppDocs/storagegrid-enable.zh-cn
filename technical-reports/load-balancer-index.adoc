@@ -24,6 +24,7 @@ summary: 了解第三方和全局负载平衡器在StorageGRID等对象存储系
 
 
 
+[[load-balancer-basics]]
 == 负载平衡器基础知识
 
 负载平衡器是StorageGRID等企业级对象存储系统的基本组件。StorageGRID由多个存储节点组成、每个存储节点都可以为给定StorageGRID实例提供整个简单存储服务(Simple Storage Service、S3)名称空间。负载平衡器会创建一个高度可用的端点、我们可以将StorageGRID节点放置在该端点的后面。StorageGRID在与S3兼容的对象存储系统中是独一无二的、因为它提供自己的负载平衡器、但它也支持第三方或通用负载平衡器、例如F5、Citrix NetScaler、HA代理、NGINX等。
@@ -36,6 +37,7 @@ image:load-balancer/load-balancer-local-traffic-manager-load-balancer.png["本�
 
 
 
+[[local-and-global-load-balancers]]
 === 本地和全局负载平衡器
 
 负载平衡器有两种类型：
@@ -46,6 +48,7 @@ image:load-balancer/load-balancer-local-traffic-manager-load-balancer.png["本�
 
 
 
+[[where-to-find-additional-information]]
 == 从何处查找追加信息
 
 要了解有关本文档中所述信息的更多信息，请查看以下文档和 / 或网站：
@@ -53,6 +56,6 @@ image:load-balancer/load-balancer-local-traffic-manager-load-balancer.png["本�
 * NetApp StorageGRID文档中心https://docs.netapp.com/us-en/storagegrid/[]
 * NetApp StorageGRID支持 https://docs.netapp.com/us-en/storagegrid-enable/[]
 * StorageGRID F5负载平衡器设计注意事项 https://www.netapp.com/blog/storagegrid-f5-load-balancer-design-considerations/[]
-* Loadbalancer.org—Load平衡NetApp StorageGRID https://www.loadbalancer.org/applications/load-balancing-netapp-storagegrid/[]
+* Loadbalancer.org——负载平衡 NetApp StorageGRID https://www.loadbalancer.org/applications/netapp-storagegrid/[]
 * KEMP—负载平衡NetApp StorageGRID https://support.kemptechnologies.com/hc/en-us/articles/360045186451-NetApp-StorageGRID[]
 

@@ -24,6 +24,7 @@ StorageGRID提供了深入探讨监控主题的出色文档。本报告假设您
 
 
 
+[[data-sources]]
 == 数据源
 
 要成功监控NetApp StorageGRID、请务必了解从何处收集有关StorageGRID系统运行状况和操作的数据。
@@ -35,6 +36,7 @@ StorageGRID提供了深入探讨监控主题的出色文档。本报告假设您
 
 
 
+[[where-to-find-additional-information]]
 == 从何处查找追加信息
 
 要了解有关本文档中所述信息的更多信息，请查看以下文档和 / 或网站：
