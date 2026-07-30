@@ -1,0 +1,140 @@
+---
+permalink: third-party/120-3rd-party-list.html 
+sidebar: sidebar 
+keywords: 12.1, third-party applications, storagegrid, ISV 
+summary: 针对 StorageGRID 12.1 验证的第三方解决方案 
+---
+= StorageGRID 12.0 经过验证的第三方解决方案
+:hardbreaks:
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+以下第三方解决方案已通过验证，可与 StorageGRID 12.1 配合使用。+ 如果您正在寻找的解决方案未列出，请联系您的 NetApp 客户代表。
+
+
+
+[[third-party-solutions-validated-on-storagegrid]]
+== 已在StorageGRID 上验证的第三方解决方案
+
+这些解决方案已与相应的合作伙伴合作进行了测试。
+
+* Activio
+* Alluxio
+* Apache Kafka
+* AWS装载点
+* Bridgestor
+* Cantemo
+* Citrix内容协作
+* 短对影(最低对影数据质量版本2024.02)
+* Commvault 11
+* Couchbase 企业分析 2.0
+* Ctera门户6.
+* 达莱特
+* Datadobi
+* Data Dynamics StorageX
+* 默认X
+* 磁盘转换数据
+* Dremio
+* ElASCSearch Snapshot (包括冻结层)
+* 员工
+* 富士尼尔姆对象归档
+* GitHub企业服务器
+* IBM Storage Deep Archive 1.3
+* IBM文件集
+* IBM 存储保护
+* Interica
+* Komprise
+* Microsoft SQL Server大数据集群
+* 模式9
+* Modzy
+* Moonwalk Universal
+* 很好
+* Nasuni
+* OpenText文档16.4
+* OpenText文档21.4
+* OpenText InfoArchive 16 EP7
+* 采用CyanGate Cloud的OpenText Media Management 16.5
+* Panzura
+* PixitMedia ngena
+* 点归档网关2.0
+* 指向Storage Manager 6.4
+* Primestream
+* Quantum StorNext 5.4.0.1
+* Reveille v10内部版本220706或更高版本
+* Rubrik CDM
+* S3a
+* Signiant
+* 白雪片
+* 光谱逻辑在本机Glacier
+* Splunk智能存储
+* 星突发
+* 轻松实现存储
+* Trino
+* varnish Enterprise 6.0.4
+* Veeam 12.
+* Veritas Enterprise Vault 15.1
+* Veritas NetBackup 10.1.1及更高版本
+* Vertica 10.x
+* Viispine
+* Virtalica StorageFabric
+* Weka v3.10或更高版本
+
+
+
+
+[[third-party-solutions-validated-on-storagegrid-with-object-lock]]
+== 第三方解决方案已在具有对象锁定的StorageGRID 上进行验证
+
+这些解决方案已与相应的合作伙伴合作进行了测试。
+
+* Commvault 11功能版本26
+* IBM文件集
+* IBM 存储保护
+* OpenText文档21.4
+* Rubeck
+* Veeam 12.
+* Veritas Enterprise Vault 15.1
+* Veritas NetBackup 10.1.1及更高版本
+
+
+
+
+[[third-party-solutions-supported-on-storagegrid]]
+== StorageGRID支持的第三方解决方案
+
+这些解决方案已经过测试。
+
+* 存档软件
+* 轴通讯
+* Congruity360
+* 数据框架
+* EcoDigital DIIVA平台
+* Encoding.com
+* 富士尼尔姆对象归档
+* GE Centricity企业档案库
+* Gitlab
+* Hyland Acuo
+* IBM Aspera
+* 里程碑系统
+* OnSSI
+* 前移发动机
+* SilverTrak
+* SoftNAS
+* QStar
+* Velasea
+
+
+
+
+[[key-managers-supported-on-storagegrid]]
+== StorageGRID支持密钥管理器
+
+这些解决方案已经过测试。
+
+* Entrust 加密安全平台 v10.4.5
+* Hashicorp Vault 1.21.1
+* Thales CipherTrust Manager 2.21
+

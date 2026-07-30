@@ -1318,7 +1318,6 @@ DERMIO使用字节范围GET在查询期间同时从同一对象中提取不同�
 <block ref="1d36a7361466de3adde00ce864c41474" category="inline-link-macro-rx"></block>。</block>
   <block id="24377316ae141b63c8170119bbfe4239" category="list-text">使用浏览器访问StorageGRID设备安装程序图形用户界面<block ref="41c0f2506f64eaa17788753cf29de6aa" category="inline-link-rx"></block>。  设备启动至维护模式后、无法使用Grid IP作为新的Grid IP。</block>
   <block id="fe21d31242c56f4eee91182bd1268a5a" category="list-text">更改网格网络的VLAN。  如果您正在通过客户端网络访问设备、则此时无法更改客户端VLAN、可以在移动后进行更改。</block>
-  <block id="293c5807e9e9ab4b268fd617e8e5a56d" category="list-text">通过SSH连接到设备并使用"shutdoown -h now "关闭节点</block>
   <block id="1c33a8d84128bb59ae10a50b662e3a98" category="list-text">在新站点上准备好设备后、使用访问StorageGRID设备安装程序图形用户界面<block ref="fba5b5bfbff166288edb187e140418b2" category="inline-link-rx"></block>。  在GUI中使用Ping/nmap工具确认存储处于最佳状态、并确认与其他网格节点的网络连接。</block>
   <block id="786f3a0a71ff6ad9513f86143e55c1ce" category="list-text">如果计划更改客户端网络IP、则可以在此阶段更改客户端VLAN。  在稍后使用change-ip工具更新客户端网络IP之前、客户端网络尚未准备就绪。</block>
   <block id="fff8d22924e491405ba3026b24555fa6" category="list-text">退出维护模式：在 StorageGRID 设备安装程序中，选择 * 高级 * &gt; * 重新启动控制器 * ，然后选择 * 重新启动至 StorageGRID * 。</block>
@@ -3082,9 +3081,6 @@ StorageGRID可以通过为存储节点或运行负载平衡器和管理节点的
   <block id="0e2086a4669036b8a4cdc547c6b73dcf" category="doc">StorageGRID中的策略和权限</block>
   <block id="71c2cd8c732de893ca91cb987baa1b5c" category="paragraph">所有策略都将定义效果、操作和资源。存储分段策略还将定义主体。</block>
   <block id="e73b44d49494e2ac6f4ce555878eacec" category="paragraph">其*效果*是允许或拒绝请求。</block>
-  <block id="e3d361dfeb32442ba3887fb26cadd759" category="paragraph">*负责人*</block>
-  <block id="7c8bff59dd5d9771fc52f17ce6414420" category="list-text">仅适用于存储分段策略。</block>
-  <block id="4a47dee52461b2ce5adaefbba5fc57b0" category="list-text">主体是指被授予或拒绝权限的帐户/用户。</block>
   <block id="7b0fef71a6a5b6046a79dcb31b7991ec" category="list-text">可以定义为：</block>
   <block id="cdecd059c81b66125ab436ad5ba1f0db" category="list-text">通配符"++*++"</block>
   <block id="171a87df01e0c7aab0969853c4d63f99" category="list-text">租户中所有用户的租户ID (相当于AWS帐户)</block>
@@ -3449,4 +3445,14 @@ StorageGRID可以通过为存储节点或运行负载平衡器和管理节点的
   <block id="752f1428ccb77ac410289e9262b0f4bf" category="inline-link">Grok 模式</block>
   <block id="dfa155e02e6c42536eddd788adeb1c4b" category="list-text"><block ref="dfa155e02e6c42536eddd788adeb1c4b" category="inline-link-rx"></block></block>
   <block id="84a0efed1747839817563f400c91817f" category="list-text">请查看<block ref="fcf7e9838328c10505637416c290aabd" category="inline-link-rx"></block>以了解支持的 JDK 版本。</block>
+  <block id="21dbdbd408dc522ecd721e90c94e9967" category="paragraph">*Principal*：</block>
+  <block id="9acd284dbac66e7a5cc77ba3fa4c2c0e" category="list-text">仅适用于存储桶策略</block>
+  <block id="061ca9ee2cc478226335cb4781f7e748" category="list-text">主体是被授予或拒绝权限的帐户/用户</block>
+  <block id="c29108426bf99e785055bc2e1d798efd" category="paragraph"><block ref="6c9750b480cd2664d899f8d80fda410e" prefix="" category="inline-code"></block> 匹配所有人，包括匿名（未签名）请求</block>
+  <block id="a45bf7d8bfe94f3161df646dd349474b" category="paragraph"><block ref="2397070036b52932d72a0d05561ff357" prefix="" category="inline-code"></block> 匹配任何经过身份验证的身份或用户（与匿名请求不匹配）</block>
+  <block id="162795027699751a53c17a76654ff03a" category="list-text">ssh 到设备并使用"shutdown -h now"关闭节点</block>
+  <block id="524b3666d2b57a265288b4605c4f63dd" category="summary">针对 StorageGRID 12.1 验证的第三方解决方案</block>
+  <block id="0abd84cfb134f23ccdf2dace5cdafdf0" category="paragraph">以下第三方解决方案已通过验证，可与 StorageGRID 12.1 配合使用。+ 如果您正在寻找的解决方案未列出，请联系您的 NetApp 客户代表。</block>
+  <block id="f480816d606925917374f2fbcc635e8f" category="list-text">Hashicorp Vault 1.21.1</block>
+  <block id="8f58f72ce7022a4fdfe329ca00a2e451" category="list-text">Thales CipherTrust Manager 2.21</block>
 </blocks>
