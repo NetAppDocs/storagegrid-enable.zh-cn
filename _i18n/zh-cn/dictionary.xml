@@ -3455,4 +3455,5 @@ StorageGRID可以通过为存储节点或运行负载平衡器和管理节点的
   <block id="0abd84cfb134f23ccdf2dace5cdafdf0" category="paragraph">以下第三方解决方案已通过验证，可与 StorageGRID 12.1 配合使用。+ 如果您正在寻找的解决方案未列出，请联系您的 NetApp 客户代表。</block>
   <block id="f480816d606925917374f2fbcc635e8f" category="list-text">Hashicorp Vault 1.21.1</block>
   <block id="8f58f72ce7022a4fdfe329ca00a2e451" category="list-text">Thales CipherTrust Manager 2.21</block>
+  <block id="b0ff3f641f5c47519d662ddd7719ff87" category="sidebar">StorageGRID 12.1</block>
 </blocks>
