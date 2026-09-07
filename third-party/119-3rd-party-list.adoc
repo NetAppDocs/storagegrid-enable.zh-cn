@@ -80,7 +80,7 @@ summary: 第三方解决方案已通过StorageGRID 11.9.
 * Vertica 10.x
 * Viispine
 * Virtalica StorageFabric
-* Weka v3.10或更高版本
+* WEKA v3.10 或更高版本
 
 
 

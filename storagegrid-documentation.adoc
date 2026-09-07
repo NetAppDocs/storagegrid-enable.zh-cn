@@ -8,7 +8,7 @@ summary: 您可以在此处找到每个NetApp StorageGRID 版本的完整文档�
 :hardbreaks:
 :allow-uri-read: 
 :icons: font
-:imagesdir: ../media/
+:imagesdir: ./media/
 
 
 [role="lead"]
